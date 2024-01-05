@@ -1,0 +1,575 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>galaxy.datatypes.dataproviders.line &mdash; Galaxy Project 23.1.5.dev0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" href="../../../../_static/style.css" type="text/css" />
+
+  
+    <link rel="canonical" href="https://docs.galaxyproject.org/en/master/_modules/galaxy/datatypes/dataproviders/line.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/documentation_options.js?v=da3e81e8"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            Galaxy Project
+          </a>
+              <div class="version">
+                23.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../releases/index.html">Releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/23.1_announce_user.html">June 2023 Galaxy Release (v 23.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/23.0_announce_user.html">2023 Galaxy Release (v 23.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/22.05_announce_user.html">May 2022 Galaxy Release (v 22.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/22.01_announce_user.html">January 2022 Galaxy Release (v 22.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/21.09_announce_user.html">September 2021 Galaxy Release (v 21.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/21.05_announce_user.html">May 2021 Galaxy Release (v 21.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/21.01_announce_user.html">January 2021 Galaxy Release (v 21.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/20.09_announce_user.html">September 2020 Galaxy Release (v 20.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/20.05_announce_user.html">May 2020 Galaxy Release (v 20.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/20.01_announce_user.html">January 2020 Galaxy Release (v 20.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/19.09_announce_user.html">September 2019 Galaxy Release (v 19.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/19.05_announce_user.html">May 2019 Galaxy Release (v 19.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/19.01_announce_user.html">January 2019 Galaxy Release (v 19.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/18.09_announce.html">September 2018 Galaxy Release (v 18.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/18.05_announce.html">May 2018 Galaxy Release (v 18.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/18.01_announce.html">January 2018 Galaxy Release (v 18.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/17.09_announce.html">September 2017 Galaxy Release (v 17.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/17.05_announce.html">May 2017 Galaxy Release (v 17.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/17.01_announce.html">January 2017 Galaxy Release (v 17.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/16.10_announce.html">October 2016 Galaxy Release (v 16.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/16.07_announce.html">July 2016 Galaxy Release (v 16.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/16.04_announce.html">April 2016 Galaxy Release (v 16.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/16.01_announce.html">January 2016 Galaxy Release (v 16.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/15.10_announce.html">October 2015 Galaxy Release (v 15.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/15.07_announce.html">July 2015 Galaxy Release (v 15.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/15.05_announce.html">May 2015 Galaxy Release (v 15.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/15.03_announce.html">March 2015 Galaxy Release (v 15.03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/15.01_announce.html">January 2015 Galaxy Release (v 15.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/14.10_announce.html">October 2014 Galaxy Release (v 14.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/14.08_announce.html">August 2014 Galaxy Release (v 14.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/14.06_announce.html">June 2014 Galaxy Release (v 14.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/14.04_announce.html">April 2014 Galaxy Release (v 14.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/14.02_announce.html">February 2014 Galaxy Release (v 14.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/13.11_announce.html">November 2013 Galaxy Release (v 13.11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/13.08_announce.html">August 2013 Galaxy Release (v 13.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/13.06_announce.html">June 2013 Galaxy Release (v 13.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/13.04_announce.html">April 2013 Galaxy Release (v 13.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/13.02_announce.html">February 2013 Galaxy Release (v 13.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/13.01_announce.html">January 2013 Galaxy Release (v 13.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/older_releases.html">Galaxy Releases older than v 13.01</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Admin Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../admin/index.html">Administration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/python.html">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/framework_dependencies.html">Framework Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/config.html">Galaxy Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/config_logging.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/production.html">Production Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/security.html">Security considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/nginx.html">Proxying Galaxy with NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/apache.html">Proxying Galaxy with Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/scaling.html">Scaling and Load Balancing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/cluster.html">Connecting to a Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/jobs.html">Galaxy Job Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/tool_panel.html">Tool Panel Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/mq.html">Message queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/dependency_resolvers.html">Dependency Resolvers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/container_resolvers.html">Containers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/container_resolvers.html#other-considerations">Other considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/conda_faq.html">Conda for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/db_migration.html">Galaxy Database Schema Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/reports.html">Galaxy Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/useful_scripts.html">Scripts &amp; Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/options.html">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/migrating_to_gunicorn.html">Migrating from uWSGI to Gunicorn and FastAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../admin/special_topics/index.html">Special topics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/special_topics/ftp.html">Galaxy FTP Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/special_topics/interactivetools.html">Galaxy InteractiveTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/special_topics/mulled_containers.html">Containers for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/special_topics/grt.html">Galactic Radio Telescope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/special_topics/gtn.html">Galaxy Training Materials Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/special_topics/job_metrics.html">Job Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/special_topics/webhooks.html">Galaxy Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/special_topics/vault.html">Storing secrets in the vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/special_topics/performance_tracking.html">Galaxy Performance Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/special_topics/bug_reports.html">Bug Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/special_topics/gdpr_compliance.html">GDPR Compliance</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../dev/index.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/schema.html">Galaxy Tool XML File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/api_guidelines.html">API Design Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/build_a_job_runner.html">Build a job runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/finding_and_improving_slow_code.html">Finding and improving slow Galaxy code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/data_managers.html">Data managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/data_types.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/faq.html">How Do I…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/writing_tests.html">Writing Tests for Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/debugging_tests.html">Debugging Galaxy Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/debugging_tests.html#debugging-tests-that-run-out-of-memory">Debugging tests that run out of memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/debugging_galaxy.html">Debugging Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/debugging_galaxy_slurm.html">Debugging Galaxy: Slurm Compute Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/translating.html">Translating the Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/create_point_release.html">Creating Galaxy Point Releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_doc.html">Galaxy API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/quickstart.html"> Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/api.html"> Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ts_api_doc.html">Tool Shed API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/ts_api.html"> API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lib/modules.html">Application Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/galaxy.html">galaxy package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/galaxy_ext.html">galaxy_ext package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/galaxy_test.html">galaxy_test package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/tool_shed.html">tool_shed package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../project/organization.html">Project Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../project/organization.html#procedure-documents">Procedure Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../project/organization.html#committers">Committers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../project/organization.html#release-branches">Release branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../project/organization.html#handling-pull-requests">Handling Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../project/organization.html#issue-reporting">Issue Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../project/issues.html">Issue Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../project/issues.html#issue-reporting">Issue Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../project/issues.html#milestones">Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../project/issues.html#labeling-structure">Labeling Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../project/issues.html#the-roadmap">The Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../project/issues.html#voting">Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../project/issues.html#automation">Automation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Galaxy Project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">galaxy.datatypes.dataproviders.line</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for galaxy.datatypes.dataproviders.line</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Dataproviders that iterate over lines from their sources.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">collections</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">base</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">_TODO</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">line offsets (skip to some place in a file) needs to work more efficiently than simply iterating till we&#39;re there</span>
+<span class="s2">    capture tell() when provider is done</span>
+<span class="s2">        def stop( self ): self.endpoint = source.tell(); raise StopIteration()</span>
+<span class="s2">a lot of the hierarchy here could be flattened since we&#39;re implementing pipes</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+
+<div class="viewcode-block" id="FilteredLineDataProvider">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.FilteredLineDataProvider">[docs]</a>
+<span class="k">class</span> <span class="nc">FilteredLineDataProvider</span><span class="p">(</span><span class="n">base</span><span class="o">.</span><span class="n">LimitedOffsetDataProvider</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Data provider that yields lines of data from its source allowing</span>
+<span class="sd">    optional control over which line to start on and how many lines</span>
+<span class="sd">    to return.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">DEFAULT_COMMENT_CHAR</span> <span class="o">=</span> <span class="s2">&quot;#&quot;</span>
+    <span class="n">settings</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;strip_lines&quot;</span><span class="p">:</span> <span class="s2">&quot;bool&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;strip_newlines&quot;</span><span class="p">:</span> <span class="s2">&quot;bool&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;provide_blank&quot;</span><span class="p">:</span> <span class="s2">&quot;bool&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;comment_char&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+<div class="viewcode-block" id="FilteredLineDataProvider.__init__">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.FilteredLineDataProvider.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">source</span><span class="p">,</span>
+        <span class="n">strip_lines</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">strip_newlines</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">provide_blank</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">comment_char</span><span class="o">=</span><span class="n">DEFAULT_COMMENT_CHAR</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param strip_lines: remove whitespace from the beginning an ending</span>
+<span class="sd">            of each line (or not).</span>
+<span class="sd">            Optional: defaults to True</span>
+<span class="sd">        :type strip_lines: bool</span>
+
+<span class="sd">        :param strip_newlines: remove newlines only</span>
+<span class="sd">            (only functions when ``strip_lines`` is false)</span>
+<span class="sd">            Optional: defaults to False</span>
+<span class="sd">        :type strip_lines: bool</span>
+
+<span class="sd">        :param provide_blank: are empty lines considered valid and provided?</span>
+<span class="sd">            Optional: defaults to False</span>
+<span class="sd">        :type provide_blank: bool</span>
+
+<span class="sd">        :param comment_char: character(s) that indicate a line isn&#39;t data (a comment)</span>
+<span class="sd">            and should not be provided.</span>
+<span class="sd">            Optional: defaults to &#39;#&#39;</span>
+<span class="sd">        :type comment_char: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">strip_lines</span> <span class="o">=</span> <span class="n">strip_lines</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">strip_newlines</span> <span class="o">=</span> <span class="n">strip_newlines</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">provide_blank</span> <span class="o">=</span> <span class="n">provide_blank</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comment_char</span> <span class="o">=</span> <span class="n">comment_char</span></div>
+
+
+<div class="viewcode-block" id="FilteredLineDataProvider.filter">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.FilteredLineDataProvider.filter">[docs]</a>
+    <span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Determines whether to provide line or not.</span>
+
+<span class="sd">        :param line: the incoming line from the source</span>
+<span class="sd">        :type line: str</span>
+<span class="sd">        :returns: a line or `None`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">line</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># ??: shouldn&#39;t it strip newlines regardless, if not why not use on of the base.dprovs</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">strip_lines</span><span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">strip_newlines</span><span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">provide_blank</span> <span class="ow">and</span> <span class="n">line</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">None</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">comment_char</span> <span class="ow">and</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">comment_char</span><span class="p">):</span>
+                <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="RegexLineDataProvider">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.RegexLineDataProvider">[docs]</a>
+<span class="k">class</span> <span class="nc">RegexLineDataProvider</span><span class="p">(</span><span class="n">FilteredLineDataProvider</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Data provider that yields only those lines of data from its source</span>
+<span class="sd">    that do (or do not when `invert` is True) match one or more of the given list</span>
+<span class="sd">    of regexs.</span>
+
+<span class="sd">    .. note:: the regex matches are effectively OR&#39;d (if **any** regex matches</span>
+<span class="sd">        the line it is considered valid and will be provided).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">settings</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;regex_list&quot;</span><span class="p">:</span> <span class="s2">&quot;list:escaped&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;invert&quot;</span><span class="p">:</span> <span class="s2">&quot;bool&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+<div class="viewcode-block" id="RegexLineDataProvider.__init__">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.RegexLineDataProvider.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">regex_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">invert</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param regex_list: list of strings or regular expression strings that will</span>
+<span class="sd">            be `match`ed to each line</span>
+<span class="sd">            Optional: defaults to `None` (no matching)</span>
+<span class="sd">        :type regex_list: list (of str)</span>
+
+<span class="sd">        :param invert: if `True` will provide only lines that **do not match**.</span>
+<span class="sd">            Optional: defaults to False</span>
+<span class="sd">        :type invert: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">regex_list</span> <span class="o">=</span> <span class="n">regex_list</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">regex_list</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="k">else</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">compiled_regex_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">regex</span><span class="p">)</span> <span class="k">for</span> <span class="n">regex</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">regex_list</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">invert</span> <span class="o">=</span> <span class="n">invert</span></div>
+
+        <span class="c1"># NOTE: no support for flags</span>
+
+<div class="viewcode-block" id="RegexLineDataProvider.filter">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.RegexLineDataProvider.filter">[docs]</a>
+    <span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
+        <span class="c1"># NOTE: filter_fn will occur BEFORE any matching</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">line</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">compiled_regex_list</span><span class="p">:</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter_by_regex</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">line</span></div>
+
+
+<div class="viewcode-block" id="RegexLineDataProvider.filter_by_regex">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.RegexLineDataProvider.filter_by_regex">[docs]</a>
+    <span class="k">def</span> <span class="nf">filter_by_regex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
+        <span class="n">matches</span> <span class="o">=</span> <span class="nb">any</span><span class="p">(</span><span class="n">regex</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">regex</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">compiled_regex_list</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">invert</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">line</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">matches</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="n">line</span> <span class="k">if</span> <span class="n">matches</span> <span class="k">else</span> <span class="kc">None</span></div>
+</div>
+
+
+
+<span class="c1"># ============================================================================= MICELLAINEOUS OR UNIMPLEMENTED</span>
+<span class="c1"># ----------------------------------------------------------------------------- block data providers</span>
+<div class="viewcode-block" id="BlockDataProvider">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.BlockDataProvider">[docs]</a>
+<span class="k">class</span> <span class="nc">BlockDataProvider</span><span class="p">(</span><span class="n">base</span><span class="o">.</span><span class="n">LimitedOffsetDataProvider</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class that uses formats where multiple lines combine to describe a single</span>
+<span class="sd">    datum. The data output will be a list of either map/dicts or sub-arrays.</span>
+
+<span class="sd">    Uses FilteredLineDataProvider as its source (kwargs **not** passed).</span>
+
+<span class="sd">    e.g. Fasta, GenBank, MAF, hg log</span>
+<span class="sd">    Note: mem intensive (gathers list of lines before output)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="BlockDataProvider.__init__">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.BlockDataProvider.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">new_block_delim_fn</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">block_filter_fn</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param new_block_delim_fn: T/F function to determine whether a given line</span>
+<span class="sd">            is the start of a new block.</span>
+<span class="sd">        :type new_block_delim_fn: function</span>
+
+<span class="sd">        :param block_filter_fn: function that determines if a block is valid and</span>
+<span class="sd">            will be provided.</span>
+<span class="sd">            Optional: defaults to `None` (no filtering)</span>
+<span class="sd">        :type block_filter_fn: function</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># composition - not inheritance</span>
+        <span class="c1"># TODO: not a fan of this:</span>
+        <span class="p">(</span><span class="n">filter_fn</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="n">offset</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;filter_fn&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;limit&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;offset&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="n">line_provider</span> <span class="o">=</span> <span class="n">FilteredLineDataProvider</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">line_provider</span><span class="p">,</span> <span class="n">filter_fn</span><span class="o">=</span><span class="n">filter_fn</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="n">offset</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">new_block_delim_fn</span> <span class="o">=</span> <span class="n">new_block_delim_fn</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">block_filter_fn</span> <span class="o">=</span> <span class="n">block_filter_fn</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">init_new_block</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="BlockDataProvider.init_new_block">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.BlockDataProvider.init_new_block">[docs]</a>
+    <span class="k">def</span> <span class="nf">init_new_block</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set up internal data for next block.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># called in __init__ and after yielding the prev. block</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">block_lines</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">deque</span><span class="p">([])</span></div>
+
+
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overridden to provide last block.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">parent_gen</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__iter__</span><span class="p">()</span>
+        <span class="k">yield from</span> <span class="n">parent_gen</span>
+
+        <span class="n">last_block</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handle_last_block</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">last_block</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">num_data_returned</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">yield</span> <span class="n">last_block</span>
+
+<div class="viewcode-block" id="BlockDataProvider.filter">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.BlockDataProvider.filter">[docs]</a>
+    <span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Line filter here being used to aggregate/assemble lines into a block</span>
+<span class="sd">        and determine whether the line indicates a new block.</span>
+
+<span class="sd">        :param line: the incoming line from the source</span>
+<span class="sd">        :type line: str</span>
+<span class="sd">        :returns: a block or `None`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="c1"># TODO: HACK</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_data_read</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">line</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="n">block_to_return</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_new_block</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
+            <span class="c1"># if we&#39;re already in a block, return the prev. block and add the line to a new block</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">block_lines</span><span class="p">:</span>
+                <span class="n">block_to_return</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">assemble_current_block</span><span class="p">()</span>
+                <span class="n">block_to_return</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter_block</span><span class="p">(</span><span class="n">block_to_return</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">num_data_read</span> <span class="o">+=</span> <span class="mi">1</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">init_new_block</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_line_to_block</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">block_to_return</span></div>
+
+
+<div class="viewcode-block" id="BlockDataProvider.is_new_block">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.BlockDataProvider.is_new_block">[docs]</a>
+    <span class="k">def</span> <span class="nf">is_new_block</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns True if the given line indicates the start of a new block</span>
+<span class="sd">        (and the current block should be provided) or False if not.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">new_block_delim_fn</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">new_block_delim_fn</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+
+    <span class="c1"># NOTE:</span>
+    <span class="c1">#   some formats have one block attr per line</span>
+    <span class="c1">#   some formats rely on having access to multiple lines to make sensible data</span>
+    <span class="c1"># So, building the block from the lines can happen in either:</span>
+    <span class="c1">#   add_line_to_block AND/OR assemble_current_block</span>
+<div class="viewcode-block" id="BlockDataProvider.add_line_to_block">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.BlockDataProvider.add_line_to_block">[docs]</a>
+    <span class="k">def</span> <span class="nf">add_line_to_block</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Integrate the given line into the current block.</span>
+
+<span class="sd">        Called per line.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># here either:</span>
+        <span class="c1">#   consume the line (using it to add attrs to self.block)</span>
+        <span class="c1">#   save the line (appending to self.block_lines) for use in assemble_current_block</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">block_lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="BlockDataProvider.assemble_current_block">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.BlockDataProvider.assemble_current_block">[docs]</a>
+    <span class="k">def</span> <span class="nf">assemble_current_block</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Build the current data into a block.</span>
+
+<span class="sd">        Called per block (just before providing).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># empty block_lines and assemble block</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">block_lines</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">block_lines</span><span class="p">)))</span></div>
+
+
+<div class="viewcode-block" id="BlockDataProvider.filter_block">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.BlockDataProvider.filter_block">[docs]</a>
+    <span class="k">def</span> <span class="nf">filter_block</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">block</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Is the current block a valid/desired datum.</span>
+
+<span class="sd">        Called per block (just before providing).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">block_filter_fn</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">block_filter_fn</span><span class="p">(</span><span class="n">block</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">block</span></div>
+
+
+<div class="viewcode-block" id="BlockDataProvider.handle_last_block">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.BlockDataProvider.handle_last_block">[docs]</a>
+    <span class="k">def</span> <span class="nf">handle_last_block</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Handle any blocks remaining after the main loop.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">limit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_data_returned</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">limit</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="n">last_block</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">assemble_current_block</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_data_read</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="n">last_block</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter_block</span><span class="p">(</span><span class="n">last_block</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">last_block</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">num_valid_data_read</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">return</span> <span class="n">last_block</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Galaxy Committers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

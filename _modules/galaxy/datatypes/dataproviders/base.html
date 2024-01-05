@@ -1,0 +1,609 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>galaxy.datatypes.dataproviders.base &mdash; Galaxy Project 23.1.5.dev0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" href="../../../../_static/style.css" type="text/css" />
+
+  
+    <link rel="canonical" href="https://docs.galaxyproject.org/en/master/_modules/galaxy/datatypes/dataproviders/base.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/documentation_options.js?v=da3e81e8"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            Galaxy Project
+          </a>
+              <div class="version">
+                23.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../releases/index.html">Releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/23.1_announce_user.html">June 2023 Galaxy Release (v 23.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/23.0_announce_user.html">2023 Galaxy Release (v 23.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/22.05_announce_user.html">May 2022 Galaxy Release (v 22.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/22.01_announce_user.html">January 2022 Galaxy Release (v 22.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/21.09_announce_user.html">September 2021 Galaxy Release (v 21.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/21.05_announce_user.html">May 2021 Galaxy Release (v 21.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/21.01_announce_user.html">January 2021 Galaxy Release (v 21.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/20.09_announce_user.html">September 2020 Galaxy Release (v 20.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/20.05_announce_user.html">May 2020 Galaxy Release (v 20.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/20.01_announce_user.html">January 2020 Galaxy Release (v 20.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/19.09_announce_user.html">September 2019 Galaxy Release (v 19.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/19.05_announce_user.html">May 2019 Galaxy Release (v 19.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/19.01_announce_user.html">January 2019 Galaxy Release (v 19.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/18.09_announce.html">September 2018 Galaxy Release (v 18.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/18.05_announce.html">May 2018 Galaxy Release (v 18.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/18.01_announce.html">January 2018 Galaxy Release (v 18.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/17.09_announce.html">September 2017 Galaxy Release (v 17.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/17.05_announce.html">May 2017 Galaxy Release (v 17.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/17.01_announce.html">January 2017 Galaxy Release (v 17.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/16.10_announce.html">October 2016 Galaxy Release (v 16.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/16.07_announce.html">July 2016 Galaxy Release (v 16.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/16.04_announce.html">April 2016 Galaxy Release (v 16.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/16.01_announce.html">January 2016 Galaxy Release (v 16.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/15.10_announce.html">October 2015 Galaxy Release (v 15.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/15.07_announce.html">July 2015 Galaxy Release (v 15.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/15.05_announce.html">May 2015 Galaxy Release (v 15.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/15.03_announce.html">March 2015 Galaxy Release (v 15.03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/15.01_announce.html">January 2015 Galaxy Release (v 15.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/14.10_announce.html">October 2014 Galaxy Release (v 14.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/14.08_announce.html">August 2014 Galaxy Release (v 14.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/14.06_announce.html">June 2014 Galaxy Release (v 14.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/14.04_announce.html">April 2014 Galaxy Release (v 14.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/14.02_announce.html">February 2014 Galaxy Release (v 14.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/13.11_announce.html">November 2013 Galaxy Release (v 13.11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/13.08_announce.html">August 2013 Galaxy Release (v 13.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/13.06_announce.html">June 2013 Galaxy Release (v 13.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/13.04_announce.html">April 2013 Galaxy Release (v 13.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/13.02_announce.html">February 2013 Galaxy Release (v 13.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/13.01_announce.html">January 2013 Galaxy Release (v 13.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/older_releases.html">Galaxy Releases older than v 13.01</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Admin Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../admin/index.html">Administration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/python.html">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/framework_dependencies.html">Framework Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/config.html">Galaxy Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/config_logging.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/production.html">Production Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/security.html">Security considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/nginx.html">Proxying Galaxy with NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/apache.html">Proxying Galaxy with Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/scaling.html">Scaling and Load Balancing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/cluster.html">Connecting to a Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/jobs.html">Galaxy Job Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/tool_panel.html">Tool Panel Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/mq.html">Message queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/dependency_resolvers.html">Dependency Resolvers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/container_resolvers.html">Containers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/container_resolvers.html#other-considerations">Other considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/conda_faq.html">Conda for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/db_migration.html">Galaxy Database Schema Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/reports.html">Galaxy Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/useful_scripts.html">Scripts &amp; Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/options.html">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/migrating_to_gunicorn.html">Migrating from uWSGI to Gunicorn and FastAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../admin/special_topics/index.html">Special topics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/special_topics/ftp.html">Galaxy FTP Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/special_topics/interactivetools.html">Galaxy InteractiveTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/special_topics/mulled_containers.html">Containers for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/special_topics/grt.html">Galactic Radio Telescope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/special_topics/gtn.html">Galaxy Training Materials Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/special_topics/job_metrics.html">Job Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/special_topics/webhooks.html">Galaxy Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/special_topics/vault.html">Storing secrets in the vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/special_topics/performance_tracking.html">Galaxy Performance Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/special_topics/bug_reports.html">Bug Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/special_topics/gdpr_compliance.html">GDPR Compliance</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../dev/index.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/schema.html">Galaxy Tool XML File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/api_guidelines.html">API Design Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/build_a_job_runner.html">Build a job runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/finding_and_improving_slow_code.html">Finding and improving slow Galaxy code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/data_managers.html">Data managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/data_types.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/faq.html">How Do I…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/writing_tests.html">Writing Tests for Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/debugging_tests.html">Debugging Galaxy Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/debugging_tests.html#debugging-tests-that-run-out-of-memory">Debugging tests that run out of memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/debugging_galaxy.html">Debugging Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/debugging_galaxy_slurm.html">Debugging Galaxy: Slurm Compute Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/translating.html">Translating the Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/create_point_release.html">Creating Galaxy Point Releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_doc.html">Galaxy API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/quickstart.html"> Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/api.html"> Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ts_api_doc.html">Tool Shed API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/ts_api.html"> API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lib/modules.html">Application Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/galaxy.html">galaxy package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/galaxy_ext.html">galaxy_ext package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/galaxy_test.html">galaxy_test package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/tool_shed.html">tool_shed package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../project/organization.html">Project Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../project/organization.html#procedure-documents">Procedure Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../project/organization.html#committers">Committers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../project/organization.html#release-branches">Release branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../project/organization.html#handling-pull-requests">Handling Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../project/organization.html#issue-reporting">Issue Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../project/issues.html">Issue Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../project/issues.html#issue-reporting">Issue Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../project/issues.html#milestones">Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../project/issues.html#labeling-structure">Labeling Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../project/issues.html#the-roadmap">The Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../project/issues.html#voting">Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../project/issues.html#automation">Automation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Galaxy Project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">galaxy.datatypes.dataproviders.base</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for galaxy.datatypes.dataproviders.base</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Base class(es) for all DataProviders.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># there&#39;s a blurry line between functionality here and functionality in datatypes module</span>
+<span class="c1"># attempting to keep parsing to a minimum here and focus on chopping/pagination/reformat(/filtering-maybe?)</span>
+<span class="c1">#   and using as much pre-computed info/metadata from the datatypes module as possible</span>
+<span class="c1"># also, this shouldn&#39;t be a replacement/re-implementation of the tool layer</span>
+<span class="c1">#   (which provides traceability/versioning/reproducibility)</span>
+
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">exceptions</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">_TODO</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">hooks into datatypes (define providers inside datatype modules) as factories</span>
+<span class="s2">capture tell() when provider is done</span>
+<span class="s2">    def stop( self ): self.endpoint = source.tell(); raise StopIteration()</span>
+<span class="s2">implement __len__ sensibly where it can be (would be good to have where we&#39;re giving some progress - &#39;100 of 300&#39;)</span>
+<span class="s2">    seems like sniffed files would have this info</span>
+<span class="s2">unit tests</span>
+<span class="s2">add datum entry/exit point methods: possibly decode, encode</span>
+<span class="s2">    or create a class that pipes source through - how would decode work then?</span>
+
+<span class="s2">icorporate existing visualization/dataproviders</span>
+<span class="s2">some of the sources (esp. in datasets) don&#39;t need to be re-created</span>
+<span class="s2">YAGNI: InterleavingMultiSourceDataProvider, CombiningMultiSourceDataProvider</span>
+
+<span class="s2">datasets API entry point:</span>
+<span class="s2">    kwargs should be parsed from strings 2 layers up (in the DatasetsAPI) - that&#39;s the &#39;proper&#39; place for that.</span>
+<span class="s2">    but how would it know how/what to parse if it doesn&#39;t have access to the classes used in the provider?</span>
+<span class="s2">        Building a giant list by sweeping all possible dprov classes doesn&#39;t make sense</span>
+<span class="s2">    For now - I&#39;m burying them in the class __init__s - but I don&#39;t like that</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+
+<span class="c1"># ----------------------------------------------------------------------------- base classes</span>
+<div class="viewcode-block" id="HasSettings">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.base.HasSettings">[docs]</a>
+<span class="k">class</span> <span class="nc">HasSettings</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Metaclass for data providers that allows defining and inheriting</span>
+<span class="sd">    a dictionary named &#39;settings&#39;.</span>
+
+<span class="sd">    Useful for allowing class level access to expected variable types</span>
+<span class="sd">    passed to class `__init__` functions so they can be parsed from a query string.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># yeah - this is all too acrobatic</span>
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">base_classes</span><span class="p">,</span> <span class="n">attributes</span><span class="p">):</span>
+        <span class="n">settings</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1"># get settings defined in base classes</span>
+        <span class="k">for</span> <span class="n">base_class</span> <span class="ow">in</span> <span class="n">base_classes</span><span class="p">:</span>
+            <span class="n">base_settings</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">base_class</span><span class="p">,</span> <span class="s2">&quot;settings&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">base_settings</span><span class="p">:</span>
+                <span class="n">settings</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">base_settings</span><span class="p">)</span>
+        <span class="c1"># get settings defined in this class</span>
+        <span class="n">new_settings</span> <span class="o">=</span> <span class="n">attributes</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;settings&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">new_settings</span><span class="p">:</span>
+            <span class="n">settings</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">new_settings</span><span class="p">)</span>
+        <span class="n">attributes</span><span class="p">[</span><span class="s2">&quot;settings&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">settings</span>
+        <span class="k">return</span> <span class="nb">type</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">base_classes</span><span class="p">,</span> <span class="n">attributes</span><span class="p">)</span></div>
+
+
+
+<span class="c1"># ----------------------------------------------------------------------------- base classes</span>
+<div class="viewcode-block" id="DataProvider">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.base.DataProvider">[docs]</a>
+<span class="k">class</span> <span class="nc">DataProvider</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">HasSettings</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Base class for all data providers. Data providers:</span>
+
+<span class="sd">    - have a source (which must be another file-like object)</span>
+<span class="sd">    - implement both the iterator and context manager interfaces</span>
+<span class="sd">    - do not allow write methods (but otherwise implement the other file object interface methods)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># a definition of expected types for keyword arguments sent to __init__</span>
+    <span class="c1">#   useful for controlling how query string dictionaries can be parsed into correct types for __init__</span>
+    <span class="c1">#   empty in this base class</span>
+    <span class="n">settings</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+<div class="viewcode-block" id="DataProvider.__init__">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.base.DataProvider.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets up a data provider, validates supplied source.</span>
+
+<span class="sd">        :param source: the source that this iterator will loop over.</span>
+<span class="sd">                       (Should implement the iterable interface and ideally have the</span>
+<span class="sd">                       context manager interface as well)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_source</span><span class="p">(</span><span class="n">source</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="DataProvider.validate_source">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.base.DataProvider.validate_source">[docs]</a>
+    <span class="k">def</span> <span class="nf">validate_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Is this a valid source for this provider?</span>
+
+<span class="sd">        :raises InvalidDataProviderSource: if the source is considered invalid.</span>
+
+<span class="sd">        Meant to be overridden in subclasses.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">source</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s2">&quot;__iter__&quot;</span><span class="p">):</span>
+            <span class="c1"># that&#39;s by no means a thorough check</span>
+            <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">InvalidDataProviderSource</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">source</span></div>
+
+
+    <span class="c1"># TODO: (this might cause problems later...)</span>
+    <span class="c1"># TODO: some providers (such as chunk&#39;s seek and read) rely on this... remove</span>
+    <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;source&quot;</span><span class="p">:</span>
+            <span class="c1"># if we&#39;re inside this fn, source hasn&#39;t been set - provide some safety just for this attr</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="c1"># otherwise, try to get the attr from the source - allows us to get things like provider.encoding, etc.</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+            <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+        <span class="c1"># raise the proper error</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="c1"># write methods should not be allowed</span>
+<div class="viewcode-block" id="DataProvider.truncate">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.base.DataProvider.truncate">[docs]</a>
+    <span class="k">def</span> <span class="nf">truncate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Write methods are purposely disabled&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="DataProvider.write">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.base.DataProvider.write">[docs]</a>
+    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Write methods are purposely disabled&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="DataProvider.writelines">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.base.DataProvider.writelines">[docs]</a>
+    <span class="k">def</span> <span class="nf">writelines</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sequence</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Write methods are purposely disabled&quot;</span><span class="p">)</span></div>
+
+
+    <span class="c1"># TODO: route read methods through next?</span>
+    <span class="c1"># def readline( self ):</span>
+    <span class="c1">#    return self.next()</span>
+<div class="viewcode-block" id="DataProvider.readlines">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.base.DataProvider.readlines">[docs]</a>
+    <span class="k">def</span> <span class="nf">readlines</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">line</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">]</span></div>
+
+
+    <span class="c1"># iterator interface</span>
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># it&#39;s generators all the way up, Timmy</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">source</span>
+
+    <span class="k">def</span> <span class="fm">__next__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+
+    <span class="c1"># context manager interface</span>
+    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># make the source&#39;s context manager interface optional</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">,</span> <span class="s2">&quot;__enter__&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="fm">__enter__</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="c1"># make the source&#39;s context manager interface optional, call on source if there</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">,</span> <span class="s2">&quot;__exit__&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="fm">__exit__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+        <span class="c1"># alternately, call close()</span>
+        <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">,</span> <span class="s2">&quot;close&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        String representation for easier debugging.</span>
+
+<span class="sd">        Will call `__str__` on its source so this will display piped dataproviders.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># we need to protect against recursion (in __getattr__) if self.source hasn&#39;t been set</span>
+        <span class="n">source_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;source&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">source_str</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="FilteredDataProvider">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.base.FilteredDataProvider">[docs]</a>
+<span class="k">class</span> <span class="nc">FilteredDataProvider</span><span class="p">(</span><span class="n">DataProvider</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Passes each datum through a filter function and yields it if that function</span>
+<span class="sd">    returns a non-`None` value.</span>
+
+<span class="sd">    Also maintains counters:</span>
+<span class="sd">        - `num_data_read`: how many data have been consumed from the source.</span>
+<span class="sd">        - `num_valid_data_read`: how many data have been returned from `filter`.</span>
+<span class="sd">        - `num_data_returned`: how many data has this provider yielded.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># not useful here - we don&#39;t want functions over the query string</span>
+    <span class="c1"># settings.update({ &#39;filter_fn&#39;: &#39;function&#39; })</span>
+
+<div class="viewcode-block" id="FilteredDataProvider.__init__">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.base.FilteredDataProvider.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">filter_fn</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param filter_fn: a lambda or function that will be passed a datum and</span>
+<span class="sd">            return either the (optionally modified) datum or None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">filter_fn</span> <span class="o">=</span> <span class="n">filter_fn</span> <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">filter_fn</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="c1"># count how many data we got from the source</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_data_read</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># how many valid data have we gotten from the source</span>
+        <span class="c1">#   IOW, data that&#39;s passed the filter and been either provided OR have been skipped due to offset</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_valid_data_read</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># how many lines have been provided/output</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_data_returned</span> <span class="o">=</span> <span class="mi">0</span></div>
+
+
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">parent_gen</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__iter__</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">datum</span> <span class="ow">in</span> <span class="n">parent_gen</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">num_data_read</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">datum</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">datum</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">datum</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">num_valid_data_read</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">num_data_returned</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">yield</span> <span class="n">datum</span>
+
+    <span class="c1"># TODO: may want to squash this into DataProvider</span>
+<div class="viewcode-block" id="FilteredDataProvider.filter">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.base.FilteredDataProvider.filter">[docs]</a>
+    <span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">datum</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        When given a datum from the provider&#39;s source, return None if the datum</span>
+<span class="sd">        &#39;does not pass&#39; the filter or is invalid. Return the datum if it&#39;s valid.</span>
+
+<span class="sd">        :param datum: the datum to check for validity.</span>
+<span class="sd">        :returns: the datum, a modified datum, or None</span>
+
+<span class="sd">        Meant to be overridden.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter_fn</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter_fn</span><span class="p">(</span><span class="n">datum</span><span class="p">)</span>
+        <span class="c1"># also can be overriden entirely</span>
+        <span class="k">return</span> <span class="n">datum</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="LimitedOffsetDataProvider">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.base.LimitedOffsetDataProvider">[docs]</a>
+<span class="k">class</span> <span class="nc">LimitedOffsetDataProvider</span><span class="p">(</span><span class="n">FilteredDataProvider</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A provider that uses the counters from FilteredDataProvider to limit the</span>
+<span class="sd">    number of data and/or skip `offset` number of data before providing.</span>
+
+<span class="sd">    Useful for grabbing sections from a source (e.g. pagination).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># define the expected types of these __init__ arguments so they can be parsed out from query strings</span>
+    <span class="n">settings</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">,</span> <span class="s2">&quot;offset&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">}</span>
+
+    <span class="c1"># TODO: may want to squash this into DataProvider</span>
+<div class="viewcode-block" id="LimitedOffsetDataProvider.__init__">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.base.LimitedOffsetDataProvider.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param offset:  the number of data to skip before providing.</span>
+<span class="sd">        :param limit:   the final number of data to provide.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="c1"># how many valid data to skip before we start outputing data - must be positive</span>
+        <span class="c1">#   (diff to support neg. indeces - must be pos.)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">offset</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">offset</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+        <span class="c1"># how many valid data to return - must be positive (None indicates no limit)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">limit</span> <span class="o">=</span> <span class="n">limit</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">limit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">limit</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">limit</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Iterate over the source until `num_valid_data_read` is greater than</span>
+<span class="sd">        `offset`, begin providing datat, and stop when `num_data_returned`</span>
+<span class="sd">        is greater than `offset`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">limit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">limit</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="n">parent_gen</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__iter__</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">datum</span> <span class="ow">in</span> <span class="n">parent_gen</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">num_data_returned</span> <span class="o">-=</span> <span class="mi">1</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_valid_data_read</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">offset</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">num_data_returned</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">yield</span> <span class="n">datum</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">limit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_data_returned</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">limit</span><span class="p">:</span>
+                <span class="k">break</span></div>
+
+
+    <span class="c1"># TODO: skipping lines is inefficient - somehow cache file position/line_num pair and allow provider</span>
+    <span class="c1">#   to seek to a pos/line and then begin providing lines</span>
+    <span class="c1"># the important catch here is that we need to have accurate pos/line pairs</span>
+    <span class="c1">#   in order to preserve the functionality of limit and offset</span>
+    <span class="c1"># if file_seek and len( file_seek ) == 2:</span>
+    <span class="c1">#    seek_pos, new_line_num = file_seek</span>
+    <span class="c1">#    self.seek_and_set_curr_line( seek_pos, new_line_num )</span>
+
+    <span class="c1"># def seek_and_set_curr_line( self, file_seek, new_curr_line_num ):</span>
+    <span class="c1">#    self.seek( file_seek, os.SEEK_SET )</span>
+    <span class="c1">#    self.curr_line_num = new_curr_line_num</span>
+
+
+<div class="viewcode-block" id="MultiSourceDataProvider">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.base.MultiSourceDataProvider">[docs]</a>
+<span class="k">class</span> <span class="nc">MultiSourceDataProvider</span><span class="p">(</span><span class="n">DataProvider</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A provider that iterates over a list of given sources and provides data</span>
+<span class="sd">    from one after another.</span>
+
+<span class="sd">    An iterator over iterators.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="MultiSourceDataProvider.__init__">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.base.MultiSourceDataProvider.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source_list</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param source_list: an iterator of iterables</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">source_list</span> <span class="o">=</span> <span class="n">deque</span><span class="p">(</span><span class="n">source_list</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Iterate over the source_list, then iterate over the data in each source.</span>
+
+<span class="sd">        Skip a given source in `source_list` if it is `None` or invalid.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">source</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">source_list</span><span class="p">:</span>
+            <span class="c1"># just skip falsy sources</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">source</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_source</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">InvalidDataProviderSource</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="n">parent_gen</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__iter__</span><span class="p">()</span>
+            <span class="k">yield from</span> <span class="n">parent_gen</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Galaxy Committers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

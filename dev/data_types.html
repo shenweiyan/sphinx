@@ -1,0 +1,765 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Types &mdash; Galaxy Project 23.1.5.dev0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+
+  
+    <link rel="canonical" href="https://docs.galaxyproject.org/en/master/dev/data_types.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=da3e81e8"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="How Do I…" href="faq.html" />
+    <link rel="prev" title="Data managers" href="data_managers.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Galaxy Project
+          </a>
+              <div class="version">
+                23.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../releases/index.html">Releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.1_announce_user.html">June 2023 Galaxy Release (v 23.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.0_announce_user.html">2023 Galaxy Release (v 23.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.05_announce_user.html">May 2022 Galaxy Release (v 22.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.01_announce_user.html">January 2022 Galaxy Release (v 22.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.09_announce_user.html">September 2021 Galaxy Release (v 21.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.05_announce_user.html">May 2021 Galaxy Release (v 21.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.01_announce_user.html">January 2021 Galaxy Release (v 21.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.09_announce_user.html">September 2020 Galaxy Release (v 20.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.05_announce_user.html">May 2020 Galaxy Release (v 20.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.01_announce_user.html">January 2020 Galaxy Release (v 20.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.09_announce_user.html">September 2019 Galaxy Release (v 19.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.05_announce_user.html">May 2019 Galaxy Release (v 19.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.01_announce_user.html">January 2019 Galaxy Release (v 19.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.09_announce.html">September 2018 Galaxy Release (v 18.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.05_announce.html">May 2018 Galaxy Release (v 18.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.01_announce.html">January 2018 Galaxy Release (v 18.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.09_announce.html">September 2017 Galaxy Release (v 17.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.05_announce.html">May 2017 Galaxy Release (v 17.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.01_announce.html">January 2017 Galaxy Release (v 17.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.10_announce.html">October 2016 Galaxy Release (v 16.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.07_announce.html">July 2016 Galaxy Release (v 16.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.04_announce.html">April 2016 Galaxy Release (v 16.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.01_announce.html">January 2016 Galaxy Release (v 16.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.10_announce.html">October 2015 Galaxy Release (v 15.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.07_announce.html">July 2015 Galaxy Release (v 15.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.05_announce.html">May 2015 Galaxy Release (v 15.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.03_announce.html">March 2015 Galaxy Release (v 15.03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.01_announce.html">January 2015 Galaxy Release (v 15.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.10_announce.html">October 2014 Galaxy Release (v 14.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.08_announce.html">August 2014 Galaxy Release (v 14.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.06_announce.html">June 2014 Galaxy Release (v 14.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.04_announce.html">April 2014 Galaxy Release (v 14.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.02_announce.html">February 2014 Galaxy Release (v 14.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.11_announce.html">November 2013 Galaxy Release (v 13.11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.08_announce.html">August 2013 Galaxy Release (v 13.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.06_announce.html">June 2013 Galaxy Release (v 13.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.04_announce.html">April 2013 Galaxy Release (v 13.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.02_announce.html">February 2013 Galaxy Release (v 13.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.01_announce.html">January 2013 Galaxy Release (v 13.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/older_releases.html">Galaxy Releases older than v 13.01</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Admin Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../admin/index.html">Administration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../admin/python.html">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/framework_dependencies.html">Framework Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/config.html">Galaxy Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/config_logging.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/production.html">Production Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/security.html">Security considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/nginx.html">Proxying Galaxy with NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/apache.html">Proxying Galaxy with Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/scaling.html">Scaling and Load Balancing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/cluster.html">Connecting to a Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/jobs.html">Galaxy Job Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/tool_panel.html">Tool Panel Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/mq.html">Message queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/dependency_resolvers.html">Dependency Resolvers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/container_resolvers.html">Containers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/container_resolvers.html#other-considerations">Other considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/conda_faq.html">Conda for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/db_migration.html">Galaxy Database Schema Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/reports.html">Galaxy Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/useful_scripts.html">Scripts &amp; Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/options.html">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/migrating_to_gunicorn.html">Migrating from uWSGI to Gunicorn and FastAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/special_topics/index.html">Special topics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/ftp.html">Galaxy FTP Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/interactivetools.html">Galaxy InteractiveTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/mulled_containers.html">Containers for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/grt.html">Galactic Radio Telescope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/gtn.html">Galaxy Training Materials Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/job_metrics.html">Job Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/webhooks.html">Galaxy Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/vault.html">Storing secrets in the vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/performance_tracking.html">Galaxy Performance Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/bug_reports.html">Bug Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/gdpr_compliance.html">GDPR Compliance</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="schema.html">Galaxy Tool XML File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_guidelines.html">API Design Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build_a_job_runner.html">Build a job runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="finding_and_improving_slow_code.html">Finding and improving slow Galaxy code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_managers.html">Data managers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html">How Do I…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="writing_tests.html">Writing Tests for Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging_tests.html">Debugging Galaxy Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging_tests.html#debugging-tests-that-run-out-of-memory">Debugging tests that run out of memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging_galaxy.html">Debugging Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging_galaxy_slurm.html">Debugging Galaxy: Slurm Compute Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translating.html">Translating the Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create_point_release.html">Creating Galaxy Point Releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api_doc.html">Galaxy API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/quickstart.html"> Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/api.html"> Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ts_api_doc.html">Tool Shed API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/ts_api.html"> API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../lib/modules.html">Application Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy.html">galaxy package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_ext.html">galaxy_ext package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_test.html">galaxy_test package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/tool_shed.html">tool_shed package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../project/organization.html">Project Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#procedure-documents">Procedure Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#committers">Committers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#release-branches">Release branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#handling-pull-requests">Handling Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#issue-reporting">Issue Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../project/issues.html">Issue Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#issue-reporting">Issue Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#milestones">Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#labeling-structure">Labeling Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#the-roadmap">The Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#voting">Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#automation">Automation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Galaxy Project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Development Documentation</a></li>
+      <li class="breadcrumb-item active">Data Types</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/dev/data_types.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="data-types">
+<h1>Data Types<a class="headerlink" href="#data-types" title="Link to this heading">¶</a></h1>
+<section id="adding-a-new-data-type-subclassed">
+<h2>Adding a New Data Type (Subclassed)<a class="headerlink" href="#adding-a-new-data-type-subclassed" title="Link to this heading">¶</a></h2>
+<p>This specification describes the Galaxy source code
+changes required to add support for a new data type.</p>
+<p>Every Galaxy dataset is associated with a datatype
+which can be determined by the file extension (or
+format in the history item). Within Galaxy, supported
+datatypes are contained in the
+<code class="docutils literal notranslate"><span class="pre">galaxy.datatypes.registry:Registry</span></code> class, which has
+the responsibility of mapping extensions to datatype
+instances. At start up this registry is initialized
+with data type values from the <code class="docutils literal notranslate"><span class="pre">datatypes_conf.xml</span></code>
+file. All data type classes are a subclass of the
+<code class="docutils literal notranslate"><span class="pre">galaxy.datatypes.data:Data</span></code> class.</p>
+<p>We’ll pretend to add a new datatype format named
+<code class="docutils literal notranslate"><span class="pre">Foobar</span></code> whose associated file extension is <code class="docutils literal notranslate"><span class="pre">foo</span></code> to
+our local Galaxy instance as a way to provide the
+details for adding support for new data types. Our
+example <code class="docutils literal notranslate"><span class="pre">Foobar</span></code> data type will be a subclass of
+<code class="docutils literal notranslate"><span class="pre">galaxy.datatypes.tabular.Tabular</span></code>.</p>
+<section id="step-1-register-data-type">
+<h3>Step 1: Register Data Type<a class="headerlink" href="#step-1-register-data-type" title="Link to this heading">¶</a></h3>
+<p>We’ll add the new data type to the <code class="docutils literal notranslate"><span class="pre">&lt;registration&gt;</span></code>
+tag section of the <code class="docutils literal notranslate"><span class="pre">datatypes_conf.xml</span></code> file. Sample
+<code class="docutils literal notranslate"><span class="pre">&lt;datatype&gt;</span></code> tag attributes in this section are:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;datatype</span><span class="w"> </span><span class="na">extension=</span><span class="s">&quot;ab1&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;galaxy.datatypes.images:Ab1&quot;</span><span class="w"> </span><span class="na">mimetype=</span><span class="s">&quot;application/octet-stream&quot;</span><span class="w"> </span><span class="na">display_in_upload=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>where</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">extension</span></code> - the data type’s Dataset file extension (e.g., <code class="docutils literal notranslate"><span class="pre">ab1</span></code>, <code class="docutils literal notranslate"><span class="pre">bed</span></code>,
+<code class="docutils literal notranslate"><span class="pre">gff</span></code>, <code class="docutils literal notranslate"><span class="pre">qual</span></code>, etc.)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code> - the path to the class for that data type.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mimetype</span></code> - if present (it’s optional), the data type’s mime type</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">display_in_upload</span></code> - if present (it’s optional and defaults to False), the
+associated file extension will be displayed in the “File Format” select list
+in the “Upload File from your computer” tool in the “Get Data” tool section of
+the tool panel.</p></li>
+</ul>
+<p><strong>Note:</strong> If you do not wish to add extended
+functionality to a new datatype, but simply want
+to restrict the output of a set of tools to be used
+in another set of tools, you can add the flag
+<code class="docutils literal notranslate"><span class="pre">subclass=&quot;True&quot;</span></code> to the datatype definition line.</p>
+<p>Example:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;datatype</span><span class="w"> </span><span class="na">extension=</span><span class="s">&quot;my_tabular_subclass&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;galaxy.datatypes.tabular:Tabular&quot;</span><span class="w"> </span><span class="na">subclass=</span><span class="s">&quot;True&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="step-2-sniffer">
+<h3>Step 2: Sniffer<a class="headerlink" href="#step-2-sniffer" title="Link to this heading">¶</a></h3>
+<p>Galaxy tools are configured to automatically set the
+data type of an output dataset. However, in some
+scenarios, Galaxy will attempt to determine the data
+type of a file using a sniffer (e.g., uploading a
+file from a local disk with ‘Auto-detect’ selected in
+the File Format select list). The order in which
+Galaxy attempts to determine data types is critical
+because some formats are much more loosely defined
+than others. The order in which the sniffer for each
+data type is applied to the file should be most
+rigidly defined formats first followed by less and
+less rigidly defined formats, with the most loosely
+defined format last, and then a default format
+associated with the file if none of the data type
+sniffers were successful. The order in which data
+type sniffers are applied to files is implicit in the
+<code class="docutils literal notranslate"><span class="pre">&lt;sniffers&gt;</span></code> tag set section of the
+<code class="docutils literal notranslate"><span class="pre">datatypes_conf.xml</span></code> file. We’ll assume that the
+format of our Foobar data type is fairly rigidly
+defined, so it can be placed closer to the start of
+the sniff order.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;sniffers&gt;</span>
+<span class="w">    </span><span class="nt">&lt;sniffer</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;galaxy.datatypes.sequence:Maf&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;sniffer</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;galaxy.datatypes.sequence:Lav&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;sniffer</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;galaxy.datatypes.tabular:Foobar&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="step-3-data-type-class">
+<h3>Step 3: Data Type Class<a class="headerlink" href="#step-3-data-type-class" title="Link to this heading">¶</a></h3>
+<p>We’ll now add the <code class="docutils literal notranslate"><span class="pre">Foobar</span></code> class to
+<code class="docutils literal notranslate"><span class="pre">lib/galaxy/datatypes/tabular.py</span></code>. Keep in mind that
+your new data type class should be placed in a file
+that is appropriate (based on its superclass), and
+that the file will need to be imported by
+<code class="docutils literal notranslate"><span class="pre">lib/galaxy/datatypes/registry.py</span></code>. You will need to
+include a <code class="docutils literal notranslate"><span class="pre">file_ext</span></code> attribute to your class and
+create any necessary functions to override the
+functions in your new data type’s superclass (in our
+example, the <code class="docutils literal notranslate"><span class="pre">galaxy.datatypes.tabular.Tabular</span></code> class).
+In our example below, we have set our class’s
+<code class="docutils literal notranslate"><span class="pre">file_ext</span></code> attribute to “foo” and we have overridden
+the <code class="docutils literal notranslate"><span class="pre">__init__()</span></code>, <code class="docutils literal notranslate"><span class="pre">init_meta()</span></code> and <code class="docutils literal notranslate"><span class="pre">sniff()</span></code>
+functions. It is important to override functions
+(especially the meta data and sniff functions) if the
+attributes of your new class differ from those of its
+superclass. Note: sniff functions are not required to
+be included in new data type classes, but if the sniff
+function is missing, Galaxy will call the superclass
+method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">galaxy.datatypes.sniff</span> <span class="kn">import</span> <span class="n">get_headers</span>
+<span class="kn">from</span> <span class="nn">galaxy.datatypes.tabular</span> <span class="kn">import</span> <span class="n">Tabular</span>
+
+
+<span class="k">class</span> <span class="nc">Foobar</span><span class="p">(</span><span class="n">Tabular</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Tab delimited data in foo format&quot;&quot;&quot;</span>
+    <span class="n">file_ext</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span>
+
+    <span class="n">MetadataElement</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Number of columns&quot;</span><span class="p">,</span> <span class="n">readonly</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwd</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize foobar datatype&quot;&quot;&quot;</span>
+        <span class="n">Tabular</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwd</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_something_else</span><span class="p">()</span>
+
+
+    <span class="k">def</span> <span class="nf">init_meta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">copy_from</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">Tabular</span><span class="o">.</span><span class="n">init_meta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">copy_from</span><span class="o">=</span><span class="n">copy_from</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">elems_len</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="p">[</span><span class="n">hdr</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">hdr</span><span class="p">[</span><span class="mi">7</span><span class="p">]])</span>
+                <span class="n">proceed</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">pass</span>
+
+
+    <span class="k">def</span> <span class="nf">sniff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="n">get_headers</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">headers</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span>
+            <span class="k">for</span> <span class="n">hdr</span> <span class="ow">in</span> <span class="n">headers</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">hdr</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">hdr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">hdr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">hdr</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">8</span><span class="p">:</span>
+                        <span class="k">return</span> <span class="kc">False</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="p">[</span><span class="n">hdr</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">hdr</span><span class="p">[</span><span class="mi">7</span><span class="p">]])</span>
+                    <span class="k">except</span><span class="p">:</span>
+                        <span class="k">return</span> <span class="kc">False</span>
+                <span class="c1"># Do other necessary checking here...</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="c1"># If we haven&#39;t yet returned False, then...</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>That should be it! If all of your code is
+functionally correct you should now have support for
+your new data type within your Galaxy instance.</p>
+</section>
+</section>
+<section id="adding-a-new-data-type-completely-new">
+<h2>Adding a New Data Type (completely new)<a class="headerlink" href="#adding-a-new-data-type-completely-new" title="Link to this heading">¶</a></h2>
+<section id="basic-datatypes">
+<h3>Basic Datatypes<a class="headerlink" href="#basic-datatypes" title="Link to this heading">¶</a></h3>
+<p>In this <a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy/datatypes/sequence.py">real life example</a>,
+we’ll add a datatype named <code class="docutils literal notranslate"><span class="pre">Genbank</span></code>, to support
+GenBank files.</p>
+<p>First, we’ll set up a file named <code class="docutils literal notranslate"><span class="pre">sequence.py</span></code> in
+<code class="docutils literal notranslate"><span class="pre">lib/galaxy/datatypes/sequence.py</span></code>. This file could
+contain some of the standard sequence types, though
+we’ll only implement GenBank.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Classes for all common sequence formats</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="kn">from</span> <span class="nn">galaxy.datatypes</span> <span class="kn">import</span> <span class="n">data</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Genbank</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">Text</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Class representing a Genbank sequence&quot;&quot;&quot;</span>
+    <span class="n">file_ext</span> <span class="o">=</span> <span class="s2">&quot;genbank&quot;</span>
+</pre></div>
+</div>
+<p>This is all you need to get started with a datatype.
+Now, load it into your <code class="docutils literal notranslate"><span class="pre">datatypes_conf.xml</span></code> by adding
+the following line:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;datatype</span><span class="w"> </span><span class="na">extension=</span><span class="s">&quot;genbank&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;galaxy.datatypes.sequence:Genbank&quot;</span><span class="w"> </span><span class="na">display_in_upload=</span><span class="s">&quot;True&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>and start up your server, the datatype will be available.</p>
+</section>
+<section id="adding-a-sniffer">
+<h3>Adding a Sniffer<a class="headerlink" href="#adding-a-sniffer" title="Link to this heading">¶</a></h3>
+<p>Datatypes can be “sniffed”, their formats can be
+automatically detected from their contents. For
+GenBank files that’s extremely easy to do, the first
+5 characters will be <code class="docutils literal notranslate"><span class="pre">LOCUS</span></code>, according to section
+3.4.4 of the <a class="reference external" href="ftp://ftp.ncbi.nih.gov/genbank/gbrel.txt">specification</a>.</p>
+<p>To implement this in our tool we first have to add
+the relevant sniffing code to our <code class="docutils literal notranslate"><span class="pre">Genbank</span></code> class in
+<code class="docutils literal notranslate"><span class="pre">sequence.py</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">sniff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+        <span class="n">header</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">header</span> <span class="o">==</span> <span class="s1">&#39;LOCUS&#39;</span>
+</pre></div>
+</div>
+<p>and then we have to register the sniffer in
+<code class="docutils literal notranslate"><span class="pre">datatypes_conf.xml</span></code>.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;sniffer</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;galaxy.datatypes.sequence:Genbank&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>Once that’s done, restart your server and try
+uploading a <code class="docutils literal notranslate"><span class="pre">genbank</span></code> file. You’ll notice that the
+filetype is automatically detected as <code class="docutils literal notranslate"><span class="pre">genbank</span></code> once
+the upload is done.</p>
+</section>
+<section id="more-features">
+<h3>More Features<a class="headerlink" href="#more-features" title="Link to this heading">¶</a></h3>
+<p>One of the useful things your datatype can do is
+provide metadata. This is done by adding metadata
+entries inside your class like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Genbank</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">Text</span><span class="p">):</span>
+    <span class="n">file_ext</span> <span class="o">=</span> <span class="s2">&quot;genbank&quot;</span>
+
+    <span class="n">MetadataElement</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;number_of_sequences&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Number of sequences&quot;</span><span class="p">,</span> <span class="n">readonly</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">visible</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">optional</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">no_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here we have a <code class="docutils literal notranslate"><span class="pre">MetadataElement</span></code>, accessible in
+methods with a dataset parameter from
+<code class="docutils literal notranslate"><span class="pre">dataset.metadata.number_of_sequences</span></code>. There are a
+couple relevant functions you’ll want to override
+here:</p>
+<ul>
+<li><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">set_peek</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">is_multi_byte</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">set_meta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="o">**</span><span class="n">kwd</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">set_peek</span></code> function is used to determine the blurb
+of text that will appear to users above the preview
+(first 5 lines of the file, the file peek), informing
+them about metadata of a sequence. For <code class="docutils literal notranslate"><span class="pre">genbank</span></code> files,
+we’re probably interested in how many genome/records
+are contained within a file. To do that, we need to
+count the number of times the word LOCUS appears as
+the first five characters of a line. We’ll write a
+function named <code class="docutils literal notranslate"><span class="pre">_count_genbank_sequences</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">_count_genbank_sequences</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">gbk</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">gbk</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;LOCUS&#39;</span><span class="p">:</span>
+                    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">count</span>
+</pre></div>
+</div>
+<p>Which we’ll call in our <code class="docutils literal notranslate"><span class="pre">set_meta</span></code> function, since
+we’re setting metadata about the file.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">set_meta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="o">**</span><span class="n">kwd</span><span class="p">):</span>
+        <span class="n">dataset</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">number_of_sequences</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_count_genbank_sequences</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">file_name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now we’ll need to make use of this in our <code class="docutils literal notranslate"><span class="pre">set_peek</span></code>
+override:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">set_peek</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">is_multi_byte</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">dataset</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">purged</span><span class="p">:</span>
+            <span class="c1"># Add our blurb</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">number_of_sequences</span> <span class="o">==</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="n">dataset</span><span class="o">.</span><span class="n">blurb</span> <span class="o">=</span> <span class="s2">&quot;1 sequence&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">dataset</span><span class="o">.</span><span class="n">blurb</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> sequences&quot;</span> <span class="o">%</span> <span class="n">dataset</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">number_of_sequences</span>
+            <span class="c1"># Get standard text peek from dataset</span>
+            <span class="n">dataset</span><span class="o">.</span><span class="n">peek</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get_file_peek</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">file_name</span><span class="p">,</span> <span class="n">is_multi_byte</span><span class="o">=</span><span class="n">is_multi_byte</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">dataset</span><span class="o">.</span><span class="n">peek</span> <span class="o">=</span> <span class="s1">&#39;file does not exist&#39;</span>
+            <span class="n">dataset</span><span class="o">.</span><span class="n">blurb</span> <span class="o">=</span> <span class="s1">&#39;file purged from disk&#39;</span>
+</pre></div>
+</div>
+<p>This function will be called during metadata setting.
+Try uploading a multi record <code class="docutils literal notranslate"><span class="pre">genbank</span></code> file and testing
+it out. If you don’t have a multi-record <code class="docutils literal notranslate"><span class="pre">genbank</span></code> file,
+simply concatenate a single file together a couple
+times and upload that.</p>
+<p>By now you should have a complete GenBank parser in
+<code class="docutils literal notranslate"><span class="pre">sequence.py</span></code> that looks about like the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">galaxy.datatypes</span> <span class="kn">import</span> <span class="n">data</span>
+<span class="kn">from</span> <span class="nn">galaxy.datatypes.metadata</span> <span class="kn">import</span> <span class="n">MetadataElement</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Genbank</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">Text</span><span class="p">):</span>
+    <span class="n">file_ext</span> <span class="o">=</span> <span class="s2">&quot;genbank&quot;</span>
+
+    <span class="n">MetadataElement</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;number_of_sequences&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Number of sequences&quot;</span><span class="p">,</span> <span class="n">readonly</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">visible</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">optional</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">no_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">set_peek</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">is_multi_byte</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">dataset</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">purged</span><span class="p">:</span>
+            <span class="c1"># Add our blurb</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">number_of_sequences</span> <span class="o">==</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="n">dataset</span><span class="o">.</span><span class="n">blurb</span> <span class="o">=</span> <span class="s2">&quot;1 sequence&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">dataset</span><span class="o">.</span><span class="n">blurb</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> sequences&quot;</span> <span class="o">%</span> <span class="n">dataset</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">number_of_sequences</span>
+            <span class="c1"># Get</span>
+            <span class="n">dataset</span><span class="o">.</span><span class="n">peek</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get_file_peek</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">file_name</span><span class="p">,</span> <span class="n">is_multi_byte</span><span class="o">=</span><span class="n">is_multi_byte</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">dataset</span><span class="o">.</span><span class="n">peek</span> <span class="o">=</span> <span class="s1">&#39;file does not exist&#39;</span>
+            <span class="n">dataset</span><span class="o">.</span><span class="n">blurb</span> <span class="o">=</span> <span class="s1">&#39;file purged from disk&#39;</span>
+
+    <span class="k">def</span> <span class="nf">get_mime</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;text/plain&#39;</span>
+
+    <span class="k">def</span> <span class="nf">sniff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+        <span class="n">header</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">header</span> <span class="o">==</span> <span class="s1">&#39;LOCUS&#39;</span>
+
+    <span class="k">def</span> <span class="nf">set_meta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="o">**</span><span class="n">kwd</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the number of sequences in dataset.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dataset</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">number_of_sequences</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_count_genbank_sequences</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">file_name</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_count_genbank_sequences</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is not a perfect definition, but should suffice for general usage. It fails to detect any</span>
+<span class="sd">        errors that would result in parsing errors like incomplete files.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Specification for the genbank file format can be found in</span>
+        <span class="c1"># ftp://ftp.ncbi.nih.gov/genbank/gbrel.txt</span>
+        <span class="c1"># in section 3.4.4 LOCUS Format</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">gbk</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">gbk</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;LOCUS&#39;</span><span class="p">:</span>
+                    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">count</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="composite-datatypes">
+<h2>Composite Datatypes<a class="headerlink" href="#composite-datatypes" title="Link to this heading">¶</a></h2>
+<p>Composite datatypes can be used as a more structured way to contain individual history items which are composed of multiple files. The <code class="docutils literal notranslate"><span class="pre">Rgenetics</span></code> package for Galaxy has been implemented using Composite Datatypes; for real-life examples, examine the configuration files (particularly <code class="docutils literal notranslate"><span class="pre">lib/galaxy/datatypes/genetics.py</span></code>) included with the distribution.</p>
+<p>In composite datatypes, there is one “primary” data file and any number of specified “component” files. The primary data file is a base dataset object and the component files are all located in a directory associated with that base dataset. There are two types of composite datatypes: basic and auto_primary_file. In <strong>basic</strong> composite datatypes, the primary data file must be written by tools or provided directly during upload. In <strong>auto_primary_file</strong> composite datatypes, the primary data file is generated automatically by the Framework; all tool-writable or uploadable files are stored in the directory associated with the primary file.</p>
+<section id="creating-composite-datatypes">
+<h3>Creating Composite Datatypes<a class="headerlink" href="#creating-composite-datatypes" title="Link to this heading">¶</a></h3>
+<p>A datatype can be set to composite by setting the <code class="docutils literal notranslate"><span class="pre">composite_type</span></code> flag. There are 3 valid options:</p>
+<ul class="simple">
+<li><p>None (not a composite datatype)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">basic</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">auto_primary_file</span></code></p></li>
+</ul>
+</section>
+<section id="defining-basic-composite-datatypes">
+<h3>Defining Basic Composite Datatypes<a class="headerlink" href="#defining-basic-composite-datatypes" title="Link to this heading">¶</a></h3>
+<p>The example below defines a basic composite datatype which is composed of 2 component files along with a tool-written or user-uploaded primary file. In this example the primary file is a report summarizing the results. The two component files (<code class="docutils literal notranslate"><span class="pre">results.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">results.dat</span></code>) contain the results; <code class="docutils literal notranslate"><span class="pre">results.txt</span></code> is a text file and is handled as such during upload whereas <code class="docutils literal notranslate"><span class="pre">results.dat</span></code> is flagged as binary, allowing a binary file to be uploaded for that component. During upload, 3 sets of file upload/paste interfaces are provided to the user. A file must be provided for the primary (index) file as well as <code class="docutils literal notranslate"><span class="pre">results.txt</span></code>; <code class="docutils literal notranslate"><span class="pre">results.dat</span></code> is flagged as optional so may be left blank.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">BasicComposite</span><span class="p">(</span><span class="n">Text</span><span class="p">):</span>
+
+    <span class="n">composite_type</span> <span class="o">=</span> <span class="s1">&#39;basic&#39;</span>
+
+
+    <span class="k">def</span> <span class="fm">__init__</span> <span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwd</span><span class="p">):</span>
+        <span class="n">Text</span><span class="o">.</span> <span class="fm">__init__</span> <span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwd</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_composite_file</span><span class="p">(</span><span class="s1">&#39;results.txt&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_composite_file</span><span class="p">(</span><span class="s1">&#39;results.dat&#39;</span><span class="p">,</span> <span class="n">is_binary</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">optional</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>These files can be specified on the command line in the following fashion:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;command&gt;</span>someTool.sh<span class="w"> </span>&#39;$input1&#39;<span class="w"> </span>&#39;${os.path.join($input1.extra_files_path,<span class="w"> </span>&#39;results.txt&#39;)}&#39;
+&#39;${os.path.join($input1.extra_files_path,<span class="w"> </span>&#39;results.dat&#39;)}&#39;<span class="w"> </span>&#39;$output1&#39;<span class="nt">&lt;/command&gt;</span>
+</pre></div>
+</div>
+<p>If a tool is aware of the file names for a datatype, then only <code class="docutils literal notranslate"><span class="pre">input1.extra_files_path</span></code> needs to be provided.</p>
+<p>There are cases when it is desirable for the composite filenames to have varying names, but be of a similar form; for an example of this see <code class="docutils literal notranslate"><span class="pre">Rgenetics</span></code> below.</p>
+</section>
+<section id="defining-auto-primary-file-composite-datatypes">
+<h3>Defining Auto Primary File Composite Datatypes<a class="headerlink" href="#defining-auto-primary-file-composite-datatypes" title="Link to this heading">¶</a></h3>
+<p>The example below defines an auto primary file composite datatype which is composed of 2 component files along with a framework generated file. In this example the primary file is an html page containing download links to the individual result files. The two component files (<code class="docutils literal notranslate"><span class="pre">results.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">results.dat</span></code>) contain the results; <code class="docutils literal notranslate"><span class="pre">results.txt</span></code> is a text file and is handled as such during upload whereas <code class="docutils literal notranslate"><span class="pre">results.dat</span></code> is flagged as binary, allowing a binary file to be uploaded for that component. During upload, 2 sets of file upload/paste interfaces are provided to the user. A file must be provided for <code class="docutils literal notranslate"><span class="pre">results.txt</span></code> whereas <code class="docutils literal notranslate"><span class="pre">results.dat</span></code> is flagged as optional so may be left blank.</p>
+<p>In this composite type, the primary file is generated using the <code class="docutils literal notranslate"><span class="pre">generate_primary_file</span></code> method specified in the datatype definition. The <code class="docutils literal notranslate"><span class="pre">generate_primary_file</span></code> method here loops through the defined components and creates a link to each.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">AutoPrimaryComposite</span><span class="p">(</span><span class="n">Text</span><span class="p">):</span>
+
+    <span class="n">composite_type</span> <span class="o">=</span> <span class="s1">&#39;auto_primary_file&#39;</span>
+
+
+    <span class="k">def</span> <span class="fm">__init__</span> <span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwd</span><span class="p">):</span>
+        <span class="n">Text</span><span class="o">.</span> <span class="fm">__init__</span> <span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwd</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_composite_file</span><span class="p">(</span><span class="s1">&#39;results.txt&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_composite_file</span><span class="p">(</span><span class="s1">&#39;results.dat&#39;</span><span class="p">,</span> <span class="n">is_binary</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">optional</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">generate_primary_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">rval</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&lt;html&gt;&lt;head&gt;&lt;title&gt;Files for Composite Dataset (</span><span class="si">%s</span><span class="s1">)&lt;/title&gt;&lt;/head&gt;&lt;p/&gt;This composite dataset is composed of the following files:&lt;p/&gt;&lt;ul&gt;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_ext</span><span class="p">)]</span>
+        <span class="k">for</span> <span class="n">composite_name</span><span class="p">,</span> <span class="n">composite_file</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_composite_files</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">)</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+            <span class="n">opt_text</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+            <span class="k">if</span> <span class="n">composite_file</span><span class="o">.</span><span class="n">optional</span><span class="p">:</span>
+                <span class="n">opt_text</span> <span class="o">=</span> <span class="s1">&#39; (optional)&#39;</span>
+            <span class="n">rval</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;li&gt;&lt;a href=&quot;</span><span class="si">%s</span><span class="s1">&quot;&gt;</span><span class="si">%s</span><span class="s1">&lt;/a&gt;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">composite_name</span><span class="p">,</span> <span class="n">composite_name</span><span class="p">,</span> <span class="n">opt_text</span><span class="p">))</span>
+        <span class="n">rval</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;/ul&gt;&lt;/html&gt;&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rval</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>These files can be specified on the command line in the following fashion:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;command&gt;</span>someTool.sh<span class="w"> </span>${os.path.join($input1.extra_files_path,<span class="w"> </span>&#39;results.txt&#39;)}<span class="w"> </span>${os.path.join($input1.extra_files_path,<span class="w"> </span>&#39;results.dat&#39;)}<span class="w"> </span>$output1<span class="nt">&lt;/command&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="advanced-topics-rgenetics-example">
+<h3>Advanced Topics: <code class="docutils literal notranslate"><span class="pre">Rgenetics</span></code> Example<a class="headerlink" href="#advanced-topics-rgenetics-example" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Rgenetics</span></code> datatypes are defined as composite datatypes. The tools in this package rely heavily on the contents of a filename for analysis and reporting. In this case it is desirable for the filenames of the components to vary slightly, but maintain a common form. To do this, we use a special metadata parameter that can only be set at dataset creation (i.e. upload). This example uses the metadata parameter <strong>base_name</strong> to specify part of the components’ filenames.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Lped</span><span class="p">(</span><span class="n">Text</span><span class="p">):</span>
+    <span class="n">MetadataElement</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;base_name&quot;</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;base name for all transformed versions of this genetic dataset&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;galaxy&quot;</span><span class="p">,</span> <span class="n">readonly</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">set_in_upload</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+    <span class="n">composite_type</span> <span class="o">=</span> <span class="s1">&#39;auto_primary_file&#39;</span>
+    <span class="n">file_ext</span><span class="o">=</span><span class="s2">&quot;lped&quot;</span>
+
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwd</span><span class="p">):</span>
+        <span class="n">Rgenetics</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwd</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_composite_file</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">.ped&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Pedigree File&#39;</span><span class="p">,</span> <span class="n">substitute_name_with_metadata</span><span class="o">=</span><span class="s1">&#39;base_name&#39;</span><span class="p">,</span> <span class="n">is_binary</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_composite_file</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">.map&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Map File&#39;</span><span class="p">,</span> <span class="n">substitute_name_with_metadata</span><span class="o">=</span><span class="s1">&#39;base_name&#39;</span><span class="p">,</span> <span class="n">is_binary</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">generate_primary_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">rval</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&lt;html&gt;&lt;head&gt;&lt;title&gt;Files for Composite Dataset (</span><span class="si">%s</span><span class="s1">)&lt;/title&gt;&lt;/head&gt;&lt;p/&gt;This composite dataset is composed of the following files:&lt;p/&gt;&lt;ul&gt;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_ext</span><span class="p">)]</span>
+        <span class="k">for</span> <span class="n">composite_name</span><span class="p">,</span> <span class="n">composite_file</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_composite_files</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">)</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+            <span class="n">opt_text</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+            <span class="k">if</span> <span class="n">composite_file</span><span class="o">.</span><span class="n">optional</span><span class="p">:</span>
+                <span class="n">opt_text</span> <span class="o">=</span> <span class="s1">&#39; (optional)&#39;</span>
+            <span class="n">rval</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;li&gt;&lt;a href=&quot;</span><span class="si">%s</span><span class="s1">&quot;&gt;</span><span class="si">%s</span><span class="s1">&lt;/a&gt;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">composite_name</span><span class="p">,</span> <span class="n">composite_name</span><span class="p">,</span> <span class="n">opt_text</span><span class="p">))</span>
+        <span class="n">rval</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;/ul&gt;&lt;/html&gt;&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rval</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The file specified as <code class="docutils literal notranslate"><span class="pre">%s.ped</span></code> is found at <code class="docutils literal notranslate"><span class="pre">${os.path.join($input1.extra_files_path,</span> <span class="pre">'%s.ped'</span> <span class="pre">%</span> <span class="pre">input1.metadata.base_name)}</span></code>.</p>
+<p>It should be noted that changing the datatype of datasets which use this substitution method will cause an error if the metadata parameter ‘base_name’ does not exist in a datatype that the dataset is set to. This is because the value within ‘base_name’ will be lost – if the datatype is set back to the original datatype, the default metadata value will be used and the filenames might not match the basename.</p>
+<p>For this reason, users are not allowed to change the datatype of dataset between a composite datatype and any other datatype. This can be enforced by setting the <code class="docutils literal notranslate"><span class="pre">allow_datatype_change</span></code> attribute of a datatype class to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</section>
+</section>
+<section id="galaxy-tool-shed-data-types">
+<h2>Galaxy Tool Shed - Data Types<a class="headerlink" href="#galaxy-tool-shed-data-types" title="Link to this heading">¶</a></h2>
+<p><strong>Note:</strong> These are deprecated and shouldn’t be used.</p>
+<section id="including-custom-data-types-that-subclass-from-galaxy-data-types-in-the-distribution">
+<h3>Including custom data types that subclass from Galaxy data types in the distribution<a class="headerlink" href="#including-custom-data-types-that-subclass-from-galaxy-data-types-in-the-distribution" title="Link to this heading">¶</a></h3>
+<p>If your repository includes tools that require data types that are not defined in the Galaxy distribution, you can include the required data types in the repository along with your tools, or you can create a separate repository to contain them. The repository must include a file named <code class="docutils literal notranslate"><span class="pre">datatypes_conf.xml</span></code>, which is modeled after the file named <code class="docutils literal notranslate"><span class="pre">datatypes_conf.xml.sample</span></code> in the Galaxy distribution. This section describes support for including data types that subclass from data types in the Galaxy distribution. Refer to the next section for details about data types that use your own custom class modules included in your repository. An example of this is the <code class="docutils literal notranslate"><span class="pre">datatypes_conf.xml</span></code> file in the <a class="reference external" href="http://toolshed.g2.bx.psu.edu/repository/browse_categories?sort=name&amp;amp;id=3ac79d5752c6d938&amp;amp;f-deleted=False&amp;amp;webapp=community&amp;amp;f-free-text-search=emboss&amp;amp;operation=view_or_manage_repository">emboss_datatypes repository</a> in the main Galaxy tool shed, shown below.</p>
+<p><img alt="" src="https://galaxyproject.org/toolshed/datatypes-features/emboss_datatypes_contents.png" /></p>
+<p>Tool shed repositories that include valid <code class="docutils literal notranslate"><span class="pre">datatypes_conf.xml</span></code> files will display the data types in the <strong>Preview tools and inspect metadata by tool version</strong> section of the view or manage repository page.</p>
+<p><img alt="" src="https://galaxyproject.org/toolshed/datatypes-features/emboss_datatypes.png" /></p>
+</section>
+<section id="including-custom-data-types-that-use-class-modules-contained-in-your-repository">
+<h3>Including custom data types that use class modules contained in your repository<a class="headerlink" href="#including-custom-data-types-that-use-class-modules-contained-in-your-repository" title="Link to this heading">¶</a></h3>
+<p>Including custom data types that use class modules included in your repository is a bit tricky. As part of your development process for tools that use data types that fall into this category, it is highly recommended that you host a local Galaxy tool shed. When your newly developed tools have proven to be functionally correct within your local Galaxy instance, you should upload them, along with all associated custom data types files and modules to your local tool shed to ensure that everything is handled properly within the tool shed. When your local tool shed repository is functionally correct, install your repository from your local tool shed to a local Galaxy instance to ensure that your tools and data types properly load both at the time of installation and when you stop and restart your Galaxy server. You should not upload your tools to the main Galaxy tool shed until you have confirmed that everything works by following these steps.</p>
+<p>To illustrate how this works, we’ll use the <a class="reference external" href="http://toolshed.g2.bx.psu.edu/repository/browse_categories?sort=name&amp;amp;id=4131098bea459833&amp;amp;f-deleted=False&amp;amp;webapp=community&amp;amp;f-free-text-search=gmap&amp;amp;operation=view_or_manage_repository">gmap repository</a> in the main Galaxy tool shed as an example. The <code class="docutils literal notranslate"><span class="pre">datatypes_conf.xml</span></code> file included in this repository looks something like the following. You’ll probably notice that this file is modeled after the <code class="docutils literal notranslate"><span class="pre">datatypes_conf.xml.sample</span></code> file in the Galaxy distribution, but with some slight differences.</p>
+<p>Notice the <code class="docutils literal notranslate"><span class="pre">&lt;datatypes_files&gt;</span></code> tag set. This tag set contains <code class="docutils literal notranslate"><span class="pre">&lt;datatype_file&gt;</span></code> tags, each of which refers to the name of a class module file name within your repository (in this example, there is only one file named <code class="docutils literal notranslate"><span class="pre">gmap.py</span></code>), which contains the custom data type classes you’ve defined for your tools.</p>
+<p>In addition, notice the value of each <code class="docutils literal notranslate"><span class="pre">type</span></code> attribute in the <code class="docutils literal notranslate"><span class="pre">&lt;datatype&gt;</span></code> tags. The <code class="docutils literal notranslate"><span class="pre">:</span></code> separates the class module included in the repository (in this example, the class module is <code class="docutils literal notranslate"><span class="pre">gmap</span></code>) from the class name (<code class="docutils literal notranslate"><span class="pre">GmapDB</span></code>, <code class="docutils literal notranslate"><span class="pre">IntervalAnnotation</span></code>, etc.). It is critical that you make sure your datatype tag definitions match the classes you’ve defined in your class modules or the data type will not properly load into a Galaxy instance when your repository is installed.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;datatypes&gt;</span>
+<span class="w">    </span><span class="nt">&lt;datatype_files&gt;</span>
+<span class="w">        </span><span class="nt">&lt;datatype_file</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;gmap.py&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/datatype_files&gt;</span>
+<span class="w">    </span><span class="nt">&lt;registration&gt;</span>
+<span class="w">        </span><span class="nt">&lt;datatype</span><span class="w"> </span><span class="na">extension=</span><span class="s">&quot;gmapdb&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;galaxy.datatypes.gmap:GmapDB&quot;</span><span class="w"> </span><span class="na">display_in_upload=</span><span class="s">&quot;False&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;datatype</span><span class="w"> </span><span class="na">extension=</span><span class="s">&quot;gmapsnpindex&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;galaxy.datatypes.gmap:GmapSnpIndex&quot;</span><span class="w"> </span><span class="na">display_in_upload=</span><span class="s">&quot;False&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;datatype</span><span class="w"> </span><span class="na">extension=</span><span class="s">&quot;iit&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;galaxy.datatypes.gmap:IntervalIndexTree&quot;</span><span class="w"> </span><span class="na">display_in_upload=</span><span class="s">&quot;True&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;datatype</span><span class="w"> </span><span class="na">extension=</span><span class="s">&quot;splicesites.iit&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;galaxy.datatypes.gmap:SpliceSitesIntervalIndexTree&quot;</span><span class="w"> </span><span class="na">display_in_upload=</span><span class="s">&quot;True&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;datatype</span><span class="w"> </span><span class="na">extension=</span><span class="s">&quot;introns.iit&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;galaxy.datatypes.gmap:IntronsIntervalIndexTree&quot;</span><span class="w"> </span><span class="na">display_in_upload=</span><span class="s">&quot;True&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;datatype</span><span class="w"> </span><span class="na">extension=</span><span class="s">&quot;snps.iit&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;galaxy.datatypes.gmap:SNPsIntervalIndexTree&quot;</span><span class="w"> </span><span class="na">display_in_upload=</span><span class="s">&quot;True&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;datatype</span><span class="w"> </span><span class="na">extension=</span><span class="s">&quot;gmap_annotation&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;galaxy.datatypes.gmap:IntervalAnnotation&quot;</span><span class="w"> </span><span class="na">display_in_upload=</span><span class="s">&quot;False&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;datatype</span><span class="w"> </span><span class="na">extension=</span><span class="s">&quot;gmap_splicesites&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;galaxy.datatypes.gmap:SpliceSiteAnnotation&quot;</span><span class="w"> </span><span class="na">display_in_upload=</span><span class="s">&quot;True&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;datatype</span><span class="w"> </span><span class="na">extension=</span><span class="s">&quot;gmap_introns&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;galaxy.datatypes.gmap:IntronAnnotation&quot;</span><span class="w"> </span><span class="na">display_in_upload=</span><span class="s">&quot;True&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;datatype</span><span class="w"> </span><span class="na">extension=</span><span class="s">&quot;gmap_snps&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;galaxy.datatypes.gmap:SNPAnnotation&quot;</span><span class="w"> </span><span class="na">display_in_upload=</span><span class="s">&quot;True&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/registration&gt;</span>
+<span class="w">    </span><span class="nt">&lt;sniffers&gt;</span>
+<span class="w">        </span><span class="nt">&lt;sniffer</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;galaxy.datatypes.gmap:IntervalAnnotation&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;sniffer</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;galaxy.datatypes.gmap:SpliceSiteAnnotation&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;sniffer</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;galaxy.datatypes.gmap:IntronAnnotation&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;sniffer</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;galaxy.datatypes.gmap:SNPAnnotation&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/sniffers&gt;</span>
+<span class="nt">&lt;/datatypes&gt;</span>
+</pre></div>
+</div>
+<p><strong>Modules that include custom datatype class definitions cannot use relative import references for imported modules.</strong> To function correctly when your repository is installed in a local Galaxy instance, your class module imports must be defined as absolute from the galaxy subdirectory inside the Galaxy root’s lib subdirectory. For example, assume the following import statements are included in our example <code class="docutils literal notranslate"><span class="pre">gmap.py</span></code> file. They certainly work within the Galaxy development environment when the gmap tools were being developed.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">data</span>
+<span class="kn">from</span> <span class="nn">data</span> <span class="kn">import</span> <span class="n">Text</span>
+<span class="kn">from</span> <span class="nn">metadata</span> <span class="kn">import</span> <span class="n">MetadataElement</span>
+</pre></div>
+</div>
+<p>However, the above relative imports will not work when the <code class="docutils literal notranslate"><span class="pre">gmap.py</span></code> class module is installed from the Tool Shed into a local Galaxy instance because the modules will not be found due to the use of the relative imports. The developer must use the following approach instead. Notice that the imports are written such that they are absolute relative to the <code class="docutils literal notranslate"><span class="pre">~/lib/galaxy</span></code> subdirectory.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">galaxy.datatypes.data</span>
+<span class="kn">from</span> <span class="nn">galaxy.datatypes.data</span> <span class="kn">import</span> <span class="n">Text</span>
+<span class="kn">from</span> <span class="nn">galaxy.datatypes.metadata</span> <span class="kn">import</span> <span class="n">MetadataElement</span>
+</pre></div>
+</div>
+<p>The use of <code class="docutils literal notranslate"><span class="pre">&lt;converter&gt;</span></code> tags contained within <code class="docutils literal notranslate"><span class="pre">&lt;datatype&gt;</span></code> tags is supported in the same way they are supported within the <code class="docutils literal notranslate"><span class="pre">datatypes_conf.xml.sample</span></code> file in the Galaxy distribution.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;datatype</span><span class="w"> </span><span class="na">extension=</span><span class="s">&quot;ref.taxonomy&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;galaxy.datatypes.metagenomics:RefTaxonomy&quot;</span><span class="w"> </span><span class="na">display_in_upload=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;converter</span><span class="w"> </span><span class="na">file=</span><span class="s">&quot;ref_to_seq_taxonomy_converter.xml&quot;</span><span class="w"> </span><span class="na">target_datatype=</span><span class="s">&quot;seq.taxonomy&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/datatype&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="including-datatype-converters-and-display-applications">
+<h3>Including datatype converters and display applications<a class="headerlink" href="#including-datatype-converters-and-display-applications" title="Link to this heading">¶</a></h3>
+<p>To include your custom datatype converters or display applications, add the appropriate tag set to your repository’s <code class="docutils literal notranslate"><span class="pre">datatypes_conf.xml</span></code> file in the same way that they are defined in the <code class="docutils literal notranslate"><span class="pre">datatypes_conf.xml.sample</span></code> file in the Galaxy distribution.</p>
+<p>If you include datatype converter files in your repository, all files (the disk file referred to by the value of the “file” attribute) must be located in the same directory in your repository hierarchy. Similarly, your datatype display application files must all be in the same directory in your repository hierarchy (although the directory can be a different directory from the one containing your converter files). This is critical because the Galaxy components that load these custom items assume each of them are located in the same directory.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="data_managers.html" class="btn btn-neutral float-left" title="Data managers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="faq.html" class="btn btn-neutral float-right" title="How Do I…" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Galaxy Committers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

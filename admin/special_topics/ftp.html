@@ -1,0 +1,481 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galaxy FTP Uploads &mdash; Galaxy Project 23.1.5.dev0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+
+  
+    <link rel="canonical" href="https://docs.galaxyproject.org/en/master/admin/special_topics/ftp.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/documentation_options.js?v=da3e81e8"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Galaxy InteractiveTools" href="interactivetools.html" />
+    <link rel="prev" title="Special Topics" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Galaxy Project
+          </a>
+              <div class="version">
+                23.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../releases/index.html">Releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/23.1_announce_user.html">June 2023 Galaxy Release (v 23.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/23.0_announce_user.html">2023 Galaxy Release (v 23.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/22.05_announce_user.html">May 2022 Galaxy Release (v 22.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/22.01_announce_user.html">January 2022 Galaxy Release (v 22.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/21.09_announce_user.html">September 2021 Galaxy Release (v 21.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/21.05_announce_user.html">May 2021 Galaxy Release (v 21.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/21.01_announce_user.html">January 2021 Galaxy Release (v 21.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/20.09_announce_user.html">September 2020 Galaxy Release (v 20.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/20.05_announce_user.html">May 2020 Galaxy Release (v 20.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/20.01_announce_user.html">January 2020 Galaxy Release (v 20.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/19.09_announce_user.html">September 2019 Galaxy Release (v 19.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/19.05_announce_user.html">May 2019 Galaxy Release (v 19.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/19.01_announce_user.html">January 2019 Galaxy Release (v 19.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/18.09_announce.html">September 2018 Galaxy Release (v 18.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/18.05_announce.html">May 2018 Galaxy Release (v 18.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/18.01_announce.html">January 2018 Galaxy Release (v 18.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/17.09_announce.html">September 2017 Galaxy Release (v 17.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/17.05_announce.html">May 2017 Galaxy Release (v 17.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/17.01_announce.html">January 2017 Galaxy Release (v 17.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/16.10_announce.html">October 2016 Galaxy Release (v 16.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/16.07_announce.html">July 2016 Galaxy Release (v 16.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/16.04_announce.html">April 2016 Galaxy Release (v 16.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/16.01_announce.html">January 2016 Galaxy Release (v 16.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/15.10_announce.html">October 2015 Galaxy Release (v 15.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/15.07_announce.html">July 2015 Galaxy Release (v 15.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/15.05_announce.html">May 2015 Galaxy Release (v 15.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/15.03_announce.html">March 2015 Galaxy Release (v 15.03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/15.01_announce.html">January 2015 Galaxy Release (v 15.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/14.10_announce.html">October 2014 Galaxy Release (v 14.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/14.08_announce.html">August 2014 Galaxy Release (v 14.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/14.06_announce.html">June 2014 Galaxy Release (v 14.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/14.04_announce.html">April 2014 Galaxy Release (v 14.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/14.02_announce.html">February 2014 Galaxy Release (v 14.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/13.11_announce.html">November 2013 Galaxy Release (v 13.11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/13.08_announce.html">August 2013 Galaxy Release (v 13.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/13.06_announce.html">June 2013 Galaxy Release (v 13.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/13.04_announce.html">April 2013 Galaxy Release (v 13.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/13.02_announce.html">February 2013 Galaxy Release (v 13.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/13.01_announce.html">January 2013 Galaxy Release (v 13.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/older_releases.html">Galaxy Releases older than v 13.01</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Admin Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Administration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python.html">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../framework_dependencies.html">Framework Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../config.html">Galaxy Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../config_logging.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../production.html">Production Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../security.html">Security considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nginx.html">Proxying Galaxy with NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apache.html">Proxying Galaxy with Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scaling.html">Scaling and Load Balancing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cluster.html">Connecting to a Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../jobs.html">Galaxy Job Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tool_panel.html">Tool Panel Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mq.html">Message queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dependency_resolvers.html">Dependency Resolvers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../container_resolvers.html">Containers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../container_resolvers.html#other-considerations">Other considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../conda_faq.html">Conda for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../db_migration.html">Galaxy Database Schema Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reports.html">Galaxy Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../useful_scripts.html">Scripts &amp; Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../options.html">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../migrating_to_gunicorn.html">Migrating from uWSGI to Gunicorn and FastAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Special topics</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Galaxy FTP Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interactivetools.html">Galaxy InteractiveTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mulled_containers.html">Containers for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grt.html">Galactic Radio Telescope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gtn.html">Galaxy Training Materials Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_metrics.html">Job Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html">Galaxy Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vault.html">Storing secrets in the vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance_tracking.html">Galaxy Performance Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bug_reports.html">Bug Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gdpr_compliance.html">GDPR Compliance</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev/index.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/schema.html">Galaxy Tool XML File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/api_guidelines.html">API Design Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/build_a_job_runner.html">Build a job runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/finding_and_improving_slow_code.html">Finding and improving slow Galaxy code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/data_managers.html">Data managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/data_types.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/faq.html">How Do I…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/writing_tests.html">Writing Tests for Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/debugging_tests.html">Debugging Galaxy Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/debugging_tests.html#debugging-tests-that-run-out-of-memory">Debugging tests that run out of memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/debugging_galaxy.html">Debugging Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/debugging_galaxy_slurm.html">Debugging Galaxy: Slurm Compute Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/translating.html">Translating the Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/create_point_release.html">Creating Galaxy Point Releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_doc.html">Galaxy API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../api/quickstart.html"> Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/api.html"> Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ts_api_doc.html">Tool Shed API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../api/ts_api.html"> API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../lib/modules.html">Application Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../lib/galaxy.html">galaxy package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lib/galaxy_ext.html">galaxy_ext package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lib/galaxy_test.html">galaxy_test package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lib/tool_shed.html">tool_shed package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../project/organization.html">Project Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../project/organization.html#procedure-documents">Procedure Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/organization.html#committers">Committers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/organization.html#release-branches">Release branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/organization.html#handling-pull-requests">Handling Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/organization.html#issue-reporting">Issue Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../project/issues.html">Issue Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../project/issues.html#issue-reporting">Issue Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/issues.html#milestones">Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/issues.html#labeling-structure">Labeling Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/issues.html#the-roadmap">The Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/issues.html#voting">Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/issues.html#automation">Automation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Galaxy Project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Special Topics</a></li>
+      <li class="breadcrumb-item active">Galaxy FTP Uploads</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/admin/special_topics/ftp.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="galaxy-ftp-uploads">
+<h1>Galaxy FTP Uploads<a class="headerlink" href="#galaxy-ftp-uploads" title="Link to this heading">¶</a></h1>
+<p>To allow users to upload files to Galaxy via FTP, you’ll need to configure Galaxy and install an FTP server. After everything is configured users will be able to upload their files through the FTP server and then select them for importing in the upload dialog in Galaxy.</p>
+<p>For help with uploading data via FTP on Galaxy <a class="reference external" href="https://galaxyproject.org/main/">Main</a>, please see this <a class="reference external" href="https://galaxyproject.org/ftp-upload/">tutorial</a>.</p>
+<section id="install-some-ftp-server">
+<h2>Install some FTP server<a class="headerlink" href="#install-some-ftp-server" title="Link to this heading">¶</a></h2>
+<p>Although there is no specific required server, we use <a class="reference external" href="http://proftpd.org/">ProFTPD</a> for Galaxy Main since it supports all the things we need to be able to do, such as authenticating against the Galaxy database. We recommend you to use the same FTP server as the configurations we provide are targeting it. You can also browse a <a class="reference external" href="https://en.wikipedia.org/wiki/Comparison_of_FTP_server_software_packages">comparison of alternative FTP servers</a>.</p>
+</section>
+<section id="configure-galaxy">
+<h2>Configure Galaxy<a class="headerlink" href="#configure-galaxy" title="Link to this heading">¶</a></h2>
+<p>The first step is to choose a directory into which your users will upload files.  Preferably this will be on the same filesystem as Galaxy’s datasets (by default, <code class="docutils literal notranslate"><span class="pre">galaxy_dist/database/files/</span></code>).  The FTP server will create subdirectories inside of this directory which match the user’s email address.  Likewise, Galaxy will expect to find email-named subdirectories at that path.  This directory should be set in the config file (<code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code>) as <code class="docutils literal notranslate"><span class="pre">ftp_upload_dir</span></code>.</p>
+<p>In the config file, you’ll also want to set <code class="docutils literal notranslate"><span class="pre">ftp_upload_site</span></code> to the hostname your users should connect to via FTP.  This will be provided in the help text on the Upload File form.</p>
+</section>
+<section id="allow-your-ftp-server-to-read-galaxy-s-database">
+<h2>Allow your FTP server to read Galaxy’s database<a class="headerlink" href="#allow-your-ftp-server-to-read-galaxy-s-database" title="Link to this heading">¶</a></h2>
+<p>You’ll need to grant a user access to read emails and passwords from the Galaxy database.  Although the user Galaxy connects with could be used, I prefer to use a least-privilege setup wherein a separate user is created for the FTP server which has permission to <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> from the <code class="docutils literal notranslate"><span class="pre">galaxy_user</span></code> table and nothing else.  In postgres this is accomplished with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>postgres@dbserver%<span class="w"> </span>createuser<span class="w"> </span>-SDR<span class="w"> </span>galaxyftp
+postgres@dbserver%<span class="w"> </span>psql<span class="w"> </span>galaxydb
+Welcome<span class="w"> </span>to<span class="w"> </span>psql<span class="w"> </span><span class="m">8</span>.X.Y,<span class="w"> </span>the<span class="w"> </span>PostgreSQL<span class="w"> </span>interactive<span class="w"> </span>terminal.
+
+Type:<span class="w">  </span><span class="se">\c</span>opyright<span class="w"> </span><span class="k">for</span><span class="w"> </span>distribution<span class="w"> </span>terms
+<span class="w">       </span><span class="se">\h</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">help</span><span class="w"> </span>with<span class="w"> </span>SQL<span class="w"> </span>commands
+<span class="w">       </span><span class="se">\?</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">help</span><span class="w"> </span>with<span class="w"> </span>psql<span class="w"> </span>commands
+<span class="w">       </span><span class="se">\g</span><span class="w"> </span>or<span class="w"> </span>terminate<span class="w"> </span>with<span class="w"> </span>semicolon<span class="w"> </span>to<span class="w"> </span>execute<span class="w"> </span>query
+<span class="w">       </span><span class="se">\q</span><span class="w"> </span>to<span class="w"> </span>quit
+
+<span class="nv">galaxydb</span><span class="o">=</span><span class="c1"># ALTER ROLE galaxyftp PASSWORD &#39;dbpassword&#39;;</span>
+ALTER<span class="w"> </span>ROLE
+<span class="nv">galaxydb</span><span class="o">=</span><span class="c1"># GRANT SELECT ON galaxy_user TO galaxyftp; </span>
+GRANT
+</pre></div>
+</div>
+</section>
+<section id="configuring-proftpd">
+<h2>Configuring ProFTPD<a class="headerlink" href="#configuring-proftpd" title="Link to this heading">¶</a></h2>
+<p>By default, Galaxy stores passwords using <a class="reference external" href="https://en.wikipedia.org/wiki/PBKDF2">PBKDF2</a>. It’s possible to disable this using the <code class="docutils literal notranslate"><span class="pre">use_pbkdf2:</span> <span class="pre">false</span></code> setting in the <code class="docutils literal notranslate"><span class="pre">galaxy</span></code> section of <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code>. Once disabled, any new passwords created will be stored in an older hex-encoded SHA1 format. Because of this, it’s possible to have both PBKDF2 and SHA1 passwords in your database (especially if your server has been around since before PBKDF2 support was added). Although this is fine (Galaxy can read passwords in either format), ProFTPD will expect them in one format or the other (although with some amount of hackery it could probably be made to read both).</p>
+<p>Because of this, you’ll need to choose one or the other in your Galaxy config (PBKDF2 is more secure and therefore preferred) and configure ProFTPD accordingly. If users cannot log in because their password is stored in the wrong format, they can simply use Galaxy’s password change form to set their password, which will rewrite their password using the currently configured algorithm.</p>
+<p>For more hints on the PBKDF2 configuration, see the fantastic blog post <a class="reference external" href="https://galacticengineer.blogspot.com/2015/02/ftp-upload-to-galaxy-using-proftpd-and.html">FTP upload to Galaxy using ProFTPd and PBKDF2</a> by Peter Briggs (which was used to create the documentation below).</p>
+<p>Although any FTP server should work, our public site uses ProFTPD.  You’ll need the following extra modules for ProFTPD:</p>
+<ul class="simple">
+<li><p>mod_sql</p></li>
+<li><p>mod_sql_postgres or mod_sql_mysql</p></li>
+<li><p>mod_sql_passwd</p></li>
+</ul>
+<p>We compile by hand using the following configure arguments (OpenSSL is prebuilt and statically linked), you should read the INSTALL file that come with the proftpd source distribution. At least you should consider if you need to use any of these options “install_user=<user> install_group=<group> ./configure –sysconfdir=/etc –localstatedir=/var”:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">./configure --prefix=/foo --disable-auth-file --disable-ncurses --disable-ident --disable-shadow --enable-openssl --with-modules=mod_sql:mod_sql_postgres:mod_sql_passwd --with-includes=/usr/postgres/9.1-pgdg/include:`pwd`/../openssl/.openssl/include --with-libraries=/usr/postgres/9.1-pgdg/lib/64:`pwd`/../openssl/.openssl/lib</span>
+</pre></div>
+</div>
+<p>An example configuration follows, assuming <code class="docutils literal notranslate"><span class="pre">ftp_upload_dir</span> <span class="pre">=</span> <span class="pre">/home/nate/galaxy_dist/database/ftp</span></code> in the Galaxy config file:</p>
+<div class="highlight-apache notranslate"><div class="highlight"><pre><span></span><span class="c"># Basics, some site-specific</span>
+<span class="nb">ServerName</span><span class="w">                      </span><span class="s2">&quot;Public Galaxy FTP&quot;</span>
+<span class="nb">ServerType</span><span class="w">                      </span><span class="k">standalone</span>
+<span class="nb">DefaultServer</span><span class="w">                   </span><span class="k">on</span>
+<span class="nb">Port</span><span class="w">                            </span><span class="m">21</span>
+<span class="nb">Umask</span><span class="w">                           </span><span class="m">077</span>
+<span class="nb">SyslogFacility</span><span class="w">                  </span>DAEMON
+<span class="nb">SyslogLevel</span><span class="w">                     </span><span class="k">debug</span>
+<span class="nb">MaxInstances</span><span class="w">                    </span><span class="m">30</span>
+
+<span class="c"># This User &amp; Group should be set to the actual user and group name which matche the UID &amp; GID you will specify later in the SQLNamedQuery.</span>
+<span class="nb">User</span><span class="w">                            </span>nobody
+<span class="nb">Group</span><span class="w">                           </span>nogroup
+<span class="nb">DisplayConnect</span><span class="w">                  </span><span class="sx">/etc/opt/local/proftpd_welcome.txt</span>
+
+<span class="c"># Passive port range for the firewall</span>
+<span class="nb">PassivePorts</span><span class="w">                    </span><span class="m">30000</span><span class="w"> </span><span class="m">40000</span>
+
+<span class="c"># Cause every FTP user to be &quot;jailed&quot; (chrooted) into their home directory</span>
+<span class="nb">DefaultRoot</span><span class="w">                     </span>~
+
+<span class="c"># Automatically create home directory if it doesn&#39;t exist</span>
+<span class="nb">CreateHome</span><span class="w">                      </span><span class="k">on</span><span class="w"> </span>dirmode<span class="w"> </span><span class="m">700</span>
+
+<span class="c"># Allow users to overwrite their files</span>
+<span class="nb">AllowOverwrite</span><span class="w">                  </span><span class="k">on</span>
+
+<span class="c"># Allow users to resume interrupted uploads</span>
+<span class="nb">AllowStoreRestart</span><span class="w">               </span><span class="k">on</span>
+
+<span class="c"># Bar use of SITE CHMOD</span>
+<span class="nt">&lt;Limit</span><span class="w"> </span><span class="s">SITE_CHMOD</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nb">DenyAll</span>
+<span class="nt">&lt;/Limit&gt;</span>
+
+<span class="c"># Bar use of RETR (download) since this is not a public file drop</span>
+<span class="nt">&lt;Limit</span><span class="w"> </span><span class="s">RETR</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nb">DenyAll</span>
+<span class="nt">&lt;/Limit&gt;</span>
+
+<span class="c"># Do not authenticate against real (system) users</span>
+<span class="nt">&lt;IfModule</span><span class="w"> </span><span class="s">mod_auth_pam.c</span><span class="nt">&gt;</span>
+<span class="nb">AuthPAM</span><span class="w">                         </span><span class="k">off</span>
+<span class="nt">&lt;/IfModule&gt;</span>
+
+<span class="c"># Common SQL authentication options</span>
+<span class="nb">SQLEngine</span><span class="w">                       </span><span class="k">on</span>
+<span class="nb">SQLPasswordEngine</span><span class="w">               </span><span class="k">on</span>
+<span class="nb">SQLBackend</span><span class="w">                      </span>postgres
+<span class="nb">SQLConnectInfo</span><span class="w">                  </span>galaxydb@dbserver.example.org[:port]<span class="w"> </span>&lt;dbuser&gt;<span class="w"> </span>&lt;dbpassword&gt;
+<span class="nb">SQLAuthenticate</span><span class="w">                 </span>users
+</pre></div>
+</div>
+<p>For PBKDF2 passwords, the following additions to <code class="docutils literal notranslate"><span class="pre">proftpd.conf</span></code> should work:</p>
+<div class="highlight-apache notranslate"><div class="highlight"><pre><span></span><span class="c"># Configuration that handles PBKDF2 encryption</span>
+<span class="c"># Set up mod_sql to authenticate against the Galaxy database</span>
+<span class="nb">SQLAuthTypes</span><span class="w">                    </span>PBKDF2
+<span class="nb">SQLPasswordPBKDF2</span><span class="w">               </span>SHA256<span class="w"> </span><span class="m">100000</span><span class="w"> </span><span class="m">24</span>
+<span class="nb">SQLPasswordEncoding</span><span class="w">             </span>base64
+<span class="w"> </span>
+<span class="c"># For PBKDF2 authentication</span>
+<span class="nb">SQLPasswordUserSalt</span><span class="w">             </span>sql:/GetUserSalt
+<span class="w"> </span>
+<span class="c"># Define a custom query for lookup that returns a passwd-like entry. Replace 512s with the UID and GID of the user running the Galaxy server</span>
+<span class="nb">SQLUserInfo</span><span class="w">                     </span>custom:/LookupGalaxyUser
+<span class="nb">SQLNamedQuery</span><span class="w">                   </span>LookupGalaxyUser<span class="w"> </span>SELECT<span class="w"> </span><span class="s2">&quot;email, split_part(password, &#39;$&#39;, 5) AS password2,512,512,&#39;/home/nate/galaxy_dist/database/ftp/%U&#39;,&#39;/bin/bash&#39; FROM galaxy_user WHERE email=&#39;%U&#39;&quot;</span>
+<span class="w"> </span>
+<span class="c"># Define custom query to fetch the password salt</span>
+<span class="nb">SQLNamedQuery</span><span class="w">                   </span>GetUserSalt<span class="w"> </span>SELECT<span class="w"> </span><span class="s2">&quot;split_part(password, &#39;$&#39;, 4) AS salt FROM galaxy_user WHERE email=&#39;%U&#39;&quot;</span>
+</pre></div>
+</div>
+<p>Please note that you would need to update <code class="docutils literal notranslate"><span class="pre">SQLPasswordPBKDF2</span></code> based on the values (HASH_FUNCTION, COST_FACTOR and KEY_LENGTH) you will find here <a class="reference external" href="https://docs.galaxyproject.org/en/master/_modules/galaxy/security/passwords.html">Galaxy security passwords</a></p>
+<p>For SHA1 passwords, the following additions to <code class="docutils literal notranslate"><span class="pre">proftpd.conf</span></code> should work:</p>
+<div class="highlight-apache notranslate"><div class="highlight"><pre><span></span><span class="c"># Set up mod_sql/mod_sql_password - Galaxy passwords are stored as hex-encoded SHA1</span>
+<span class="nb">SQLAuthTypes</span><span class="w">                    </span>SHA1
+<span class="nb">SQLPasswordEncoding</span><span class="w">             </span>hex
+
+<span class="c"># An empty directory in case chroot fails</span>
+<span class="nb">SQLDefaultHomedir</span><span class="w">               </span><span class="sx">/var/opt/local/proftpd</span>
+
+<span class="c"># Define a custom query for lookup that returns a passwd-like entry. Replace 512s with the UID and GID of the user running the Galaxy server</span>
+<span class="nb">SQLUserInfo</span><span class="w">                     </span>custom:/LookupGalaxyUser
+<span class="nb">SQLNamedQuery</span><span class="w">                   </span>LookupGalaxyUser<span class="w"> </span>SELECT<span class="w"> </span><span class="s2">&quot;email,password,512,512,&#39;/home/nate/galaxy_dist/database/ftp/%U&#39;,&#39;/bin/bash&#39; FROM galaxy_user WHERE email=&#39;%U&#39;&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="further-security-measures">
+<h2>Further security measures<a class="headerlink" href="#further-security-measures" title="Link to this heading">¶</a></h2>
+<p>FTP protocol is <strong>not</strong> encrypted by default, thus any usernames and passwords are sent over clear text to Galaxy. You may wish to implement further security measures by forcing the FTP connection to use SSL/TLS or to allow users to send their files using SFTP (a completely different protocol than FTP - see http://www.proftpd.org/docs/contrib/mod_sftp.html). Here are some extra steps that you can use with ProFTPD.</p>
+<div class="highlight-apache notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;IfModule</span><span class="w"> </span><span class="s">mod_sftp.c</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="c"># You must put this in a virtual host if you want it to listen on its own port. VHost != Apache Vhost.</span>
+<span class="w">  </span><span class="nt">&lt;VirtualHost</span><span class="w"> </span><span class="s">IP_of_Galaxy</span><span class="nt">&gt;</span><span class="w"> </span>
+<span class="w">    </span><span class="c"># You may wish to open a new port for this so that you don&#39;t lock yourself out of SSH. I chose 2222</span>
+<span class="w">    </span><span class="nb">Port</span><span class="w"> </span><span class="m">2222</span><span class="w"> </span>
+<span class="w">    </span><span class="nb">SFTPEngine</span><span class="w"> </span><span class="k">on</span>
+<span class="w">    </span><span class="nb">AuthOrder</span><span class="w"> </span>mod_auth_unix.c<span class="w"> </span>mod_sql.c<span class="w"> </span>#<span class="w"> </span>If<span class="w"> </span>you<span class="w"> </span>don&#39;t<span class="w"> </span>do<span class="w"> </span>this<span class="w"> </span>you<span class="w"> </span>will<span class="w"> </span>get<span class="w"> </span>weird<span class="w"> </span>disconnects
+<span class="w">    </span><span class="nb">SFTPHostKey</span><span class="w"> </span><span class="sx">/etc/ssh/ssh_host_rsa_key</span>
+<span class="w">    </span><span class="c"># SFTPCiphers aes256-ctr aes192-ctr aes128-ctr # You may wish to lock it to only certain ciphers, </span>
+<span class="w">    </span><span class="c"># but this is likely to lock out certain users</span>
+<span class="w">    </span><span class="nb">RequireValidShell</span><span class="w"> </span>no
+<span class="w">    </span><span class="nb">MaxLoginAttempts</span><span class="w"> </span><span class="m">6</span>
+<span class="w">    </span><span class="nb">ServerName</span><span class="w">                      </span><span class="s2">&quot;Galaxy SFTP&quot;</span>
+<span class="w">    </span><span class="nb">Umask</span><span class="w">                           </span><span class="m">077</span>
+<span class="w">    </span><span class="nb">User</span><span class="w">                            </span>galaxyftp
+<span class="w">    </span><span class="nb">Group</span><span class="w">                           </span>galaxyftp
+<span class="w">    </span><span class="nb">UseFtpUsers</span><span class="w"> </span><span class="k">off</span>
+<span class="w">    </span><span class="nb">DefaultRoot</span><span class="w">                     </span>~
+<span class="w">    </span><span class="nb">AllowOverwrite</span><span class="w">                  </span><span class="k">on</span>
+<span class="w">    </span><span class="nb">AllowStoreRestart</span><span class="w">               </span><span class="k">on</span>
+<span class="w">    </span><span class="c"># .. Other rules for directories, etc</span>
+<span class="w">    </span><span class="nb">SQLEngine</span><span class="w">                       </span><span class="k">on</span>
+<span class="w">    </span><span class="nb">SQLGroupInfo</span><span class="w">                    </span>sftp_groups<span class="w"> </span>name<span class="w"> </span>id<span class="w"> </span>members
+<span class="w">    </span><span class="c"># .. See above, the same SQL rules apply</span>
+<span class="w">  </span><span class="nt">&lt;/VirtualHost&gt;</span>
+<span class="nt">&lt;/IfModule&gt;</span>
+<span class="nt">&lt;IfModule</span><span class="w"> </span><span class="s">mod_tls.c</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nb">TLSEngine</span><span class="w"> </span><span class="k">on</span>
+<span class="w">    </span><span class="nb">TLSLog</span><span class="w"> </span><span class="sx">/var/log/proftpd/tls.log</span>
+<span class="w">    </span><span class="c"># Make sure that users know that you have to support TLS 1.2! This is very restrictive, but likely the best</span>
+<span class="w">    </span><span class="nb">TLSProtocol</span><span class="w"> </span>TLSv1.2
+<span class="w">    </span><span class="nb">TLSRSACertificateFile</span><span class="w"> </span><span class="sx">/etc/pki/tls/certs/your_cert.cer</span>
+<span class="w">    </span><span class="nb">TLSRSACertificateKeyFile</span><span class="w"> </span><span class="sx">/etc/pki/tls/private/your.key</span>
+<span class="w">    </span><span class="nb">TLSCertificateChainFile</span><span class="w"> </span><span class="sx">/etc/pki/tls/certs/your_intermediate.cer</span>
+<span class="w">    </span><span class="nb">TLSRenegotiate</span><span class="w"> </span><span class="k">none</span>
+<span class="w">    </span><span class="nb">TLSCipherSuite</span><span class="w"> </span><span class="k">ALL</span>:!SSLv2:!SSLv3
+<span class="w">    </span><span class="nb">TLSVerifyClient</span><span class="w"> </span><span class="k">off</span>
+<span class="w">    </span><span class="nb">TLSRequired</span><span class="w"> </span>auth+data
+<span class="w">    </span><span class="nb">TLSOptions</span><span class="w"> </span>NoSessionReuseRequired
+<span class="w">    </span><span class="nb">ServerName</span><span class="w">                      </span><span class="s2">&quot;Galaxy FTP&quot;</span>
+<span class="w">    </span><span class="nb">ServerType</span><span class="w">                      </span><span class="k">standalone</span>
+<span class="w">    </span><span class="nb">DefaultServer</span><span class="w">                   </span><span class="k">on</span>
+<span class="w">    </span><span class="nb">Port</span><span class="w">                            </span><span class="m">21</span>
+<span class="w">    </span><span class="nb">Umask</span><span class="w">                           </span><span class="m">077</span>
+<span class="w">    </span><span class="nb">SyslogFacility</span><span class="w">                  </span>DAEMON
+<span class="w">    </span><span class="nb">SyslogLevel</span><span class="w">                     </span><span class="k">debug</span>
+<span class="w">    </span><span class="nb">MaxInstances</span><span class="w">                    </span><span class="m">30</span>
+<span class="w">    </span><span class="nb">User</span><span class="w">                            </span>galaxyftp
+<span class="w">    </span><span class="nb">Group</span><span class="w">                           </span>galaxyftp
+<span class="w">    </span><span class="nb">UseFtpUsers</span><span class="w"> </span><span class="k">off</span>
+<span class="w">    </span><span class="c"># Passive port range for the firewall - note that you must open these ports for this to work!</span>
+<span class="w">    </span><span class="c"># Since the FTP traffic is now encrypted, your firewall can&#39;t peak to see that it is PASSV FTP</span>
+<span class="w">    </span><span class="c"># and it will block it if you don&#39;t allow new connections one these ports.</span>
+<span class="w">    </span><span class="nb">PassivePorts</span><span class="w">                    </span><span class="m">30000</span><span class="w"> </span><span class="m">30100</span>
+<span class="w">    </span><span class="c"># Cause every FTP user to be &quot;jailed&quot; (chrooted) into their home directory</span>
+<span class="w">    </span><span class="nb">DefaultRoot</span><span class="w">                     </span>~
+<span class="w">    </span><span class="nb">AllowOverwrite</span><span class="w">                  </span><span class="k">on</span>
+<span class="w">    </span><span class="c"># Allow users to resume interrupted uploads</span>
+<span class="w">    </span><span class="nb">AllowStoreRestart</span><span class="w">               </span><span class="k">on</span>
+<span class="w">    </span><span class="c"># .. Other rules for directories, etc</span>
+<span class="w">    </span><span class="nb">SQLEngine</span><span class="w">                       </span><span class="k">on</span>
+<span class="w">    </span><span class="c"># .. See above, the same SQL rules apply</span>
+<span class="nt">&lt;/IfModule&gt;</span>
+</pre></div>
+</div>
+<p>You may need to take some additional steps to get this working. Compile ProFTPD –with-modules=mod_sftp:mod_tls as well as sql. You may need to alter your PostGreSQL configuration (typically pg_hba.conf) to allow local IPv6 connections:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># IPv6 local connections:</span>
+<span class="n">host</span>    <span class="nb">all</span>         <span class="nb">all</span>         <span class="p">::</span><span class="mi">1</span><span class="o">/</span><span class="mi">128</span>               <span class="n">trust</span>
+</pre></div>
+</div>
+<p>You may also need to add a table called ‘groups’ to allow the SFTP connection to your Galaxy database.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">psql</span> <span class="n">yourDB</span>
+<span class="c1"># CREATE TABLE sftp_groups (</span>
+    <span class="nb">id</span>        <span class="n">char</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="n">CONSTRAINT</span> <span class="n">firstkey</span> <span class="n">PRIMARY</span> <span class="n">KEY</span><span class="p">,</span>
+    <span class="n">name</span>       <span class="n">varchar</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span> <span class="n">NOT</span> <span class="n">NULL</span><span class="p">,</span>
+    <span class="n">members</span>        <span class="n">varchar</span><span class="p">(</span><span class="mi">100</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>With these steps, you should be able to allow users to connect to your server using secure protocols.</p>
+</section>
+<section id="other-links">
+<h2>Other Links<a class="headerlink" href="#other-links" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://galaxyproject.org/admin/config/proftpd-with-ad/">Configuring ProFTP Galaxy Upload for Active Directory</a></p></li>
+<li><p><a class="reference external" href="https://galaxyproject.org/ftp-upload/">Uploading Data to usegalaxy.org via FTP</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Special Topics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="interactivetools.html" class="btn btn-neutral float-right" title="Galaxy InteractiveTools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Galaxy Committers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

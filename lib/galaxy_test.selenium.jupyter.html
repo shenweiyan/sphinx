@@ -1,0 +1,404 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>galaxy_test.selenium.jupyter package &mdash; Galaxy Project 23.1.5.dev0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+
+  
+    <link rel="canonical" href="https://docs.galaxyproject.org/en/master/lib/galaxy_test.selenium.jupyter.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=da3e81e8"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="tool_shed package" href="tool_shed.html" />
+    <link rel="prev" title="galaxy_test.selenium package" href="galaxy_test.selenium.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Galaxy Project
+          </a>
+              <div class="version">
+                23.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../releases/index.html">Releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.1_announce_user.html">June 2023 Galaxy Release (v 23.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.0_announce_user.html">2023 Galaxy Release (v 23.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.05_announce_user.html">May 2022 Galaxy Release (v 22.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.01_announce_user.html">January 2022 Galaxy Release (v 22.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.09_announce_user.html">September 2021 Galaxy Release (v 21.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.05_announce_user.html">May 2021 Galaxy Release (v 21.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.01_announce_user.html">January 2021 Galaxy Release (v 21.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.09_announce_user.html">September 2020 Galaxy Release (v 20.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.05_announce_user.html">May 2020 Galaxy Release (v 20.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.01_announce_user.html">January 2020 Galaxy Release (v 20.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.09_announce_user.html">September 2019 Galaxy Release (v 19.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.05_announce_user.html">May 2019 Galaxy Release (v 19.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.01_announce_user.html">January 2019 Galaxy Release (v 19.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.09_announce.html">September 2018 Galaxy Release (v 18.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.05_announce.html">May 2018 Galaxy Release (v 18.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.01_announce.html">January 2018 Galaxy Release (v 18.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.09_announce.html">September 2017 Galaxy Release (v 17.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.05_announce.html">May 2017 Galaxy Release (v 17.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.01_announce.html">January 2017 Galaxy Release (v 17.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.10_announce.html">October 2016 Galaxy Release (v 16.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.07_announce.html">July 2016 Galaxy Release (v 16.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.04_announce.html">April 2016 Galaxy Release (v 16.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.01_announce.html">January 2016 Galaxy Release (v 16.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.10_announce.html">October 2015 Galaxy Release (v 15.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.07_announce.html">July 2015 Galaxy Release (v 15.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.05_announce.html">May 2015 Galaxy Release (v 15.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.03_announce.html">March 2015 Galaxy Release (v 15.03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.01_announce.html">January 2015 Galaxy Release (v 15.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.10_announce.html">October 2014 Galaxy Release (v 14.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.08_announce.html">August 2014 Galaxy Release (v 14.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.06_announce.html">June 2014 Galaxy Release (v 14.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.04_announce.html">April 2014 Galaxy Release (v 14.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.02_announce.html">February 2014 Galaxy Release (v 14.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.11_announce.html">November 2013 Galaxy Release (v 13.11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.08_announce.html">August 2013 Galaxy Release (v 13.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.06_announce.html">June 2013 Galaxy Release (v 13.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.04_announce.html">April 2013 Galaxy Release (v 13.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.02_announce.html">February 2013 Galaxy Release (v 13.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.01_announce.html">January 2013 Galaxy Release (v 13.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/older_releases.html">Galaxy Releases older than v 13.01</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Admin Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../admin/index.html">Administration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../admin/python.html">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/framework_dependencies.html">Framework Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/config.html">Galaxy Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/config_logging.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/production.html">Production Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/security.html">Security considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/nginx.html">Proxying Galaxy with NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/apache.html">Proxying Galaxy with Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/scaling.html">Scaling and Load Balancing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/cluster.html">Connecting to a Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/jobs.html">Galaxy Job Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/tool_panel.html">Tool Panel Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/mq.html">Message queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/dependency_resolvers.html">Dependency Resolvers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/container_resolvers.html">Containers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/container_resolvers.html#other-considerations">Other considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/conda_faq.html">Conda for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/db_migration.html">Galaxy Database Schema Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/reports.html">Galaxy Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/useful_scripts.html">Scripts &amp; Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/options.html">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/migrating_to_gunicorn.html">Migrating from uWSGI to Gunicorn and FastAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/special_topics/index.html">Special topics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/ftp.html">Galaxy FTP Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/interactivetools.html">Galaxy InteractiveTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/mulled_containers.html">Containers for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/grt.html">Galactic Radio Telescope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/gtn.html">Galaxy Training Materials Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/job_metrics.html">Job Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/webhooks.html">Galaxy Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/vault.html">Storing secrets in the vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/performance_tracking.html">Galaxy Performance Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/bug_reports.html">Bug Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/gdpr_compliance.html">GDPR Compliance</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../dev/index.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dev/schema.html">Galaxy Tool XML File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/api_guidelines.html">API Design Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/build_a_job_runner.html">Build a job runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/finding_and_improving_slow_code.html">Finding and improving slow Galaxy code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_managers.html">Data managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_types.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/faq.html">How Do I…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/writing_tests.html">Writing Tests for Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html">Debugging Galaxy Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html#debugging-tests-that-run-out-of-memory">Debugging tests that run out of memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy.html">Debugging Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy_slurm.html">Debugging Galaxy: Slurm Compute Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/translating.html">Translating the Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/create_point_release.html">Creating Galaxy Point Releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api_doc.html">Galaxy API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/quickstart.html"> Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/api.html"> Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ts_api_doc.html">Tool Shed API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/ts_api.html"> API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Application Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="galaxy.html">galaxy package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy_ext.html">galaxy_ext package</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="galaxy_test.html">galaxy_test package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tool_shed.html">tool_shed package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../project/organization.html">Project Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#procedure-documents">Procedure Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#committers">Committers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#release-branches">Release branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#handling-pull-requests">Handling Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#issue-reporting">Issue Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../project/issues.html">Issue Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#issue-reporting">Issue Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#milestones">Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#labeling-structure">Labeling Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#the-roadmap">The Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#voting">Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#automation">Automation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Galaxy Project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">lib</a></li>
+          <li class="breadcrumb-item"><a href="galaxy_test.html">galaxy_test package</a></li>
+          <li class="breadcrumb-item"><a href="galaxy_test.selenium.html">galaxy_test.selenium package</a></li>
+      <li class="breadcrumb-item active">galaxy_test.selenium.jupyter package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/lib/galaxy_test.selenium.jupyter.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-galaxy_test.selenium.jupyter">
+<span id="galaxy-test-selenium-jupyter-package"></span><h1>galaxy_test.selenium.jupyter package<a class="headerlink" href="#module-galaxy_test.selenium.jupyter" title="Link to this heading">¶</a></h1>
+<p>Examples and framework helpers for driving Galaxy with Selenium in Jupyter.</p>
+<section id="example-notebooks">
+<h2>Example Notebooks<a class="headerlink" href="#example-notebooks" title="Link to this heading">¶</a></h2>
+<p>There are a couple example notebooks in this directory that demonstrate two different
+helper classes that provide a Python context for interacting with Galaxy.</p>
+<p><code class="docutils literal notranslate"><span class="pre">notebook_example_library.ipynb</span></code> demonstrates using <code class="xref py py-class docutils literal notranslate"><span class="pre">galaxy.selenium.jupyter_context.JupyterContext</span></code>,
+an interface that only depends on the pip installable library <code class="docutils literal notranslate"><span class="pre">galaxy-selenium</span></code>.
+<code class="docutils literal notranslate"><span class="pre">JupyterContext</span></code> inherits <code class="xref py py-class docutils literal notranslate"><span class="pre">galaxy.selenium.navigates_galaxy.NavigatesGalaxy</span></code>
+and <code class="xref py py-class docutils literal notranslate"><span class="pre">galaxy.selenium.has_driver.HasDriver</span></code> and contains numerous functions to
+interact with Galaxy in generic terms using Selenium.</p>
+<p><code class="docutils literal notranslate"><span class="pre">notebook_example_testing.ipynb</span></code> demonstrates using <code class="xref py py-class docutils literal notranslate"><span class="pre">galaxy_test.selenium.jupyter_context.JupyterTestContextImpl</span></code>,
+an interface that extends <code class="docutils literal notranslate"><span class="pre">JupyterContextImpl</span></code> to additionally provide testing framework
+populators (<code class="xref py py-mod docutils literal notranslate"><span class="pre">galaxy_test.base.populators</span></code>) configured to work with the same
+user as is logged in with Selenium and that provide a quick way to populate the target
+Galaxy with testing fixtures.</p>
+<p>The first example notebook is good for prototyping stand-alone applications that drive
+Galaxy, the second example notebook is setup to mirror the environment available to Selenium
+test cases that ship with Galaxy (e.g. <code class="xref py py-class docutils literal notranslate"><span class="pre">galaxy_test.selenium.framework:SeleniumTestCase</span></code>)
+and can be used for interactively developing Selenium tests for Galaxy. Additionally, it shows how can ActionChains
+could be accessed within Jupyter notebook.</p>
+<p>These notebooks start with a cell that simply defines a <code class="docutils literal notranslate"><span class="pre">config</span></code> variable in the Python
+environment on a cell that is marked with metadata indicated it is “parameters”. This
+isn’t required at all to use the notebook iteratively, but it does provide a nice hook
+for executing the notebook in a parameterized way using <a class="reference external" href="https://papermill.readthedocs.io/en/latest/">papermill</a> after its creation.</p>
+<p>The second cell in both of these notebooks setup the Galaxy interaction context - either
+a <code class="xref py py-class docutils literal notranslate"><span class="pre">galaxy.selenium.jupyter_context.JupyterContextImpl</span></code> or
+<code class="xref py py-class docutils literal notranslate"><span class="pre">galaxy_test.selenium.jupyter_context.JupyterTestContextImpl</span></code> depending on
+the notebook. These cells use a function named <code class="docutils literal notranslate"><span class="pre">init</span></code> to create the desired
+interaction context (called <code class="docutils literal notranslate"><span class="pre">gx_selenium_context</span></code> in both cases).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">galaxy.selenium.jupyter_context</span> <span class="kn">import</span> <span class="n">init</span>
+<span class="n">gx_selenium_context</span> <span class="o">=</span> <span class="n">init</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The optional <code class="docutils literal notranslate"><span class="pre">config</span></code> dictionary can be used to configure both Selenium and the Galaxy
+that is targeted. If <code class="docutils literal notranslate"><span class="pre">config</span></code> is none and the working directory Jupyter is executing
+inside of has a file named <code class="docutils literal notranslate"><span class="pre">galaxy_selenium_context.yml</span></code> - <code class="docutils literal notranslate"><span class="pre">init</span></code> will read that file
+and use it as the target configuration.</p>
+<p>Both contexts can be configured with the following dictionary keys (either from
+<code class="docutils literal notranslate"><span class="pre">galaxy_selenium_context.yml</span></code> or using <a class="reference external" href="https://papermill.readthedocs.io/en/latest/">papermill</a>).</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">local_galaxy_url</span></code></dt><dd><p>Galaxy URL to target during execution.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">selenium_galaxy_url</span></code></dt><dd><p>Galaxy URL relative to the Selenium being used. This doesn’t need to be set unless
+you’re using a remote Selenium server (i.e one not running directly on <code class="docutils literal notranslate"><span class="pre">localhost</span></code>).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">driver</span></code></dt><dd><p>If set, this should be a dictionary describing variables to send to
+<code class="xref py py-class docutils literal notranslate"><span class="pre">galaxy.selenium.driver_factory.ConfiguredDriver</span></code> and define how to
+setup the Selenium client used. Useful keys and their defaults include -
+<code class="docutils literal notranslate"><span class="pre">browser</span></code> (<code class="docutils literal notranslate"><span class="pre">&quot;auto&quot;</span></code>), <code class="docutils literal notranslate"><span class="pre">remote</span></code> (<code class="docutils literal notranslate"><span class="pre">false</span></code>), <code class="docutils literal notranslate"><span class="pre">remote_host</span></code> (<code class="docutils literal notranslate"><span class="pre">&quot;127.0.0.1&quot;</span></code>),
+<code class="docutils literal notranslate"><span class="pre">remote_port</span></code> (<code class="docutils literal notranslate"><span class="pre">4444</span></code>), <code class="docutils literal notranslate"><span class="pre">headless</span></code> (<code class="docutils literal notranslate"><span class="pre">false</span></code>).</p>
+</dd>
+</dl>
+<p>Additionally, the testing context also allows additional configuration variables used
+for populating test fixtures (with populators) or by extra testing helpers (e.g.
+<code class="docutils literal notranslate"><span class="pre">gx_selenium_context.test_login()</span></code>).</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">admin_api_key</span></code></dt><dd><p>An API key to be used for API interactions that require an admin account.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">login_email</span></code></dt><dd><p>A test account login or email address to be used for tests that require a logged
+in user.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">login_password</span></code></dt><dd><p>The password to be used for the account referenced by <code class="docutils literal notranslate"><span class="pre">login_email</span></code>.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Using Papermill</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ . venv/bin/activate  # first two commands only needed first time
+$ pip install papermill
+$ papermill galaxy_test/selenium/jupyter/notebook_example_library.ipynb  galaxy_test/selenium/jupyter/notebook_example_library_output.ipynb -y &quot;
+config: {local_galaxy_url: &#39;http://localhost:8081/&#39;}
+&quot;
+</pre></div>
+</div>
+</div>
+</section>
+<section id="developing-galaxy-test-cases-interactively-with-jupyter">
+<h2>Developing Galaxy Test Cases Interactively with Jupyter<a class="headerlink" href="#developing-galaxy-test-cases-interactively-with-jupyter" title="Link to this heading">¶</a></h2>
+<section id="the-setup">
+<h3>The Setup<a class="headerlink" href="#the-setup" title="Link to this heading">¶</a></h3>
+<p>Writing Selenium tests for Galaxy often involves annotating the Galaxy DOM with
+appropriate <code class="docutils literal notranslate"><span class="pre">class</span></code> and <code class="docutils literal notranslate"><span class="pre">data-*</span></code> attributes, so it is best to have webpack monitor
+<code class="docutils literal notranslate"><span class="pre">client/src</span></code> and rebuild as things changes and then disable building the client
+as Galaxy starts. This can be done by executing the follow two commands in separate
+terminal sessions.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ GALAXY_SKIP_CLIENT_BUILD=1 GALAXY_RUN_WITH_TEST_TOOLS=1 sh run.sh
+$ make client-watch
+</pre></div>
+</div>
+<p>Copy <code class="docutils literal notranslate"><span class="pre">lib/galaxy_test/selenium/jupyter/galaxy_selenium.yml.sample</span></code> to
+<code class="docutils literal notranslate"><span class="pre">lib/galaxy_test/selenium/jupyter/galaxy_selenium.yml</span></code> and specify a
+<code class="docutils literal notranslate"><span class="pre">login_email</span></code>, <code class="docutils literal notranslate"><span class="pre">login_password</span></code>, <code class="docutils literal notranslate"><span class="pre">admin_api_key</span></code> to point at values
+suitable for your local test environment.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cp lib/galaxy_test/selenium/jupyter/galaxy_selenium.yml.sample lib/galaxy_test/selenium/jupyter/galaxy_selenium.yml
+$ vi lib/galaxy_test/selenium/jupyter/galaxy_selenium.yml
+</pre></div>
+</div>
+<p>Start Jupyter for interactive development. This requires Jupyter to be
+available in Galaxy’s virtual environment.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ . venv/bin/activate  # first two commands only needed first time
+$ pip install jupyter
+$ make serve-selenium-notebooks
+</pre></div>
+</div>
+</section>
+<section id="filling-out-tests">
+<h3>Filling out Tests<a class="headerlink" href="#filling-out-tests" title="Link to this heading">¶</a></h3>
+<p>Open (or copy and open) the notebook <code class="docutils literal notranslate"><span class="pre">notebook_example_testing.ipynb</span></code> and
+start developing the test in the third notebook cell. This cell will land up
+being the body a test case.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">gx_selenium_context</span></code> to navigate Galaxy, setup test conditions, and
+verify expected behavior. Change <code class="docutils literal notranslate"><span class="pre">navigation.yml</span></code> to implement components and
+<code class="docutils literal notranslate"><span class="pre">client/src</span></code> to annotate the source - these changes will be picked up automatically
+and you can simply re-run the notebook to redo the modified or extended test.
+If Python test code needs to be changed (e.g. helper methods are added to
+<code class="xref py py-class docutils literal notranslate"><span class="pre">galaxy.selenium.navigates_galaxy.NavigatesGalaxy</span></code>), you’ll need to
+select “Restart &amp; Run All” from the “Kernel” menu of Jupyter to pickup the new
+changes.</p>
+<p>Once the test is complete, copy all the cells after the initialization into a
+new test case file (either in <code class="docutils literal notranslate"><span class="pre">lib/galaxy_test/selenium</span></code> or
+<code class="docutils literal notranslate"><span class="pre">test/integration_selenium</span></code>). Some examples of pull request commits developed this
+way include Galaxy’s initial <a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/11160/commits/b6d99320d99e93f812adc0df494447525978ebfa">workflow invocation detail tests</a>
+and initial <a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/11152/files">history import and export tests</a>.
+These commits demonstrate the basics of how to turn operations on a <code class="docutils literal notranslate"><span class="pre">gx_selenium_context</span></code>
+into a Galaxy test case, how to add UI selectors to <code class="docutils literal notranslate"><span class="pre">navigation.yml</span></code>, how to add
+functionality to <code class="docutils literal notranslate"><span class="pre">navigates_galaxy.py</span></code> to be shared across test cases.
+The <a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/11152/files">history import and export tests</a>
+additionally are examples of both regular Selenium test cases as well as their
+integration-style variant that configures Galaxy before the test runs.</p>
+<p>Much more information on structuring Selenium test cases generally, the difference
+between tests that should be place in <code class="docutils literal notranslate"><span class="pre">lib/galaxy_test/selenium</span></code> versus ones
+that should be placed in <code class="docutils literal notranslate"><span class="pre">test/integration_selenium</span></code>, and information on running
+Selenium test cases can all be found in <a class="reference internal" href="../dev/writing_tests.html"><span class="doc">Writing Tests for Galaxy</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Test Case Attributes</p>
+<p>If you’d like to simplify your test by logging into Galaxy as a pre-condition,
+add <code class="docutils literal notranslate"><span class="pre">ensure_registered</span> <span class="pre">=</span> <span class="pre">True</span></code> on the test case class. Your test case can
+use an admin key to populate fixtures without any extra annotation but to ensure
+a user logged in with <code class="docutils literal notranslate"><span class="pre">ensure_registered</span></code> is an admin user simply annotate
+your test case with <code class="docutils literal notranslate"><span class="pre">requires_admin</span> <span class="pre">=</span> <span class="pre">True</span></code>.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="galaxy_test.selenium.html" class="btn btn-neutral float-left" title="galaxy_test.selenium package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tool_shed.html" class="btn btn-neutral float-right" title="tool_shed package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Galaxy Committers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

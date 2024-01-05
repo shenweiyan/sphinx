@@ -1,0 +1,52 @@
+.. code-block:: yaml
+
+    galaxy:
+      logging:
+        disable_existing_loggers: false
+        filters:
+          stack:
+            (): galaxy.web_stack.application_stack_log_filter
+        formatters:
+          stack:
+            (): galaxy.web_stack.application_stack_log_formatter
+        handlers:
+          console:
+            class: logging.StreamHandler
+            filters:
+            - stack
+            formatter: stack
+            level: DEBUG
+            stream: ext://sys.stderr
+        loggers:
+          amqp:
+            level: INFO
+            qualname: amqp
+          botocore:
+            level: INFO
+            qualname: botocore
+          gunicorn.access:
+            handlers:
+            - console
+            level: INFO
+            propagate: false
+            qualname: gunicorn.access
+          paste.httpserver.ThreadPool:
+            level: WARN
+            qualname: paste.httpserver.ThreadPool
+          routes.middleware:
+            level: WARN
+            qualname: routes.middleware
+          sqlalchemy_json.track:
+            level: WARN
+            qualname: sqlalchemy_json.track
+          urllib3.connectionpool:
+            level: WARN
+            qualname: urllib3.connectionpool
+          watchdog.observers.inotify_buffer:
+            level: INFO
+            qualname: watchdog.observers.inotify_buffer
+        root:
+          handlers:
+          - console
+          level: DEBUG
+        version: 1

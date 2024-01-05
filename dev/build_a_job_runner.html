@@ -1,0 +1,534 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Build a job runner &mdash; Galaxy Project 23.1.5.dev0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+
+  
+    <link rel="canonical" href="https://docs.galaxyproject.org/en/master/dev/build_a_job_runner.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=da3e81e8"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Finding and improving slow Galaxy code" href="finding_and_improving_slow_code.html" />
+    <link rel="prev" title="API Design Guidelines" href="api_guidelines.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Galaxy Project
+          </a>
+              <div class="version">
+                23.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../releases/index.html">Releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.1_announce_user.html">June 2023 Galaxy Release (v 23.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.0_announce_user.html">2023 Galaxy Release (v 23.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.05_announce_user.html">May 2022 Galaxy Release (v 22.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.01_announce_user.html">January 2022 Galaxy Release (v 22.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.09_announce_user.html">September 2021 Galaxy Release (v 21.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.05_announce_user.html">May 2021 Galaxy Release (v 21.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.01_announce_user.html">January 2021 Galaxy Release (v 21.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.09_announce_user.html">September 2020 Galaxy Release (v 20.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.05_announce_user.html">May 2020 Galaxy Release (v 20.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.01_announce_user.html">January 2020 Galaxy Release (v 20.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.09_announce_user.html">September 2019 Galaxy Release (v 19.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.05_announce_user.html">May 2019 Galaxy Release (v 19.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.01_announce_user.html">January 2019 Galaxy Release (v 19.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.09_announce.html">September 2018 Galaxy Release (v 18.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.05_announce.html">May 2018 Galaxy Release (v 18.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.01_announce.html">January 2018 Galaxy Release (v 18.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.09_announce.html">September 2017 Galaxy Release (v 17.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.05_announce.html">May 2017 Galaxy Release (v 17.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.01_announce.html">January 2017 Galaxy Release (v 17.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.10_announce.html">October 2016 Galaxy Release (v 16.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.07_announce.html">July 2016 Galaxy Release (v 16.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.04_announce.html">April 2016 Galaxy Release (v 16.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.01_announce.html">January 2016 Galaxy Release (v 16.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.10_announce.html">October 2015 Galaxy Release (v 15.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.07_announce.html">July 2015 Galaxy Release (v 15.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.05_announce.html">May 2015 Galaxy Release (v 15.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.03_announce.html">March 2015 Galaxy Release (v 15.03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.01_announce.html">January 2015 Galaxy Release (v 15.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.10_announce.html">October 2014 Galaxy Release (v 14.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.08_announce.html">August 2014 Galaxy Release (v 14.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.06_announce.html">June 2014 Galaxy Release (v 14.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.04_announce.html">April 2014 Galaxy Release (v 14.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.02_announce.html">February 2014 Galaxy Release (v 14.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.11_announce.html">November 2013 Galaxy Release (v 13.11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.08_announce.html">August 2013 Galaxy Release (v 13.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.06_announce.html">June 2013 Galaxy Release (v 13.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.04_announce.html">April 2013 Galaxy Release (v 13.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.02_announce.html">February 2013 Galaxy Release (v 13.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.01_announce.html">January 2013 Galaxy Release (v 13.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/older_releases.html">Galaxy Releases older than v 13.01</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Admin Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../admin/index.html">Administration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../admin/python.html">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/framework_dependencies.html">Framework Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/config.html">Galaxy Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/config_logging.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/production.html">Production Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/security.html">Security considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/nginx.html">Proxying Galaxy with NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/apache.html">Proxying Galaxy with Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/scaling.html">Scaling and Load Balancing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/cluster.html">Connecting to a Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/jobs.html">Galaxy Job Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/tool_panel.html">Tool Panel Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/mq.html">Message queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/dependency_resolvers.html">Dependency Resolvers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/container_resolvers.html">Containers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/container_resolvers.html#other-considerations">Other considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/conda_faq.html">Conda for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/db_migration.html">Galaxy Database Schema Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/reports.html">Galaxy Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/useful_scripts.html">Scripts &amp; Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/options.html">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/migrating_to_gunicorn.html">Migrating from uWSGI to Gunicorn and FastAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/special_topics/index.html">Special topics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/ftp.html">Galaxy FTP Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/interactivetools.html">Galaxy InteractiveTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/mulled_containers.html">Containers for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/grt.html">Galactic Radio Telescope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/gtn.html">Galaxy Training Materials Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/job_metrics.html">Job Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/webhooks.html">Galaxy Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/vault.html">Storing secrets in the vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/performance_tracking.html">Galaxy Performance Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/bug_reports.html">Bug Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/gdpr_compliance.html">GDPR Compliance</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="schema.html">Galaxy Tool XML File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_guidelines.html">API Design Guidelines</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Build a job runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="finding_and_improving_slow_code.html">Finding and improving slow Galaxy code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_managers.html">Data managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_types.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html">How Do I…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="writing_tests.html">Writing Tests for Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging_tests.html">Debugging Galaxy Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging_tests.html#debugging-tests-that-run-out-of-memory">Debugging tests that run out of memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging_galaxy.html">Debugging Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging_galaxy_slurm.html">Debugging Galaxy: Slurm Compute Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translating.html">Translating the Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create_point_release.html">Creating Galaxy Point Releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api_doc.html">Galaxy API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/quickstart.html"> Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/api.html"> Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ts_api_doc.html">Tool Shed API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/ts_api.html"> API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../lib/modules.html">Application Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy.html">galaxy package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_ext.html">galaxy_ext package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_test.html">galaxy_test package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/tool_shed.html">tool_shed package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../project/organization.html">Project Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#procedure-documents">Procedure Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#committers">Committers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#release-branches">Release branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#handling-pull-requests">Handling Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#issue-reporting">Issue Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../project/issues.html">Issue Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#issue-reporting">Issue Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#milestones">Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#labeling-structure">Labeling Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#the-roadmap">The Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#voting">Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#automation">Automation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Galaxy Project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Development Documentation</a></li>
+      <li class="breadcrumb-item active">Build a job runner</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/dev/build_a_job_runner.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="build-a-job-runner">
+<h1>Build a job runner<a class="headerlink" href="#build-a-job-runner" title="Link to this heading">¶</a></h1>
+<section id="a-walk-through-the-steps-of-building-a-runner-for-galaxy">
+<h2>A walk through the steps of building a runner for Galaxy<a class="headerlink" href="#a-walk-through-the-steps-of-building-a-runner-for-galaxy" title="Link to this heading">¶</a></h2>
+<p>In this tutorial, we will build a runner in a block by block fashion
+(like building blocks), so we will divide the runner into
+components based on their function.</p>
+<p>We assume you are familiar with setting up and managing a local installation of Galaxy.</p>
+<p>To learn more about the basics, please refer to:
+<a class="reference external" href="https://galaxyproject.org/admin/get-galaxy/">https://galaxyproject.org/admin/get-galaxy/</a></p>
+<p>To explore existing runners, please refer to:
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy/jobs/runners">https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy/jobs/runners</a></p>
+</section>
+<section id="what-is-required-to-make-a-runner-for-galaxy">
+<h2>What is required to make a runner for Galaxy?<a class="headerlink" href="#what-is-required-to-make-a-runner-for-galaxy" title="Link to this heading">¶</a></h2>
+<p><a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy/jobs/runners/__init__.py">galaxy.jobs.runners.__init__.py</a>
+has the base runner implementation. To create a new runner, that base
+runner must be inherited and only certain methods need to be
+overridden with your logic.</p>
+<p>These are the methods that need to be implemented:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(app,</span> <span class="pre">nworkers,</span> <span class="pre">**kwargs)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">queue_job(job_wrapper)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">check_watched_item(job_state)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stop_job(job)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">recover(job,</span> <span class="pre">job_wrapper)</span></code></p></li>
+</ol>
+<section id="the-big-picture">
+<h3>The big picture<a class="headerlink" href="#the-big-picture" title="Link to this heading">¶</a></h3>
+<p>The above methods are invoked at various stages of job execution in
+Galaxy. These methods will act as a mediator between the Galaxy
+framework and the external execution platform. To know when and how
+these methods are invoked, we will look at the implementation of
+the parent class and process lifecycle of a runner.</p>
+</section>
+</section>
+<section id="implementation-of-parent-class-galaxy-jobs-runners-init-py">
+<h2>Implementation of parent class (<code class="docutils literal notranslate"><span class="pre">galaxy.jobs.runners.__init__.py</span></code>)<a class="headerlink" href="#implementation-of-parent-class-galaxy-jobs-runners-init-py" title="Link to this heading">¶</a></h2>
+<ul>
+<li><p class="rubric" id="class-inheritance-structure">Class Inheritance structure</p>
+<img alt="../_images/inherit.png" src="../_images/inherit.png" />
+</li>
+<li><p class="rubric" id="the-big-picture-1">The big picture!</p>
+<img alt="../_images/runner_diag.png" src="../_images/runner_diag.png" />
+</li>
+</ul>
+<p>The whole process is divided into different stages for ease of
+understanding.</p>
+</section>
+<section id="runner-methods-in-detail">
+<h2>Runner Methods in detail<a class="headerlink" href="#runner-methods-in-detail" title="Link to this heading">¶</a></h2>
+</section>
+<section id="init-method-stage-1">
+<h2>1. <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method - STAGE 1<a class="headerlink" href="#init-method-stage-1" title="Link to this heading">¶</a></h2>
+<p>Input params:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">app</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nworkers</span></code> (Number of threads specified in <code class="docutils literal notranslate"><span class="pre">job_conf.xml</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> (Variable length argument)</p></li>
+</ol>
+<p>Output params: NA</p>
+<p>The input params are read from <code class="docutils literal notranslate"><span class="pre">job_conf.xml</span></code> and passed to the runner by
+the Galaxy framework. Configuration of where to run jobs and external
+runner configuration is performed in the <code class="docutils literal notranslate"><span class="pre">job_conf.xml</span></code> file. More
+information about <code class="docutils literal notranslate"><span class="pre">job_conf.xml</span></code> is available
+<a class="reference external" href="https://galaxyproject.org/admin/config/jobs/">here</a>.</p>
+<p>Have a look at the sample <code class="docutils literal notranslate"><span class="pre">job_conf.xml</span></code>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;job_conf&gt;</span>
+<span class="w">    </span><span class="nt">&lt;plugins&gt;</span>
+<span class="w">        </span><span class="nt">&lt;plugin</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;local&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;runner&quot;</span><span class="w"> </span><span class="na">load=</span><span class="s">&quot;galaxy.jobs.runners.local:LocalJobRunner&quot;</span><span class="w"> </span><span class="na">workers=</span><span class="s">&quot;4&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;plugin</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;godocker&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;runner&quot;</span><span class="w"> </span><span class="na">load=</span><span class="s">&quot;galaxy.jobs.runners.godocker:GodockerJobRunner&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;user&quot;</span><span class="nt">&gt;</span>gosc<span class="nt">&lt;/param&gt;</span>
+<span class="w">            </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;key&quot;</span><span class="nt">&gt;</span>HELLOWORLD<span class="nt">&lt;/param&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/plugin&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/plugins&gt;</span>
+<span class="w">    </span><span class="nt">&lt;handlers&gt;</span>
+<span class="w">        </span><span class="nt">&lt;handler</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;main&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/handlers&gt;</span>
+<span class="w">    </span><span class="nt">&lt;destinations</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;god&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;destination</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;local&quot;</span><span class="w"> </span><span class="na">runner=</span><span class="s">&quot;local&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;destination</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;god&quot;</span><span class="w"> </span><span class="na">runner=</span><span class="s">&quot;godocker&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;docker_cpu&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/param&gt;</span>
+<span class="w">            </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;docker_memory&quot;</span><span class="nt">&gt;</span>2<span class="nt">&lt;/param&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/destination&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/destinations&gt;</span>
+<span class="nt">&lt;/job_conf&gt;</span>
+</pre></div>
+</div>
+<p>The following steps are followed to manipulate the data in <code class="docutils literal notranslate"><span class="pre">job_conf.xml</span></code></p>
+<p>A: Define structure of data under plugin tag (plugin tag in
+<code class="docutils literal notranslate"><span class="pre">job_conf.xml</span></code>) as a dictionary.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">runner_param_specs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="nb">map</span><span class="o">=</span><span class="nb">str</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="nb">map</span><span class="o">=</span><span class="nb">str</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>B: Update the dictionary structure in kwargs.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;runner_param_specs&#39;</span><span class="p">:</span> <span class="n">runner_param_specs</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>C: Now call the parent constructor to assign the values.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">super</span><span class="p">(</span><span class="n">GodockerJobRunner</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">nworkers</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>D: The assigned values can be accessed in runner in the following way.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">runner_params</span><span class="p">[</span><span class="s2">&quot;user&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">runner_params</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>The output will be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gosc</span>
+<span class="n">HELLOWORLD</span>
+</pre></div>
+</div>
+<p>E: Invoke the external API with the values obtained by the above method
+for initialization.</p>
+<p>Finally the worker threads and monitor threads are invoked for galaxy to
+listen for incoming tool submissions.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">_init_monitor_thread</span><span class="p">()</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">_init_worker_threads</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="queue-job-method-stage-2">
+<h2>2. <code class="docutils literal notranslate"><span class="pre">queue_job</span></code> method - STAGE 2<a class="headerlink" href="#queue-job-method-stage-2" title="Link to this heading">¶</a></h2>
+<p>Input params: <code class="docutils literal notranslate"><span class="pre">job_wrapper</span></code> (Object of
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy/jobs/__init__.py#L743">galaxy.jobs.JobWrapper</a>)</p>
+<p>Output params: None</p>
+<p><code class="docutils literal notranslate"><span class="pre">galaxy.jobs.JobWrapper</span></code> is a Wrapper around ‘model.Job’ with convenience
+methods for running processes and state management.</p>
+<ul>
+<li><p>Functioning of <code class="docutils literal notranslate"><span class="pre">queue_job</span></code> method.</p>
+<p>A. <code class="docutils literal notranslate"><span class="pre">prepare_job()</span></code> method is invoked to do some sanity checks that all runners’ <code class="docutils literal notranslate"><span class="pre">queue_job()</span></code> methods are
+likely to want to do and also to build runner command line for that
+job. Initial state and configuration of the job are set and every
+data is associated with <strong>job_wrapper</strong>.</p>
+<blockquote>
+<div><p>B. Submit job to the external runner and return the jobid. Accessing
+jobs data (tool submitted in Galaxy webframework) is purely from
+<code class="docutils literal notranslate"><span class="pre">job_wrapper</span></code>. eg: <code class="docutils literal notranslate"><span class="pre">job_wrapper.get_state()</span></code> -&gt; gives state of a job
+(queued/running/failed/success/…)</p>
+</div></blockquote>
+</li>
+</ul>
+<p>Let us look at a means of accessing external runner’s configuration
+present under destination tag of <code class="docutils literal notranslate"><span class="pre">job_conf.xml</span></code> in the above example.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">job_destination</span> <span class="o">=</span> <span class="n">job_wrapper</span><span class="o">.</span><span class="n">job_destination</span>
+<span class="n">docker_cpu</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">job_destination</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;docker_cpu&quot;</span><span class="p">])</span>
+<span class="n">docker_ram</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">job_destination</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;docker_memory&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>A special case: User Story: A docker based external runner is present. A
+default docker image for execution is set in <code class="docutils literal notranslate"><span class="pre">job_conf.xml</span></code>. A tool can
+also specify the docker image for its execution. Specification in tool
+is given more priority than the default specification. To achieve such a
+functionality. We can use the following statement:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">docker_image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_container</span><span class="p">(</span><span class="n">job_wrapper</span><span class="p">)</span><span class="o">.</span><span class="n">container_id</span>
+</pre></div>
+</div>
+<p>Note: This pre-written method is only for getting the external
+image/container/os..</p>
+<p>C. After successful submission of a job to the external runner, submit the
+job to the Galaxy framework. To do that, make an object of type
+AsynchronousJobState and put it in the <code class="docutils literal notranslate"><span class="pre">monitor_queue</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ajs</span> <span class="o">=</span> <span class="n">AsynchronousJobState</span><span class="p">(</span><span class="n">files_dir</span><span class="o">=</span><span class="n">job_wrapper</span><span class="o">.</span><span class="n">working_directory</span><span class="p">,</span> <span class="n">job_wrapper</span><span class="o">=</span><span class="n">job_wrapper</span><span class="p">,</span> <span class="n">job_id</span><span class="o">=</span><span class="n">job_id</span><span class="p">,</span> <span class="n">job_destination</span><span class="o">=</span><span class="n">job_destination</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">monitor_queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">ajs</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="check-watched-item-method-stage-3">
+<h2>3. <code class="docutils literal notranslate"><span class="pre">check_watched_item</span></code> method - STAGE 3<a class="headerlink" href="#check-watched-item-method-stage-3" title="Link to this heading">¶</a></h2>
+<p>Input params: <code class="docutils literal notranslate"><span class="pre">job_state</span></code> (Object of
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy/jobs/runners/__init__.py#L400">galaxy.jobs.runners.AsynchronousJobState</a>)</p>
+<p>Output params: <code class="docutils literal notranslate"><span class="pre">AsynchronousJobState</span></code> object</p>
+<p>Without going into much detail, assume there is a queue to track the status of every job. eg:</p>
+<img alt="../_images/queue.png" class="align-center" src="../_images/queue.png" />
+<p>The galaxy framework updates the status of a job by iterating through the
+queue. During the iteration, it calls the <code class="docutils literal notranslate"><span class="pre">check_watched_item</span></code> method with the job.
+Your responsibility will be to get the status of execution of the job from the
+external runner and return the updated status of the job, and also to
+copy the output files for the completed jobs.</p>
+<p>Updated result after an iteration (after invocation of <code class="docutils literal notranslate"><span class="pre">check_watched_item</span></code> 6 times):</p>
+<img alt="../_images/queue_b.png" class="align-center" src="../_images/queue_b.png" />
+<p>Note: Iterating through the queue is already taken care of by the framework.</p>
+<p>To inform Galaxy about the status of the job:</p>
+<ul class="simple">
+<li><p>Get the job status from external runner using the <code class="docutils literal notranslate"><span class="pre">job_id</span></code>.</p></li>
+<li><p>Check if the job is queued/running/completed.. etc. A general structure is provided below.</p></li>
+<li><p>Call <code class="docutils literal notranslate"><span class="pre">self.mark_as_finished(job_state)</span></code>, if the job has been successfully executed.</p></li>
+<li><p>Call <code class="docutils literal notranslate"><span class="pre">self.mark_as_failed(job_state)</span></code>, if the job has failed during execution.</p></li>
+<li><p>To change state of a job, change <code class="docutils literal notranslate"><span class="pre">job_state.running</span></code> and <code class="docutils literal notranslate"><span class="pre">job_state.job_wrapper.change_state()</span></code></p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">check_watched_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_state</span><span class="p">):</span>
+    <span class="n">job_status</span> <span class="o">=</span> <span class="n">get_task_from_external_runner</span><span class="p">(</span><span class="n">job_state</span><span class="o">.</span><span class="n">job_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">job_status</span> <span class="o">==</span> <span class="s2">&quot;over_with_success&quot;</span><span class="p">:</span>
+        <span class="n">job_state</span><span class="o">.</span><span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">job_state</span><span class="o">.</span><span class="n">job_wrapper</span><span class="o">.</span><span class="n">change_state</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Job</span><span class="o">.</span><span class="n">states</span><span class="o">.</span><span class="n">OK</span><span class="p">)</span>
+        <span class="n">create_log_files</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mark_as_finished</span><span class="p">(</span><span class="n">job_state</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">elif</span> <span class="n">job_status</span> <span class="o">==</span> <span class="s2">&quot;running&quot;</span><span class="p">:</span>
+        <span class="n">job_state</span><span class="o">.</span><span class="n">running</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">job_state</span><span class="o">.</span><span class="n">job_wrapper</span><span class="o">.</span><span class="n">change_state</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Job</span><span class="o">.</span><span class="n">states</span><span class="o">.</span><span class="n">RUNNING</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">job_state</span>
+
+    <span class="k">elif</span> <span class="n">job_status</span> <span class="o">==</span> <span class="s2">&quot;pending&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">job_state</span>
+
+    <span class="k">elif</span> <span class="n">job_status</span> <span class="o">==</span> <span class="s2">&quot;over_with_error&quot;</span><span class="p">:</span>
+        <span class="n">job_state</span><span class="o">.</span><span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">job_state</span><span class="o">.</span><span class="n">job_wrapper</span><span class="o">.</span><span class="n">change_state</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Job</span><span class="o">.</span><span class="n">states</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+        <span class="n">create_log_files</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mark_as_failed</span><span class="p">(</span><span class="n">job_state</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+</pre></div>
+</div>
+<p>Note:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">get_task_from_external_runner</span></code> and <code class="docutils literal notranslate"><span class="pre">create_log_files</span></code> are user-defined methods.</p></li>
+<li><p>The method should return <code class="docutils literal notranslate"><span class="pre">job_state</span></code> if the job should remain in the job runner’s list of watched
+jobs (i.e. if it is running or pending). If it no longer needs to be watched (e.g. it has terminated
+either successfully or with an error) it should return None.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">create_log_files()</span></code> are nothing but copying the files (<code class="docutils literal notranslate"><span class="pre">error_file</span></code>,
+<code class="docutils literal notranslate"><span class="pre">output_file</span></code>, <code class="docutils literal notranslate"><span class="pre">exit_code_file</span></code>) from the external runner’s directory to
+the working directory of Galaxy.</p>
+<p>Source of the files are from the output directory of your external
+runner. Destination of the files will be:</p>
+<ul class="simple">
+<li><p>output file -&gt; <code class="docutils literal notranslate"><span class="pre">job_state.output_file</span></code>.</p></li>
+<li><p>error file -&gt; <code class="docutils literal notranslate"><span class="pre">job_state.error_file</span></code>.</p></li>
+<li><p>exit code file -&gt; <code class="docutils literal notranslate"><span class="pre">job_state.exit_code_file</span></code>.</p></li>
+</ul>
+</section>
+<section id="stop-job-method-stage-4">
+<h2>4. <code class="docutils literal notranslate"><span class="pre">stop_job</span></code> method - STAGE 4<a class="headerlink" href="#stop-job-method-stage-4" title="Link to this heading">¶</a></h2>
+<p>Input params: job (Object of
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy/model/__init__.py#L344">galaxy.model.Job</a>)</p>
+<p>Output params: None</p>
+<p>Functionality: Attempts to delete a dispatched Job executing in an external
+runner.</p>
+<p>When a user requests that the execution of a job in the Galaxy framework be stopped,
+a call is made to the external runner to stop the job execution.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">job_id</span></code> of the job to be deleted is accessed by</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">job</span><span class="o">.</span><span class="n">id</span>
+</pre></div>
+</div>
+</section>
+<section id="recover-method-stage-5">
+<h2>5. <code class="docutils literal notranslate"><span class="pre">recover</span></code> method - STAGE 5<a class="headerlink" href="#recover-method-stage-5" title="Link to this heading">¶</a></h2>
+<p>Input params:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">job</span></code> (Object of <a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy/model/__init__.py#L344">galaxy.model.Job</a>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">job_wrapper</span></code> (Object of <a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy/jobs/__init__.py#L743">galaxy.jobs.JobWrapper</a>).</p></li>
+</ul>
+<p>Output params: None</p>
+<p>Functionality: Recovers any jobs stuck in a queued/running state when
+Galaxy was started.</p>
+<p>This method is invoked by Galaxy at the time of startup. Jobs in Running
+&amp; Queued status in Galaxy are put in the <code class="docutils literal notranslate"><span class="pre">monitor_queue</span></code> by creating an
+<code class="docutils literal notranslate"><span class="pre">AsynchronousJobState</span></code> object.</p>
+<p>The following is a generic code snippet for the <code class="docutils literal notranslate"><span class="pre">recover</span></code> method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ajs</span> <span class="o">=</span> <span class="n">AsynchronousJobState</span><span class="p">(</span><span class="n">files_dir</span><span class="o">=</span><span class="n">job_wrapper</span><span class="o">.</span><span class="n">working_directory</span><span class="p">,</span> <span class="n">job_wrapper</span><span class="o">=</span><span class="n">job_wrapper</span><span class="p">)</span>
+<span class="n">ajs</span><span class="o">.</span><span class="n">job_id</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">job_wrapper</span><span class="o">.</span><span class="n">job_id</span><span class="p">)</span>
+<span class="n">ajs</span><span class="o">.</span><span class="n">job_destination</span> <span class="o">=</span> <span class="n">job_wrapper</span><span class="o">.</span><span class="n">job_destination</span>
+<span class="n">job_wrapper</span><span class="o">.</span><span class="n">command_line</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">command_line</span>
+<span class="n">ajs</span><span class="o">.</span><span class="n">job_wrapper</span> <span class="o">=</span> <span class="n">job_wrapper</span>
+<span class="k">if</span> <span class="n">job</span><span class="o">.</span><span class="n">state</span> <span class="o">==</span> <span class="n">model</span><span class="o">.</span><span class="n">Job</span><span class="o">.</span><span class="n">states</span><span class="o">.</span><span class="n">RUNNING</span><span class="p">:</span>
+    <span class="n">ajs</span><span class="o">.</span><span class="n">old_state</span> <span class="o">=</span> <span class="s1">&#39;R&#39;</span>
+    <span class="n">ajs</span><span class="o">.</span><span class="n">running</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">monitor_queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">ajs</span><span class="p">)</span>
+
+<span class="k">elif</span> <span class="n">job</span><span class="o">.</span><span class="n">state</span> <span class="o">==</span> <span class="n">model</span><span class="o">.</span><span class="n">Job</span><span class="o">.</span><span class="n">states</span><span class="o">.</span><span class="n">QUEUED</span><span class="p">:</span>
+    <span class="n">ajs</span><span class="o">.</span><span class="n">old_state</span> <span class="o">=</span> <span class="s1">&#39;Q&#39;</span>
+    <span class="n">ajs</span><span class="o">.</span><span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">monitor_queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">ajs</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="api_guidelines.html" class="btn btn-neutral float-left" title="API Design Guidelines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="finding_and_improving_slow_code.html" class="btn btn-neutral float-right" title="Finding and improving slow Galaxy code" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Galaxy Committers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

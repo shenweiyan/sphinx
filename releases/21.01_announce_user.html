@@ -1,0 +1,405 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>January 2021 Galaxy Release (v 21.01) &mdash; Galaxy Project 23.1.5.dev0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+
+  
+    <link rel="canonical" href="https://docs.galaxyproject.org/en/master/releases/21.01_announce_user.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=da3e81e8"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="September 2020 Galaxy Release (v 20.09)" href="20.09_announce_user.html" />
+    <link rel="prev" title="May 2021 Galaxy Release (v 21.05)" href="21.05_announce_user.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Galaxy Project
+          </a>
+              <div class="version">
+                23.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Releases</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="23.1_announce_user.html">June 2023 Galaxy Release (v 23.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="23.0_announce_user.html">2023 Galaxy Release (v 23.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22.05_announce_user.html">May 2022 Galaxy Release (v 22.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22.01_announce_user.html">January 2022 Galaxy Release (v 22.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="21.09_announce_user.html">September 2021 Galaxy Release (v 21.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="21.05_announce_user.html">May 2021 Galaxy Release (v 21.05)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">January 2021 Galaxy Release (v 21.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="20.09_announce_user.html">September 2020 Galaxy Release (v 20.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="20.05_announce_user.html">May 2020 Galaxy Release (v 20.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="20.01_announce_user.html">January 2020 Galaxy Release (v 20.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="19.09_announce_user.html">September 2019 Galaxy Release (v 19.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="19.05_announce_user.html">May 2019 Galaxy Release (v 19.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="19.01_announce_user.html">January 2019 Galaxy Release (v 19.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="18.09_announce.html">September 2018 Galaxy Release (v 18.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="18.05_announce.html">May 2018 Galaxy Release (v 18.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="18.01_announce.html">January 2018 Galaxy Release (v 18.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17.09_announce.html">September 2017 Galaxy Release (v 17.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17.05_announce.html">May 2017 Galaxy Release (v 17.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17.01_announce.html">January 2017 Galaxy Release (v 17.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="16.10_announce.html">October 2016 Galaxy Release (v 16.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="16.07_announce.html">July 2016 Galaxy Release (v 16.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="16.04_announce.html">April 2016 Galaxy Release (v 16.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="16.01_announce.html">January 2016 Galaxy Release (v 16.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="15.10_announce.html">October 2015 Galaxy Release (v 15.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="15.07_announce.html">July 2015 Galaxy Release (v 15.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="15.05_announce.html">May 2015 Galaxy Release (v 15.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="15.03_announce.html">March 2015 Galaxy Release (v 15.03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="15.01_announce.html">January 2015 Galaxy Release (v 15.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14.10_announce.html">October 2014 Galaxy Release (v 14.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14.08_announce.html">August 2014 Galaxy Release (v 14.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14.06_announce.html">June 2014 Galaxy Release (v 14.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14.04_announce.html">April 2014 Galaxy Release (v 14.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14.02_announce.html">February 2014 Galaxy Release (v 14.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13.11_announce.html">November 2013 Galaxy Release (v 13.11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13.08_announce.html">August 2013 Galaxy Release (v 13.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13.06_announce.html">June 2013 Galaxy Release (v 13.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13.04_announce.html">April 2013 Galaxy Release (v 13.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13.02_announce.html">February 2013 Galaxy Release (v 13.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13.01_announce.html">January 2013 Galaxy Release (v 13.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="older_releases.html">Galaxy Releases older than v 13.01</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Admin Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../admin/index.html">Administration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../admin/python.html">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/framework_dependencies.html">Framework Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/config.html">Galaxy Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/config_logging.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/production.html">Production Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/security.html">Security considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/nginx.html">Proxying Galaxy with NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/apache.html">Proxying Galaxy with Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/scaling.html">Scaling and Load Balancing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/cluster.html">Connecting to a Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/jobs.html">Galaxy Job Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/tool_panel.html">Tool Panel Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/mq.html">Message queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/dependency_resolvers.html">Dependency Resolvers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/container_resolvers.html">Containers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/container_resolvers.html#other-considerations">Other considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/conda_faq.html">Conda for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/db_migration.html">Galaxy Database Schema Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/reports.html">Galaxy Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/useful_scripts.html">Scripts &amp; Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/options.html">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/migrating_to_gunicorn.html">Migrating from uWSGI to Gunicorn and FastAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/special_topics/index.html">Special topics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/ftp.html">Galaxy FTP Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/interactivetools.html">Galaxy InteractiveTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/mulled_containers.html">Containers for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/grt.html">Galactic Radio Telescope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/gtn.html">Galaxy Training Materials Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/job_metrics.html">Job Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/webhooks.html">Galaxy Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/vault.html">Storing secrets in the vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/performance_tracking.html">Galaxy Performance Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/bug_reports.html">Bug Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/gdpr_compliance.html">GDPR Compliance</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/index.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dev/schema.html">Galaxy Tool XML File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/api_guidelines.html">API Design Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/build_a_job_runner.html">Build a job runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/finding_and_improving_slow_code.html">Finding and improving slow Galaxy code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_managers.html">Data managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_types.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/faq.html">How Do I…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/writing_tests.html">Writing Tests for Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html">Debugging Galaxy Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html#debugging-tests-that-run-out-of-memory">Debugging tests that run out of memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy.html">Debugging Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy_slurm.html">Debugging Galaxy: Slurm Compute Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/translating.html">Translating the Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/create_point_release.html">Creating Galaxy Point Releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api_doc.html">Galaxy API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/quickstart.html"> Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/api.html"> Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ts_api_doc.html">Tool Shed API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/ts_api.html"> API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../lib/modules.html">Application Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy.html">galaxy package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_ext.html">galaxy_ext package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_test.html">galaxy_test package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/tool_shed.html">tool_shed package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../project/organization.html">Project Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#procedure-documents">Procedure Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#committers">Committers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#release-branches">Release branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#handling-pull-requests">Handling Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#issue-reporting">Issue Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../project/issues.html">Issue Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#issue-reporting">Issue Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#milestones">Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#labeling-structure">Labeling Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#the-roadmap">The Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#voting">Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#automation">Automation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Galaxy Project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Releases</a></li>
+      <li class="breadcrumb-item active">January 2021 Galaxy Release (v 21.01)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/releases/21.01_announce_user.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="january-2021-galaxy-release-v-21-01">
+<h1>January 2021 Galaxy Release (v 21.01)<a class="headerlink" href="#january-2021-galaxy-release-v-21-01" title="Link to this heading">¶</a></h1>
+<a class="reference external image-reference" href="http://getgalaxy.org"><img alt="Get Galaxy" src="https://galaxyproject.org/images/galaxy-logos/galaxy_logo_25percent_transparent.png" /></a>
+<section id="highlights">
+<h2>Highlights<a class="headerlink" href="#highlights" title="Link to this heading">¶</a></h2>
+<p>Workflows are the absolute ✨star✨ of Galaxy v21.01, they have seen huge improvements.</p>
+<section id="workflows-best-practices-reports-invocations">
+<h3>Workflows: Best Practices, Reports, Invocations<a class="headerlink" href="#workflows-best-practices-reports-invocations" title="Link to this heading">¶</a></h3>
+<p>Workflows have seen huge improvements this release! The workflow report editor is easier than ever to use providing you with a list of common report components, interactive interfaces for embedding them in your reports, and a new workflow invocation tracker. You can now embed visualizations directly in your workflow reports making summarizing your analyses easier than ever.  And, once your reports are produced, you can export them directly to pages to share your reports with colleagues.</p>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/TmZzfaKf1V0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><p>If you’re building advanced workflows utilizing Galaxy’s powerful sub-workflows for reusable workflow components, then you’ll be pleased to know you can now automatically update those to the latest version</p>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/2gHvmy_tIVc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><p>Furthermore when you’re making workflows to share with others, a new “Best Practices” checker has been included which helps you discover easy things which make your workflows more shareable.</p>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/pfNqAkzvKj8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></section>
+<section id="remote-files">
+<h3>Remote Files<a class="headerlink" href="#remote-files" title="Link to this heading">¶</a></h3>
+<p>There was tough competition for top feature to highlight from 21.01 but the <strong>Remote Files</strong> interface is an absolutely fantastic new way to browse your data. Inside Galaxy there is a new, abstract way to reference files locally and on other servers. This let us provide a uniform interface to FTP servers, your Dropbox, public S3 buckets, and more! You’ll find this under <em>Choose Remote Files</em> in the upload interface.</p>
+<figure class="align-default">
+<img alt="Screenshot of the remote files browser in the upload dialog. It lists several popular datasets such as PDB the protein data bank, EBI's FTP server, Genome Ark, and 1000 Genomes among others." src="../_images/21.01-remote.png" />
+</figure>
+<p>The Galaxy Climate community is providing an excellent test case; much of their data is publicly available on public S3 buckets which were not easy to access, now they’re directly available from Galaxy. No more magic “import this url” steps in your documentation, now “just browse the repository for your data”.</p>
+<figure class="align-default">
+<img alt="Screenshot of the remote files browser in the upload dialog. Here climate datasets are highlighted such as Sentinel, Copernicus, and NOAA's public datasets. At the bottom is the user's FTP directory." src="../_images/21.01-remote-weather.png" />
+</figure>
+<p>But the addition of the Remote Files browser didn’t stop there! Several other interfaces received updates to use this new framework:</p>
+<section id="history-import-export">
+<h4>History Import &amp; Export<a class="headerlink" href="#history-import-export" title="Link to this heading">¶</a></h4>
+<p>Histories can now be exported directly to your FTP folders, Dropbox, or any other configured remote file storage.</p>
+<figure class="align-default">
+<img alt="Screenshot of &quot;Export history archive&quot; interface showing the new &quot;to a remote file&quot; option with the user's FTP directory selected and foo.tar.gz entered as an example filename" src="../_images/21.01-hist-exp.png" />
+</figure>
+<p>And history importing saw the same treatment, permitting importing from any of these public data locations making it easier than ever to share histories between Galaxy, and make your analyses more reproducible!</p>
+<figure class="align-default">
+<img alt="Screenshot of &quot;Import history from archive&quot; interface which now includes an option to &quot;Select a remote file&quot; which provides access to the remote file interface." src="../_images/21.01-hist-imp.png" />
+</figure>
+<p>See more screenshots and more features in <a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/11054">Pull Request 11054</a>.</p>
+</section>
+<section id="rule-builder">
+<h4>Rule Builder<a class="headerlink" href="#rule-builder" title="Link to this heading">¶</a></h4>
+<p>Likewise the Rule-Builder now has access to the remote files interface. Sample sheets with identifiers can easily be found in many FTP servers and other locations, and then loaded directly into the Rule Builder via this new interface. So easy!</p>
+</section>
+</section>
+<section id="beta-history-panel">
+<h3>Beta History Panel<a class="headerlink" href="#beta-history-panel" title="Link to this heading">¶</a></h3>
+<p>The History panel is getting a refresh and a huge performance boost in the latest code. Does this sound exciting to you? Try it out now with the history menu option “Use Beta History Panel”. This is not its final state but we’d love feedback from you, the users, on how you find it. It features both performance and usability improvements. E.g. now you can rename files without going into a separate menu, just double click the dataset title!</p>
+<figure class="align-default">
+<img alt="Beta history screenshot with a history titled &quot;The Beta History&quot;, a few datasets and collections, and a textbox shown where the dataset title is being edited directly." src="../_images/21.01-beta-hist.png" />
+</figure>
+</section>
+<section id="user-friendliness-improvements">
+<h3>User-friendliness Improvements<a class="headerlink" href="#user-friendliness-improvements" title="Link to this heading">¶</a></h3>
+<p>This is a new section covering smaller improvements that just make your life easier and your interactions with Galaxy faster.</p>
+<ul class="simple">
+<li><p>Interactive tools can be stopped, without their outputs disappearing, better for reproducibility! <a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/10497">Pull Request 10497</a></p></li>
+<li><p>When uploading files, the ‘name’ field will be auto-focused, allowing you to get straight to renaming the files, saving you time. <a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/10487">Pull Request 10487</a></p></li>
+<li><p>Workflow versions now expose their update time. Reverting to an old version? Oh, yes, that one from Tuesday! <a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/10492">Pull Request 10492</a></p></li>
+<li><p>Sharing components now include a “copy to clipboard” feature for URLs. One click and you’re ready to share with the world. <a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/10754">Pull Request 10754</a></p></li>
+<li><p>The GTN-in-Galaxy overlay now keeps track of the page you were looking at if the Galaxy page gets refreshed. Go forth and learn without distraction! <a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/11290">Pull Request 11290</a></p></li>
+</ul>
+</section>
+</section>
+<section id="new-visualizations">
+<h2>New Visualizations<a class="headerlink" href="#new-visualizations" title="Link to this heading">¶</a></h2>
+<p>NORA, a medical image viewer and annotation tool (thanks to <a class="reference external" href="https://github.com/bgruening">&#64;bgruening</a>, <a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/11035">Pull Request 11035</a>)</p>
+<figure class="align-default">
+<img alt="Screenshot of the NORA visualizer showing three views of a scan of a human brain." src="../_images/21.01-nora.png" />
+</figure>
+<p>OpenSeadragon viewer for deep zoom images (thanks to <a class="reference external" href="https://github.com/gregvonkuster">&#64;gregvonkuster</a>, <a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/10756">Pull Request 10756</a>)</p>
+</section>
+<section id="new-datatypes">
+<h2>New Datatypes<a class="headerlink" href="#new-datatypes" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>initial commit for gfa2
+(thanks to <a class="reference external" href="https://github.com/bernt-matthias">&#64;bernt-matthias</a>).
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/10270">Pull Request 10270</a></p></li>
+<li><p>add ome.tiff datatype
+(thanks to <a class="reference external" href="https://github.com/qiagu">&#64;qiagu</a>).
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/10349">Pull Request 10349</a></p></li>
+<li><p>Add support for the dzi (Deep Zoom Image) data format
+(thanks to <a class="reference external" href="https://github.com/gregvonkuster">&#64;gregvonkuster</a>).
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/10546">Pull Request 10546</a></p></li>
+<li><p>Add datatype converters for various MD filetypes
+(thanks to <a class="reference external" href="https://github.com/simonbray">&#64;simonbray</a>).
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/10757">Pull Request 10757</a></p></li>
+<li><p>Add nifti1 and nifti2 datatype
+(thanks to <a class="reference external" href="https://github.com/bgruening">&#64;bgruening</a>).
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/11020">Pull Request 11020</a></p></li>
+<li><p>add tck and trk datatype
+(thanks to <a class="reference external" href="https://github.com/bgruening">&#64;bgruening</a>).
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/11021">Pull Request 11021</a></p></li>
+<li><p>add gifti fileformat
+(thanks to <a class="reference external" href="https://github.com/bgruening">&#64;bgruening</a>).
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/11028">Pull Request 11028</a></p></li>
+<li><p>add basic Apache Parquet datatype
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/11047">Pull Request 11047</a></p></li>
+<li><p>Add minimal <cite>msf</cite> datatype
+(thanks to <a class="reference external" href="https://github.com/nsoranzo">&#64;nsoranzo</a>).
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/11084">Pull Request 11084</a></p></li>
+<li><p>Add ffindex and ffdata database file types
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/11218">Pull Request 11218</a></p></li>
+<li><p>Fix sniffers of interval datatypes for files starting with many comments
+(thanks to <a class="reference external" href="https://github.com/nsoranzo">&#64;nsoranzo</a>).
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/11416">Pull Request 11416</a></p></li>
+<li><p>Add cmap datatype
+(thanks to <a class="reference external" href="https://github.com/jaidevjoshi83">&#64;jaidevjoshi83</a>).
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/11471">Pull Request 11471</a></p></li>
+<li><p>Add compressed paf datatype
+(thanks to <a class="reference external" href="https://github.com/astrovsky01">&#64;astrovsky01</a>).
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/11567">Pull Request 11567</a></p></li>
+</ul>
+</section>
+<section id="builtin-tool-updates">
+<h2>Builtin Tool Updates<a class="headerlink" href="#builtin-tool-updates" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Allow the Apply Rules tool to attach tags to output datasets.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/10382">Pull Request 10382</a></p></li>
+<li><p>Allow build_list inputs to be optional
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/10871">Pull Request 10871</a></p></li>
+<li><p>Update askomics IT to 4.1.1
+(thanks to <a class="reference external" href="https://github.com/abretaud">&#64;abretaud</a>).
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/10878">Pull Request 10878</a></p></li>
+<li><p>Allow empty file uploads
+(thanks to <a class="reference external" href="https://github.com/bernt-matthias">&#64;bernt-matthias</a>).
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/11079">Pull Request 11079</a></p></li>
+<li><p>Make hash selection mandatory in hash tool.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/11427">Pull Request 11427</a></p></li>
+<li><p>Various pyiron interactive tool fixes.
+(thanks to <a class="reference external" href="https://github.com/bgruening">&#64;bgruening</a>).
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/11545">Pull Request 11545</a></p></li>
+<li><p>Update the cellxgene IT container.
+(thanks to <a class="reference external" href="https://github.com/bgruening">&#64;bgruening</a>).
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/11546">Pull Request 11546</a></p></li>
+<li><p>Allow using Openrefine without data inputs
+(thanks to <a class="reference external" href="https://github.com/bgruening">&#64;bgruening</a>).
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/11547">Pull Request 11547</a></p></li>
+<li><p>Fix $HOME for some gxit requiring a specific one
+(thanks to <a class="reference external" href="https://github.com/abretaud">&#64;abretaud</a>).
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/11577">Pull Request 11577</a></p></li>
+</ul>
+</section>
+<section id="release-notes">
+<h2>Release Notes<a class="headerlink" href="#release-notes" title="Link to this heading">¶</a></h2>
+<p>Please see the <a class="reference internal" href="21.01_announce.html"><span class="doc">full release notes</span></a> for more details.</p>
+<p>To stay up to date with Galaxy’s progress, watch our <a class="reference external" href="https://www.youtube.com/&#64;GalaxyProject">screencasts</a>,
+visit our community <a class="reference external" href="https://galaxyproject.org/">Hub</a>, and follow
+<a class="reference external" href="https://mstdn.science/&#64;galaxyproject">&#64;galaxyproject&#64;mstdn.science</a> on Mastodon or
+<a class="reference external" href="https://twitter.com/galaxyproject">&#64;galaxyproject</a> on Twitter.</p>
+<p>You can always chat with us on <a class="reference external" href="https://matrix.to/#/#galaxyproject_Lobby:gitter.im">Matrix</a>.</p>
+<p><em>Thanks for using Galaxy!</em></p>
+<p><a class="reference external" href="https://galaxyproject.org/galaxy-team/">The Galaxy Team</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="21.05_announce_user.html" class="btn btn-neutral float-left" title="May 2021 Galaxy Release (v 21.05)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="20.09_announce_user.html" class="btn btn-neutral float-right" title="September 2020 Galaxy Release (v 20.09)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Galaxy Committers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

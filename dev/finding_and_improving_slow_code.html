@@ -1,0 +1,439 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finding and improving slow Galaxy code &mdash; Galaxy Project 23.1.5.dev0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+
+  
+    <link rel="canonical" href="https://docs.galaxyproject.org/en/master/dev/finding_and_improving_slow_code.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=da3e81e8"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data managers" href="data_managers.html" />
+    <link rel="prev" title="Build a job runner" href="build_a_job_runner.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Galaxy Project
+          </a>
+              <div class="version">
+                23.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../releases/index.html">Releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.1_announce_user.html">June 2023 Galaxy Release (v 23.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.0_announce_user.html">2023 Galaxy Release (v 23.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.05_announce_user.html">May 2022 Galaxy Release (v 22.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.01_announce_user.html">January 2022 Galaxy Release (v 22.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.09_announce_user.html">September 2021 Galaxy Release (v 21.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.05_announce_user.html">May 2021 Galaxy Release (v 21.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.01_announce_user.html">January 2021 Galaxy Release (v 21.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.09_announce_user.html">September 2020 Galaxy Release (v 20.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.05_announce_user.html">May 2020 Galaxy Release (v 20.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.01_announce_user.html">January 2020 Galaxy Release (v 20.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.09_announce_user.html">September 2019 Galaxy Release (v 19.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.05_announce_user.html">May 2019 Galaxy Release (v 19.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.01_announce_user.html">January 2019 Galaxy Release (v 19.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.09_announce.html">September 2018 Galaxy Release (v 18.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.05_announce.html">May 2018 Galaxy Release (v 18.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.01_announce.html">January 2018 Galaxy Release (v 18.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.09_announce.html">September 2017 Galaxy Release (v 17.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.05_announce.html">May 2017 Galaxy Release (v 17.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.01_announce.html">January 2017 Galaxy Release (v 17.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.10_announce.html">October 2016 Galaxy Release (v 16.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.07_announce.html">July 2016 Galaxy Release (v 16.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.04_announce.html">April 2016 Galaxy Release (v 16.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.01_announce.html">January 2016 Galaxy Release (v 16.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.10_announce.html">October 2015 Galaxy Release (v 15.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.07_announce.html">July 2015 Galaxy Release (v 15.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.05_announce.html">May 2015 Galaxy Release (v 15.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.03_announce.html">March 2015 Galaxy Release (v 15.03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.01_announce.html">January 2015 Galaxy Release (v 15.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.10_announce.html">October 2014 Galaxy Release (v 14.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.08_announce.html">August 2014 Galaxy Release (v 14.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.06_announce.html">June 2014 Galaxy Release (v 14.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.04_announce.html">April 2014 Galaxy Release (v 14.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.02_announce.html">February 2014 Galaxy Release (v 14.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.11_announce.html">November 2013 Galaxy Release (v 13.11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.08_announce.html">August 2013 Galaxy Release (v 13.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.06_announce.html">June 2013 Galaxy Release (v 13.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.04_announce.html">April 2013 Galaxy Release (v 13.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.02_announce.html">February 2013 Galaxy Release (v 13.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.01_announce.html">January 2013 Galaxy Release (v 13.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/older_releases.html">Galaxy Releases older than v 13.01</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Admin Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../admin/index.html">Administration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../admin/python.html">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/framework_dependencies.html">Framework Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/config.html">Galaxy Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/config_logging.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/production.html">Production Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/security.html">Security considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/nginx.html">Proxying Galaxy with NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/apache.html">Proxying Galaxy with Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/scaling.html">Scaling and Load Balancing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/cluster.html">Connecting to a Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/jobs.html">Galaxy Job Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/tool_panel.html">Tool Panel Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/mq.html">Message queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/dependency_resolvers.html">Dependency Resolvers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/container_resolvers.html">Containers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/container_resolvers.html#other-considerations">Other considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/conda_faq.html">Conda for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/db_migration.html">Galaxy Database Schema Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/reports.html">Galaxy Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/useful_scripts.html">Scripts &amp; Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/options.html">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/migrating_to_gunicorn.html">Migrating from uWSGI to Gunicorn and FastAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/special_topics/index.html">Special topics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/ftp.html">Galaxy FTP Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/interactivetools.html">Galaxy InteractiveTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/mulled_containers.html">Containers for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/grt.html">Galactic Radio Telescope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/gtn.html">Galaxy Training Materials Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/job_metrics.html">Job Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/webhooks.html">Galaxy Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/vault.html">Storing secrets in the vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/performance_tracking.html">Galaxy Performance Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/bug_reports.html">Bug Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/gdpr_compliance.html">GDPR Compliance</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="schema.html">Galaxy Tool XML File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_guidelines.html">API Design Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build_a_job_runner.html">Build a job runner</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Finding and improving slow Galaxy code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_managers.html">Data managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_types.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html">How Do I…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="writing_tests.html">Writing Tests for Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging_tests.html">Debugging Galaxy Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging_tests.html#debugging-tests-that-run-out-of-memory">Debugging tests that run out of memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging_galaxy.html">Debugging Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging_galaxy_slurm.html">Debugging Galaxy: Slurm Compute Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translating.html">Translating the Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create_point_release.html">Creating Galaxy Point Releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api_doc.html">Galaxy API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/quickstart.html"> Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/api.html"> Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ts_api_doc.html">Tool Shed API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/ts_api.html"> API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../lib/modules.html">Application Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy.html">galaxy package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_ext.html">galaxy_ext package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_test.html">galaxy_test package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/tool_shed.html">tool_shed package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../project/organization.html">Project Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#procedure-documents">Procedure Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#committers">Committers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#release-branches">Release branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#handling-pull-requests">Handling Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#issue-reporting">Issue Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../project/issues.html">Issue Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#issue-reporting">Issue Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#milestones">Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#labeling-structure">Labeling Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#the-roadmap">The Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#voting">Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#automation">Automation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Galaxy Project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Development Documentation</a></li>
+      <li class="breadcrumb-item active">Finding and improving slow Galaxy code</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/dev/finding_and_improving_slow_code.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="finding-and-improving-slow-galaxy-code">
+<h1>Finding and improving slow Galaxy code<a class="headerlink" href="#finding-and-improving-slow-galaxy-code" title="Link to this heading">¶</a></h1>
+<p>This is a short howto on how one can find slow code in Galaxy (but this
+should apply to other projects as well).</p>
+<p>I will walk through how I have improved the tool form building speed in
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/4541">https://github.com/galaxyproject/galaxy/pull/4541</a>.</p>
+<section id="identifying-the-problem">
+<h2>Identifying the problem<a class="headerlink" href="#identifying-the-problem" title="Link to this heading">¶</a></h2>
+<p>&#64;bgruening mentioned that loading the tool form was slow on his server,
+and I checked ours and saw that for certain tools it took around 2-3
+seconds to load the tool form, while for others this was significantly
+faster.</p>
+</section>
+<section id="identifying-a-rough-entrypoint-for-profiling-the-code">
+<h2>Identifying a rough entrypoint for profiling the code<a class="headerlink" href="#identifying-a-rough-entrypoint-for-profiling-the-code" title="Link to this heading">¶</a></h2>
+<p>If you know the part in the UI that is slow, you can identify the
+corresponding API endpoint (assuming the backend is slow) by looking at
+the network tab in Chrome’s JavaScript console while doing the operation
+that is slow. When I clicked on HISAT2 in the tool menu, I saw that
+there was a GET request to
+<a class="reference external" href="http://127.0.0.1:8080/api/tools/toolshed.g2.bx.psu.edu/repos/iuc/hisat2/hisat2/2.0.5.2/build?tool_version=2.0.5.2">http://127.0.0.1:8080/api/tools/toolshed.g2.bx.psu.edu/repos/iuc/hisat2/hisat2/2.0.5.2/build?tool_version=2.0.5.2</a>
+that took 3 seconds to complete. Looking into <a class="reference external" href="https://docs.galaxyproject.org/en/master/api/api.html#galaxy.webapps.galaxy.api.tools.ToolsController.build">Galaxy’s API
+documentation</a>
+we can match this URL to the actual code in
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/release_17.05/lib/galaxy/webapps/galaxy/api/tools.py#L89">lib/galaxy/webapps/galaxy/api/tools.py</a>.</p>
+</section>
+<section id="profiling">
+<h2>Profiling<a class="headerlink" href="#profiling" title="Link to this heading">¶</a></h2>
+<p>I like the profilehooks library, which provides a decorator for
+profiling specific functions like our <code class="docutils literal notranslate"><span class="pre">build</span></code> function. To use it,
+install profilehooks into Galaxy’s Python environment ( sourcing
+Galaxy’s virtualenv and running <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">profilehooks</span></code> should be
+enough) and import the profile function at the top of the file that
+contains the function you would like to profile
+(<code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">profilehooks</span> <span class="pre">import</span> <span class="pre">profile</span></code>), and then add an additional
+<code class="docutils literal notranslate"><span class="pre">&#64;profile</span></code> decorator just above the <code class="docutils literal notranslate"><span class="pre">build</span></code> function. You can now
+start Galaxy, hit the API endpoint a few times and shut down galaxy
+again. You should see profilehooks output in your logs. This is the
+output I saw</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>           <span class="mi">6585515</span> <span class="n">function</span> <span class="n">calls</span> <span class="p">(</span><span class="mi">6497718</span> <span class="n">primitive</span> <span class="n">calls</span><span class="p">)</span> <span class="ow">in</span> <span class="mf">9.560</span> <span class="n">seconds</span>
+
+   <span class="n">Ordered</span> <span class="n">by</span><span class="p">:</span> <span class="n">cumulative</span> <span class="n">time</span><span class="p">,</span> <span class="n">internal</span> <span class="n">time</span><span class="p">,</span> <span class="n">call</span> <span class="n">count</span>
+   <span class="n">List</span> <span class="n">reduced</span> <span class="kn">from</span> <span class="mi">997</span> <span class="n">to</span> <span class="mi">40</span> <span class="n">due</span> <span class="n">to</span> <span class="n">restriction</span> <span class="o">&lt;</span><span class="mi">40</span><span class="o">&gt;</span>
+
+   <span class="n">ncalls</span>  <span class="n">tottime</span>  <span class="n">percall</span>  <span class="n">cumtime</span>  <span class="n">percall</span> <span class="n">filename</span><span class="p">:</span><span class="n">lineno</span><span class="p">(</span><span class="n">function</span><span class="p">)</span>
+        <span class="mi">4</span>    <span class="mf">0.000</span>    <span class="mf">0.000</span>    <span class="mf">9.572</span>    <span class="mf">2.393</span> <span class="n">decorators</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">227</span><span class="p">(</span><span class="n">decorator</span><span class="p">)</span>
+        <span class="mi">4</span>    <span class="mf">0.000</span>    <span class="mf">0.000</span>    <span class="mf">9.567</span>    <span class="mf">2.392</span> <span class="n">tools</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">89</span><span class="p">(</span><span class="n">build</span><span class="p">)</span>
+        <span class="mi">4</span>    <span class="mf">0.000</span>    <span class="mf">0.000</span>    <span class="mf">9.566</span>    <span class="mf">2.391</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">1786</span><span class="p">(</span><span class="n">to_json</span><span class="p">)</span>
+    <span class="mi">116</span><span class="o">/</span><span class="mi">4</span>    <span class="mf">0.005</span>    <span class="mf">0.000</span>    <span class="mf">8.973</span>    <span class="mf">2.243</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">1877</span><span class="p">(</span><span class="n">populate_model</span><span class="p">)</span>
+    <span class="mi">27312</span>    <span class="mf">0.063</span>    <span class="mf">0.000</span>    <span class="mf">8.110</span>    <span class="mf">0.000</span> <span class="n">dataset_matcher</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">74</span><span class="p">(</span><span class="n">hda_match</span><span class="p">)</span>
+     <span class="mi">2184</span>    <span class="mf">0.005</span>    <span class="mf">0.000</span>    <span class="mf">6.426</span>    <span class="mf">0.003</span> <span class="n">dataset_matcher</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">163</span><span class="p">(</span><span class="n">hdca_match</span><span class="p">)</span>
+   <span class="mi">100</span><span class="o">/</span><span class="mi">56</span>    <span class="mf">0.001</span>    <span class="mf">0.000</span>    <span class="mf">6.389</span>    <span class="mf">0.114</span> <span class="n">grouping</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">625</span><span class="p">(</span><span class="n">to_dict</span><span class="p">)</span>
+  <span class="mi">300</span><span class="o">/</span><span class="mi">168</span>    <span class="mf">0.001</span>    <span class="mf">0.000</span>    <span class="mf">6.388</span>    <span class="mf">0.038</span> <span class="n">grouping</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">628</span><span class="p">(</span><span class="n">nested_to_dict</span><span class="p">)</span>
+<span class="mi">3720</span><span class="o">/</span><span class="mi">2184</span>    <span class="mf">0.014</span>    <span class="mf">0.000</span>    <span class="mf">6.387</span>    <span class="mf">0.003</span> <span class="n">dataset_matcher</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">170</span><span class="p">(</span><span class="n">dataset_collection_match</span><span class="p">)</span>
+  <span class="mi">768</span><span class="o">/</span><span class="mi">324</span>    <span class="mf">0.002</span>    <span class="mf">0.000</span>    <span class="mf">6.386</span>    <span class="mf">0.020</span> <span class="p">{</span><span class="nb">map</span><span class="p">}</span>
+  <span class="mi">200</span><span class="o">/</span><span class="mi">112</span>    <span class="mf">0.001</span>    <span class="mf">0.000</span>    <span class="mf">6.384</span>    <span class="mf">0.057</span> <span class="n">grouping</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">643</span><span class="p">(</span><span class="n">to_dict</span><span class="p">)</span>
+  <span class="mi">468</span><span class="o">/</span><span class="mi">308</span>    <span class="mf">0.001</span>    <span class="mf">0.000</span>    <span class="mf">6.381</span>    <span class="mf">0.021</span> <span class="n">grouping</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">646</span><span class="p">(</span><span class="n">input_to_dict</span><span class="p">)</span>
+<span class="mi">5376</span><span class="o">/</span><span class="mi">2760</span>    <span class="mf">0.018</span>    <span class="mf">0.000</span>    <span class="mf">5.949</span>    <span class="mf">0.002</span> <span class="n">dataset_matcher</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">146</span><span class="p">(</span><span class="n">__valid_element</span><span class="p">)</span>
+      <span class="mi">104</span>    <span class="mf">0.016</span>    <span class="mf">0.000</span>    <span class="mf">5.451</span>    <span class="mf">0.052</span> <span class="n">basic</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">1775</span><span class="p">(</span><span class="n">to_dict</span><span class="p">)</span>
+    <span class="mi">27312</span>    <span class="mf">0.076</span>    <span class="mf">0.000</span>    <span class="mf">4.980</span>    <span class="mf">0.000</span> <span class="n">dataset_matcher</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">34</span><span class="p">(</span><span class="n">hda_accessible</span><span class="p">)</span>
+      <span class="mi">328</span>    <span class="mf">0.011</span>    <span class="mf">0.000</span>    <span class="mf">4.965</span>    <span class="mf">0.015</span> <span class="n">query</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">2700</span><span class="p">(</span><span class="n">one</span><span class="p">)</span>
+     <span class="mi">3840</span>    <span class="mf">0.009</span>    <span class="mf">0.000</span>    <span class="mf">4.825</span>    <span class="mf">0.001</span> <span class="n">dataset_matcher</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">106</span><span class="p">(</span><span class="n">__can_access_dataset</span><span class="p">)</span>
+      <span class="mi">176</span>    <span class="mf">0.001</span>    <span class="mf">0.000</span>    <span class="mf">4.797</span>    <span class="mf">0.027</span> <span class="n">context</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">119</span><span class="p">(</span><span class="n">get_current_user_roles</span><span class="p">)</span>
+      <span class="mi">176</span>    <span class="mf">0.004</span>    <span class="mf">0.000</span>    <span class="mf">4.796</span>    <span class="mf">0.027</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">237</span><span class="p">(</span><span class="n">all_roles</span><span class="p">)</span>
+      <span class="mi">508</span>    <span class="mf">0.003</span>    <span class="mf">0.000</span>    <span class="mf">4.379</span>    <span class="mf">0.009</span> <span class="n">query</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">2756</span><span class="p">(</span><span class="fm">__iter__</span><span class="p">)</span>
+    <span class="mi">10680</span>    <span class="mf">0.042</span>    <span class="mf">0.000</span>    <span class="mf">3.028</span>    <span class="mf">0.000</span> <span class="n">dataset_matcher</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">47</span><span class="p">(</span><span class="n">valid_hda_match</span><span class="p">)</span>
+       <span class="mi">32</span>    <span class="mf">0.002</span>    <span class="mf">0.000</span>    <span class="mf">2.975</span>    <span class="mf">0.093</span> <span class="n">basic</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">1943</span><span class="p">(</span><span class="n">to_dict</span><span class="p">)</span>
+      <span class="mi">208</span>    <span class="mf">0.015</span>    <span class="mf">.000</span>    <span class="mf">2.924</span>    <span class="mf">0.014</span> <span class="n">basic</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">1480</span><span class="p">(</span><span class="n">get_initial_value</span><span class="p">)</span>
+     <span class="mi">8144</span>    <span class="mf">0.021</span>    <span class="mf">0.000</span>    <span class="mf">2.645</span>    <span class="mf">0.000</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">2204</span><span class="p">(</span><span class="n">find_conversion_destination</span><span class="p">)</span>
+     <span class="mi">8144</span>    <span class="mf">0.010</span>    <span class="mf">0.000</span>    <span class="mf">2.584</span>    <span class="mf">0.000</span> <span class="n">data</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">611</span><span class="p">(</span><span class="n">find_conversion_destination</span><span class="p">)</span>
+     <span class="mi">8144</span>    <span class="mf">0.035</span>    <span class="mf">0.000</span>    <span class="mf">2.573</span>    <span class="mf">0.000</span> <span class="n">registry</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">818</span><span class="p">(</span><span class="n">find_conversion_destination_for_dataset_by_extensions</span><span class="p">)</span>
+      <span class="mi">508</span>    <span class="mf">0.009</span>    <span class="mf">0.000</span>    <span class="mf">2.534</span>    <span class="mf">0.005</span> <span class="n">query</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">3204</span><span class="p">(</span><span class="n">_compile_context</span><span class="p">)</span>
+     <span class="mi">8144</span>    <span class="mf">0.451</span>    <span class="mf">0.000</span>    <span class="mf">2.360</span>    <span class="mf">0.000</span> <span class="n">registry</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">798</span><span class="p">(</span><span class="n">get_converters_by_datatype</span><span class="p">)</span>
+      <span class="mi">508</span>    <span class="mf">0.003</span>    <span class="mf">0.000</span>    <span class="mf">2.083</span>    <span class="mf">0.004</span> <span class="n">query</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">3568</span><span class="p">(</span><span class="n">setup_context</span><span class="p">)</span>
+ <span class="mi">1580</span><span class="o">/</span><span class="mi">508</span>    <span class="mf">0.054</span>    <span class="mf">0.000</span>    <span class="mf">2.080</span>    <span class="mf">0.004</span> <span class="n">loading</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">224</span><span class="p">(</span><span class="n">_setup_entity_query</span><span class="p">)</span>
+<span class="mi">20660</span><span class="o">/</span><span class="mi">9712</span>    <span class="mf">0.062</span>    <span class="mf">0.000</span>    <span class="mf">2.056</span>    <span class="mf">0.000</span> <span class="n">interfaces</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">498</span><span class="p">(</span><span class="n">setup</span><span class="p">)</span>
+ <span class="mi">1072</span><span class="o">/</span><span class="mi">360</span>    <span class="mf">0.011</span>    <span class="mf">0.000</span>    <span class="mf">1.997</span>    <span class="mf">0.006</span> <span class="n">strategies</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">1114</span><span class="p">(</span><span class="n">setup_query</span><span class="p">)</span>
+      <span class="mi">816</span>    <span class="mf">0.004</span>    <span class="mf">0.000</span>    <span class="mf">1.928</span>    <span class="mf">0.002</span> <span class="n">basic</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">208</span><span class="p">(</span><span class="n">to_dict</span><span class="p">)</span>
+      <span class="mi">508</span>    <span class="mf">0.004</span>    <span class="mf">0.000</span>    <span class="mf">1.842</span>    <span class="mf">0.004</span> <span class="n">query</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">2770</span><span class="p">(</span><span class="n">_execute_and_instances</span><span class="p">)</span>
+      <span class="mi">508</span>    <span class="mf">0.002</span>    <span class="mf">0.000</span>    <span class="mf">1.786</span>    <span class="mf">0.004</span> <span class="n">base</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">846</span><span class="p">(</span><span class="n">execute</span><span class="p">)</span>
+      <span class="mi">508</span>    <span class="mf">0.001</span>    <span class="mf">0.000</span>    <span class="mf">1.783</span>    <span class="mf">0.004</span> <span class="n">elements</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">322</span><span class="p">(</span><span class="n">_execute_on_connection</span><span class="p">)</span>
+      <span class="mi">508</span>    <span class="mf">0.005</span>    <span class="mf">0.000</span>    <span class="mf">1.782</span>    <span class="mf">0.004</span> <span class="n">base</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">975</span><span class="p">(</span><span class="n">_execute_clauseelement</span><span class="p">)</span>
+      <span class="mi">128</span>    <span class="mf">0.002</span>    <span class="mf">0.000</span>    <span class="mf">1.781</span>    <span class="mf">0.014</span> <span class="n">basic</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">1878</span><span class="p">(</span><span class="n">match_multirun_collections</span><span class="p">)</span>
+  <span class="mi">13308</span>    <span class="mf">0.064</span>    <span class="mf">0.000</span>    <span class="mf">1.716</span>    <span class="mf">0.000</span> <span class="n">visitors</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">199</span><span class="p">(</span><span class="n">traverse</span><span class="p">)</span>
+  <span class="mi">13308</span>    <span class="mf">0.088</span>    <span class="mf">0.000</span>    <span class="mf">1.651</span>    <span class="mf">0.000</span> <span class="n">visitors</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">304</span><span class="p">(</span><span class="n">replacement_traverse</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>I loaded the tool form 4 times, as you can see on the second line of the
+output (<code class="docutils literal notranslate"><span class="pre">ncalls=4</span></code>). The table is sorted by the cumulative time that the
+functions ran while <code class="docutils literal notranslate"><span class="pre">build</span></code> was being evaluated.</p>
+</section>
+<section id="optimizing-the-slow-function-calls">
+<h2>Optimizing the slow function calls<a class="headerlink" href="#optimizing-the-slow-function-calls" title="Link to this heading">¶</a></h2>
+<p>The most valuable targets for optimization therefore should be
+relatively high in the table. I have seen two functions that I would not
+think of as expensive and that should not be that high in the table:</p>
+<p><code class="docutils literal notranslate"><span class="pre">get_current_user_roles</span></code>, which took 4.8 seconds out of 9.5 seconds
+total and is being called 176 times and <code class="docutils literal notranslate"><span class="pre">get_converters_by_datatype</span></code>
+which took 2.4 seconds out the 9.5 seconds total.</p>
+<p><code class="docutils literal notranslate"><span class="pre">get_current_user_roles</span></code> is called in the context of
+<code class="docutils literal notranslate"><span class="pre">hda_accessible</span></code> and <code class="docutils literal notranslate"><span class="pre">hda_accessible</span></code> (these are also in our table)
+in
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/release_17.05/lib/galaxy/tools/parameters/dataset_matcher.py#L109">https://github.com/galaxyproject/galaxy/blob/release_17.05/lib/galaxy/tools/parameters/dataset_matcher.py#L109</a>
+We can see that the <code class="docutils literal notranslate"><span class="pre">current_user_roles</span></code> attribute of
+<code class="docutils literal notranslate"><span class="pre">DatasetMatcher</span></code> instances are already being cached, however during
+the course of filling in parameters in the tool building process a new
+<code class="docutils literal notranslate"><span class="pre">DatasetMatcher</span></code> instance is being created for each
+<code class="docutils literal notranslate"><span class="pre">DataToolParameter</span></code> in
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/release_17.05/lib/galaxy/tools/parameters/basic.py#L1456">https://github.com/galaxyproject/galaxy/blob/release_17.05/lib/galaxy/tools/parameters/basic.py#L1456</a>.
+This means that the cached roles will be lost for the next
+<code class="docutils literal notranslate"><span class="pre">DataToolParameter</span></code> that we need to fill in. It would be great if we
+didn’t need to redo this expensive operation for each data input.</p>
+<p>When building the tool interface we deal with a <code class="docutils literal notranslate"><span class="pre">WorkRequestContext</span></code>
+instance, which inherits from <code class="docutils literal notranslate"><span class="pre">ProvidesUserContext</span></code> in
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy/managers/context.py#L119">https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy/managers/context.py#L119</a>.
+<code class="docutils literal notranslate"><span class="pre">ProvidesUserContext</span></code> defines a <code class="docutils literal notranslate"><span class="pre">get_current_user_roles</span></code> method that
+gets the current users’ roles from the database. We can implement a
+cached variant of this in <code class="docutils literal notranslate"><span class="pre">WorkRequestContext</span></code>, which will be used
+when building the tool form. You can find this change in
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/4541/commits/d1a2007275f128fea051ead55fb47d2c2686abf5">https://github.com/galaxyproject/galaxy/pull/4541/commits/d1a2007275f128fea051ead55fb47d2c2686abf5</a></p>
+<p>The slowness in <code class="docutils literal notranslate"><span class="pre">get_converters_by_datatype</span></code> can be circumvented by
+caching the result of this function, which I have done in
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/4541/commits/471707bd7dfa048a412aad9cdcc1d0b4aea70bc7">https://github.com/galaxyproject/galaxy/pull/4541/commits/471707bd7dfa048a412aad9cdcc1d0b4aea70bc7</a>
+(and fixed a mistake in
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/4541/commits/2d8b242e697a08775879fc873578b5f244d4d5cb">https://github.com/galaxyproject/galaxy/pull/4541/commits/2d8b242e697a08775879fc873578b5f244d4d5cb</a>)</p>
+</section>
+<section id="checking-how-the-changes-affect-the-speed">
+<h2>Checking how the changes affect the speed<a class="headerlink" href="#checking-how-the-changes-affect-the-speed" title="Link to this heading">¶</a></h2>
+<p>After these changes we can verify that the code is faster now and that
+the key functions we targeted are not as high anymore in the profiling
+table output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>         <span class="mi">1384317</span> <span class="n">function</span> <span class="n">calls</span> <span class="p">(</span><span class="mi">1363256</span> <span class="n">primitive</span> <span class="n">calls</span><span class="p">)</span> <span class="ow">in</span> <span class="mf">2.215</span> <span class="n">seconds</span>
+
+   <span class="n">Ordered</span> <span class="n">by</span><span class="p">:</span> <span class="n">cumulative</span> <span class="n">time</span><span class="p">,</span> <span class="n">internal</span> <span class="n">time</span><span class="p">,</span> <span class="n">call</span> <span class="n">count</span>
+   <span class="n">List</span> <span class="n">reduced</span> <span class="kn">from</span> <span class="mi">991</span> <span class="n">to</span> <span class="mi">40</span> <span class="n">due</span> <span class="n">to</span> <span class="n">restriction</span> <span class="o">&lt;</span><span class="mi">40</span><span class="o">&gt;</span>
+
+   <span class="n">ncalls</span>  <span class="n">tottime</span>  <span class="n">percall</span>  <span class="n">cumtime</span>  <span class="n">percall</span> <span class="n">filename</span><span class="p">:</span><span class="n">lineno</span><span class="p">(</span><span class="n">function</span><span class="p">)</span>
+        <span class="mi">4</span>    <span class="mf">0.000</span>    <span class="mf">0.000</span>    <span class="mf">2.220</span>    <span class="mf">0.555</span> <span class="n">decorators</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">227</span><span class="p">(</span><span class="n">decorator</span><span class="p">)</span>
+        <span class="mi">4</span>    <span class="mf">0.000</span>    <span class="mf">0.000</span>    <span class="mf">2.215</span>    <span class="mf">0.554</span> <span class="n">tools</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">89</span><span class="p">(</span><span class="n">build</span><span class="p">)</span>
+        <span class="mi">4</span>    <span class="mf">0.000</span>    <span class="mf">0.000</span>    <span class="mf">2.214</span>    <span class="mf">0.554</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">1786</span><span class="p">(</span><span class="n">to_json</span><span class="p">)</span>
+    <span class="mi">116</span><span class="o">/</span><span class="mi">4</span>    <span class="mf">0.004</span>    <span class="mf">0.000</span>    <span class="mf">1.861</span>    <span class="mf">0.465</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">1877</span><span class="p">(</span><span class="n">populate_model</span><span class="p">)</span>
+   <span class="mi">100</span><span class="o">/</span><span class="mi">56</span>    <span class="mf">0.000</span>    <span class="mf">0.000</span>    <span class="mf">1.578</span>    <span class="mf">0.028</span> <span class="n">grouping</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">625</span><span class="p">(</span><span class="n">to_dict</span><span class="p">)</span>
+  <span class="mi">300</span><span class="o">/</span><span class="mi">168</span>    <span class="mf">0.000</span>    <span class="mf">0.000</span>    <span class="mf">1.577</span>    <span class="mf">0.009</span> <span class="n">grouping</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">628</span><span class="p">(</span><span class="n">nested_to_dict</span><span class="p">)</span>
+  <span class="mi">768</span><span class="o">/</span><span class="mi">324</span>    <span class="mf">0.001</span>    <span class="mf">0.000</span>    <span class="mf">1.576</span>    <span class="mf">0.005</span> <span class="p">{</span><span class="nb">map</span><span class="p">}</span>
+  <span class="mi">200</span><span class="o">/</span><span class="mi">112</span>    <span class="mf">0.001</span>    <span class="mf">0.000</span>    <span class="mf">1.574</span>    <span class="mf">0.014</span> <span class="n">grouping</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">643</span><span class="p">(</span><span class="n">to_dict</span><span class="p">)</span>
+  <span class="mi">468</span><span class="o">/</span><span class="mi">308</span>    <span class="mf">0.001</span>    <span class="mf">0.000</span>    <span class="mf">1.572</span>    <span class="mf">0.005</span> <span class="n">grouping</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">646</span><span class="p">(</span><span class="n">input_to_dict</span><span class="p">)</span>
+     <span class="mi">2184</span>    <span class="mf">0.003</span>    <span class="mf">0.000</span>    <span class="mf">1.055</span>    <span class="mf">0.000</span> <span class="n">dataset_matcher</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">163</span><span class="p">(</span><span class="n">hdca_match</span><span class="p">)</span>
+   <span class="mi">153436</span>    <span class="mf">0.147</span>    <span class="mf">0.000</span>    <span class="mf">1.048</span>    <span class="mf">0.000</span> <span class="n">attributes</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">229</span><span class="p">(</span><span class="fm">__get__</span><span class="p">)</span>
+<span class="mi">3720</span><span class="o">/</span><span class="mi">2184</span>    <span class="mf">0.010</span>    <span class="mf">0.000</span>    <span class="mf">1.019</span>    <span class="mf">0.000</span> <span class="n">dataset_matcher</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">170</span><span class="p">(</span><span class="n">dataset_collection_match</span><span class="p">)</span>
+       <span class="mi">32</span>    <span class="mf">0.002</span>    <span class="mf">0.000</span>    <span class="mf">0.956</span>    <span class="mf">0.030</span> <span class="n">basic</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">1943</span><span class="p">(</span><span class="n">to_dict</span><span class="p">)</span>
+ <span class="mi">1924</span><span class="o">/</span><span class="mi">964</span>    <span class="mf">0.005</span>    <span class="mf">0.000</span>    <span class="mf">0.901</span>    <span class="mf">0.001</span> <span class="n">attributes</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">561</span><span class="p">(</span><span class="n">get</span><span class="p">)</span>
+      <span class="mi">960</span>    <span class="mf">0.006</span>    <span class="mf">0.000</span>    <span class="mf">0.875</span>    <span class="mf">0.001</span> <span class="n">strategies</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">492</span><span class="p">(</span><span class="n">_load_for_state</span><span class="p">)</span>
+    <span class="mi">27312</span>    <span class="mf">0.051</span>    <span class="mf">0.000</span>    <span class="mf">0.860</span>    <span class="mf">0.000</span> <span class="n">dataset_matcher</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">74</span><span class="p">(</span><span class="n">hda_match</span><span class="p">)</span>
+      <span class="mi">324</span>    <span class="mf">0.001</span>    <span class="mf">0.000</span>    <span class="mf">0.857</span>    <span class="mf">0.003</span> <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">1</span><span class="p">(</span><span class="o">&lt;</span><span class="k">lambda</span><span class="o">&gt;</span><span class="p">)</span>
+      <span class="mi">324</span>    <span class="mf">0.009</span>    <span class="mf">0.000</span>    <span class="mf">0.855</span>    <span class="mf">0.003</span> <span class="n">strategies</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">565</span><span class="p">(</span><span class="n">_emit_lazyload</span><span class="p">)</span>
+      <span class="mi">104</span>    <span class="mf">0.012</span>    <span class="mf">0.000</span>    <span class="mf">0.807</span>    <span class="mf">0.008</span> <span class="n">basic</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">1775</span><span class="p">(</span><span class="n">to_dict</span><span class="p">)</span>
+      <span class="mi">336</span>    <span class="mf">0.002</span>    <span class="mf">0.000</span>    <span class="mf">0.803</span>    <span class="mf">0.002</span> <span class="n">query</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">2756</span><span class="p">(</span><span class="fm">__iter__</span><span class="p">)</span>
+      <span class="mi">208</span>    <span class="mf">0.011</span>    <span class="mf">0.000</span>    <span class="mf">0.752</span>    <span class="mf">0.004</span> <span class="n">basic</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">1480</span><span class="p">(</span><span class="n">get_initial_value</span><span class="p">)</span>
+      <span class="mi">180</span>    <span class="mf">0.004</span>    <span class="mf">0.000</span>    <span class="mf">0.666</span>    <span class="mf">0.004</span> <span class="n">query</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">2607</span><span class="p">(</span><span class="nb">all</span><span class="p">)</span>
+<span class="mi">5376</span><span class="o">/</span><span class="mi">2760</span>    <span class="mf">0.014</span>    <span class="mf">0.000</span>    <span class="mf">0.612</span>    <span class="mf">0.000</span> <span class="n">dataset_matcher</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">146</span><span class="p">(</span><span class="n">__valid_element</span><span class="p">)</span>
+      <span class="mi">336</span>    <span class="mf">0.002</span>    <span class="mf">0.000</span>    <span class="mf">0.606</span>    <span class="mf">0.002</span> <span class="n">query</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">2770</span><span class="p">(</span><span class="n">_execute_and_instances</span><span class="p">)</span>
+      <span class="mi">336</span>    <span class="mf">0.001</span>    <span class="mf">0.000</span>    <span class="mf">0.570</span>    <span class="mf">0.002</span> <span class="n">base</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">846</span><span class="p">(</span><span class="n">execute</span><span class="p">)</span>
+      <span class="mi">336</span>    <span class="mf">0.001</span>    <span class="mf">0.000</span>    <span class="mf">0.569</span>    <span class="mf">0.002</span> <span class="n">elements</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">322</span><span class="p">(</span><span class="n">_execute_on_connection</span><span class="p">)</span>
+      <span class="mi">336</span>    <span class="mf">0.003</span>    <span class="mf">0.000</span>    <span class="mf">0.568</span>    <span class="mf">0.002</span> <span class="n">base</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">975</span><span class="p">(</span><span class="n">_execute_clauseelement</span><span class="p">)</span>
+    <span class="mi">10680</span>    <span class="mf">0.031</span>    <span class="mf">0.000</span>    <span class="mf">0.526</span>    <span class="mf">0.000</span> <span class="n">dataset_matcher</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">47</span><span class="p">(</span><span class="n">valid_hda_match</span><span class="p">)</span>
+      <span class="mi">128</span>    <span class="mf">0.001</span>    <span class="mf">0.000</span>    <span class="mf">0.525</span>    <span class="mf">0.004</span> <span class="n">basic</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">1878</span><span class="p">(</span><span class="n">match_multirun_collections</span><span class="p">)</span>
+      <span class="mi">156</span>    <span class="mf">0.003</span>    <span class="mf">0.000</span>    <span class="mf">0.446</span>    <span class="mf">0.003</span> <span class="n">query</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">2700</span><span class="p">(</span><span class="n">one</span><span class="p">)</span>
+      <span class="mi">816</span>    <span class="mf">0.004</span>    <span class="mf">0.000</span>    <span class="mf">0.426</span>    <span class="mf">0.001</span> <span class="n">basic</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">208</span><span class="p">(</span><span class="n">to_dict</span><span class="p">)</span>
+      <span class="mi">336</span>    <span class="mf">0.006</span>    <span class="mf">0.000</span>    <span class="mf">0.348</span>    <span class="mf">0.001</span> <span class="n">base</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">1061</span><span class="p">(</span><span class="n">_execute_context</span><span class="p">)</span>
+      <span class="mi">152</span>    <span class="mf">0.003</span>    <span class="mf">0.000</span>    <span class="mf">0.342</span>    <span class="mf">0.002</span> <span class="n">loading</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">161</span><span class="p">(</span><span class="n">load_on_ident</span><span class="p">)</span>
+     <span class="mi">44</span><span class="o">/</span><span class="mi">4</span>    <span class="mf">0.001</span>    <span class="mf">0.000</span>    <span class="mf">0.324</span>    <span class="mf">0.081</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">219</span><span class="p">(</span><span class="n">populate_state</span><span class="p">)</span>
+    <span class="mi">16360</span>    <span class="mf">0.052</span>    <span class="mf">0.000</span>    <span class="mf">0.307</span>    <span class="mf">0.000</span> <span class="n">data</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">713</span><span class="p">(</span><span class="n">matches_any</span><span class="p">)</span>
+     <span class="mi">1300</span>    <span class="mf">0.007</span>    <span class="mf">0.000</span>    <span class="mf">0.302</span>    <span class="mf">0.000</span> <span class="n">loading</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">30</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="mi">60</span><span class="o">/</span><span class="mi">40</span>    <span class="mf">0.001</span>    <span class="mf">0.000</span>    <span class="mf">0.294</span>    <span class="mf">0.007</span> <span class="n">grouping</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">608</span><span class="p">(</span><span class="n">get_initial_value</span><span class="p">)</span>
+<span class="mi">6168</span><span class="o">/</span><span class="mi">3720</span>    <span class="mf">0.012</span>    <span class="mf">0.000</span>    <span class="mf">0.270</span>    <span class="mf">0.000</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">3222</span><span class="p">(</span><span class="n">populated</span><span class="p">)</span>
+     <span class="mi">336</span>    <span class="mf">0.001</span>    <span class="mf">0.000</span>    <span class="mf">0.268</span>    <span class="mf">0.001</span> <span class="n">default</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">449</span><span class="p">(</span><span class="n">do_execute</span><span class="p">)</span>
+     <span class="mi">336</span>    <span class="mf">0.262</span>    <span class="mf">0.001</span>    <span class="mf">0.267</span>    <span class="mf">0.001</span> <span class="p">{</span><span class="n">method</span> <span class="s1">&#39;execute&#39;</span> <span class="n">of</span> <span class="s1">&#39;psycopg2.extensions.cursor&#39;</span> <span class="n">objects</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>As before I hit the <cite>build</cite> endpoint 4 times.
+Both functions have disappeared from the table of the 40 longest running
+function calls, and the total time required has decreased from 9.5 seconds to 2.2 seconds.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="build_a_job_runner.html" class="btn btn-neutral float-left" title="Build a job runner" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="data_managers.html" class="btn btn-neutral float-right" title="Data managers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Galaxy Committers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

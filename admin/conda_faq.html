@@ -1,0 +1,617 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conda for Tool Dependencies &mdash; Galaxy Project 23.1.5.dev0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+
+  
+    <link rel="canonical" href="https://docs.galaxyproject.org/en/master/admin/conda_faq.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=da3e81e8"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Galaxy Database Schema Migrations" href="db_migration.html" />
+    <link rel="prev" title="Containers in Galaxy" href="container_resolvers.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Galaxy Project
+          </a>
+              <div class="version">
+                23.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../releases/index.html">Releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.1_announce_user.html">June 2023 Galaxy Release (v 23.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.0_announce_user.html">2023 Galaxy Release (v 23.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.05_announce_user.html">May 2022 Galaxy Release (v 22.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.01_announce_user.html">January 2022 Galaxy Release (v 22.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.09_announce_user.html">September 2021 Galaxy Release (v 21.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.05_announce_user.html">May 2021 Galaxy Release (v 21.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.01_announce_user.html">January 2021 Galaxy Release (v 21.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.09_announce_user.html">September 2020 Galaxy Release (v 20.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.05_announce_user.html">May 2020 Galaxy Release (v 20.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.01_announce_user.html">January 2020 Galaxy Release (v 20.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.09_announce_user.html">September 2019 Galaxy Release (v 19.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.05_announce_user.html">May 2019 Galaxy Release (v 19.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.01_announce_user.html">January 2019 Galaxy Release (v 19.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.09_announce.html">September 2018 Galaxy Release (v 18.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.05_announce.html">May 2018 Galaxy Release (v 18.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.01_announce.html">January 2018 Galaxy Release (v 18.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.09_announce.html">September 2017 Galaxy Release (v 17.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.05_announce.html">May 2017 Galaxy Release (v 17.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.01_announce.html">January 2017 Galaxy Release (v 17.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.10_announce.html">October 2016 Galaxy Release (v 16.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.07_announce.html">July 2016 Galaxy Release (v 16.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.04_announce.html">April 2016 Galaxy Release (v 16.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.01_announce.html">January 2016 Galaxy Release (v 16.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.10_announce.html">October 2015 Galaxy Release (v 15.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.07_announce.html">July 2015 Galaxy Release (v 15.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.05_announce.html">May 2015 Galaxy Release (v 15.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.03_announce.html">March 2015 Galaxy Release (v 15.03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.01_announce.html">January 2015 Galaxy Release (v 15.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.10_announce.html">October 2014 Galaxy Release (v 14.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.08_announce.html">August 2014 Galaxy Release (v 14.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.06_announce.html">June 2014 Galaxy Release (v 14.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.04_announce.html">April 2014 Galaxy Release (v 14.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.02_announce.html">February 2014 Galaxy Release (v 14.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.11_announce.html">November 2013 Galaxy Release (v 13.11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.08_announce.html">August 2013 Galaxy Release (v 13.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.06_announce.html">June 2013 Galaxy Release (v 13.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.04_announce.html">April 2013 Galaxy Release (v 13.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.02_announce.html">February 2013 Galaxy Release (v 13.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.01_announce.html">January 2013 Galaxy Release (v 13.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/older_releases.html">Galaxy Releases older than v 13.01</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Admin Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Administration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="python.html">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="framework_dependencies.html">Framework Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">Galaxy Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logging.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="production.html">Production Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nginx.html">Proxying Galaxy with NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apache.html">Proxying Galaxy with Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scaling.html">Scaling and Load Balancing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cluster.html">Connecting to a Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jobs.html">Galaxy Job Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tool_panel.html">Tool Panel Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mq.html">Message queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependency_resolvers.html">Dependency Resolvers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="container_resolvers.html">Containers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="container_resolvers.html#other-considerations">Other considerations</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Conda for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="db_migration.html">Galaxy Database Schema Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reports.html">Galaxy Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="useful_scripts.html">Scripts &amp; Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrating_to_gunicorn.html">Migrating from uWSGI to Gunicorn and FastAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="special_topics/index.html">Special topics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/ftp.html">Galaxy FTP Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/interactivetools.html">Galaxy InteractiveTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/mulled_containers.html">Containers for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/grt.html">Galactic Radio Telescope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/gtn.html">Galaxy Training Materials Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/job_metrics.html">Job Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/webhooks.html">Galaxy Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/vault.html">Storing secrets in the vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/performance_tracking.html">Galaxy Performance Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/bug_reports.html">Bug Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/gdpr_compliance.html">GDPR Compliance</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/index.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dev/schema.html">Galaxy Tool XML File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/api_guidelines.html">API Design Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/build_a_job_runner.html">Build a job runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/finding_and_improving_slow_code.html">Finding and improving slow Galaxy code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_managers.html">Data managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_types.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/faq.html">How Do I…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/writing_tests.html">Writing Tests for Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html">Debugging Galaxy Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html#debugging-tests-that-run-out-of-memory">Debugging tests that run out of memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy.html">Debugging Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy_slurm.html">Debugging Galaxy: Slurm Compute Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/translating.html">Translating the Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/create_point_release.html">Creating Galaxy Point Releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api_doc.html">Galaxy API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/quickstart.html"> Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/api.html"> Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ts_api_doc.html">Tool Shed API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/ts_api.html"> API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../lib/modules.html">Application Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy.html">galaxy package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_ext.html">galaxy_ext package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_test.html">galaxy_test package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/tool_shed.html">tool_shed package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../project/organization.html">Project Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#procedure-documents">Procedure Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#committers">Committers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#release-branches">Release branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#handling-pull-requests">Handling Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#issue-reporting">Issue Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../project/issues.html">Issue Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#issue-reporting">Issue Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#milestones">Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#labeling-structure">Labeling Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#the-roadmap">The Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#voting">Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#automation">Automation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Galaxy Project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Galaxy Deployment &amp; Administration</a></li>
+      <li class="breadcrumb-item active">Conda for Tool Dependencies</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/admin/conda_faq.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="conda-for-tool-dependencies">
+<span id="conda-faq"></span><h1>Conda for Tool Dependencies<a class="headerlink" href="#conda-for-tool-dependencies" title="Link to this heading">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This document describes configuring Galaxy using YAML based configuraiton
+options. For Galaxy instances before version 18.01, <a class="reference external" href="https://docs.galaxyproject.org/en/release_17.09/admin/conda_faq.html">this variant</a> of this
+document will be more directly relatable.</p>
+</div>
+<p>Galaxy tools (also called wrappers) have traditionally used Tool Shed package
+recipes to install their dependencies. These were too tightly tied to Galaxy
+and to the Tool Shed and so have been replaced with Conda as the package
+management solution of choice for newer best practice tools. The
+Galaxy community has taken steps to improve the tool dependency system
+in order to enable new features and expand its reach. Not only do Conda packages
+make tool dependencies more reliable and stable, they are also easier to test
+and faster to develop than the traditional Tool Shed package recipes. This
+document aims to describe these and answer frequently asked questions.</p>
+<p>Conda is a package manager like <code class="docutils literal notranslate"><span class="pre">apt-get</span></code>, <code class="docutils literal notranslate"><span class="pre">yum</span></code>, <code class="docutils literal notranslate"><span class="pre">pip</span></code>, <code class="docutils literal notranslate"><span class="pre">brew</span></code> or
+<code class="docutils literal notranslate"><span class="pre">guix</span></code>. We don’t want to argue about the relative merits of various package
+managers here, in fact Galaxy supports multiple package managers and we welcome
+community contributions (such as implementing a Guix package manager or
+enhancing the existing brew support to bring it on par with Conda).</p>
+<p>As a community, we have decided that Conda is the one that best fulfills
+the community’s current needs. The following are some of the crucial Conda
+features that led to this decision:</p>
+<ul class="simple">
+<li><p>Installation of packages does not require <em>root</em> privileges
+(installation at any location the Galaxy user has write access to)</p></li>
+<li><p>Multiple versions of software can be installed on the system</p></li>
+<li><p>HPC-ready</p></li>
+<li><p>Faster and more robust package installations through pre-compiled
+packages (no build environment complications)</p></li>
+<li><p>Independent of programming language (R, Perl, Python, Julia, Java,
+pre-compiled binaries, and more)</p></li>
+<li><p>Easy to write recipes (1 YAML description file + 1 Bash install
+script)</p></li>
+<li><p>An active, large and growing community (with more and more software
+authors managing their own recipes)</p></li>
+<li><p>Extensive documentation: <a class="reference external" href="https://conda.io/docs/">Conda documentation</a> and <a class="reference external" href="https://conda.io/docs/user-guide/getting-started.html">Conda quick-start</a></p></li>
+</ul>
+<p>Below we answer some common questions (collected by Lance Parsons):</p>
+<section id="how-do-i-enable-conda-dependency-resolution-for-galaxy-tools">
+<h2>1. How do I enable Conda dependency resolution for Galaxy tools?<a class="headerlink" href="#how-do-i-enable-conda-dependency-resolution-for-galaxy-tools" title="Link to this heading">¶</a></h2>
+<p>The short answer is that as of 17.01, Galaxy should install Conda the first
+time it starts up and be configured to use it by default.</p>
+<p>The long answer is that Galaxy’s tool dependency resolution is managed via
+<code class="docutils literal notranslate"><span class="pre">dependency_resolvers</span></code> option in the Galaxy configuration file (<code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code>). This
+option is discussed in detail in the <a class="reference internal" href="dependency_resolvers.html"><span class="doc">Dependency Resolvers</span></a>
+documentation. Most Galaxy administrators will be using Galaxy’s default dependency
+resolvers configuration. With release 16.04, Galaxy has enabled Conda dependency
+resolution by default when Conda was already installed on the system. As of 17.01, Galaxy
+will also install Conda as needed when starting up. Having Conda enabled in
+<code class="docutils literal notranslate"><span class="pre">dependency_resolvers</span></code> means that Galaxy can look for tool dependencies using the Conda
+system when it attempts to run a job.</p>
+<p>Note that the order of resolvers in the configuration option matters and that when
+upgrading older Galaxy servers with existing Tool Shed tools installed, the
+<code class="docutils literal notranslate"><span class="pre">tool_shed_packages</span></code> entry should remain first. This means that tools that have
+specified Tool Shed packages as their dependencies will work without a change.</p>
+<p>The most common configuration settings related to Conda are listed in Table 1.
+See <a class="reference internal" href="options.html"><span class="doc">Configuration Options</span></a> for the complete list. Note that these options
+(without the <code class="docutils literal notranslate"><span class="pre">conda_</span></code> prefix) can also be set on a per-resolver basis under the
+<code class="docutils literal notranslate"><span class="pre">dependency_resolvers</span></code> option.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Setting</p></td>
+<td><p>Default setting</p></td>
+<td><p>Meaning</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">conda_auto_init</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, Galaxy will
+try to install Conda
+(the package manager)
+automatically if it
+cannot find a local copy
+already on the system</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">conda_auto_install</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, Galaxy will
+look for and install
+Conda packages for
+missing tool dependencies
+before running a job</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">conda_prefix</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;tool_dependency_dir&gt;/_conda</span></code></p></td>
+<td><p>The location on the
+filesystem where Conda
+packages and environments
+are installed</p></td>
+</tr>
+</tbody>
+</table>
+<p><em>Table 1: Commonly used configuration options for Conda in Galaxy.</em></p>
+</section>
+<section id="how-do-conda-dependencies-work-where-do-things-get-installed">
+<h2>2. How do Conda dependencies work? Where do things get installed?<a class="headerlink" href="#how-do-conda-dependencies-work-where-do-things-get-installed" title="Link to this heading">¶</a></h2>
+<p>In contrast to the Tool Shed dependency system, which was used exclusively by Galaxy,
+Conda is a pre-existing, independent project. With Conda, it is possible for an
+admin to install and manage packages without touching Galaxy at all. Galaxy can
+handle these dependencies for you, but admins are not required to use Galaxy for
+dependency management.</p>
+<p>There are a few config options in the <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code> file (see Table 1 or
+<a class="reference internal" href="options.html"><span class="doc">Configuration Options</span></a> for more information), but by default Galaxy will install
+Conda (the package manager) and the required packages in the
+<code class="docutils literal notranslate"><span class="pre">&lt;tool_dependency_dir&gt;/_conda/</span></code> directory. In this directory, Galaxy will
+create an <code class="docutils literal notranslate"><span class="pre">envs</span></code> folder with all of the environments managed by Galaxy. Each
+environment contains a <code class="docutils literal notranslate"><span class="pre">lib</span></code>, <code class="docutils literal notranslate"><span class="pre">bin</span></code>, <code class="docutils literal notranslate"><span class="pre">share</span></code>, and <code class="docutils literal notranslate"><span class="pre">include</span></code>
+subdirectories, depending on the tool, which are sufficient to get a Galaxy tool
+running. Galaxy simply sources this folder via Conda and makes everything
+available before the tool is executed on your system.</p>
+<p>To summarize, there are four ways to manage Conda dependencies for use
+with Galaxy. For all of these options, Conda dependency management must
+be configured in the <code class="docutils literal notranslate"><span class="pre">dependency_resolvers</span></code> option in the <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code> file.</p>
+<ol class="arabic">
+<li><p>Galaxy Admin Interface - Galaxy will install Conda tool dependencies when
+tools are installed from the Tool Shed if the option <strong>Install resolvable
+dependencies</strong> under <strong>Show advanced settings</strong> on the tool install dialog is
+checked. Admins may also view and manage Conda dependencies via the <strong>Manage
+Dependencies</strong> section of the  Admin interface.</p></li>
+<li><p>Manual Install - Conda dependencies may be installed by
+administrators from the command line. Conda (and thus the Conda
+environments) should be installed in the location specified by the
+<code class="docutils literal notranslate"><span class="pre">conda_prefix</span></code> path (defined in <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code> and by default
+<code class="docutils literal notranslate"><span class="pre">&lt;tool_dependency_dir&gt;/_conda/</span></code> directory). Galaxy will search
+these environments for required packages when tools are run. Conda
+environment names have to follow a specific naming pattern. As an
+example, to install samtools in version 0.1.19, the administrator can
+run the command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>__samtools@0.1.19<span class="w"> </span><span class="nv">samtools</span><span class="o">==</span><span class="m">0</span>.1.19<span class="w"> </span>--channel<span class="w"> </span>bioconda
+</pre></div>
+</div>
+<p>Tools that require samtools version 0.1.19 will then be able to find
+and use the installed Conda package.</p>
+</li>
+<li><p>Automatically at tool run time - When a tool is run and a dependency
+is not found, Galaxy will attempt to install the dependency using
+Conda if <code class="docutils literal notranslate"><span class="pre">conda_auto_install</span></code> is activated in the configuration.</p></li>
+<li><p>Via the API (&gt;= 16.07) - The Galaxy community maintains an <a class="reference external" href="https://github.com/galaxyproject/ansible-galaxy-tools">ansible role</a>
+that uses <a class="reference external" href="https://github.com/galaxyproject/bioblend">BioBlend</a> and the Galaxy API to install tools. Additionally, the
+<a class="reference external" href="https://ephemeris.readthedocs.io/">Ephemeris</a> command <a class="reference external" href="https://ephemeris.readthedocs.io/en/latest/commands/shed-tools.html">shed-tools</a> can be used to install tools via the API from
+the command line.</p></li>
+</ol>
+</section>
+<section id="what-is-required-to-make-use-of-this-any-specific-packages-galaxy-revision-os-version-etc">
+<h2>3. What is required to make use of this? Any specific packages, Galaxy revision, OS version, etc.?<a class="headerlink" href="#what-is-required-to-make-use-of-this-any-specific-packages-galaxy-revision-os-version-etc" title="Link to this heading">¶</a></h2>
+<p>The minimum required version of Galaxy to use Conda is 16.01, however
+version 17.01 or greater is recommended. The 16.07 release of Galaxy has
+a graphical user interface to manage packages, but this is not
+required to have Conda dependencies managed and used by Galaxy.</p>
+<p>Conda packages should work on all compatible operating systems with
+<em>glibc</em> version 2.12 or newer (this includes Centos 6). So all packages
+will run on all major *nix operating systems newer than 2007.</p>
+</section>
+<section id="if-i-have-conda-enabled-what-do-i-need-to-do-to-install-tools-using-it-for-example-how-can-i-install-the-latest-trinity-and-how-will-i-know-the-dependencies-are-installed">
+<h2>4. If I have Conda enabled, what do I need to do to install tools using it? For example, how can I install the latest Trinity? And how will I know the dependencies are installed?<a class="headerlink" href="#if-i-have-conda-enabled-what-do-i-need-to-do-to-install-tools-using-it-for-example-how-can-i-install-the-latest-trinity-and-how-will-i-know-the-dependencies-are-installed" title="Link to this heading">¶</a></h2>
+<p>This depends on your <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code> settings. Starting with release 16.07, Galaxy
+can automatically install the Conda package manager for you if you have enabled
+<code class="docutils literal notranslate"><span class="pre">conda_auto_init</span></code>. Galaxy can then install Trinity along with its dependencies
+using one of the methods listed in question 2 above. In particular, if
+<code class="docutils literal notranslate"><span class="pre">conda_auto_install</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code> and Trinity is not installed yet, Galaxy will
+try to install it via Conda when a Trinity job is launched.</p>
+<p>With release 16.07 you can see which dependencies are being used
+in the “Manage installed tools” section of the Admin panel and you can select
+whether or not to install Conda packages or Tool Shed package recipes when you
+install new tools there, even if <code class="docutils literal notranslate"><span class="pre">conda_auto_install</span></code> is disabled.</p>
+<p>During a tool installation, the Galaxy admin has control over which systems will be used to
+install the tool requirements. The default settings will trigger installation
+of both Tool Shed and Conda packages (if Conda is present), thus depending on the
+dependency resolvers configuration with regards to what will actually be used during
+the tool execution.</p>
+<p>To check if Galaxy has created a Trinity environment, have a look at folders under
+<code class="docutils literal notranslate"><span class="pre">&lt;tool_dependency_dir&gt;/_conda/envs/</span></code> (or <code class="docutils literal notranslate"><span class="pre">&lt;conda_prefix&gt;/envs</span></code> if you have changed <code class="docutils literal notranslate"><span class="pre">conda_prefix</span></code> in your <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code> file).</p>
+<p>We recommend to use Conda on a tool-per-tool basis, by unchecking the checkbox
+for Tool Shed dependencies during the tool installation, and for tools where there
+are no available Tool Shed dependencies.</p>
+</section>
+<section id="can-i-mix-traditional-galaxy-packages-and-conda-packages">
+<h2>5. Can I mix traditional Galaxy packages and Conda packages?<a class="headerlink" href="#can-i-mix-traditional-galaxy-packages-and-conda-packages" title="Link to this heading">¶</a></h2>
+<p>Yes, the way this works is that Galaxy goes through the list of
+requirements for a tool, and then determines for each requirement if it
+can be satisfied by any of the active resolver systems.</p>
+<p>The order in which resolvers are tried is listed in the
+<code class="docutils literal notranslate"><span class="pre">dependency_resolvers</span></code> configuration option. The default order is</p>
+<ul class="simple">
+<li><p>Tool Shed packages</p></li>
+<li><p>Packages manually installed by administrators</p></li>
+<li><p>Conda packages</p></li>
+</ul>
+<p>The first system that satisfies a requirement will be used. See
+<a class="reference internal" href="dependency_resolvers.html"><span class="doc">Dependency Resolvers</span></a> for detailed documentation.</p>
+<p>This however is not recommended, ideally tools will target and test
+against Conda for all dependencies. Also resolving all requirements
+with Conda gives Conda a chance to select compatible versions of
+dependencies. Read more about selecting compatible versions on
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/issues/3299">Issue #3299</a> and <a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/3391">Pull Request #3391</a>.</p>
+</section>
+<section id="how-do-i-know-what-system-is-being-used-by-a-given-tool">
+<h2>6. How do I know what system is being used by a given tool?<a class="headerlink" href="#how-do-i-know-what-system-is-being-used-by-a-given-tool" title="Link to this heading">¶</a></h2>
+<p>The Galaxy log will show which dependency resolution system is used
+to satisfy each tool dependency and you can specify priorities using the
+<code class="docutils literal notranslate"><span class="pre">dependency_resolvers</span></code> configuration option (see question 5 above). Starting from Galaxy
+release 16.07, you can see which dependency will be used (“resolved”) in the
+Admin panel (under Tool Management → Manage dependencies).</p>
+</section>
+<section id="how-do-i-go-about-specifying-conda-dependencies-for-a-tool-all-the-docs-still-seem-to-recommend-or-exclusively-discuss-the-tool-dependencies-xml-method">
+<h2>7. How do I go about specifying Conda dependencies for a tool? All the docs still seem to recommend (or exclusively discuss) the <code class="docutils literal notranslate"><span class="pre">tool_dependencies.xml</span></code> method.<a class="headerlink" href="#how-do-i-go-about-specifying-conda-dependencies-for-a-tool-all-the-docs-still-seem-to-recommend-or-exclusively-discuss-the-tool-dependencies-xml-method" title="Link to this heading">¶</a></h2>
+<p>The simple answer is: you don’t need to do much to make Conda work for a tool.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">&lt;requirement&gt;</span></code> tag in the tool XML file is enough. The name and the
+version should correspond to a Conda package in one of the enabled channels
+(which are specified by the <code class="docutils literal notranslate"><span class="pre">conda_ensure_channels</span></code> directive in
+<code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code> ). If this is the case you are ready to go. Read
+more about <a class="reference external" href="https://conda.io/docs/user-guide/tasks/manage-channels.html">Conda channels</a>  and browse their packages on <a class="reference external" href="https://anaconda.org/">https://anaconda.org/</a> url followed by the channel name (e.g.
+<a class="reference external" href="https://anaconda.org/bioconda">https://anaconda.org/bioconda</a>
+).</p>
+<p>We will gradually adjust the documentation about <code class="docutils literal notranslate"><span class="pre">tool_dependencies.xml</span></code> and
+deprecate it everywhere.</p>
+</section>
+<section id="during-tool-installation-what-if-there-is-no-conda-package-available-for-a-given-requirement-what-if-the-requirement-is-resolved-in-a-different-software-than-the-original-wrapper-author-meant-to-use">
+<h2>8. During tool installation what if there is no Conda package available for a given requirement? What if the requirement is resolved in a different software than the original wrapper author meant to use?<a class="headerlink" href="#during-tool-installation-what-if-there-is-no-conda-package-available-for-a-given-requirement-what-if-the-requirement-is-resolved-in-a-different-software-than-the-original-wrapper-author-meant-to-use" title="Link to this heading">¶</a></h2>
+<p>If there is no Conda package available during tool installation the tool
+will install automatically, and can be used if its dependencies are
+satisfied by another dependency system such as Tool Shed package
+recipes, Docker containers or modules.</p>
+<p>If there is a package of correct name and version it will be used. There
+is no equivalent of the “owner” concept used in Galaxy packages
+installed from the Tool Shed.</p>
+</section>
+<section id="where-can-i-find-a-list-of-existing-conda-packages-that-i-can-point-to-so-i-don-t-have-to-reinvent-the-wheel-for-common-dependencies">
+<h2>9. Where can I find a list of existing Conda packages that I can point to, so I don’t have to reinvent the wheel for common dependencies?<a class="headerlink" href="#where-can-i-find-a-list-of-existing-conda-packages-that-i-can-point-to-so-i-don-t-have-to-reinvent-the-wheel-for-common-dependencies" title="Link to this heading">¶</a></h2>
+<p>With Conda package manager installed on your system, run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conda<span class="w"> </span>search<span class="w"> </span>&lt;package_name&gt;<span class="w"> </span>-c<span class="w"> </span>iuc<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>-c<span class="w"> </span>bioconda
+</pre></div>
+</div>
+<p>This will search in all channels that are activated by default in
+Galaxy. If you find your package, you are ready to go. If not please
+<a class="reference external" href="https://conda.io/docs/user-guide/tasks/build-packages/recipe.html">create a Conda package</a> and <a class="reference external" href="https://bioconda.github.io/#step-4-join-the-team">submit</a> it to <a class="reference external" href="https://bioconda.github.io">BioConda</a> or get in <a class="reference external" href="https://gitter.im/galaxy-iuc/iuc">contact with the IUC</a>.</p>
+</section>
+<section id="how-can-i-create-a-new-conda-package-for-a-dependency">
+<h2>10. How can I create a new Conda package for a dependency?<a class="headerlink" href="#how-can-i-create-a-new-conda-package-for-a-dependency" title="Link to this heading">¶</a></h2>
+<p>Adding a package to the BioConda or IUC Conda channels will make it
+available for Galaxy tools to use as a dependency. To learn how, get in
+touch with the awesome BioConda community. They have great documentation
+and assist with all development. You will also see a few of us at this
+project to get you started :)</p>
+<p>Don’t be scared! Conda recipes are really simple to write. Conda also
+offers so called `skeleton` generators that generate recipes from
+pypi, cran, or cpan for you (mostly) automatically.</p>
+</section>
+<section id="is-there-a-way-to-convert-traditional-tool-shed-package-recipes-that-are-not-yet-in-a-conda-channel">
+<h2>11. Is there a way to convert traditional Tool Shed package recipes that are not yet in a Conda channel?<a class="headerlink" href="#is-there-a-way-to-convert-traditional-tool-shed-package-recipes-that-are-not-yet-in-a-conda-channel" title="Link to this heading">¶</a></h2>
+<p>First, you do not need to do anything to your wrapper as long as the
+package name in the requirement tag matches the name of correct
+Conda package. (You may want to mention in the README or a comment the
+Conda channel that contains the package).</p>
+<p>If you want to migrate some recipes from XML to Conda, IUC is happy to
+give you a hand. We are trying to get all new versions under Conda and
+leave the old versions as they are – simply because of time.</p>
+</section>
+<section id="what-is-the-recommendation-for-existing-installations-will-i-continue-to-maintain-both-systems-or-migrate-to-the-new-conda-system-eventually">
+<h2>12. What is the recommendation for existing installations? Will I continue to maintain both systems or migrate to the new Conda system eventually?<a class="headerlink" href="#what-is-the-recommendation-for-existing-installations-will-i-continue-to-maintain-both-systems-or-migrate-to-the-new-conda-system-eventually" title="Link to this heading">¶</a></h2>
+<p>Old tools will use the traditional installation system; this system will
+stay and will be supported for installing old tools to guarantee sustainability
+and reproducibility. New tools from the IUC and other best practices sources
+are Conda only.</p>
+</section>
+<section id="what-can-i-do-about-this-placehold-error">
+<h2>13. What can I do about this placehold error?<a class="headerlink" href="#what-can-i-do-about-this-placehold-error" title="Link to this heading">¶</a></h2>
+<p>If you see a warning similar to the following in your galaxy log files:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ERROR:<span class="w"> </span>placeholder<span class="w"> </span><span class="s1">&#39;/home/ray/r_3_3_1-x64-3.5/envs/_build_placehold_placehold_placehold_placehold_pl&#39;</span><span class="w"> </span>too<span class="w"> </span>short
+</pre></div>
+</div>
+<p>This means you are very likely using an older version of Conda. This
+bug has been fixed with the Conda release that is targeted by Galaxy
+17.01 or newer.</p>
+<p>In the past, the work around for this limitation, was to make sure that the total length
+of the <code class="docutils literal notranslate"><span class="pre">conda_prefix</span></code> and <code class="docutils literal notranslate"><span class="pre">job_working_directory</span></code> path was less than 50
+characters long.</p>
+</section>
+<section id="what-can-i-do-about-this-lockerror-error">
+<h2>14. What can I do about this LOCKERROR error?<a class="headerlink" href="#what-can-i-do-about-this-lockerror-error" title="Link to this heading">¶</a></h2>
+<p>This question addresses workaround for Conda if something like the following
+message appears in your logs:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Error:<span class="w">     </span>LOCKERROR:<span class="w"> </span>It<span class="w"> </span>looks<span class="w"> </span>like<span class="w"> </span>conda<span class="w"> </span>is<span class="w"> </span>already<span class="w"> </span>doing<span class="w"> </span>something.
+<span class="w">    </span>The<span class="w"> </span>lock<span class="w"> </span><span class="o">[</span><span class="s1">&#39;/galaxy/galaxy-app/tool-dependencies/_conda/pkgs/.conda_lock-119903&#39;</span><span class="o">]</span><span class="w"> </span>was<span class="w"> </span>found.<span class="w"> </span>Wait<span class="w"> </span><span class="k">for</span><span class="w"> </span>it<span class="w"> </span>to<span class="w"> </span>finish<span class="w"> </span>before<span class="w"> </span>continuing.
+<span class="w">    </span>If<span class="w"> </span>you<span class="w"> </span>are<span class="w"> </span>sure<span class="w"> </span>that<span class="w"> </span>conda<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>running,<span class="w"> </span>remove<span class="w"> </span>it<span class="w"> </span>and<span class="w"> </span>try<span class="w"> </span>again.
+<span class="w">    </span>You<span class="w"> </span>can<span class="w"> </span>also<span class="w"> </span>use:<span class="w"> </span>$<span class="w"> </span>conda<span class="w"> </span>clean<span class="w"> </span>--lock
+</pre></div>
+</div>
+<p>First, you may wish to enable cached dependencies. This can be done by setting
+<code class="docutils literal notranslate"><span class="pre">use_cached_dependency_manager</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code> in <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code>. Without this
+option, many jobs will create a per-job Conda environment with just the
+dependencies needed for that job installed.
+This will be placed on the filesystem containing the job working directory. This
+is an expensive operation and Conda doesn’t always link environments correctly
+across filesystems. Enabling this dependency caching will create a cache
+directory for each required combination of requirements inside the directory
+specified by <code class="docutils literal notranslate"><span class="pre">tool_dependency_cache_dir</span></code> in <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code> (defaulting to
+<code class="docutils literal notranslate"><span class="pre">&lt;tool_dependency_dir&gt;/_cache</span></code>).</p>
+<p>The cached dependency manager was added to the 16.10 release of Galaxy (see
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/3106">Pull Request #3106</a>). In 17.01 Galaxy was updated to build the cached dependencies
+as needed if the caching is in fact enabled (see <a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/3348">Pull Request #3348</a>) and reduced
+the number of jobs that would require such caching (see <a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/3391">Pull Request #3391</a>).</p>
+</section>
+<section id="what-can-i-do-about-linking-errors">
+<h2>15. What can I do about linking errors?<a class="headerlink" href="#what-can-i-do-about-linking-errors" title="Link to this heading">¶</a></h2>
+<p>If Galaxy jobs run on filesystems that cannot hardlink Conda packages managed
+by Galaxy, linking errors may occur when building environment to execute jobs.
+There are a few ways to potentially work around this.</p>
+<p>The most straight forward and efficient work around is probably just to enable the cached
+dependency manager as described in the previous question. Notice the default location
+of the cache is right next to the default Conda directory - so hardlinks should
+lie on the same file system as the default Conda installation.</p>
+<p>If this still doesn’t work, perhaps the underlying file system does not support hard
+linking at all. In this case it is best to add <code class="docutils literal notranslate"><span class="pre">always_softlink:</span> <span class="pre">True</span></code> to Galaxy’s
+YAML <code class="docutils literal notranslate"><span class="pre">condarc</span></code> file, this should be created by Galaxy and placed in
+<code class="docutils literal notranslate"><span class="pre">&lt;tool_dependency_dir/_condarc</span></code>. This requires Conda 4.3 or newer. Note this is a
+newer version of Conda than shipped with Galaxy as of 17.01. See the question below
+on upgrading Conda if you must use this trick.</p>
+<p>Alternatively, copying can be used when creating environments instead of links (either
+symbolic or hard). To enable this set <code class="docutils literal notranslate"><span class="pre">conda_copy_dependencies</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code> in
+<code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code>. This requires at least version 16.07 of Galaxy.</p>
+<p>More reading on this can be found at <a class="reference external" href="https://github.com/conda/conda/pull/3870">Conda Pull Request #3870</a>, <cite>Conda Issue #3308</cite>,
+and Galaxy <a class="reference external" href="https://github.com/galaxyproject/galaxy/issues/3193">Issue #3193</a>.</p>
+</section>
+<section id="what-can-i-do-if-conda-doesn-t-work-for-me">
+<h2>16. What can I do if Conda doesn’t work for me?<a class="headerlink" href="#what-can-i-do-if-conda-doesn-t-work-for-me" title="Link to this heading">¶</a></h2>
+<p>Please review the common problems covered in the previous few questions, if your
+problem is different more investigation will be needed.</p>
+<p>In rare cases Conda may not have been properly installed by Galaxy.
+A symptom for this is if there is no activate script in
+<code class="docutils literal notranslate"><span class="pre">&lt;conda_prefix&gt;/bin</span></code> folder. In that case you can delete the <code class="docutils literal notranslate"><span class="pre">conda_prefix</span></code> folder
+and restart Galaxy, which will again attempt to install Conda.</p>
+<p>If this does not solve your problem or you have any trouble following
+the instructions, please ask on the Galaxy developing mailing list or the Galaxy
+Gitter or IRC channel.</p>
+</section>
+<section id="how-can-i-upgrade-conda">
+<h2>17. How can I upgrade Conda?<a class="headerlink" href="#how-can-i-upgrade-conda" title="Link to this heading">¶</a></h2>
+<p>Many potential issues with Conda have been resolved with fixes in Conda itself.
+The Conda installed by Galaxy can be updated to e.g. version 4.6.14 with the
+following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>&lt;tool_dependency_dir&gt;/_conda/bin/conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span><span class="nv">conda</span><span class="o">==</span><span class="m">4</span>.6.14
+</pre></div>
+</div>
+<p>The command can obviously be adapted to install any version of Conda. If the
+above command fails with an error like:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>UnsatisfiableError:<span class="w"> </span>The<span class="w"> </span>following<span class="w"> </span>specifications<span class="w"> </span>were<span class="w"> </span>found<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span><span class="k">in</span><span class="w"> </span>conflict:
+<span class="w">  </span>-<span class="w"> </span><span class="nv">conda</span><span class="w"> </span><span class="o">==</span><span class="m">4</span>.6.14<span class="w"> </span>-&gt;<span class="w"> </span>python<span class="w"> </span>&gt;<span class="o">=</span><span class="m">3</span>.6,&lt;<span class="m">3</span>.7.0a0
+<span class="w">  </span>-<span class="w"> </span>python<span class="w"> </span><span class="m">3</span>.5*
+Use<span class="w"> </span><span class="s2">&quot;conda info &lt;package&gt;&quot;</span><span class="w"> </span>to<span class="w"> </span>see<span class="w"> </span>the<span class="w"> </span>dependencies<span class="w"> </span><span class="k">for</span><span class="w"> </span>each<span class="w"> </span>package.
+</pre></div>
+</div>
+<p>Then you need to also update the <code class="docutils literal notranslate"><span class="pre">python</span></code> package installed in the base
+environment by appending to the <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span></code> command above an appropriate
+specification, which for the example error above would be <code class="docutils literal notranslate"><span class="pre">python==3.6</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>&lt;tool_dependency_dir&gt;/_conda/bin/conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span><span class="nv">conda</span><span class="o">==</span><span class="m">4</span>.6.14<span class="w"> </span><span class="nv">python</span><span class="o">==</span><span class="m">3</span>.6
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="container_resolvers.html" class="btn btn-neutral float-left" title="Containers in Galaxy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="db_migration.html" class="btn btn-neutral float-right" title="Galaxy Database Schema Migrations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Galaxy Committers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

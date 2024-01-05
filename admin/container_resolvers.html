@@ -1,0 +1,610 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Containers in Galaxy &mdash; Galaxy Project 23.1.5.dev0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+
+  
+    <link rel="canonical" href="https://docs.galaxyproject.org/en/master/admin/container_resolvers.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=da3e81e8"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Conda for Tool Dependencies" href="conda_faq.html" />
+    <link rel="prev" title="Dependency Resolvers in Galaxy" href="dependency_resolvers.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Galaxy Project
+          </a>
+              <div class="version">
+                23.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../releases/index.html">Releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.1_announce_user.html">June 2023 Galaxy Release (v 23.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.0_announce_user.html">2023 Galaxy Release (v 23.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.05_announce_user.html">May 2022 Galaxy Release (v 22.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.01_announce_user.html">January 2022 Galaxy Release (v 22.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.09_announce_user.html">September 2021 Galaxy Release (v 21.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.05_announce_user.html">May 2021 Galaxy Release (v 21.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.01_announce_user.html">January 2021 Galaxy Release (v 21.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.09_announce_user.html">September 2020 Galaxy Release (v 20.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.05_announce_user.html">May 2020 Galaxy Release (v 20.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.01_announce_user.html">January 2020 Galaxy Release (v 20.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.09_announce_user.html">September 2019 Galaxy Release (v 19.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.05_announce_user.html">May 2019 Galaxy Release (v 19.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.01_announce_user.html">January 2019 Galaxy Release (v 19.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.09_announce.html">September 2018 Galaxy Release (v 18.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.05_announce.html">May 2018 Galaxy Release (v 18.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.01_announce.html">January 2018 Galaxy Release (v 18.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.09_announce.html">September 2017 Galaxy Release (v 17.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.05_announce.html">May 2017 Galaxy Release (v 17.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.01_announce.html">January 2017 Galaxy Release (v 17.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.10_announce.html">October 2016 Galaxy Release (v 16.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.07_announce.html">July 2016 Galaxy Release (v 16.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.04_announce.html">April 2016 Galaxy Release (v 16.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.01_announce.html">January 2016 Galaxy Release (v 16.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.10_announce.html">October 2015 Galaxy Release (v 15.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.07_announce.html">July 2015 Galaxy Release (v 15.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.05_announce.html">May 2015 Galaxy Release (v 15.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.03_announce.html">March 2015 Galaxy Release (v 15.03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.01_announce.html">January 2015 Galaxy Release (v 15.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.10_announce.html">October 2014 Galaxy Release (v 14.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.08_announce.html">August 2014 Galaxy Release (v 14.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.06_announce.html">June 2014 Galaxy Release (v 14.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.04_announce.html">April 2014 Galaxy Release (v 14.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.02_announce.html">February 2014 Galaxy Release (v 14.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.11_announce.html">November 2013 Galaxy Release (v 13.11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.08_announce.html">August 2013 Galaxy Release (v 13.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.06_announce.html">June 2013 Galaxy Release (v 13.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.04_announce.html">April 2013 Galaxy Release (v 13.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.02_announce.html">February 2013 Galaxy Release (v 13.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.01_announce.html">January 2013 Galaxy Release (v 13.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/older_releases.html">Galaxy Releases older than v 13.01</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Admin Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Administration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="python.html">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="framework_dependencies.html">Framework Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">Galaxy Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logging.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="production.html">Production Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nginx.html">Proxying Galaxy with NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apache.html">Proxying Galaxy with Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scaling.html">Scaling and Load Balancing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cluster.html">Connecting to a Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jobs.html">Galaxy Job Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tool_panel.html">Tool Panel Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mq.html">Message queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependency_resolvers.html">Dependency Resolvers in Galaxy</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Containers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#other-considerations">Other considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conda_faq.html">Conda for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="db_migration.html">Galaxy Database Schema Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reports.html">Galaxy Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="useful_scripts.html">Scripts &amp; Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrating_to_gunicorn.html">Migrating from uWSGI to Gunicorn and FastAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="special_topics/index.html">Special topics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/ftp.html">Galaxy FTP Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/interactivetools.html">Galaxy InteractiveTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/mulled_containers.html">Containers for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/grt.html">Galactic Radio Telescope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/gtn.html">Galaxy Training Materials Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/job_metrics.html">Job Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/webhooks.html">Galaxy Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/vault.html">Storing secrets in the vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/performance_tracking.html">Galaxy Performance Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/bug_reports.html">Bug Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/gdpr_compliance.html">GDPR Compliance</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/index.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dev/schema.html">Galaxy Tool XML File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/api_guidelines.html">API Design Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/build_a_job_runner.html">Build a job runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/finding_and_improving_slow_code.html">Finding and improving slow Galaxy code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_managers.html">Data managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_types.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/faq.html">How Do I…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/writing_tests.html">Writing Tests for Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html">Debugging Galaxy Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html#debugging-tests-that-run-out-of-memory">Debugging tests that run out of memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy.html">Debugging Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy_slurm.html">Debugging Galaxy: Slurm Compute Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/translating.html">Translating the Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/create_point_release.html">Creating Galaxy Point Releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api_doc.html">Galaxy API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/quickstart.html"> Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/api.html"> Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ts_api_doc.html">Tool Shed API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/ts_api.html"> API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../lib/modules.html">Application Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy.html">galaxy package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_ext.html">galaxy_ext package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_test.html">galaxy_test package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/tool_shed.html">tool_shed package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../project/organization.html">Project Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#procedure-documents">Procedure Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#committers">Committers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#release-branches">Release branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#handling-pull-requests">Handling Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#issue-reporting">Issue Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../project/issues.html">Issue Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#issue-reporting">Issue Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#milestones">Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#labeling-structure">Labeling Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#the-roadmap">The Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#voting">Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#automation">Automation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Galaxy Project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Galaxy Deployment &amp; Administration</a></li>
+      <li class="breadcrumb-item active">Containers in Galaxy</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/admin/container_resolvers.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="containers-in-galaxy">
+<span id="container-resolvers"></span><h1>Containers in Galaxy<a class="headerlink" href="#containers-in-galaxy" title="Link to this heading">¶</a></h1>
+<p>Galaxy can run tools inside containers using <code class="docutils literal notranslate"><span class="pre">docker</span></code> or <code class="docutils literal notranslate"><span class="pre">singularity</span></code>.
+The containers can be either explicit or mulled (also called multi package containers).
+The former are given by <code class="docutils literal notranslate"><span class="pre">&lt;container&gt;</span></code> requirements pointing to a specific container.
+The latter are containers built for a set of requirements of type <code class="docutils literal notranslate"><span class="pre">package</span></code>.
+Mulled containers are described by a hash that is unique for a set of
+packages and versions (for mulled v2), e.g.
+<code class="docutils literal notranslate"><span class="pre">mulled-v2-0d814cbcd5aa81b280ecadbee9e4aba8d9ab33f7:0fb38379c04f2a8a345a2c8f74b190ea9a51b6f3-0</span></code>
+(mulled-v2-PACKAGEHASH:VERSIONHASH-BUILDNUMBER). For mulled containers
+of single packages simply the package name and version are used instead of the hashes,
+e.g. <code class="docutils literal notranslate"><span class="pre">ucsc-liftover:357--h446ed27_4</span></code>.</p>
+<p>Bioconda and the Galaxy project provide infrastructure to create mulled
+containers and to make them globally available on the <code class="docutils literal notranslate"><span class="pre">quay.io/biocontainers</span></code>
+container registry.</p>
+<ol class="arabic simple">
+<li><p>For each bioconda package a container is deployed</p></li>
+<li><p>Mulled containers are created and deployed by the infrastructure provided by the
+<a class="reference external" href="https://github.com/BioContainers/multi-package-containers">multi-package-containers</a>
+repository. Mulled containers are added automatically to this repository for all tools
+in tool repositories that are crawled by the
+<a class="reference external" href="https://github.com/galaxyproject/planemo-monitor">planemo monitor</a> repository
+(which includes for instance tools-iuc and several other tool repositories).</p></li>
+</ol>
+<section id="container-resolvers-in-galaxy">
+<h2>Container Resolvers in Galaxy<a class="headerlink" href="#container-resolvers-in-galaxy" title="Link to this heading">¶</a></h2>
+<p>A container resolver tries to get a container description, i.e. the information
+(URI/path to the container image, …) that is needed to execute a tool in a
+container (in the execution environment), given the requirements specified in
+this tool. Galaxy implements various container resolvers that are suitable for
+different needs.</p>
+<p>Galaxy tries to execute jobs using containers if they are sent
+to execution environments (previously called destinations) with either
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/0742d6e27702c60d1b8fe358ae03a267e3f252c3/lib/galaxy/config/sample/job_conf.sample.yml#L419">docker_enabled</a> or
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/0742d6e27702c60d1b8fe358ae03a267e3f252c3/lib/galaxy/config/sample/job_conf.sample.yml#L556">singularity_enabled</a>
+enabled. Note, the links to the sample configurations exemplify this for local execution environments,
+but this works for any environment as long as <code class="docutils literal notranslate"><span class="pre">docker</span></code> or <code class="docutils literal notranslate"><span class="pre">singularity</span></code> are
+available.</p>
+<p>For jobs that are sent to such an execution environment Galaxy tries to obtain a
+container description by sequentially executing the configured container
+resolvers (see below). The job is then executed using the description returned
+by the first successful container resolver.
+If all configured container resolvers failed, i.e. no container description
+could be obtained, the tool is by default executed using
+<a class="reference internal" href="dependency_resolvers.html"><span class="doc">standard dependency resolvers</span></a>, e.g. <code class="docutils literal notranslate"><span class="pre">conda</span></code>.
+Alternatively, if the execution environment specifies
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/0742d6e27702c60d1b8fe358ae03a267e3f252c3/lib/galaxy/config/sample/job_conf.sample.yml#L528">require_container</a>
+the job fails in this case.</p>
+<p>Besides determining a container description, some container resolvers
+also cache and/or build containers.</p>
+</section>
+<section id="configuration">
+<h2>Configuration:<a class="headerlink" href="#configuration" title="Link to this heading">¶</a></h2>
+<p>The list of container resolvers is defined using YAML. This can be
+either</p>
+<ul class="simple">
+<li><p>globally in an extra file (<code class="docutils literal notranslate"><span class="pre">container_resolvers_config_file</span></code>) or inline the Galaxy configuration (<code class="docutils literal notranslate"><span class="pre">container_resolvers</span></code>) or</p></li>
+<li><p>per execution environment using <code class="docutils literal notranslate"><span class="pre">container_resolvers_config_file</span></code> or <code class="docutils literal notranslate"><span class="pre">container_resolvers</span></code></p></li>
+</ul>
+<p>Container resolvers defined for the execution environment
+take precedence over globally defined container resolvers.
+A sample YAML file showing the default configuration which is active
+if neither a global or local configuration is given in
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/tree/dev/lib/galaxy/config/sample/container_resolvers.yml.sample">container_resolvers.yml.sample</a>.</p>
+<p>During the container resolution the configured container resolvers
+are sequentially applied, stopping at the first resolver that
+yields a container description.</p>
+</section>
+<section id="main-resolver-types">
+<h2>Main resolver types:<a class="headerlink" href="#main-resolver-types" title="Link to this heading">¶</a></h2>
+<p>The main types of container resolvers follow this naming scheme:
+<code class="docutils literal notranslate"><span class="pre">[cached_][explicit,mulled][_singularity]</span></code>. That is</p>
+<ul class="simple">
+<li><p>a container resolver is either <code class="docutils literal notranslate"><span class="pre">explicit</span></code> or <code class="docutils literal notranslate"><span class="pre">mulled</span></code></p></li>
+<li><p>cached if it is prefixed with <code class="docutils literal notranslate"><span class="pre">cached_</span></code> and non-cached otherwise.</p></li>
+<li><p>yield a container description suitable for singularity if
+suffixed by <code class="docutils literal notranslate"><span class="pre">_singularity</span></code> and docker otherwise.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It’s important to note that similarities in the names not necessarily
+imply any similarity in the function of the container resolvers.</p>
+</div>
+<p>There are the following mulled container resolvers:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mulled</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mulled_singularity</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cached_mulled</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cached_mulled_singularity</span></code></p></li>
+</ul>
+<p>Furthermore there are the following explicit container resolvers:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">explicit</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">explicit_singularity</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cached_explicit_singularity</span></code></p></li>
+</ul>
+<p>Note that there is no <code class="docutils literal notranslate"><span class="pre">cached_explicit</span></code> resolver.</p>
+<section id="docker-vs-singularity">
+<h3>1. docker vs singularity<a class="headerlink" href="#docker-vs-singularity" title="Link to this heading">¶</a></h3>
+<p>Galaxy can execute tools in containers using <code class="docutils literal notranslate"><span class="pre">docker</span></code> or <code class="docutils literal notranslate"><span class="pre">singularity</span></code>.
+The corresponding container resolvers yield container descriptions suitable
+for the corresponding “executor”, i.e., docker (singularity, resp.)
+container resolvers will resolve a container only in execution environments
+with enabled docker (singularity, resp.). Thus, if only execution environments
+with docker (resp. singularity) are present then singularity (resp. docker)
+container resolvers are ignored (and may be omitted).</p>
+<p>Note that, for the execution with <code class="docutils literal notranslate"><span class="pre">singularity</span></code> Galaxy relies mostly on
+docker containers that are either executed directly or are converted
+to singularity images. An exception is for instance explicit container
+requirements of <code class="docutils literal notranslate"><span class="pre">type=&quot;singularity&quot;</span></code>.</p>
+</section>
+<section id="mulled-vs-explicit">
+<h3>2. mulled vs explicit<a class="headerlink" href="#mulled-vs-explicit" title="Link to this heading">¶</a></h3>
+<p>Mulled container resolvers apply for requirements defined by tools that are
+a set of packages:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;requirements&gt;</span>
+<span class="w">    </span><span class="nt">&lt;requirement</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;package&quot;</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;0.5&quot;</span><span class="nt">&gt;</span>foo<span class="nt">&lt;/requirement&gt;</span>
+<span class="w">    </span><span class="nt">&lt;requirement</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;package&quot;</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>bar<span class="nt">&lt;/requirement&gt;</span>
+<span class="nt">&lt;/requirements&gt;</span>
+</pre></div>
+</div>
+<p>Explicit container resolvers apply for requirements defined by tools in the form
+of a container requirement:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;requirements&gt;</span>
+<span class="w">    </span><span class="nt">&lt;container</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;docker&quot;</span><span class="nt">&gt;</span>quay.io/qiime2/core:2022.8<span class="nt">&lt;/container&gt;</span>
+<span class="nt">&lt;/requirements&gt;</span>
+</pre></div>
+</div>
+<p>See also <a class="reference internal" href="#additional-resolver-types"><span class="std std-ref">Additional resolver types</span></a>.</p>
+</section>
+<section id="cached-vs-non-cached">
+<h3>3. cached vs non-cached<a class="headerlink" href="#cached-vs-non-cached" title="Link to this heading">¶</a></h3>
+<p>While non-cached resolvers will yield a container description pointing to an online
+available docker container, cached resolvers will store container images on disk and
+use those.</p>
+<p>This distinction is the weakest: some (by name) non-cached container resolvers
+can also resolve cached containers and are even responsible for the caching itself,
+i.e. they execute a <code class="docutils literal notranslate"><span class="pre">pull</span></code>.</p>
+<p>There are important differences between Galaxy’s cached docker and singularity
+container resolvers. The caching mechanism essentially executes a
+<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span></code> or <code class="docutils literal notranslate"><span class="pre">singularity</span> <span class="pre">pull</span></code>, respectively. For docker this creates
+an entry in the docker image cache (on the local node) whereas for
+singularity an image file is created in the specified <code class="docutils literal notranslate"><span class="pre">cache_directory</span></code>.
+On distributed systems <code class="docutils literal notranslate"><span class="pre">cache_directory</span></code> needs to be accessible on all
+compute nodes.
+For singularity, admins should also take care of the <code class="docutils literal notranslate"><span class="pre">APPTAINER_CACHEDIR</span></code>
+directory.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>An additional <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">inspect</span> <span class="pre">...</span> <span class="pre">;</span> <span class="pre">[</span> <span class="pre">$?</span> <span class="pre">-ne</span> <span class="pre">0</span> <span class="pre">]</span> <span class="pre">&amp;&amp;</span> <span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">...</span></code>
+command is used in each job script to ensure that images are available on a compute node.
+Thereby a container will be cached after the tool run even if no cached container resolver was used.
+Admins need to take care of docker caches of the main and compute nodes.
+For distributed compute systems, built-in techniques of docker may be useful:
+<a class="reference external" href="https://docs.docker.com/registry/recipes/mirror/">https://docs.docker.com/registry/recipes/mirror/</a>.</p>
+</div>
+</section>
+</section>
+<section id="function-and-use-of-the-resolve-function-of-the-main-resolver-types">
+<span id="function-of-the-resolve-function-of-the-main-resolver-types"></span><h2>Function and use of the <code class="docutils literal notranslate"><span class="pre">resolve</span></code> function of the main resolver types:<a class="headerlink" href="#function-and-use-of-the-resolve-function-of-the-main-resolver-types" title="Link to this heading">¶</a></h2>
+<p>The resolve function is called when</p>
+<ol class="arabic simple">
+<li><p>listing the container tab in the dependency admin UI (using <code class="docutils literal notranslate"><span class="pre">api/container_resolvers/toolbox</span></code>)</p></li>
+<li><p>triggering a build from the admin UI (using <code class="docutils literal notranslate"><span class="pre">api/container_resolvers/toolbox/install</span></code>)</p></li>
+<li><p>when a job is prepared</p></li>
+</ol>
+<p>If the <code class="docutils literal notranslate"><span class="pre">resolve</span></code> function implements the caching of images then this only
+happens if its <code class="docutils literal notranslate"><span class="pre">install</span></code> parameter is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>. This is the case
+in case 2 and case 3 (but see <a class="reference external" href="https://github.com/galaxyproject/tools-iuc/pull/5221#discussion_r1152025883">https://github.com/galaxyproject/tools-iuc/pull/5221#discussion_r1152025883</a>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It’s important to understand that 1 and 2 rely on the global
+container resolver config and do not set a resolver type!</p>
+<p>This becomes relevant (e.g.) for setups specifying either:</p>
+<ol class="loweralpha simple">
+<li><p>container resolver config(s) only per execution environment (i.e. no global
+container resolver config) or</p></li>
+<li><p>different global and execution environment container resolver config(s)</p></li>
+</ol>
+<p>In case a) the default container config will be used which contains docker
+and singularity container resolvers (see <a class="reference external" href="https://github.com/galaxyproject/galaxy/tree/dev/lib/galaxy/config/sample/container_resolvers.yml.sample">container_resolvers.yml.sample</a>).
+If both container backends (i.e. the <code class="docutils literal notranslate"><span class="pre">docker</span></code> and <code class="docutils literal notranslate"><span class="pre">singularity</span></code> executables)
+are available then only the docker container resolvers will be used.</p>
+<p>In case b) using the Admin UI for building/caching containers might
+be impossible, but one needs to use the API directly which allows
+to specify the container type and the resolver(s) that should be used.</p>
+</div>
+<section id="explicit-resolvers">
+<h3>1. Explicit resolvers<a class="headerlink" href="#explicit-resolvers" title="Link to this heading">¶</a></h3>
+<p>The uncached explicit resolvers (<code class="docutils literal notranslate"><span class="pre">explicit</span></code> and <code class="docutils literal notranslate"><span class="pre">explicit_singularity</span></code>) only
+compute a container description using an URI that suites the <code class="docutils literal notranslate"><span class="pre">docker</span></code> or
+<code class="docutils literal notranslate"><span class="pre">singularity</span></code>, respectively.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">explicit</span></code> will still cache the docker container on tool run, since
+the job script contains <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">...</span></code></p>
+</div>
+<p>The cached explicit resolver, i.e. <code class="docutils literal notranslate"><span class="pre">cached_explicit_singularity</span></code> (no docker
+analog available), downloads the image to the <code class="docutils literal notranslate"><span class="pre">cache_directory</span></code> if needed and
+return a container description that points to the image file in the
+<code class="docutils literal notranslate"><span class="pre">cache_directory</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">cached_explicit_singularity</span></code> will automatically cache the container
+on first tool run (and when the build/installation is triggered via the Admin
+UI or the API). When listing the container the container resolver will always
+yield the path (even if non existent, i.e. before the 1st tool run or the
+caching was triggered).</p>
+</div>
+</section>
+<section id="mulled-resolvers">
+<h3>2. Mulled resolvers<a class="headerlink" href="#mulled-resolvers" title="Link to this heading">¶</a></h3>
+<p>All mulled resolvers compute a mulled hash that describes the requirements and
+is included in the container name (see above).</p>
+<p>For the cached mulled resolvers (<code class="docutils literal notranslate"><span class="pre">cached_mulled</span></code> and <code class="docutils literal notranslate"><span class="pre">cached_mulled_singularity</span></code>)
+the <code class="docutils literal notranslate"><span class="pre">resolve</span></code> function only queries if the required image is already cached
+and returns a container description pointing to the cached image. For docker this is
+done by executing <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">images</span></code> and for <code class="docutils literal notranslate"><span class="pre">singularity</span></code> the content of the
+cache directory (<code class="docutils literal notranslate"><span class="pre">cache_directory</span></code>) is queried.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In contrast to the cached explicit resolver the cached mulled resolvers do not
+cache images, but they only query the available cached images.</p>
+</div>
+<p>The “uncached” mulled resolvers (<code class="docutils literal notranslate"><span class="pre">mulled</span></code> and <code class="docutils literal notranslate"><span class="pre">mulled_singularity</span></code>) by
+default just return a container description containing the URI of the container
+and download the image to the cache if <code class="docutils literal notranslate"><span class="pre">install=True</span></code> (see also
+<a class="reference internal" href="#function-of-the-resolve-function-of-the-main-resolver-types"><span class="std std-ref">Function and use of the resolve function of the main resolver types:</span></a>). The caching
+is done by a call to <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span></code> and <code class="docutils literal notranslate"><span class="pre">singularity</span> <span class="pre">pull</span></code>, respectively.
+Note that, by default the URI is returned in any case, i.e. even if the image
+just has been downloaded or if the image is already in the cache. Only if the
+resolvers are initialized with <code class="docutils literal notranslate"><span class="pre">auto_install=True</span></code> the <code class="docutils literal notranslate"><span class="pre">resolve</span></code> function
+returns a container description pointing to the cached image. Note that this
+makes a difference only for singularity (since for docker the URI is identical
+to the name of the cached image).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In contrast to the uncached explicit resolver, the uncached mulled resolvers
+do cache images, but the returned container description by default points to
+the uncached URI (if the default of <code class="docutils literal notranslate"><span class="pre">auto_install=True</span></code> is used; otherwise
+the cached image is used).</p>
+</div>
+</section>
+</section>
+<section id="additional-resolver-types">
+<span id="id2"></span><h2>Additional resolver types<a class="headerlink" href="#additional-resolver-types" title="Link to this heading">¶</a></h2>
+<p>In addition there are several resolvers that allow to hardcode container identifiers
+for certain conditions:</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">mapping</span></code> resolver allows to map pairs of tool IDs and tool versions to
+container identifiers and container types. This allows to hardcode or overwrite
+container definitions for specific tools.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fallback_no_requirements</span></code> for tools specifying no requirements</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">requires_galaxy_environment</span></code> for (internal) tools that need Galaxy’s (python) environment</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fallback</span></code> a fallback container for tools that don’t match any resolver</p></li>
+</ul>
+</section>
+<section id="building-resolver-types">
+<h2>Building resolver types:<a class="headerlink" href="#building-resolver-types" title="Link to this heading">¶</a></h2>
+<p>There are two container resolvers that locally create a mulled container.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">build_mulled</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">build_mulled_singularity</span></code></p></li>
+</ul>
+<p>Note that at the moment <code class="docutils literal notranslate"><span class="pre">build_mulled_singularity</span></code> also requires docker for
+building.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Instead of using these locally, it might be better to create multi package containers
+that are deployed to biocontainers using the infrastructure provided by the
+<a class="reference external" href="https://github.com/BioContainers/multi-package-containers">multi-package-containers</a>
+repository, e.g. by adding more tool repositories to the
+<a class="reference external" href="https://github.com/galaxyproject/planemo-monitor">planemo monitor</a></p>
+</div>
+</section>
+<section id="parameters">
+<h2>Parameters:<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">namespace</span></code> defaults to <code class="docutils literal notranslate"><span class="pre">&quot;biocontainers&quot;</span></code> for the non-building and
+<code class="docutils literal notranslate"><span class="pre">&quot;local&quot;</span></code> for the building mulled resolvers. Available for all mulled
+container resolvers <strong>except</strong> <code class="docutils literal notranslate"><span class="pre">cached_mulled_singularity</span></code>.
+Used to set the namespace that is used to query quay.io. Note that there
+is no <cite>“local”</cite> namespace at quay.io, but Galaxy uses it to refer
+to locally built images (that’s why it is the default for the building
+resolvers).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hash_func</span></code>: <code class="docutils literal notranslate"><span class="pre">&quot;v1&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;v2&quot;</span></code> (default: “v2”):
+Applies to all mulled container resolvers. Sets the version of the mulled
+hash that is used in the image name.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shell</span></code> Defaults to <code class="docutils literal notranslate"><span class="pre">/bin/bash</span></code> and sets the shell to be used in the container.
+Applies only to the resolvers listed in <a class="reference internal" href="#id2">Additional resolver types</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">auto_install</span></code>: defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.
+Applies to <code class="docutils literal notranslate"><span class="pre">mulled</span></code>, <code class="docutils literal notranslate"><span class="pre">mulled_singularity</span></code>, <code class="docutils literal notranslate"><span class="pre">build_mulled</span></code>, and <code class="docutils literal notranslate"><span class="pre">build_mulled_singularity</span></code>.
+For the non-building resolvers this controls if a container description pointing to the
+cached image shall be returned (<code class="docutils literal notranslate"><span class="pre">auto_install==False</span></code>). For the building
+resolvers the parameter controls if the container should be built
+also if the resolve function is called with <code class="docutils literal notranslate"><span class="pre">install=False</span></code> (e.g. when listing
+the container in the Admin UI and no other container resolver worked for a tool).</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Admins certainly should think carefully about <code class="docutils literal notranslate"><span class="pre">auto_install</span></code>, since there are
+many scenarios where the default is not desirable.</p>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cache_directory</span></code>: applies to singularity container resolvers that allow to
+cache images and sets the directory where to save images.
+If not set, containers are saved in <code class="docutils literal notranslate"><span class="pre">&quot;database/container_cache/singularity/[explicit|mulled]&quot;</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cache_directory_cacher_type</span></code>: <code class="docutils literal notranslate"><span class="pre">&quot;uncached&quot;</span></code> (default) or <code class="docutils literal notranslate"><span class="pre">&quot;dir_mtime&quot;</span></code>.
+The singularity resolvers iterate over the contents of the cache directory. The contents
+of the directory can be accessed uncached (in which case the file listing is computed for each access)
+or cached (then the listing is computed only if the mtime of the cache dir changes and on first access).
+(applies to all singularity resolvers that can cache images, except explicit_singularity)</p></li>
+</ul>
+</section>
+<section id="note-on-the-built-in-caching-capabilities-of-singularity-and-docker">
+<h2>Note on the built-in caching capabilities of singularity and docker<a class="headerlink" href="#note-on-the-built-in-caching-capabilities-of-singularity-and-docker" title="Link to this heading">¶</a></h2>
+<p>It is important to note that docker as well as singularity have their own built-in
+caching mechanism.</p>
+<p>In case of docker, a <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span></code> (e.g. executed from a container resolver) or
+<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> (e.g. executed on the compute node running the job) will add the
+image to the <strong>local</strong> image cache.
+Galaxy’s docker container resolvers rely on docker’s built-in image cache,
+i.e. they query the image cache on the node that is executing Galaxy.
+If the nodes that execute jobs are different from the node executing Galaxy
+it’s important to note that these nodes will have independent caches that
+admins might want to control.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For the the execution of jobs Galaxy already implement the <a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/c517e805771cc16807dfe675075a13fe6343f01f/lib/galaxy/tool_util/deps/container_classes.py#L319">support for using
+tarballs of container images</a>.
+from <code class="docutils literal notranslate"><span class="pre">container_image_cache_path</span></code> (set in galaxy.yml) or the destination
+property <code class="docutils literal notranslate"><span class="pre">docker_container_image_cache_path</span></code>. But at the moment none of the
+docker container resolvers creates these image tarballs.</p>
+</div>
+<p>Also singularity has its own caching mechanism and caches by default to <code class="docutils literal notranslate"><span class="pre">$HOME/.singularity</span></code>.
+It can be cleaned regularly using the <code class="docutils literal notranslate"><span class="pre">singularity</span> <span class="pre">cache</span></code> command, or disabled by using the
+<code class="docutils literal notranslate"><span class="pre">SINGULARITY_DISABLE_CACHE</span></code> environment variable.</p>
+<p>Setting up Galaxy using docker / singularity on distributed compute resources
+(in particular in real user setups) requires careful planning.</p>
+</section>
+</section>
+<section id="other-considerations">
+<h1>Other considerations<a class="headerlink" href="#other-considerations" title="Link to this heading">¶</a></h1>
+<p>Tools frequently use <code class="docutils literal notranslate"><span class="pre">$TMP</span></code>, <code class="docutils literal notranslate"><span class="pre">$TEMP</span></code>, or <code class="docutils literal notranslate"><span class="pre">$TMPDIR</span></code> (or simply use hardcoded
+<code class="docutils literal notranslate"><span class="pre">/tmp</span></code>) for storing temporary data. In containerized environments <code class="docutils literal notranslate"><span class="pre">/tmp</span></code>
+is by default bound to a directory in the job working dir (<code class="docutils literal notranslate"><span class="pre">$_GALAXY_JOB_TMP_DIR</span></code>),
+i.e. <code class="docutils literal notranslate"><span class="pre">$_GALAXY_JOB_TMP_DIR:/tmp:rw</span></code> is in the bind strings (in addition to
+<code class="docutils literal notranslate"><span class="pre">$_GALAXY_JOB_TMP_DIR:$_GALAXY_JOB_TMP_DIR:rw</span></code>).
+Galaxy automatically passes the environment variables <code class="docutils literal notranslate"><span class="pre">$TMP</span></code>, <code class="docutils literal notranslate"><span class="pre">$TEMP</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">$TMPDIR</span></code> to the container and bind-mounts these.</p>
+<p>The default bind for <cite>/tmp</cite> can be overwritten by setting the
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/85f16381694224598dff139bcfe307d9fd4f22bc/lib/galaxy/config/sample/job_conf.sample.yml#L455">docker_volumes</a> and
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/85f16381694224598dff139bcfe307d9fd4f22bc/lib/galaxy/config/sample/job_conf.sample.yml#L567">singularity_volumes</a>, resp.,
+configuration properties in the <a class="reference internal" href="jobs.html"><span class="doc">job configuration</span></a>.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="dependency_resolvers.html" class="btn btn-neutral float-left" title="Dependency Resolvers in Galaxy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="conda_faq.html" class="btn btn-neutral float-right" title="Conda for Tool Dependencies" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Galaxy Committers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

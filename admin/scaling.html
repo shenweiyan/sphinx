@@ -1,0 +1,737 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scaling and Load Balancing &mdash; Galaxy Project 23.1.5.dev0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+
+  
+    <link rel="canonical" href="https://docs.galaxyproject.org/en/master/admin/scaling.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=da3e81e8"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Connecting to a Cluster" href="cluster.html" />
+    <link rel="prev" title="Proxying Galaxy with Apache" href="apache.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Galaxy Project
+          </a>
+              <div class="version">
+                23.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../releases/index.html">Releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.1_announce_user.html">June 2023 Galaxy Release (v 23.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.0_announce_user.html">2023 Galaxy Release (v 23.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.05_announce_user.html">May 2022 Galaxy Release (v 22.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.01_announce_user.html">January 2022 Galaxy Release (v 22.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.09_announce_user.html">September 2021 Galaxy Release (v 21.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.05_announce_user.html">May 2021 Galaxy Release (v 21.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.01_announce_user.html">January 2021 Galaxy Release (v 21.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.09_announce_user.html">September 2020 Galaxy Release (v 20.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.05_announce_user.html">May 2020 Galaxy Release (v 20.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.01_announce_user.html">January 2020 Galaxy Release (v 20.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.09_announce_user.html">September 2019 Galaxy Release (v 19.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.05_announce_user.html">May 2019 Galaxy Release (v 19.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.01_announce_user.html">January 2019 Galaxy Release (v 19.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.09_announce.html">September 2018 Galaxy Release (v 18.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.05_announce.html">May 2018 Galaxy Release (v 18.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.01_announce.html">January 2018 Galaxy Release (v 18.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.09_announce.html">September 2017 Galaxy Release (v 17.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.05_announce.html">May 2017 Galaxy Release (v 17.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.01_announce.html">January 2017 Galaxy Release (v 17.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.10_announce.html">October 2016 Galaxy Release (v 16.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.07_announce.html">July 2016 Galaxy Release (v 16.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.04_announce.html">April 2016 Galaxy Release (v 16.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.01_announce.html">January 2016 Galaxy Release (v 16.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.10_announce.html">October 2015 Galaxy Release (v 15.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.07_announce.html">July 2015 Galaxy Release (v 15.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.05_announce.html">May 2015 Galaxy Release (v 15.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.03_announce.html">March 2015 Galaxy Release (v 15.03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.01_announce.html">January 2015 Galaxy Release (v 15.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.10_announce.html">October 2014 Galaxy Release (v 14.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.08_announce.html">August 2014 Galaxy Release (v 14.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.06_announce.html">June 2014 Galaxy Release (v 14.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.04_announce.html">April 2014 Galaxy Release (v 14.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.02_announce.html">February 2014 Galaxy Release (v 14.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.11_announce.html">November 2013 Galaxy Release (v 13.11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.08_announce.html">August 2013 Galaxy Release (v 13.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.06_announce.html">June 2013 Galaxy Release (v 13.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.04_announce.html">April 2013 Galaxy Release (v 13.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.02_announce.html">February 2013 Galaxy Release (v 13.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.01_announce.html">January 2013 Galaxy Release (v 13.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/older_releases.html">Galaxy Releases older than v 13.01</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Admin Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Administration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="python.html">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="framework_dependencies.html">Framework Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">Galaxy Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logging.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="production.html">Production Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nginx.html">Proxying Galaxy with NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apache.html">Proxying Galaxy with Apache</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Scaling and Load Balancing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cluster.html">Connecting to a Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jobs.html">Galaxy Job Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tool_panel.html">Tool Panel Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mq.html">Message queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependency_resolvers.html">Dependency Resolvers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="container_resolvers.html">Containers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="container_resolvers.html#other-considerations">Other considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conda_faq.html">Conda for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="db_migration.html">Galaxy Database Schema Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reports.html">Galaxy Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="useful_scripts.html">Scripts &amp; Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrating_to_gunicorn.html">Migrating from uWSGI to Gunicorn and FastAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="special_topics/index.html">Special topics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/ftp.html">Galaxy FTP Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/interactivetools.html">Galaxy InteractiveTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/mulled_containers.html">Containers for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/grt.html">Galactic Radio Telescope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/gtn.html">Galaxy Training Materials Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/job_metrics.html">Job Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/webhooks.html">Galaxy Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/vault.html">Storing secrets in the vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/performance_tracking.html">Galaxy Performance Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/bug_reports.html">Bug Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/gdpr_compliance.html">GDPR Compliance</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/index.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dev/schema.html">Galaxy Tool XML File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/api_guidelines.html">API Design Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/build_a_job_runner.html">Build a job runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/finding_and_improving_slow_code.html">Finding and improving slow Galaxy code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_managers.html">Data managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_types.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/faq.html">How Do I…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/writing_tests.html">Writing Tests for Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html">Debugging Galaxy Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html#debugging-tests-that-run-out-of-memory">Debugging tests that run out of memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy.html">Debugging Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy_slurm.html">Debugging Galaxy: Slurm Compute Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/translating.html">Translating the Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/create_point_release.html">Creating Galaxy Point Releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api_doc.html">Galaxy API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/quickstart.html"> Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/api.html"> Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ts_api_doc.html">Tool Shed API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/ts_api.html"> API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../lib/modules.html">Application Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy.html">galaxy package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_ext.html">galaxy_ext package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_test.html">galaxy_test package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/tool_shed.html">tool_shed package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../project/organization.html">Project Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#procedure-documents">Procedure Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#committers">Committers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#release-branches">Release branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#handling-pull-requests">Handling Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#issue-reporting">Issue Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../project/issues.html">Issue Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#issue-reporting">Issue Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#milestones">Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#labeling-structure">Labeling Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#the-roadmap">The Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#voting">Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#automation">Automation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Galaxy Project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Galaxy Deployment &amp; Administration</a></li>
+      <li class="breadcrumb-item active">Scaling and Load Balancing</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/admin/scaling.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="scaling-and-load-balancing">
+<h1>Scaling and Load Balancing<a class="headerlink" href="#scaling-and-load-balancing" title="Link to this heading">¶</a></h1>
+<p>The Galaxy framework is written in Python and makes extensive use of threads.  However, one of the drawbacks of Python
+is the <a class="reference external" href="https://docs.python.org/c-api/init.html#thread-state-and-the-global-interpreter-lock">Global Interpreter Lock</a>,
+which prevents more than one thread from being on CPU at a time.  Because of this, having a multi-core system will not
+improve the Galaxy framework’s performance out of the box since Galaxy can use (at most) one core at a time in its
+default configuration.  However, Galaxy can easily run in multiple separate processes, which solves this problem.  For a
+more thorough explanation of this problem and why you will almost surely want to switch to the multiprocess
+configuration if running for more than a small handful of users, see the <a class="reference internal" href="production.html"><span class="std std-doc">production configuration</span></a>
+page.</p>
+<p>Just to be clear: Increasing the number of plugin workers in <code class="docutils literal notranslate"><span class="pre">job_conf.xml</span></code> will not make your Galaxy server much more responsive.
+The key to scaling Galaxy is the ability to run <em>multiple</em> Galaxy servers which co-operatively work on the same database.</p>
+<section id="terminology">
+<h2>Terminology<a class="headerlink" href="#terminology" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>web worker</strong> - Galaxy server process responsible for servicing web requests for the UI/API</p></li>
+<li><p><strong>job handler</strong> - Galaxy server process responsible for setting up, starting, and monitoring jobs, submitting jobs to
+a cluster (if configured), for setting metadata (if not set on the cluster), and cleaning up after jobs</p>
+<ul>
+<li><p><strong>tags</strong> - Handlers can be grouped in to a “pool” of handlers using <em>tags</em>, after which, individual tools may be
+mapped to a handler tag such that all executions of that tool are handled by the tagged handler(s).</p></li>
+<li><p><strong>default</strong> - Any handlers without defined tags - aka “untagged handlers” - will handle executions of all tools
+not mapped to a specific handler ID or tag.</p></li>
+</ul>
+</li>
+<li><p><strong>Webless Galaxy application</strong> - The Galaxy application run as a standalone Python application with no web/ASGI server</p></li>
+</ul>
+</section>
+<section id="application-servers">
+<h2>Application Servers<a class="headerlink" href="#application-servers" title="Link to this heading">¶</a></h2>
+<p>It is possible to run the Galaxy server in many different ways, including under different web application frameworks, or
+as a standalone server with no web stack.</p>
+<p>Starting with the 22.01 release the default application server is <a class="reference external" href="https://gunicorn.org/">Gunicorn</a>.
+Gunicorn serves Galaxy as an ASGI web application.</p>
+<section id="historical-note">
+<h3>Historical note<a class="headerlink" href="#historical-note" title="Link to this heading">¶</a></h3>
+<p>Prior to the 18.01 release, Galaxy (by default) used the <a class="reference external" href="https://paste.readthedocs.io/">Python Paste</a> web stack, and ran in a single process.
+Between the 18.01 release and the 22.01 release, <a class="reference external" href="https://uwsgi-docs.readthedocs.io/">uWSGI</a> was used as the default
+application server.
+In release 22.05 we dropped support for running Galaxy as a WSGI application via uWSGI or paste.
+For more information about this, please consult the version of this document that is
+appropriate to your Galaxy release.</p>
+</section>
+</section>
+<section id="deployment-options">
+<h2>Deployment Options<a class="headerlink" href="#deployment-options" title="Link to this heading">¶</a></h2>
+<p>There are multiple deployment strategies for the Galaxy application that you can choose from. The right one depends on
+the configuration of the infrastructure on which you are deploying. In all cases, all Galaxy job features such as
+<a class="reference internal" href="cluster.html"><span class="std std-doc">running on a cluster</span></a> are supported.</p>
+<p>Although Gunicorn implements many features that were previously the responsibility of an upstream proxy server,
+it is recommended to place a proxy server in front of Gunicorn and utilize it for all of its traditional
+roles (serving static content, serving dataset downloads, etc.) as described in the <a class="reference internal" href="production.html"><span class="std std-doc">production
+configuration</span></a> documentation.</p>
+<section id="gunicorn-with-jobs-handled-by-web-workers-default-configuration">
+<h3>Gunicorn with jobs handled by web workers (default configuration)<a class="headerlink" href="#gunicorn-with-jobs-handled-by-web-workers-default-configuration" title="Link to this heading">¶</a></h3>
+<p>Referred to in this documentation as the <strong>all-in-one</strong> strategy.</p>
+<ul class="simple">
+<li><p>Job handlers and web workers are the same processes and cannot be separated</p></li>
+<li><p>A random web worker will be the job handler for that job</p></li>
+</ul>
+<p>Under this strategy, jobs will be handled by Gunicorn workers. Having web processes handle jobs will negatively impact
+UI/API performance.</p>
+<p>This is the default out-of-the-box configuration.</p>
+</section>
+<section id="gunicorn-for-web-serving-and-webless-galaxy-applications-as-job-handlers">
+<h3>Gunicorn for web serving and Webless Galaxy applications as job handlers<a class="headerlink" href="#gunicorn-for-web-serving-and-webless-galaxy-applications-as-job-handlers" title="Link to this heading">¶</a></h3>
+<p>Referred to in this documentation as the <strong>Gunicorn + Webless</strong> strategy.</p>
+<ul class="simple">
+<li><p>Job handlers are started as standalone Python applications with no web stack</p></li>
+<li><p>Jobs are dispatched from web workers to job handlers via the Galaxy database</p></li>
+<li><p>Jobs can be dispatched to job handlers running on any host</p></li>
+<li><p>Additional job handlers can be added dynamically without reconfiguring/restarting Galaxy (19.01 or later)</p></li>
+<li><p>The recommended deployment strategy for production Galaxy instances</p></li>
+</ul>
+<p>By default, handler assignment will occur using the <strong>Database Transaction Isolation</strong> or <strong>Database SKIP LOCKED</strong>
+methods (see below).</p>
+</section>
+</section>
+<section id="job-handler-assignment-methods">
+<h2>Job Handler Assignment Methods<a class="headerlink" href="#job-handler-assignment-methods" title="Link to this heading">¶</a></h2>
+<p>Job handler assignment methods are configurable with the <code class="docutils literal notranslate"><span class="pre">assign_with</span></code>
+attribute on the <code class="docutils literal notranslate"><span class="pre">&lt;handlers&gt;</span></code> tag in <code class="docutils literal notranslate"><span class="pre">job_conf.xml</span></code>.  The available methods are:</p>
+<ul class="simple">
+<li><p><strong>Database Transaction Isolation</strong> (<code class="docutils literal notranslate"><span class="pre">db-transaction-isolation</span></code>, new in 19.01) - Jobs are assigned a handler by handlers selecting the unassigned
+job from the database using SQL transaction isolation, which uses database locks to guarantee that only one handler
+can select a given job. This occurs by the web worker that receives the tool execution request (via the UI or API)
+setting a new job’s ‘handler’ column in the database to the configured tag/default (or <code class="docutils literal notranslate"><span class="pre">_default_</span></code> if no tag/default
+is configured). Handlers “listen” for jobs by selecting jobs from the database that match the handler tag(s) for which
+they are configured. <code class="docutils literal notranslate"><span class="pre">db-transaction-isolation</span></code> is the default assignment method if no handlers are defined,
+or handlers are defined but no <code class="docutils literal notranslate"><span class="pre">assign_with</span></code> attribute is set on the <code class="docutils literal notranslate"><span class="pre">handlers</span></code> tag and <em>Database SKIP LOCKED</em> is not available.</p></li>
+<li><p><strong>Database SKIP LOCKED</strong> (<code class="docutils literal notranslate"><span class="pre">db-skip-locked</span></code>, new in 19.01) - Jobs are assigned a handler by handlers selecting the unassigned job from
+the database using <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">...</span> <span class="pre">FOR</span> <span class="pre">UPDATE</span> <span class="pre">SKIP</span> <span class="pre">LOCKED</span></code> on databases that support this query (see the next section for
+details). This occurs via the same process as <em>Database Transaction Isolation</em>, the only difference is the way in
+which handlers query the database. This is the default if no handlers are defined, or handlers are defined but no <code class="docutils literal notranslate"><span class="pre">assign_with</span></code> attribute is set
+on the <code class="docutils literal notranslate"><span class="pre">handlers</span></code> tag and <em>Database SKIP LOCKED</em> is available.</p></li>
+<li><p><strong>Database Self Assignment</strong> (<code class="docutils literal notranslate"><span class="pre">db-self</span></code>) - Like <em>In-memory Self Assignment</em> but assignment occurs by setting a new job’s ‘handler’
+column in the database to the process that created the job at the time it is created. Additionally, if a tool is
+configured to use a specific handler (ID or tag), that handler is assigned (tags by <em>Database Preassignment</em>). This is
+the default fallback if no handlers are defined and the database does not support <em>Database SKIP LOCKED</em> or <em>Database Transaction Isolation</em>.</p></li>
+<li><p><strong>In-memory Self Assignment</strong> (<code class="docutils literal notranslate"><span class="pre">mem-self</span></code>) - Jobs are assigned to the web worker that received the tool execution request from the
+user via an internal in-memory queue. If a tool is configured to use a specific handler, that configuration is
+ignored; the process that creates the job <em>always</em> handles it. This can be slightly faster than <strong>Database Self
+Assignment</strong> but only makes sense in single process environments without dedicated job handlers. This option
+supersedes the former <code class="docutils literal notranslate"><span class="pre">track_jobs_in_database</span></code> option in <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code> and corresponds to setting that option to
+<code class="docutils literal notranslate"><span class="pre">false</span></code>.</p></li>
+<li><p><strong>Database Preassignment</strong> (<code class="docutils literal notranslate"><span class="pre">db-preassign</span></code>) - Jobs are assigned a handler by selecting one at random from the configured tag or default
+handlers at the time the job is created. This occurs by the web worker that receives the tool execution request (via
+the UI or API) setting a new job’s ‘handler’ column in the database to the randomly chose handler ID (hence
+“preassignment”). This is the default only if handlers are defined and the database does not support <em>Database SKIP LOCKED</em> or <em>Database Transaction Isolation</em>.</p></li>
+</ul>
+<p>In all cases, if a tool is configured to use a specific handler (by ID, not tag), configured assignment methods are
+ignored and that handler is directly assigned in the job’s ‘handler’ column at job creation time.</p>
+<p>See the <code class="docutils literal notranslate"><span class="pre">config/job_conf.xml.sample_advanced</span></code> file in the Galaxy distribution for instructions on setting the
+assignment method.</p>
+<section id="choosing-an-assignment-method">
+<h3>Choosing an Assignment Method<a class="headerlink" href="#choosing-an-assignment-method" title="Link to this heading">¶</a></h3>
+<p>Prior to Galaxy 19.01, the most common deployment strategies assigned handlers using what is
+now (since 19.01) referred to as <em>Database Preassignment</em>.  Although still a fallback option when the database
+does not support <em>Database SKIP LOCKED</em> or <em>Database Transaction Isolation</em>, preassignment has a few drawbacks:</p>
+<ul class="simple">
+<li><p>Web workers do not have a way to know whether a particular handler is alive when assigning that handler</p></li>
+<li><p>Jobs are not load balanced across handlers</p></li>
+<li><p>Changing the number of handlers requires changing <code class="docutils literal notranslate"><span class="pre">job_conf.xml</span></code> and restarting <em>all</em> Galaxy processes</p></li>
+</ul>
+<p>The “database locking” methods (<em>Database SKIP LOCKED</em> and <em>Database Transaction Isolation</em>) were created to solve
+these issues. The preferred method between the two options is <em>Database SKIP LOCKED</em>, but it requires PostgreSQL 9.5
+or newer, SQLite 3.25 or newer or MySQL 8.0 or newer (untested), or MariaDB 10.3 or newer (untested).
+If using an older database version, use <em>Database Transaction Isolation</em> instead. A detailed explanation of these database locking methods in PostgreSQL can be
+found in the excellent <a class="reference external" href="https://www.2ndquadrant.com/en/blog/what-is-select-skip-locked-for-in-postgresql-9-5/">What is SKIP LOCKED for in PostgreSQL 9.5?</a> entry on the <a class="reference external" href="https://www.2ndquadrant.com/en/blog/">2ndQuadrant
+PostgreSQL Blog</a>.</p>
+<p>The preferred assignment method is <em>Database SKIP LOCKED</em> or <em>Database Transaction Isolation</em>.</p>
+</section>
+</section>
+<section id="scaling-configuration">
+<h2>Configuration<a class="headerlink" href="#scaling-configuration" title="Link to this heading">¶</a></h2>
+<section id="gunicorn">
+<h3>Gunicorn<a class="headerlink" href="#gunicorn" title="Link to this heading">¶</a></h3>
+<p>We will only outline a few of Gunicorn’s options, consult the <a class="reference external" href="https://docs.gunicorn.org/en/latest/settings.html">Gunicorn documentation</a> for more.</p>
+<p>Note that by default Galaxy will use <a class="reference external" href="https://github.com/galaxyproject/gravity/">gravity</a> to create a <a class="reference external" href="http://supervisord.org/">supervisor</a> configuration in Gravity’s state directory.
+Gravity’s state directory is located in <code class="docutils literal notranslate"><span class="pre">database/gravity</span></code>, and you can find the generated supervisor configuration in
+<code class="docutils literal notranslate"><span class="pre">database/gravity/supervisor</span></code>. The location of the state directory can be controlled using the <code class="docutils literal notranslate"><span class="pre">--state-dir</span></code> argument
+of <code class="docutils literal notranslate"><span class="pre">galaxyctl</span></code>, or using the <code class="docutils literal notranslate"><span class="pre">GRAVITY_STATE_DIR</span></code> environment variable.
+Configuration values for the supervisor configuration are read from the <code class="docutils literal notranslate"><span class="pre">gravity</span></code> section of your <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code> file.
+This is the preferred and out-of-the box way of configuring Gunicorn for serving Galaxy.
+If you are not using <code class="docutils literal notranslate"><span class="pre">./run.sh</span></code> for starting Galaxy or you would like to use another process manager,
+all the Gunicorn configuration values can also directly be set on the command line.</p>
+<p>Configuration is performed in the <code class="docutils literal notranslate"><span class="pre">gravity</span></code> section of <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code>. You will find that the default, if copied from
+<code class="docutils literal notranslate"><span class="pre">galaxy.yml.sample</span></code>, is commented out. The default configuration options are provided to Gunicorn on the command line by
+using <code class="docutils literal notranslate"><span class="pre">gravity</span></code> within the <code class="docutils literal notranslate"><span class="pre">run.sh</span></code> script.</p>
+<p>After making changes to the <code class="docutils literal notranslate"><span class="pre">gravity</span></code> section, you always need to activate Galaxy’s virtualenv and run <code class="docutils literal notranslate"><span class="pre">galaxyctl</span> <span class="pre">update</span></code>,
+or one of the <code class="docutils literal notranslate"><span class="pre">start</span></code>, <code class="docutils literal notranslate"><span class="pre">stop</span></code>, <code class="docutils literal notranslate"><span class="pre">restart</span></code>, and <code class="docutils literal notranslate"><span class="pre">graceful</span></code> subcommands of the <code class="docutils literal notranslate"><span class="pre">galaxyctl</span></code> command, which will run the <code class="docutils literal notranslate"><span class="pre">update</span></code> command internally.</p>
+<section id="common-gunicorn-configuration">
+<h4>Common Gunicorn configuration<a class="headerlink" href="#common-gunicorn-configuration" title="Link to this heading">¶</a></h4>
+<p>In <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code>, define a <code class="docutils literal notranslate"><span class="pre">gravity</span></code> section. Shown below are the options common to all deployment strategies:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">gravity</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">app_server</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gunicorn</span>
+<span class="w">  </span><span class="nt">gunicorn</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># listening options</span>
+<span class="w">    </span><span class="nt">bind</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;127.0.0.1:8080&#39;</span>
+<span class="w">    </span><span class="c1"># performance options</span>
+<span class="w">    </span><span class="nt">workers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="c1"># Other options that will be passed to gunicorn</span>
+<span class="w">    </span><span class="nt">extra_args</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>Some of these options deserve explanation:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">workers</span></code>: Controls the number of Galaxy application processes Gunicorn will spawn. Increased web performance can be
+attained by increasing this value. If Gunicorn is the only application on the server, a good starting value is the number of CPUs * 2 + 1.
+4-12 workers should be able to handle hundreds if not thousands of requests per second.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">extra_args</span></code>: You can specify additional arguments to pass to gunicorn here.</p></li>
+</ul>
+<p>Note that the performance option values given above are just examples and should be tuned per your specific needs.
+However, as given, they are a good place to start.</p>
+</section>
+<section id="listening-and-proxy-options">
+<h4>Listening and proxy options<a class="headerlink" href="#listening-and-proxy-options" title="Link to this heading">¶</a></h4>
+<p><strong>With a proxy server:</strong></p>
+<p>To use a socket for the communication between the proxy and Gunicorn, set the <code class="docutils literal notranslate"><span class="pre">bind</span></code> option to a path:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">gravity</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">app_server</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gunicorn</span>
+<span class="w">  </span><span class="nt">gunicorn</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># listening options</span>
+<span class="w">    </span><span class="nt">bind</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;unix:/srv/galaxy/var/gunicorn.sock&#39;</span>
+<span class="w">    </span><span class="nt">extra_args</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;--forwarded-allow-ips=&quot;*&quot;&#39;</span>
+</pre></div>
+</div>
+<p>Here we’ve used a UNIX domain socket because there’s less overhead than a TCP socket and it can be secured by filesystem
+permissions. Note that we’ve added <code class="docutils literal notranslate"><span class="pre">--forwarded-allow-ips=&quot;*&quot;</span></code> to ensure that the domain socket is trusted as a source from which to proxy headers.</p>
+<p>You can also listen on a port:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="nt">app_server</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gunicorn</span>
+<span class="w">  </span><span class="nt">gunicorn</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># listening options</span>
+<span class="w">    </span><span class="nt">bind</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;127.0.0.1:4001&#39;</span>
+</pre></div>
+</div>
+<p>If you are listening on a port do not set <code class="docutils literal notranslate"><span class="pre">--forwarded-allow-ips=&quot;*&quot;</span></code>.</p>
+<p>The choice of port 4001 is arbitrary, but in both cases, the socket location must match whatever socket the proxy server
+is configured to communicate with. If using a UNIX domain socket, be sure that the proxy server’s user has read/write
+permission on the socket. Because Galaxy and the proxy server most likely run as different users, this is not likely to
+be the case by default. One common solution is to add the proxy server’s user to the Galaxy user’s primary group.
+Gunicorn’s <code class="docutils literal notranslate"><span class="pre">umask</span></code> option can also help here.</p>
+<p>You can consult the Galaxy documentation for <a class="reference internal" href="apache.html"><span class="std std-doc">Apache</span></a> or <a class="reference internal" href="nginx.html"><span class="std std-doc">nginx</span></a>
+for help with the proxy-side configuration.</p>
+<p>By setting the <code class="docutils literal notranslate"><span class="pre">bind</span></code> option to a socket, <code class="docutils literal notranslate"><span class="pre">run.sh</span></code> will no longer automatically serve Galaxy via HTTP (since it is assumed that
+you are setting a socket to serve Galaxy via a proxy server). If you wish to continue serving HTTP directly with Gunicorn
+while using a socket, you can add an additional <code class="docutils literal notranslate"><span class="pre">--bind</span></code> argument via the <code class="docutils literal notranslate"><span class="pre">extra_args</span></code> option:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">gravity</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">app_server</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gunicorn</span>
+<span class="w">  </span><span class="nt">gunicorn</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># listening options</span>
+<span class="w">    </span><span class="nt">bind</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;unix:/srv/galaxy/var/gunicorn.sock&#39;</span>
+<span class="w">    </span><span class="nt">extra_args</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;--forwarded-allow-ips=&quot;*&quot;</span><span class="nv"> </span><span class="s">--bind</span><span class="nv"> </span><span class="s">127.0.0.1:8080&#39;</span>
+</pre></div>
+</div>
+<p>Note that this should only be used for debugging purposes due to <code class="docutils literal notranslate"><span class="pre">--forwarded-allow-ips=&quot;*&quot;</span></code>.</p>
+<p><strong>Without a proxy server</strong>:</p>
+<p>It is strongly recommended to use a proxy server.</p>
+<p>Gunicorn can be configured to serve HTTPS directly:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="c1"># listening options</span>
+<span class="w">  </span><span class="nt">gunicorn</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># listening options</span>
+<span class="w">    </span><span class="nt">bind</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;0.0.0.0:443&#39;</span>
+<span class="w">    </span><span class="nt">keyfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">server.key</span>
+<span class="w">    </span><span class="nt">certfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">server.crt</span>
+</pre></div>
+</div>
+<p>See <a class="reference external" href="https://docs.gunicorn.org/en/latest/settings.html#ssl">Gunicorn’s SSL documentation</a> for more details.</p>
+<p>To bind to ports &lt; 1024 (e.g. if you want to bind to the standard HTTP/HTTPS ports 80/443), you must bind as the <code class="docutils literal notranslate"><span class="pre">root</span></code>
+user and drop privileges to the Galaxy user. However you are strongly encouraged to setup a proxy server
+as described in the <a class="reference internal" href="production.html"><span class="std std-doc">production configuration</span></a> documentation.</p>
+</section>
+</section>
+<section id="job-handling">
+<h3>Job Handling<a class="headerlink" href="#job-handling" title="Link to this heading">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>In all strategies, once a handler has been assigned jobs, you cannot unconfigure that handler (e.g. to decrease the
+number of handlers) until it has finished processing all its assigned jobs, or else its jobs will never reach a
+terminal state. In order to allow a handler to run but not receive any new jobs, configure it with an unused tag (e.g
+<code class="docutils literal notranslate"><span class="pre">&lt;handler</span> <span class="pre">id=&quot;handler5&quot;</span> <span class="pre">tags=&quot;drain&quot;</span> <span class="pre">/&gt;</span></code>) and restart <em>all</em> Galaxy processes.</p>
+<p>Alternatively, you can stop the handler and reassign its jobs to another handler, but this is currently only possible
+using an <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> query in the database and is only recommended for advanced Galaxy administrators.</p>
+</div>
+<section id="all-in-one-job-handling">
+<h4>all-in-one job handling<a class="headerlink" href="#all-in-one-job-handling" title="Link to this heading">¶</a></h4>
+<p>Ensure that no <code class="docutils literal notranslate"><span class="pre">&lt;handlers&gt;</span></code> section exists in your <code class="docutils literal notranslate"><span class="pre">job_conf.xml</span></code> (or no <code class="docutils literal notranslate"><span class="pre">job_conf.xml</span></code> exists at all) and start Galaxy
+normally. No additional configuration is required. To increase the number of web workers/job handlers, increase the
+value of <code class="docutils literal notranslate"><span class="pre">workers</span></code> in the gunicorn section of your galaxy.yml file:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">gravity</span><span class="p">:</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">gunicorn</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain"># performance options</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">workers</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</pre></div>
+</div>
+<p>Jobs will be handled according to rules outlined above in <a class="reference internal" href="#job-handler-assignment-methods">Job Handler Assignment Methods</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If a <code class="docutils literal notranslate"><span class="pre">&lt;handlers&gt;</span></code> section is defined in <code class="docutils literal notranslate"><span class="pre">job_conf.xml</span></code>, Galaxy’s web workers will no longer load and start the
+job handling code, so tools cannot be mapped to specific handlers in this strategy. If you wish to control job
+handling, choose another deployment strategy.</p>
+</div>
+<section id="statically-defined-handlers">
+<h5>Statically defined handlers<a class="headerlink" href="#statically-defined-handlers" title="Link to this heading">¶</a></h5>
+<p>In the  <code class="docutils literal notranslate"><span class="pre">&lt;handlers&gt;</span></code> section in <code class="docutils literal notranslate"><span class="pre">job_conf.xml</span></code>, define the webless handlers you plan to start. Tools can be mapped
+to specific handlers, or to handler tags, as in the following example:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;job_conf&gt;</span>
+<span class="w">    </span><span class="nt">&lt;handlers&gt;</span>
+<span class="w">        </span><span class="nt">&lt;handler</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;handler1&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;handler</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;handler2&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;handler</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;handler3&quot;</span><span class="w"> </span><span class="na">tags=</span><span class="s">&quot;nodefault&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;handler</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;handler4&quot;</span><span class="w"> </span><span class="na">tags=</span><span class="s">&quot;special&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;handler</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;handler5&quot;</span><span class="w"> </span><span class="na">tags=</span><span class="s">&quot;special&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/handlers&gt;</span>
+<span class="w">    </span><span class="nt">&lt;tools&gt;</span>
+<span class="w">        </span><span class="nt">&lt;tool</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;test1&quot;</span><span class="w"> </span><span class="na">handler=</span><span class="s">&quot;handler3&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;tool</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;test2&quot;</span><span class="w"> </span><span class="na">handler=</span><span class="s">&quot;special&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;tool</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;test3&quot;</span><span class="w"> </span><span class="na">handler=</span><span class="s">&quot;handler2&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/tools&gt;</span>
+<span class="nt">&lt;/job_conf&gt;</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Any untagged handler will be automatically considered a default handler. As seen in the example above, it is possible
+to map any tool to any handler or tag, however, a handler must be tagged to prevent it from handling jobs created for
+tools that are not explicitly mapped to handlers. Thus, <code class="docutils literal notranslate"><span class="pre">handler2</span></code> will handle <em>all</em> executions of tool <code class="docutils literal notranslate"><span class="pre">test3</span></code>,
+but it will also (along with <code class="docutils literal notranslate"><span class="pre">handler1</span></code>) handle tools that are not explicitly mapped to handlers. In contrast,
+<code class="docutils literal notranslate"><span class="pre">handler3</span></code> will <em>only</em> handle executions of tool <code class="docutils literal notranslate"><span class="pre">test1</span></code>.</p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">run.sh</span></code> will start the gunicorn and job handler process(es), but if you are not using <code class="docutils literal notranslate"><span class="pre">run.sh</span></code> or the generated supervisor setup you will need to start the webless handler processes yourself. This is done on the command line like so:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/srv/galaxy/server
+<span class="gp">$ </span>./scripts/galaxy-main<span class="w"> </span>-c<span class="w"> </span>config/galaxy.yml<span class="w"> </span>--server-name<span class="w"> </span>handler0<span class="w"> </span>--daemonize
+<span class="gp">$ </span>./scripts/galaxy-main<span class="w"> </span>-c<span class="w"> </span>config/galaxy.yml<span class="w"> </span>--server-name<span class="w"> </span>handler1<span class="w"> </span>--daemonize
+<span class="gp">$ </span>./scripts/galaxy-main<span class="w"> </span>-c<span class="w"> </span>config/galaxy.yml<span class="w"> </span>--server-name<span class="w"> </span>handler2<span class="w"> </span>--daemonize
+</pre></div>
+</div>
+</section>
+</section>
+<section id="dynamically-defined-handlers">
+<h4>Dynamically defined handlers<a class="headerlink" href="#dynamically-defined-handlers" title="Link to this heading">¶</a></h4>
+<p>In order to define handlers dynamically, you must be using one of the new “database locking” handler assignment methods
+as explained in <a class="reference internal" href="#job-handler-assignment-methods">Job Handler Assignment Methods</a>, such as in the following
+<code class="docutils literal notranslate"><span class="pre">job_conf.xml</span></code>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;job_conf&gt;</span>
+<span class="w">    </span><span class="nt">&lt;handlers</span><span class="w"> </span><span class="na">assign_with=</span><span class="s">&quot;db-skip-locked&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;tools&gt;</span>
+<span class="w">        </span><span class="nt">&lt;tool</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;test1&quot;</span><span class="w"> </span><span class="na">handler=</span><span class="s">&quot;special&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/tools&gt;</span>
+<span class="nt">&lt;/job_conf&gt;</span>
+</pre></div>
+</div>
+<p>Note that we have defined a <code class="docutils literal notranslate"><span class="pre">&lt;handlers&gt;</span></code> section without any <code class="docutils literal notranslate"><span class="pre">&lt;handler&gt;</span></code> entries,
+and we have explicitly configured the assignment method with <code class="docutils literal notranslate"><span class="pre">assign_with=&quot;db-skip-locked&quot;</span></code>.</p>
+<p>To let gravity know how many webless handler processes should be started set the number of processes to start in the <code class="docutils literal notranslate"><span class="pre">gravity:</span></code> section of galaxy.yml:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">gravity</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">handlers</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">handler</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">processes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">      </span><span class="nt">pools</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">job-handlers</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">workflow-schedulers</span>
+<span class="w">    </span><span class="nt">special</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">pools</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">job-handlers.special</span>
+</pre></div>
+</div>
+<p>In this example 4 processes will be started in total:
+3 processes will act as job handlers and workflow schedulers, and one process will be dedicated to handling jobs for the <code class="docutils literal notranslate"><span class="pre">special</span></code> tag only. With the <code class="docutils literal notranslate"><span class="pre">job_conf.xml</span></code> configuration above these would be jobs created by the <code class="docutils literal notranslate"><span class="pre">test1</span></code> tool.
+You can omit the <code class="docutils literal notranslate"><span class="pre">pools</span></code> argument, this will then default to:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">pools</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">job-handlers</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">workflow-schedulers</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</pre></div>
+</div>
+<p>If you omit the <code class="docutils literal notranslate"><span class="pre">processes</span></code> argument this will default to a single process.
+You can further customize the handler names using the <code class="docutils literal notranslate"><span class="pre">name_template</span></code> section,
+for a complete example see <a class="reference external" href="https://github.com/galaxyproject/gravity/blob/a00df1c671fdc01e3fbc42f64a851a45a37a1870/tests/test_process_manager.py#L28">this gravity test case</a>.</p>
+<p>You can define arbitrary environment variables for dynamic handlers using the <code class="docutils literal notranslate"><span class="pre">environnment</span></code> key on a handler
+definition:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">gravity</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">handlers</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">handler</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">processes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">      </span><span class="nt">pools</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">job-handlers</span>
+<span class="w">      </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">FOO</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar</span>
+<span class="w">        </span><span class="nt">BAZ</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">quux</span>
+</pre></div>
+</div>
+<p>If you are not using dynamic handlers please omit the <code class="docutils literal notranslate"><span class="pre">handlers</span></code> entry completely, as these will
+otherwise be idle and not handle jobs or workflows.</p>
+<p>As with statically defined handlers, <code class="docutils literal notranslate"><span class="pre">run.sh</span></code> will start the process(es), but if you are not using <code class="docutils literal notranslate"><span class="pre">run.sh</span></code> or the generated supervisor config you will need to start the webless handler processes yourself. This is done on the command line like so (note the addition of the <code class="docutils literal notranslate"><span class="pre">--attach-to-pool</span></code> option):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/srv/galaxy/server
+<span class="go">./scripts/galaxy-main -c config/galaxy.yml --server-name handler_0 --attach-to-pool job-handlers --attach-to-pool workflow-scheduler --daemonize</span>
+<span class="go">./scripts/galaxy-main -c config/galaxy.yml --server-name handler_1 --attach-to-pool job-handlers --attach-to-pool workflow-scheduler --daemonize</span>
+<span class="go">./scripts/galaxy-main -c config/galaxy.yml --server-name handler_3 --attach-to-pool job-handlers --attach-to-pool workflow-scheduler --daemonize</span>
+<span class="go">./scripts/galaxy-main -c config/galaxy.yml --server-name special_0 --attach-to-pool job-handlers.special --daemonize</span>
+</pre></div>
+</div>
+<p>In this example:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">handler_0</span></code>, <code class="docutils literal notranslate"><span class="pre">handler_1</span></code> and <code class="docutils literal notranslate"><span class="pre">handler2</span></code> will handle tool executions that are not explicitly mapped to handlers</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">special_0</span></code> will handle tool executions that are mapped to the <code class="docutils literal notranslate"><span class="pre">special</span></code> handler tag</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="gravity-galaxyctl">
+<h2>gravity &amp; galaxyctl<a class="headerlink" href="#gravity-galaxyctl" title="Link to this heading">¶</a></h2>
+<p><a class="reference external" href="https://github.com/galaxyproject/gravity">Gravity</a> is a management tool for Galaxy servers,
+and is installed when you set up Galaxy.</p>
+<p>It provides two executables, <code class="docutils literal notranslate"><span class="pre">galaxyctl</span></code>, which is used to manage the starting, stopping, and logging of Galaxy’s various processes, and <code class="docutils literal notranslate"><span class="pre">galaxy</span></code>, which can be used to run a Galaxy server in the foreground.</p>
+<p>These commands are available from within Galaxy’s virtualenv, or you can install them globally.
+If you have used the standard installation method for Galaxy by running <code class="docutils literal notranslate"><span class="pre">./run.sh</span></code> or executing
+<code class="docutils literal notranslate"><span class="pre">./scripts/common_startup.sh</span></code>, a default directory has been configured in which gravity stores
+its state. If you have installed Galaxy or gravity by another means, you can use the <code class="docutils literal notranslate"><span class="pre">--state-dir</span></code> argument
+or the <code class="docutils literal notranslate"><span class="pre">GRAVITY_STATE_DIR</span></code> environment variable to control the state directory. If a state dir is not specified, it defaults to <code class="docutils literal notranslate"><span class="pre">~/.config/galaxy-gravity</span></code>.
+In the following sections we assume you have correctly set up gravity and can use the <code class="docutils literal notranslate"><span class="pre">galaxyctl</span></code> command.</p>
+</section>
+<section id="logging-and-daemonization">
+<h2>Logging and daemonization<a class="headerlink" href="#logging-and-daemonization" title="Link to this heading">¶</a></h2>
+<p>When running <code class="docutils literal notranslate"><span class="pre">./run.sh</span></code> the log output is shown on screen, and ^ctrl-c will stop all processes.
+Galaxy can be started in the background by running <code class="docutils literal notranslate"><span class="pre">./run.sh</span> <span class="pre">--daemon</span></code>.</p>
+<p>Alternatively, you can control Galaxy using the <code class="docutils literal notranslate"><span class="pre">galaxyctl</span></code> command provided by gravity.
+After activating Galaxy’s virtual environment you can start Galaxy in the background
+using <code class="docutils literal notranslate"><span class="pre">galaxyctl</span> <span class="pre">start</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>galaxyctl<span class="w"> </span>start
+<span class="go">celery                           STARTING</span>
+<span class="go">celery-beat                      STARTING</span>
+<span class="go">gunicorn                         STARTING</span>
+<span class="go">Log files are in /Users/mvandenb/src/doc_test/database/gravity/log</span>
+</pre></div>
+</div>
+<p>All process logs can be seen with <code class="docutils literal notranslate"><span class="pre">galaxyctl</span> <span class="pre">follow</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>galaxyctl<span class="w"> </span>follow
+<span class="go">==&gt; /Users/mvandenb/src/doc_test/database/gravity/log/gunicorn.log &lt;==</span>
+<span class="go">galaxy.webapps.galaxy.buildapp DEBUG 2022-02-17 16:31:33,344 [pN:main,p:91480,tN:MainThread] Prior to webapp return, Galaxy thread &lt;Thread(JobHandlerQueue.monitor_thread, started daemon 123145470246912)&gt; is alive.</span>
+<span class="go">galaxy.webapps.galaxy.buildapp DEBUG 2022-02-17 16:31:33,345 [pN:main,p:91480,tN:MainThread] Prior to webapp return, Galaxy thread &lt;Thread(JobHandlerStopQueue.monitor_thread, started daemon 123145487036416)&gt; is alive.</span>
+<span class="go">galaxy.webapps.galaxy.buildapp DEBUG 2022-02-17 16:31:33,345 [pN:main,p:91480,tN:MainThread] Prior to webapp return, Galaxy thread &lt;Thread(WorkflowRequestMonitor.monitor_thread, started daemon 123145503825920)&gt; is alive.</span>
+<span class="go">galaxy.webapps.galaxy.buildapp DEBUG 2022-02-17 16:31:33,345 [pN:main,p:91480,tN:MainThread] Prior to webapp return, Galaxy thread &lt;Thread(database_heartbeart_main.thread, started daemon 123145520615424)&gt; is alive.</span>
+<span class="go">galaxy.webapps.galaxy.buildapp DEBUG 2022-02-17 16:31:33,345 [pN:main,p:91480,tN:MainThread] Prior to webapp return, Galaxy thread &lt;GalaxyQueueWorker(Thread-1, started daemon 123145537404928)&gt; is alive.</span>
+<span class="go">galaxy.webapps.galaxy.buildapp DEBUG 2022-02-17 16:31:33,346 [pN:main,p:91480,tN:MainThread] Prior to webapp return, Galaxy thread &lt;Thread(Thread-2, started daemon 123145554194432)&gt; is alive.</span>
+<span class="go">galaxy.webapps.galaxy.buildapp DEBUG 2022-02-17 16:31:33,346 [pN:main,p:91480,tN:MainThread] Prior to webapp return, Galaxy thread &lt;Thread(Thread-3, started daemon 123145570983936)&gt; is alive.</span>
+<span class="go">[2022-02-17 16:31:34 +0100] [91480] [INFO] Started server process [91480]</span>
+<span class="go">[2022-02-17 16:31:34 +0100] [91480] [INFO] Waiting for application startup.</span>
+<span class="go">[2022-02-17 16:31:34 +0100] [91480] [INFO] Application startup complete.</span>
+
+<span class="go">==&gt; /Users/mvandenb/src/doc_test/database/gravity/log/celery.log &lt;==</span>
+<span class="go">[2022-02-17 16:31:27,008: DEBUG/MainProcess] ^-- substep ok</span>
+<span class="go">[2022-02-17 16:31:27,009: DEBUG/MainProcess] | Consumer: Starting Events</span>
+<span class="go">[2022-02-17 16:31:27,009: DEBUG/MainProcess] ^-- substep ok</span>
+<span class="go">[2022-02-17 16:31:27,009: DEBUG/MainProcess] | Consumer: Starting Tasks</span>
+<span class="go">[2022-02-17 16:31:27,035: DEBUG/MainProcess] ^-- substep ok</span>
+<span class="go">[2022-02-17 16:31:27,035: DEBUG/MainProcess] | Consumer: Starting Heart</span>
+<span class="go">[2022-02-17 16:31:27,035: DEBUG/MainProcess] ^-- substep ok</span>
+<span class="go">[2022-02-17 16:31:27,035: DEBUG/MainProcess] | Consumer: Starting event loop</span>
+<span class="go">[2022-02-17 16:31:27,035: INFO/MainProcess] celery@MacBook-Pro-2.local ready.</span>
+<span class="go">[2022-02-17 16:31:27,035: DEBUG/MainProcess] basic.qos: prefetch_count-&gt;8</span>
+
+<span class="go">==&gt; /Users/mvandenb/src/doc_test/database/gravity/log/celery-beat.log &lt;==</span>
+<span class="go">[2022-02-17 16:29:04,023: DEBUG/MainProcess] beat: Ticking with max interval-&gt;5.00 minutes</span>
+<span class="go">[2022-02-17 16:29:04,024: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.</span>
+<span class="go">No Galaxy config file found, running from current working directory: /Users/mvandenb/src/doc_test</span>
+<span class="go">[2022-02-17 16:31:26,818: DEBUG/MainProcess] Setting default socket timeout to 30</span>
+<span class="go">[2022-02-17 16:31:26,819: INFO/MainProcess] beat: Starting...</span>
+<span class="go">[2022-02-17 16:31:26,824: DEBUG/MainProcess] Current schedule:</span>
+<span class="go">&lt;ScheduleEntry: prune-history-audit-table galaxy.celery.tasks.prune_history_audit_table() &lt;freq: 1.00 hour&gt;</span>
+<span class="go">&lt;ScheduleEntry: celery.backend_cleanup celery.backend_cleanup() &lt;crontab: 0 4 * * * (m/h/d/dM/MY)&gt;</span>
+<span class="go">[2022-02-17 16:31:26,824: DEBUG/MainProcess] beat: Ticking with max interval-&gt;5.00 minutes</span>
+<span class="go">[2022-02-17 16:31:26,825: DEBUG/MainProcess] beat: Waking up in 5.00 minutes.</span>
+</pre></div>
+</div>
+<p>More advanced logging options are described in the Galaxy <a class="reference internal" href="config_logging.html"><span class="doc std std-doc">Logging Configuration documentation</span></a>.</p>
+</section>
+<section id="starting-and-stopping">
+<h2>Starting and Stopping<a class="headerlink" href="#starting-and-stopping" title="Link to this heading">¶</a></h2>
+<p>If you want to run your Galaxy server as a persistent service, you can include the <code class="docutils literal notranslate"><span class="pre">galaxy</span></code> script from Galaxy’s
+virtualenv in the configuration of your process manager (e.g. systemd). You can then continue using the <code class="docutils literal notranslate"><span class="pre">galaxyctl</span></code> command as usual
+to start/stop/restart Galaxy or follow the logs.</p>
+<section id="transparent-restarts">
+<h3>Transparent restarts<a class="headerlink" href="#transparent-restarts" title="Link to this heading">¶</a></h3>
+<p>For zero-downtime restarts use the command <code class="docutils literal notranslate"><span class="pre">galaxyctl</span> <span class="pre">graceful</span></code>.</p>
+</section>
+<section id="systemd">
+<h3>Systemd<a class="headerlink" href="#systemd" title="Link to this heading">¶</a></h3>
+<p>This is a sample config for systemd. More information on systemd.service environment
+settings can be found in the <a class="reference external" href="https://www.freedesktop.org/software/systemd/man/systemd.exec.html#Environment=">documentation</a>
+The filename follows the pattern <code class="docutils literal notranslate"><span class="pre">&lt;service_name&gt;.service</span></code>. In this case we will use <code class="docutils literal notranslate"><span class="pre">galaxy.service</span></code></p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[Unit]</span>
+<span class="na">Description</span><span class="o">=</span><span class="s">Galaxy processes</span>
+<span class="na">After</span><span class="o">=</span><span class="s">network.target</span>
+<span class="na">After</span><span class="o">=</span><span class="s">time-sync.target</span>
+
+<span class="k">[Service]</span>
+<span class="na">PermissionsStartOnly</span><span class="o">=</span><span class="s">true</span>
+<span class="na">Type</span><span class="o">=</span><span class="s">simple</span>
+<span class="na">User</span><span class="o">=</span><span class="s">galaxy</span>
+<span class="na">Group</span><span class="o">=</span><span class="s">galaxy</span>
+<span class="na">Restart</span><span class="o">=</span><span class="s">on-abort</span>
+<span class="na">WorkingDirectory</span><span class="o">=</span><span class="s">/srv/galaxy/server</span>
+<span class="na">TimeoutStartSec</span><span class="o">=</span><span class="s">10</span>
+<span class="na">ExecStart</span><span class="o">=</span><span class="s">/srv/galaxy/venv/bin/galaxy --state-dir /srv/galaxy/database/gravity</span>
+<span class="na">Environment</span><span class="o">=</span><span class="s">VIRTUAL_ENV=/srv/galaxy/venv PATH=/srv/galaxy/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin</span>
+<span class="k">[Install]</span>
+<span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
+</pre></div>
+</div>
+<p>We can now enable and start the the Galaxy services with systemd:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>galaxy
+<span class="go">Created symlink from /etc/systemd/system/multi-user.target.wants/galaxy.service to /etc/systemd/system/galaxy.service.</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="apache.html" class="btn btn-neutral float-left" title="Proxying Galaxy with Apache" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cluster.html" class="btn btn-neutral float-right" title="Connecting to a Cluster" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Galaxy Committers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

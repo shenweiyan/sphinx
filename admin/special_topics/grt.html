@@ -1,0 +1,354 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galactic Radio Telescope &mdash; Galaxy Project 23.1.5.dev0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+
+  
+    <link rel="canonical" href="https://docs.galaxyproject.org/en/master/admin/special_topics/grt.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/documentation_options.js?v=da3e81e8"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Galaxy Training Materials Webhook" href="gtn.html" />
+    <link rel="prev" title="Containers for Tool Dependencies" href="mulled_containers.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Galaxy Project
+          </a>
+              <div class="version">
+                23.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../releases/index.html">Releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/23.1_announce_user.html">June 2023 Galaxy Release (v 23.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/23.0_announce_user.html">2023 Galaxy Release (v 23.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/22.05_announce_user.html">May 2022 Galaxy Release (v 22.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/22.01_announce_user.html">January 2022 Galaxy Release (v 22.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/21.09_announce_user.html">September 2021 Galaxy Release (v 21.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/21.05_announce_user.html">May 2021 Galaxy Release (v 21.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/21.01_announce_user.html">January 2021 Galaxy Release (v 21.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/20.09_announce_user.html">September 2020 Galaxy Release (v 20.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/20.05_announce_user.html">May 2020 Galaxy Release (v 20.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/20.01_announce_user.html">January 2020 Galaxy Release (v 20.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/19.09_announce_user.html">September 2019 Galaxy Release (v 19.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/19.05_announce_user.html">May 2019 Galaxy Release (v 19.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/19.01_announce_user.html">January 2019 Galaxy Release (v 19.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/18.09_announce.html">September 2018 Galaxy Release (v 18.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/18.05_announce.html">May 2018 Galaxy Release (v 18.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/18.01_announce.html">January 2018 Galaxy Release (v 18.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/17.09_announce.html">September 2017 Galaxy Release (v 17.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/17.05_announce.html">May 2017 Galaxy Release (v 17.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/17.01_announce.html">January 2017 Galaxy Release (v 17.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/16.10_announce.html">October 2016 Galaxy Release (v 16.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/16.07_announce.html">July 2016 Galaxy Release (v 16.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/16.04_announce.html">April 2016 Galaxy Release (v 16.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/16.01_announce.html">January 2016 Galaxy Release (v 16.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/15.10_announce.html">October 2015 Galaxy Release (v 15.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/15.07_announce.html">July 2015 Galaxy Release (v 15.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/15.05_announce.html">May 2015 Galaxy Release (v 15.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/15.03_announce.html">March 2015 Galaxy Release (v 15.03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/15.01_announce.html">January 2015 Galaxy Release (v 15.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/14.10_announce.html">October 2014 Galaxy Release (v 14.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/14.08_announce.html">August 2014 Galaxy Release (v 14.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/14.06_announce.html">June 2014 Galaxy Release (v 14.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/14.04_announce.html">April 2014 Galaxy Release (v 14.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/14.02_announce.html">February 2014 Galaxy Release (v 14.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/13.11_announce.html">November 2013 Galaxy Release (v 13.11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/13.08_announce.html">August 2013 Galaxy Release (v 13.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/13.06_announce.html">June 2013 Galaxy Release (v 13.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/13.04_announce.html">April 2013 Galaxy Release (v 13.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/13.02_announce.html">February 2013 Galaxy Release (v 13.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/13.01_announce.html">January 2013 Galaxy Release (v 13.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/older_releases.html">Galaxy Releases older than v 13.01</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Admin Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Administration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python.html">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../framework_dependencies.html">Framework Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../config.html">Galaxy Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../config_logging.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../production.html">Production Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../security.html">Security considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nginx.html">Proxying Galaxy with NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apache.html">Proxying Galaxy with Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scaling.html">Scaling and Load Balancing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cluster.html">Connecting to a Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../jobs.html">Galaxy Job Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tool_panel.html">Tool Panel Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mq.html">Message queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dependency_resolvers.html">Dependency Resolvers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../container_resolvers.html">Containers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../container_resolvers.html#other-considerations">Other considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../conda_faq.html">Conda for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../db_migration.html">Galaxy Database Schema Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reports.html">Galaxy Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../useful_scripts.html">Scripts &amp; Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../options.html">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../migrating_to_gunicorn.html">Migrating from uWSGI to Gunicorn and FastAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Special topics</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ftp.html">Galaxy FTP Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interactivetools.html">Galaxy InteractiveTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mulled_containers.html">Containers for Tool Dependencies</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Galactic Radio Telescope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gtn.html">Galaxy Training Materials Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_metrics.html">Job Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html">Galaxy Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vault.html">Storing secrets in the vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance_tracking.html">Galaxy Performance Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bug_reports.html">Bug Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gdpr_compliance.html">GDPR Compliance</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev/index.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/schema.html">Galaxy Tool XML File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/api_guidelines.html">API Design Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/build_a_job_runner.html">Build a job runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/finding_and_improving_slow_code.html">Finding and improving slow Galaxy code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/data_managers.html">Data managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/data_types.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/faq.html">How Do I…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/writing_tests.html">Writing Tests for Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/debugging_tests.html">Debugging Galaxy Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/debugging_tests.html#debugging-tests-that-run-out-of-memory">Debugging tests that run out of memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/debugging_galaxy.html">Debugging Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/debugging_galaxy_slurm.html">Debugging Galaxy: Slurm Compute Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/translating.html">Translating the Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/create_point_release.html">Creating Galaxy Point Releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_doc.html">Galaxy API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../api/quickstart.html"> Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/api.html"> Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ts_api_doc.html">Tool Shed API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../api/ts_api.html"> API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../lib/modules.html">Application Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../lib/galaxy.html">galaxy package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lib/galaxy_ext.html">galaxy_ext package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lib/galaxy_test.html">galaxy_test package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lib/tool_shed.html">tool_shed package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../project/organization.html">Project Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../project/organization.html#procedure-documents">Procedure Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/organization.html#committers">Committers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/organization.html#release-branches">Release branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/organization.html#handling-pull-requests">Handling Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/organization.html#issue-reporting">Issue Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../project/issues.html">Issue Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../project/issues.html#issue-reporting">Issue Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/issues.html#milestones">Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/issues.html#labeling-structure">Labeling Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/issues.html#the-roadmap">The Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/issues.html#voting">Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/issues.html#automation">Automation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Galaxy Project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Special Topics</a></li>
+      <li class="breadcrumb-item active">Galactic Radio Telescope</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/admin/special_topics/grt.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="galactic-radio-telescope">
+<h1>Galactic Radio Telescope<a class="headerlink" href="#galactic-radio-telescope" title="Link to this heading">¶</a></h1>
+<p>This is an opt-in service which Galaxy admins can configure to contribute their
+job run data back to the community. We hope that by collecting this information
+we can build accurate models of tool CPU/memory/time requirements. In turn,
+admins will be able to use this analyzed data to optimize their job
+distribution across highly heterogeneous clusters.</p>
+<section id="registration">
+<h2>Registration<a class="headerlink" href="#registration" title="Link to this heading">¶</a></h2>
+<p>You will need to register your Galaxy instance with the Galactic Radio
+Telescope (GRT). This can be done <a class="reference external" href="https://telescope.galaxyproject.org">https://telescope.galaxyproject.org</a>.</p>
+</section>
+<section id="about-the-script">
+<h2>About the Script<a class="headerlink" href="#about-the-script" title="Link to this heading">¶</a></h2>
+<p>Once you’ve registered your Galaxy instance, you’ll receive an instance ID and
+an API key which are used to run <code class="docutils literal notranslate"><span class="pre">scripts/grt/export.py</span></code>. The tool itself is very
+simple to run. GRT will run and produce a directory of reports that can be
+synced with the GRT server. Every time it is run, GRT only processes the list
+of jobs that were run since the last time it was run. On first run, GRT will
+attempt to export all job data for your instance which may be very slow
+depending on your instance size. We have attempted to optimize this as much as
+is feasible.</p>
+</section>
+<section id="data-privacy">
+<h2>Data Privacy<a class="headerlink" href="#data-privacy" title="Link to this heading">¶</a></h2>
+<p>All data submitted to the GRT will be released into the public domain. If there
+are certain tools you do not want included, or certain parameters you wish to
+hide (e.g. because they contain API keys), then you can take advantage of the
+built-in sanitization. <code class="docutils literal notranslate"><span class="pre">scripts/grt/grt.yml.sample</span></code> file allows you to build up
+sanitization for the job logs.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">sanitization</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># Blacklist the entire tool from appearing</span>
+<span class="w">    </span><span class="nt">tools</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__SET_METADATA__</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">upload1</span>
+<span class="w">    </span><span class="c1"># Or you can blacklist individual parameters from being submitted, e.g. if</span>
+<span class="w">    </span><span class="c1"># you have API keys as a tool parameter.</span>
+<span class="w">    </span><span class="nt">tool_params</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># Or to blacklist under a specific tool, just specify the ID</span>
+<span class="w">        </span><span class="nt">some_tool_id</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dbkey</span>
+<span class="w">            </span><span class="c1"># If you need to specify a parameter multiple levels deep, you can</span>
+<span class="w">            </span><span class="c1"># do that as well. Currently we only support blacklisting via the</span>
+<span class="w">            </span><span class="c1"># full path, rather than just a path component. So everything under</span>
+<span class="w">            </span><span class="c1"># `path.to.parameter` will be blacklisted.</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">path.to.parameter</span>
+<span class="w">            </span><span class="c1"># However you could not do &quot;parameter&quot; and have everything under</span>
+<span class="w">            </span><span class="c1"># `path.to.parameter` be removed.</span>
+<span class="w">            </span><span class="c1"># Repeats are rendered as an *, e.g.: repeat_name.*.values</span>
+</pre></div>
+</div>
+<p>To blacklist the results from specific tools appearing in results, just add the
+tool ID under the <code class="docutils literal notranslate"><span class="pre">tools</span></code> list.</p>
+<p>Blacklisting tool parameters is more complex. In a key under the <code class="docutils literal notranslate"><span class="pre">tool_params</span></code> key,
+supply a list of parameters you wish to blacklist. <em>NB: This will slow down
+processing of records associated with that tool.</em> Selecting keys is done
+identically to writing test cases, except if you have a repeat element, just
+replace the location of the numeric identifier with <code class="docutils literal notranslate"><span class="pre">*</span></code>, e.g.
+<code class="docutils literal notranslate"><span class="pre">repeat_name.*.some_subkey</span></code></p>
+</section>
+<section id="data-collection-process">
+<h2>Data Collection Process<a class="headerlink" href="#data-collection-process" title="Link to this heading">¶</a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd $GALAXY; python scripts/grt/export.py -l debug</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">export.py</span></code> connects to your galaxy database and makes queries against the
+database for three primary tables:</p>
+<ul class="simple">
+<li><p>job</p></li>
+<li><p>job_parameter</p></li>
+<li><p>job_metric_numeric</p></li>
+</ul>
+<p>these are exported with very little processing, as tabular files to the GRT
+reports directory, <code class="docutils literal notranslate"><span class="pre">$GALAXY/reports/</span></code>. We only collect new job data that we
+have not seen since the previous run. The last-seen job ID is stored in
+<code class="docutils literal notranslate"><span class="pre">$GALAXY/reports/.checkpoint</span></code>. Once the files have been exported, they are
+put in a compressed archive, and some metadata about the export process is
+written to a json file with the same name as the report archive.</p>
+<p>You may wish to inspect these files to be sure that you’re comfortable with the
+information being sent.</p>
+<p>Once you’re happy with the data, you can submit it with the GRT submission tool…</p>
+</section>
+<section id="data-submission">
+<h2>Data Submission<a class="headerlink" href="#data-submission" title="Link to this heading">¶</a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd $GALAXY; python scripts/grt/upload.py</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">scripts/grt/upload.py</span></code> is a script which will submit your data to the
+configured GRT server. You must first be registered with the server which will
+also walk you through the setup process.</p>
+<p>With your reports, submitting them is very simple. The script will login to the
+server and determine which reports the server does not have yet. Then it will
+begin uploading those.</p>
+<p>For administrators with firewalled galaxies and no internet access, if you are
+able to exfiltrate your files to somewhere with internet, then you can still
+take advantage of GRT. Alternatively you can deploy GRT on your own
+infrastructure if you don’t want to share your job logs.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="mulled_containers.html" class="btn btn-neutral float-left" title="Containers for Tool Dependencies" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="gtn.html" class="btn btn-neutral float-right" title="Galaxy Training Materials Webhook" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Galaxy Committers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,556 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dependency Resolvers in Galaxy &mdash; Galaxy Project 23.1.5.dev0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+
+  
+    <link rel="canonical" href="https://docs.galaxyproject.org/en/master/admin/dependency_resolvers.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=da3e81e8"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Containers in Galaxy" href="container_resolvers.html" />
+    <link rel="prev" title="Message queue" href="mq.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Galaxy Project
+          </a>
+              <div class="version">
+                23.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../releases/index.html">Releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.1_announce_user.html">June 2023 Galaxy Release (v 23.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.0_announce_user.html">2023 Galaxy Release (v 23.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.05_announce_user.html">May 2022 Galaxy Release (v 22.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.01_announce_user.html">January 2022 Galaxy Release (v 22.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.09_announce_user.html">September 2021 Galaxy Release (v 21.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.05_announce_user.html">May 2021 Galaxy Release (v 21.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.01_announce_user.html">January 2021 Galaxy Release (v 21.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.09_announce_user.html">September 2020 Galaxy Release (v 20.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.05_announce_user.html">May 2020 Galaxy Release (v 20.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.01_announce_user.html">January 2020 Galaxy Release (v 20.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.09_announce_user.html">September 2019 Galaxy Release (v 19.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.05_announce_user.html">May 2019 Galaxy Release (v 19.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.01_announce_user.html">January 2019 Galaxy Release (v 19.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.09_announce.html">September 2018 Galaxy Release (v 18.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.05_announce.html">May 2018 Galaxy Release (v 18.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.01_announce.html">January 2018 Galaxy Release (v 18.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.09_announce.html">September 2017 Galaxy Release (v 17.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.05_announce.html">May 2017 Galaxy Release (v 17.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.01_announce.html">January 2017 Galaxy Release (v 17.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.10_announce.html">October 2016 Galaxy Release (v 16.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.07_announce.html">July 2016 Galaxy Release (v 16.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.04_announce.html">April 2016 Galaxy Release (v 16.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.01_announce.html">January 2016 Galaxy Release (v 16.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.10_announce.html">October 2015 Galaxy Release (v 15.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.07_announce.html">July 2015 Galaxy Release (v 15.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.05_announce.html">May 2015 Galaxy Release (v 15.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.03_announce.html">March 2015 Galaxy Release (v 15.03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.01_announce.html">January 2015 Galaxy Release (v 15.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.10_announce.html">October 2014 Galaxy Release (v 14.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.08_announce.html">August 2014 Galaxy Release (v 14.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.06_announce.html">June 2014 Galaxy Release (v 14.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.04_announce.html">April 2014 Galaxy Release (v 14.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.02_announce.html">February 2014 Galaxy Release (v 14.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.11_announce.html">November 2013 Galaxy Release (v 13.11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.08_announce.html">August 2013 Galaxy Release (v 13.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.06_announce.html">June 2013 Galaxy Release (v 13.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.04_announce.html">April 2013 Galaxy Release (v 13.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.02_announce.html">February 2013 Galaxy Release (v 13.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.01_announce.html">January 2013 Galaxy Release (v 13.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/older_releases.html">Galaxy Releases older than v 13.01</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Admin Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Administration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="python.html">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="framework_dependencies.html">Framework Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">Galaxy Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logging.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="production.html">Production Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nginx.html">Proxying Galaxy with NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apache.html">Proxying Galaxy with Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scaling.html">Scaling and Load Balancing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cluster.html">Connecting to a Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jobs.html">Galaxy Job Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tool_panel.html">Tool Panel Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mq.html">Message queue</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Dependency Resolvers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="container_resolvers.html">Containers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="container_resolvers.html#other-considerations">Other considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conda_faq.html">Conda for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="db_migration.html">Galaxy Database Schema Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reports.html">Galaxy Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="useful_scripts.html">Scripts &amp; Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrating_to_gunicorn.html">Migrating from uWSGI to Gunicorn and FastAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="special_topics/index.html">Special topics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/ftp.html">Galaxy FTP Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/interactivetools.html">Galaxy InteractiveTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/mulled_containers.html">Containers for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/grt.html">Galactic Radio Telescope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/gtn.html">Galaxy Training Materials Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/job_metrics.html">Job Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/webhooks.html">Galaxy Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/vault.html">Storing secrets in the vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/performance_tracking.html">Galaxy Performance Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/bug_reports.html">Bug Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/gdpr_compliance.html">GDPR Compliance</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/index.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dev/schema.html">Galaxy Tool XML File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/api_guidelines.html">API Design Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/build_a_job_runner.html">Build a job runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/finding_and_improving_slow_code.html">Finding and improving slow Galaxy code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_managers.html">Data managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_types.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/faq.html">How Do I…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/writing_tests.html">Writing Tests for Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html">Debugging Galaxy Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html#debugging-tests-that-run-out-of-memory">Debugging tests that run out of memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy.html">Debugging Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy_slurm.html">Debugging Galaxy: Slurm Compute Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/translating.html">Translating the Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/create_point_release.html">Creating Galaxy Point Releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api_doc.html">Galaxy API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/quickstart.html"> Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/api.html"> Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ts_api_doc.html">Tool Shed API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/ts_api.html"> API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../lib/modules.html">Application Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy.html">galaxy package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_ext.html">galaxy_ext package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_test.html">galaxy_test package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/tool_shed.html">tool_shed package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../project/organization.html">Project Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#procedure-documents">Procedure Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#committers">Committers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#release-branches">Release branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#handling-pull-requests">Handling Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#issue-reporting">Issue Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../project/issues.html">Issue Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#issue-reporting">Issue Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#milestones">Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#labeling-structure">Labeling Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#the-roadmap">The Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#voting">Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#automation">Automation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Galaxy Project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Galaxy Deployment &amp; Administration</a></li>
+      <li class="breadcrumb-item active">Dependency Resolvers in Galaxy</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/admin/dependency_resolvers.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="dependency-resolvers-in-galaxy">
+<span id="dependency-resolvers"></span><h1>Dependency Resolvers in Galaxy<a class="headerlink" href="#dependency-resolvers-in-galaxy" title="Link to this heading">¶</a></h1>
+<p>There are two parts to building a link between Galaxy and command line bioinformatics tools: (1) the tool XML that
+specifies a mapping between the Galaxy web user interface and the tool command line, and (2) the actual command-line
+tools, known as Galaxy <em>tool dependencies</em>, which must be installed and available on the system(s) where Galaxy is
+configured to run those tools. The job script that Galaxy uses to run a job includes commands (such as changes to the
+<code class="docutils literal notranslate"><span class="pre">PATH</span></code> environment variable) that are generated by <em>dependency resolvers</em>. These same dependency resolvers are used by
+the Galaxy administrative UI to display whether an installed tool’s dependencies have been installed on the Galaxy
+server, and to show how they will be resolved at job runtime.  There is a default dependency resolver configuration but
+administrators can provide their own configuration using the <code class="docutils literal notranslate"><span class="pre">dependency_resolvers</span></code> configuration option in Galaxy’s
+configuration file, <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code>. Previously this configuration was stored in a separate XML file,
+<code class="docutils literal notranslate"><span class="pre">dependency_resolvers_conf.xml</span></code>. Loading the dependency resolvers configuration from that XML file is deprecated but
+still supported, however, the documentation and sample configuration file for the XML format can only be found in Galaxy
+releases prior to 21.09.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <em>tool XML</em> referred to below is different from the deprecated <em>dependency resolvers XML</em> referred to above.</p>
+</div>
+<p>The binding between tool XML and the command-line tools they need to run is specified in the tool XML using
+<code class="docutils literal notranslate"><span class="pre">&lt;requirement&gt;</span></code> tags, for example:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;requirement</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;package&quot;</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;0.7.10.039ea20639&quot;</span><span class="nt">&gt;</span>bwa<span class="nt">&lt;/requirement&gt;</span>
+</pre></div>
+</div>
+<p>In some cases these requirement tags can be specified without a version:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;requirement</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;package&quot;</span><span class="nt">&gt;</span>bedtools<span class="nt">&lt;/requirement&gt;</span>
+</pre></div>
+</div>
+<p>These declared requirements are passed as inputs to the dependency resolver in order to generate the environmental setup
+in the job script so that the correct tool dependencies required by the tool are found on the <code class="docutils literal notranslate"><span class="pre">$PATH</span></code>.</p>
+<section id="default-dependency-resolvers">
+<h2>Default Dependency Resolvers<a class="headerlink" href="#default-dependency-resolvers" title="Link to this heading">¶</a></h2>
+<p>The default configuration of dependency resolvers is equivalent to the following configuration in <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">galaxy</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">dependency_resolvers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tool_shed_packages</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">galaxy_packages</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">conda</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">galaxy_packages</span>
+<span class="w">      </span><span class="nt">versionless</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">conda</span>
+<span class="w">      </span><span class="nt">versionless</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+<p>This default dependency resolver configuration contains five items:</p>
+<ol class="arabic simple">
+<li><p>First, the <em>Tool Shed packages dependency resolver</em> is used, which resolves packages installed from the Galaxy Tool
+Shed using legacy <code class="docutils literal notranslate"><span class="pre">tool_dependencies.xml</span></code> files,</p></li>
+<li><p>then the <em>Galaxy packages dependency resolver</em> is checked for a package matching the requirement name and version,</p></li>
+<li><p>then the <em>Conda dependency resolver</em> is checked for a package matching the requirement name and version. If no
+versioned match can be found, it then moves on to searching for unversioned matches, that is,</p></li>
+<li><p>the <em>Galaxy packages dependency resolver</em> is checked for a package matching the required name only, and</p></li>
+<li><p>finally the <em>Conda dependency resolver</em> is checked for a package matching the required name only.</p></li>
+</ol>
+<p>If any of the dependency resolvers succeed, a dependency resolution object is returned and no more resolvers are
+called. This dependency resolution object provides shell commands to prepend to the shell script that runs the
+command-line tool.</p>
+<p>This order can be thought of as a descending order of deliberation. Tool Shed dependencies must be declared next to the
+tool by the tool author and must be selected for installation at tool installation time - this requires specific actions
+by both the tool author and the deployer who installed the tools. The dependency is therefore highly
+crafted to the individual tool. If Galaxy packages have been setup, the deployer of a Galaxy tool has purposely crafted
+tool dependency statements for a specific installation - this is slightly less deliberate than tool shed packages but
+such requirements are less likely to be incidentally resolved than Conda packages. Conda recipes are neither tied to
+tools or a specific installation and are maintained in Conda channels such as Bioconda.</p>
+<p>So while tool shed packages are first - they are also somewhat deprecated. Maintaining Conda recipes makes it easier
+to describe software dependencies both inside of Galaxy and outside.</p>
+<section id="tool-shed-dependency-resolver">
+<h3>Tool Shed Dependency Resolver<a class="headerlink" href="#tool-shed-dependency-resolver" title="Link to this heading">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tool_shed_packages</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">tool_shed_packages</span></code> dependency resolver works with explicit software packages installed from the Galaxy Tool
+Shed as described by legacy <code class="docutils literal notranslate"><span class="pre">tool_dependencies.xml</span></code> files. When such a package is installed from the Tool Shed it
+creates a directory structure under the directory that is specified as the <code class="docutils literal notranslate"><span class="pre">tool_dependency_dir</span></code> in Galaxy’s
+configuration. This directory structure contains references to the tool’s ID, owner (in the Tool Shed) and version
+string (amongst other things) and ultimately contains a file named <code class="docutils literal notranslate"><span class="pre">env.sh</span></code> that contains commands to make the
+dependency runnable. This <code class="docutils literal notranslate"><span class="pre">env.sh</span></code> file is installed, along with the packaged tool, by the tool package and doesn’t
+require any configuration by the Galaxy administrator. The Tool Shed-specific components of the path come from
+Galaxy’s install database (see the <code class="docutils literal notranslate"><span class="pre">install_database_connection</span></code> option in the Galaxy configuration) and are not
+configured by hand.</p>
+<p>All new and updated tools in the Tool Shed that follow <a class="reference external" href="https://galaxyproject.org/iuc/">Galaxy IUC</a> best practices
+no longer use Tool Shed dependencies, and must have dependencies resolvable via Conda. Because of this, the Tool Shed
+resolver is largely only relevant to older Galaxy servers that have old tools installed.</p>
+<p>The Tool Shed dependency resolver is not able to resolve package requirements that do not have a version string,
+like the <code class="docutils literal notranslate"><span class="pre">bedtools</span></code> example above.</p>
+</section>
+<section id="galaxy-packages-dependency-resolver">
+<h3>Galaxy Packages Dependency Resolver<a class="headerlink" href="#galaxy-packages-dependency-resolver" title="Link to this heading">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">galaxy_packages</span>
+<span class="w">  </span><span class="nt">versionless</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;true|false&gt;</span>
+<span class="w">  </span><span class="nt">base_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;filesystem path&gt;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">galaxy_packages</span></code> dependency resolver allows Galaxy admins to specify how Galaxy should load manually
+installed packages.</p>
+<p>This resolver can be configured with the following parameters, all of which are optional:</p>
+<dl class="simple">
+<dt>base_path</dt><dd><p>The path under which the resolver looks for packages matching the tool’s specified requirements. The default value
+is the value of the <code class="docutils literal notranslate"><span class="pre">tool_dependency_dir</span></code> option in Galaxy’s configuration file.</p>
+</dd>
+<dt>versionless</dt><dd><p>Ignore requirement versions and use the “default” version instead (see below).</p>
+</dd>
+</dl>
+<p>Below the base path, the Galaxy Packages resolver looks for a directory matching the requirement name, e.g.
+<code class="docutils literal notranslate"><span class="pre">bedtools</span></code>. Inside the name directory, the resolver looks for a directory matching the requirement version. For
+example, if the Galaxy tool specifies that it needs <code class="docutils literal notranslate"><span class="pre">bedtools</span></code> version 2.20.1, the dependency resolver will look for
+a directory <code class="docutils literal notranslate"><span class="pre">&lt;base_path&gt;/bedtools/2.20.1</span></code>.</p>
+<p>If the Galaxy Package dependency resolver finds a <code class="docutils literal notranslate"><span class="pre">bin</span></code> directory in this directory, it adds it to the <code class="docutils literal notranslate"><span class="pre">PATH</span></code>
+used by the scripts Galaxy uses to run tools. If, however, it finds an <code class="docutils literal notranslate"><span class="pre">env.sh</span></code> script, it sources this
+script before running the tool that requires this dependency. This can be used to set up the environment
+needed for the tool to run.</p>
+<p>A simple example might be to assume that a collection of bioinformatics software is manually installed in various
+directories under <code class="docutils literal notranslate"><span class="pre">/opt/biosoftware</span></code>. In this case a <code class="docutils literal notranslate"><span class="pre">&lt;tool_dependency_dir&gt;/bedtools/2.20.1/env.sh</span></code> could be
+setup to add the corresponding bedtools installation to the Galaxy tool execution’s <code class="docutils literal notranslate"><span class="pre">PATH</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/opt/biosoftware/bedtools/2.20.1/bin
+</pre></div>
+</div>
+<p>As another example, this <code class="docutils literal notranslate"><span class="pre">env.sh</span></code> uses <a class="reference external" href="http://modules.sourceforge.net/">Environment Modules</a>
+to setup the environment for <code class="docutils literal notranslate"><span class="pre">bedtools</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$MODULEPATH</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span>.<span class="w"> </span>/etc/profile.d/module.sh
+<span class="k">fi</span>
+
+module<span class="w"> </span>add<span class="w"> </span>bedtools/bedtools-2.20.1
+</pre></div>
+</div>
+<p>The Galaxy Package dependency resolver operates quite similarly when used in versionless mode. Instead of looking
+for a directory named after a version, it looks for a directory symbolic link named <code class="docutils literal notranslate"><span class="pre">default</span></code> that links to a
+concrete version such as the <code class="docutils literal notranslate"><span class="pre">2.20.1</span></code> example above. For example if <code class="docutils literal notranslate"><span class="pre">bedtools/default</span></code> links to <code class="docutils literal notranslate"><span class="pre">bedtools/2.20.1</span></code>.
+It then looks for a <cite>bin</cite> subdirectory or <code class="docutils literal notranslate"><span class="pre">env.sh</span></code> and incorporates these in the tool script that finally gets run.
+This versionless (i.e. default) lookup is also used if the package requirement does not specify a version string.</p>
+</section>
+<section id="conda-dependency-resolver">
+<h3>Conda Dependency Resolver<a class="headerlink" href="#conda-dependency-resolver" title="Link to this heading">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">conda</span>
+<span class="w">  </span><span class="nt">versionless</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;true|false&gt;</span>
+<span class="w">  </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;filesystem path&gt;</span>
+<span class="w">  </span><span class="nt">exec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;filesystem path&gt;</span>
+<span class="w">  </span><span class="nt">debug</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;true|false&gt;</span>
+<span class="w">  </span><span class="nt">ensure_channels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">channel</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">channel...</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">auto_install</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;true|false&gt;</span>
+<span class="w">  </span><span class="nt">auto_init</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;true|false&gt;</span>
+<span class="w">  </span><span class="nt">copy_dependencies</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;true|false&gt;</span>
+<span class="w">  </span><span class="nt">read_only</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;true|false&gt;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">conda</span></code> dependency resolver is used to find (and optionally install-on-demand) dependencies using the <a class="reference external" href="https://conda.io/">Conda
+Package Manager</a>.  For a very detailed discussion of Conda dependency resolution, check out the
+<a class="reference internal" href="conda_faq.html"><span class="doc">Conda FAQ</span></a>.</p>
+<p>Additionally, the conda resolver makes use of <em>mulled</em> dependencies, where all of the tool’s specified requirements
+are installed into a single Conda environment. More details about mulled dependencies can be found in the
+<a class="reference internal" href="special_topics/mulled_containers.html"><span class="doc">Mulled Containers</span></a> documentation.</p>
+<p>This resolver can be configured with the following parameters, all of which are optional:</p>
+<dl class="simple">
+<dt>prefix</dt><dd><p>The root of the conda installation used to locate dependencies in (default: value of global <code class="docutils literal notranslate"><span class="pre">conda_prefix</span></code>
+option or <code class="docutils literal notranslate"><span class="pre">&lt;tool_dependency_dir&gt;/_conda</span></code> otherwise).</p>
+</dd>
+<dt>exec</dt><dd><p>The conda executable to use, it will default to the one on <code class="docutils literal notranslate"><span class="pre">$PATH</span></code> (if available) and then to
+<code class="docutils literal notranslate"><span class="pre">&lt;conda_prefix&gt;/bin/conda</span></code>.</p>
+</dd>
+<dt>versionless</dt><dd><p>Whether to resolve tools using a version string or not (default: <code class="docutils literal notranslate"><span class="pre">false</span></code>).</p>
+</dd>
+<dt>debug</dt><dd><p>Pass debug flag to conda commands (default: <code class="docutils literal notranslate"><span class="pre">false</span></code>).</p>
+</dd>
+<dt>ensure_channels</dt><dd><p>Conda channels to enable by default. See <a class="reference external" href="https://conda.io/docs/user-guide/tasks/manage-channels.html">https://conda.io/docs/user-guide/tasks/manage-channels.html</a> for more
+information about channels. This defaults to the value of the global <code class="docutils literal notranslate"><span class="pre">conda_ensure_channels</span></code> option or
+<code class="docutils literal notranslate"><span class="pre">iuc,conda-forge,bioconda,defaults</span></code> otherwise.  This order should be consistent with the <a class="reference external" href="https://github.com/bioconda/bioconda-recipes/blob/master/config.yml">Bioconda prescribed
+order</a> if it includes <code class="docutils literal notranslate"><span class="pre">bioconda</span></code>.</p>
+</dd>
+<dt>auto_install</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, Galaxy will look for and install missing tool dependencies before running a job (default: value of
+the global <code class="docutils literal notranslate"><span class="pre">conda_auto_install</span></code> option or <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise).</p>
+</dd>
+<dt>auto_init</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, Galaxy will try to install Conda from the web automatically if it cannot find a local copy and
+<code class="docutils literal notranslate"><span class="pre">conda_exec</span></code> is not configured (default: the value of the global <code class="docutils literal notranslate"><span class="pre">conda_auto_init</span></code> option or <code class="docutils literal notranslate"><span class="pre">true</span></code>
+otherwise).</p>
+</dd>
+<dt>copy_dependencies</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, Galaxy will copy dependencies over instead of symbolically linking them when creating per-job
+environments. This is deprecated because Conda will do this as needed for newer versions of Conda - such as the
+versions targeted with Galaxy 17.01 and later.</p>
+</dd>
+<dt>read_only</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, Galaxy will not attempt to install or uninstall requirement sets into this environment.</p>
+</dd>
+</dl>
+<p>The conda resolver will search for Conda environments named:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">__</span><span class="o">&lt;</span><span class="n">requirement_name</span><span class="o">&gt;@&lt;</span><span class="n">requirement_version</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>in the case that a tool only has one requirement tag, or:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mulled</span><span class="o">-</span><span class="n">v1</span><span class="o">-&lt;</span><span class="nb">hash</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>when a tool has multiple requirement tags, where <code class="docutils literal notranslate"><span class="pre">&lt;hash&gt;</span></code> is a hash derived from the requirements’ names and
+versions.</p>
+<p>For example, to try an administrator-maintained read-only Conda installation at <code class="docutils literal notranslate"><span class="pre">/hpc/conda</span></code> first and then a
+Galaxy-maintained writable Conda installation at <code class="docutils literal notranslate"><span class="pre">/galaxy/conda</span></code> second (where any missing dependencies will
+be automatically installed at tool runtime), use the following:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">conda</span>
+<span class="w">  </span><span class="nt">auto_init</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">auto_install</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/hpc/conda</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">conda</span>
+<span class="w">  </span><span class="nt">auto_init</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">auto_install</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/galaxy/conda</span>
+</pre></div>
+</div>
+</section>
+<section id="lmod-dependency-resolver">
+<h3>Lmod Dependency Resolver<a class="headerlink" href="#lmod-dependency-resolver" title="Link to this heading">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lmod</span>
+<span class="w">  </span><span class="nt">versionless</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;true|false&gt;</span>
+<span class="w">  </span><span class="nt">lmodexec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;filesystem path&gt;</span>
+<span class="w">  </span><span class="nt">settargexec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;filesystem path&gt;</span>
+<span class="w">  </span><span class="nt">modulepath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;filesystem path[:filesystem path:...]&gt;</span>
+<span class="w">  </span><span class="nt">mapping_files</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;filesystem path&gt;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">lmod</span></code> dependency resolver interacts with the <a class="reference external" href="https://lmod.readthedocs.io/">Lmod environment modules system</a>
+commonly found on HPC systems.</p>
+<p>This resolver can be configured with the following parameters, all of which are optional:</p>
+<dl class="simple">
+<dt>lmodexec</dt><dd><p>Path to the Lmod executable on your system. This cannot be just “module” because module is actually a bash
+function and not the real Lmod binary (see the result of the “type module” command). Default: value of the
+<code class="docutils literal notranslate"><span class="pre">$LMOD_CMD</span></code> environment variable.</p>
+</dd>
+<dt>settargexec</dt><dd><p>Path to the settarg executable on your system. Default: value of the <code class="docutils literal notranslate"><span class="pre">$LMOD_SETTARG_CMD</span></code> environment variable.</p>
+</dd>
+<dt>modulepath</dt><dd><p>Path to the folder that contains the LMOD module files on your system. This can be a single path or a
+semicolon-separated list of paths. Default: value of the <code class="docutils literal notranslate"><span class="pre">$MODULEPATH</span></code> environment variable.</p>
+</dd>
+<dt>versionless</dt><dd><p>Set to <code class="docutils literal notranslate"><span class="pre">true</span></code> to resolve a dependency based on its name only (the version number is ignored). Only modules
+marked as Default will be listed by the “avail” command (The -d option is used). Default: <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+</dd>
+<dt>mapping_files</dt><dd><p>Path to a YAML configuration file that can be used to link tools requirements with existing Lmod modules. Default:
+<code class="docutils literal notranslate"><span class="pre">config/lmod_modules_mapping.yml</span></code></p>
+</dd>
+</dl>
+</section>
+<section id="environment-modules-dependency-resolver">
+<h3>Environment Modules Dependency Resolver<a class="headerlink" href="#environment-modules-dependency-resolver" title="Link to this heading">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">modules</span>
+<span class="w">  </span><span class="nt">versionless</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;true|false&gt;</span>
+<span class="w">  </span><span class="nt">modulecmd</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;filesystem path&gt;</span>
+<span class="w">  </span><span class="nt">modulepath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;filesystem path[:filesystem path:...]&gt;</span>
+<span class="w">  </span><span class="nt">find_by</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;directory|avail&gt;</span>
+<span class="w">  </span><span class="nt">prefetch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;true|false&gt;</span>
+<span class="w">  </span><span class="nt">default_indicator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">modules</span></code> dependency resolver interacts with the <a class="reference external" href="https://modules.sourceforge.net/">Environment Modules system</a>
+commonly found on HPC systems.</p>
+<p>This resolver can be configured with the following parameters, all of which are optional:</p>
+<dl class="simple">
+<dt>modulecmd</dt><dd><p>Path to Environment Modules’ <code class="docutils literal notranslate"><span class="pre">modulecmd</span></code> tool.</p>
+</dd>
+<dt>modulepath</dt><dd><p>Value used for <code class="docutils literal notranslate"><span class="pre">$MODULEPATH</span></code> environment variable, used to locate modules.</p>
+</dd>
+<dt>versionless</dt><dd><p>Whether to resolve tools using a version string or not (default: <code class="docutils literal notranslate"><span class="pre">false</span></code>).</p>
+</dd>
+<dt>find_by</dt><dd><p>Whether to use the <code class="docutils literal notranslate"><span class="pre">DirectoryModuleChecker</span></code> or <code class="docutils literal notranslate"><span class="pre">AvailModuleChecker</span></code> (permissable values are <code class="docutils literal notranslate"><span class="pre">directory</span></code> or <code class="docutils literal notranslate"><span class="pre">avail</span></code>,
+default is <code class="docutils literal notranslate"><span class="pre">avail</span></code>).</p>
+</dd>
+<dt>prefetch</dt><dd><p>In the AvailModuleChecker, prefetch module info with <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">avail</span></code> (default: <code class="docutils literal notranslate"><span class="pre">true</span></code>).</p>
+</dd>
+<dt>default_indicator</dt><dd><p>What indicates to the AvailModuleChecker that a module is the default version (default: <code class="docutils literal notranslate"><span class="pre">(default)</span></code>). Note
+that the first module found is considered the default when no version is used by the resolver, so
+the sort order of modules matters.</p>
+</dd>
+</dl>
+<p>The Environment Modules dependency resolver can work in two modes. The <code class="docutils literal notranslate"><span class="pre">AvailModuleChecker</span></code> searches the results
+of the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">avail</span></code> command for the name of the dependency. If it is configured in versionless mode,
+or is looking for a package with no version specified, it accepts any module whose name matches and is a bare word
+or the first module whose name matched. For this reason, the default version of the module should be the first one
+listed, something that can be achieved by tagging it with a word that appears first in sort order, for example the
+string <code class="docutils literal notranslate"><span class="pre">(default)</span></code> (yielding a module name like <code class="docutils literal notranslate"><span class="pre">bedtools/(default)</span></code>). So when looking for <code class="docutils literal notranslate"><span class="pre">bedtools</span></code> in
+versionless mode the search would match the first module called <code class="docutils literal notranslate"><span class="pre">bedtools</span></code>, and in versioned mode the search would
+only match if a module named <code class="docutils literal notranslate"><span class="pre">bedtools/2.20.1</span></code> was present (assuming you’re looking for <code class="docutils literal notranslate"><span class="pre">bedtools/2.20.1</span></code>).</p>
+<p>The``DirectoryModuleChecker`` looks for files or directories in the path specified by <code class="docutils literal notranslate"><span class="pre">MODULEPATH</span></code> or
+<code class="docutils literal notranslate"><span class="pre">MODULESHOME</span></code> that match the dependency being resolved. In versionless mode a match on simply
+the dependency name is needed, and in versioned mode a match on the dependency name and
+version string is needed.</p>
+<p>If a module matches the dependency is found, code to executed <code class="docutils literal notranslate"><span class="pre">modulecmd</span> <span class="pre">sh</span> <span class="pre">load</span></code> with the name of the dependency
+is added to the script that is run to run the tool. E.g. <code class="docutils literal notranslate"><span class="pre">modulecmd</span> <span class="pre">sh</span> <span class="pre">load</span> <span class="pre">bedtools</span></code>. If version strings are being
+used, they’ll be used in the <code class="docutils literal notranslate"><span class="pre">load</span></code> command e.g. <code class="docutils literal notranslate"><span class="pre">modulecmd</span> <span class="pre">sh</span> <span class="pre">load</span> <span class="pre">bwa/0.7.10.039ea20639</span></code>.</p>
+</section>
+<section id="homebrew-dependency-resolver">
+<h3>Homebrew Dependency Resolver<a class="headerlink" href="#homebrew-dependency-resolver" title="Link to this heading">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">homebrew</span></code> dependency resolver uses the <a class="reference external" href="https://brew.sh/">Homebrew Package Manager</a> to resolve requirements.
+It is highly experimental, undocumented, and unmaintained, and likely to be dropped from the code base.</p>
+</section>
+<section id="brewed-tool-shed-package-resolver">
+<h3>Brewed Tool Shed Package Resolver<a class="headerlink" href="#brewed-tool-shed-package-resolver" title="Link to this heading">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">brewed_tool_shed</span></code> dependency resolver was an attmept to resolve tool shed packages that had been auto converted
+to the tool shed. It is highly experimental, undocumented, unmaintained, and will almost certainly be removed from the
+code base.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="mq.html" class="btn btn-neutral float-left" title="Message queue" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="container_resolvers.html" class="btn btn-neutral float-right" title="Containers in Galaxy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Galaxy Committers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

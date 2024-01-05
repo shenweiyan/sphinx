@@ -1,0 +1,882 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Writing Tests for Galaxy &mdash; Galaxy Project 23.1.5.dev0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+
+  
+    <link rel="canonical" href="https://docs.galaxyproject.org/en/master/dev/writing_tests.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=da3e81e8"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Debugging Galaxy Tests" href="debugging_tests.html" />
+    <link rel="prev" title="How Do I…" href="faq.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Galaxy Project
+          </a>
+              <div class="version">
+                23.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../releases/index.html">Releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.1_announce_user.html">June 2023 Galaxy Release (v 23.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.0_announce_user.html">2023 Galaxy Release (v 23.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.05_announce_user.html">May 2022 Galaxy Release (v 22.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.01_announce_user.html">January 2022 Galaxy Release (v 22.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.09_announce_user.html">September 2021 Galaxy Release (v 21.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.05_announce_user.html">May 2021 Galaxy Release (v 21.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.01_announce_user.html">January 2021 Galaxy Release (v 21.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.09_announce_user.html">September 2020 Galaxy Release (v 20.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.05_announce_user.html">May 2020 Galaxy Release (v 20.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.01_announce_user.html">January 2020 Galaxy Release (v 20.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.09_announce_user.html">September 2019 Galaxy Release (v 19.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.05_announce_user.html">May 2019 Galaxy Release (v 19.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.01_announce_user.html">January 2019 Galaxy Release (v 19.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.09_announce.html">September 2018 Galaxy Release (v 18.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.05_announce.html">May 2018 Galaxy Release (v 18.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.01_announce.html">January 2018 Galaxy Release (v 18.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.09_announce.html">September 2017 Galaxy Release (v 17.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.05_announce.html">May 2017 Galaxy Release (v 17.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.01_announce.html">January 2017 Galaxy Release (v 17.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.10_announce.html">October 2016 Galaxy Release (v 16.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.07_announce.html">July 2016 Galaxy Release (v 16.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.04_announce.html">April 2016 Galaxy Release (v 16.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.01_announce.html">January 2016 Galaxy Release (v 16.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.10_announce.html">October 2015 Galaxy Release (v 15.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.07_announce.html">July 2015 Galaxy Release (v 15.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.05_announce.html">May 2015 Galaxy Release (v 15.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.03_announce.html">March 2015 Galaxy Release (v 15.03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.01_announce.html">January 2015 Galaxy Release (v 15.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.10_announce.html">October 2014 Galaxy Release (v 14.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.08_announce.html">August 2014 Galaxy Release (v 14.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.06_announce.html">June 2014 Galaxy Release (v 14.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.04_announce.html">April 2014 Galaxy Release (v 14.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.02_announce.html">February 2014 Galaxy Release (v 14.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.11_announce.html">November 2013 Galaxy Release (v 13.11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.08_announce.html">August 2013 Galaxy Release (v 13.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.06_announce.html">June 2013 Galaxy Release (v 13.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.04_announce.html">April 2013 Galaxy Release (v 13.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.02_announce.html">February 2013 Galaxy Release (v 13.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.01_announce.html">January 2013 Galaxy Release (v 13.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/older_releases.html">Galaxy Releases older than v 13.01</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Admin Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../admin/index.html">Administration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../admin/python.html">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/framework_dependencies.html">Framework Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/config.html">Galaxy Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/config_logging.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/production.html">Production Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/security.html">Security considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/nginx.html">Proxying Galaxy with NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/apache.html">Proxying Galaxy with Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/scaling.html">Scaling and Load Balancing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/cluster.html">Connecting to a Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/jobs.html">Galaxy Job Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/tool_panel.html">Tool Panel Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/mq.html">Message queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/dependency_resolvers.html">Dependency Resolvers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/container_resolvers.html">Containers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/container_resolvers.html#other-considerations">Other considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/conda_faq.html">Conda for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/db_migration.html">Galaxy Database Schema Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/reports.html">Galaxy Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/useful_scripts.html">Scripts &amp; Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/options.html">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/migrating_to_gunicorn.html">Migrating from uWSGI to Gunicorn and FastAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/special_topics/index.html">Special topics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/ftp.html">Galaxy FTP Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/interactivetools.html">Galaxy InteractiveTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/mulled_containers.html">Containers for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/grt.html">Galactic Radio Telescope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/gtn.html">Galaxy Training Materials Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/job_metrics.html">Job Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/webhooks.html">Galaxy Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/vault.html">Storing secrets in the vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/performance_tracking.html">Galaxy Performance Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/bug_reports.html">Bug Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/gdpr_compliance.html">GDPR Compliance</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="schema.html">Galaxy Tool XML File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_guidelines.html">API Design Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build_a_job_runner.html">Build a job runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="finding_and_improving_slow_code.html">Finding and improving slow Galaxy code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_managers.html">Data managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_types.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html">How Do I…</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Writing Tests for Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging_tests.html">Debugging Galaxy Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging_tests.html#debugging-tests-that-run-out-of-memory">Debugging tests that run out of memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging_galaxy.html">Debugging Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging_galaxy_slurm.html">Debugging Galaxy: Slurm Compute Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translating.html">Translating the Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create_point_release.html">Creating Galaxy Point Releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api_doc.html">Galaxy API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/quickstart.html"> Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/api.html"> Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ts_api_doc.html">Tool Shed API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/ts_api.html"> API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../lib/modules.html">Application Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy.html">galaxy package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_ext.html">galaxy_ext package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_test.html">galaxy_test package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/tool_shed.html">tool_shed package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../project/organization.html">Project Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#procedure-documents">Procedure Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#committers">Committers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#release-branches">Release branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#handling-pull-requests">Handling Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#issue-reporting">Issue Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../project/issues.html">Issue Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#issue-reporting">Issue Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#milestones">Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#labeling-structure">Labeling Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#the-roadmap">The Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#voting">Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#automation">Automation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Galaxy Project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Development Documentation</a></li>
+      <li class="breadcrumb-item active">Writing Tests for Galaxy</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/dev/writing_tests.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="writing-tests-for-galaxy">
+<h1>Writing Tests for Galaxy<a class="headerlink" href="#writing-tests-for-galaxy" title="Link to this heading">¶</a></h1>
+<nav class="contents local" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#other-sources" id="id7">Other Sources of Documentation</a></p></li>
+<li><p><a class="reference internal" href="#overview" id="id8">An Overview of Galaxy Tests</a></p></li>
+<li><p><a class="reference internal" href="#python-unit" id="id9">Backend/Python Unit Tests</a></p></li>
+<li><p><a class="reference internal" href="#es6-unit" id="id10">Frontend/ES6 Unit Tests</a></p></li>
+<li><p><a class="reference internal" href="#framework" id="id11">Tool Framework Tests</a></p></li>
+<li><p><a class="reference internal" href="#api" id="id12">API Tests</a></p></li>
+<li><p><a class="reference internal" href="#integration" id="id13">Integration Tests</a></p></li>
+<li><p><a class="reference internal" href="#selenium" id="id14">Selenium Tests</a></p></li>
+<li><p><a class="reference internal" href="#selenium-integration" id="id15">Selenium Integration Tests</a></p></li>
+<li><p><a class="reference internal" href="#running-tests" id="id16">Running Python Tests</a></p></li>
+</ul>
+</nav>
+<section id="other-sources">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">Other Sources of Documentation</a><a class="headerlink" href="#other-sources" title="Link to this heading">¶</a></h2>
+<p>Over the last several years, the most up-to-date documentation on the
+structure and running of Galaxy tests has been in the help text for
+run_tests.sh script shipped with Galaxy (<code class="docutils literal notranslate"><span class="pre">./run_tests.sh</span> <span class="pre">--help</span></code>).
+High-level information on Galaxy’s CI process can be found in the
+<a class="reference external" href="https://training.galaxyproject.org/training-material/topics/dev/tutorials/architecture/slides.html">Galaxy Code Architecture Slides</a>
+and the corresponding <a class="reference external" href="https://bit.ly/gx-arch-vids">YouTube playlist</a>.
+Some more specifics on running and writing Galaxy client unit tests
+can be found in <code class="docutils literal notranslate"><span class="pre">client/README.md</span></code> of the Galaxy codebase.</p>
+</section>
+<section id="overview">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">An Overview of Galaxy Tests</a><a class="headerlink" href="#overview" title="Link to this heading">¶</a></h2>
+<p>Galaxy has many test suites and frameworks. A potentially overwhelming question
+at first is, <em>where does a given test belong? What testing suite or framework
+should it be added to?</em> The following questions may be able to help
+find the right documentation for a given test one wishes to write.</p>
+<p><em><strong>Does this test require a running server and database to execute?</strong></em></p>
+<ul>
+<li><p><strong>No</strong></p>
+<p>If no, this test should probably be implemented as a Galaxy unit test. Unit tests generally, and Galaxy ones specifically, are especially useful
+for complex components that are well architected to be tested in isolation.
+The best unit tests are unit tests that shield a lot of their potential complexity from their
+consumers and components that do not have a lot of dependencies - especially
+on the database or a web server.</p>
+<p><em><strong>Is the component under test a client (ES6) or backend (Python) component?</strong></em></p>
+<ul>
+<li><p><strong>Client/ES6</strong></p>
+<p>These tests should be placed in <code class="docutils literal notranslate"><span class="pre">client/src</span></code> directly and executed
+via Jest. Checkout <a class="reference internal" href="#es6-unit">Frontend/ES6 Unit Tests</a> below for more
+information.</p>
+</li>
+<li><p><strong>Backend/Python</strong></p>
+<p>These tests should be placed in <code class="docutils literal notranslate"><span class="pre">test/unit</span></code> or doctests and
+executed via pytest. Checkout <a class="reference internal" href="#python-unit">Backend/Python Unit Tests</a> below for more
+information.</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Yes</strong></p>
+<p>In this case you’re looking at some sort of functional test that requires
+a running Galaxy server and the Galaxy database. All of these tests are
+currently implemented in Python.</p>
+<p><em><strong>Does this test require the Galaxy web interface?</strong></em></p>
+<ul>
+<li><p><strong>No</strong></p>
+<p>Most of the time, we have found that these tests work best when
+they use the Galaxy API to drive the test. These tests
+are all Python tests executed by pytest. The testing frameworks
+provide everything you need to spin up a Galaxy instance,
+communicate with its API to invoke the component under test,
+and write expectations about the outcome of the test.
+There are three different (but very related) frameworks to do this
+and the choice between which is appropriate comes down to
+the following questions.</p>
+<p><em><strong>Does this test require a special configuration of Galaxy?</strong></em></p>
+<ul>
+<li><p><strong>No</strong></p>
+<p><em><strong>Does this test check only functionalities of Galaxy tools?</strong></em></p>
+<ul>
+<li><p><strong>Yes</strong></p>
+<p>In this case you do not actually need to deal with the Galaxy API
+directly and you can just create a Galaxy tool test to check that
+the required functionality does work as expected. These are called
+Galaxy tool framework tests and are located in
+<code class="docutils literal notranslate"><span class="pre">test/functional/tools/</span></code>. Checkout
+<a class="reference internal" href="#framework">Tool Framework Tests</a> below for more information.</p>
+</li>
+<li><p><strong>No</strong></p>
+<p>In this case Galaxy API tests are likely the most
+appropriate way to implement the desired test. These tests
+are located in <code class="docutils literal notranslate"><span class="pre">lib/galaxy_test/api</span></code>. Checkout
+<a class="reference internal" href="#api">API Tests</a> below for more information.</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Yes</strong></p>
+<p>Tests that require a custom Galaxy with a very specific
+configuration are called Galaxy integration tests and are located in
+<code class="docutils literal notranslate"><span class="pre">test/integration</span></code>.  Checkout <a class="reference internal" href="#integration">Integration Tests</a>
+below for more information.</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Yes</strong></p>
+<p>The tests that exercise the Galaxy user interface and require
+a functional Galaxy server use <a class="reference external" href="https://www.selenium.dev/">Selenium</a> to drive interaction
+with the Galaxy web interface. There are two frameworks or suites
+available for building tests like this and they both provide high
+level access to the Galaxy API like the tests above. The frameworks
+also take care of starting the Galaxy server.</p>
+<p>The choice between these two different frameworks comes down to the
+answer to the following question.</p>
+<p><em><strong>Does this test require a special configuration of Galaxy?</strong></em></p>
+<ul>
+<li><p><strong>No</strong></p>
+<p>These tests should be placed into <code class="docutils literal notranslate"><span class="pre">lib/galaxy_test/selenium</span></code>
+and implemented using the <a class="reference internal" href="#selenium">Selenium Tests</a>
+framework describe below.</p>
+</li>
+<li><p><strong>Yes</strong></p>
+<p>Tests that require both a very specific Galaxy configuration
+as well as the ability to drive a running Galaxy web interface
+should be placed into <code class="docutils literal notranslate"><span class="pre">test/integration_selenium</span></code>. Checkout
+the <a class="reference internal" href="#selenium-integration">Selenium Integration Tests</a>
+information below for more information.</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="python-unit">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Backend/Python Unit Tests</a><a class="headerlink" href="#python-unit" title="Link to this heading">¶</a></h2>
+<p>These are Python unit tests either defined inside of <code class="docutils literal notranslate"><span class="pre">test/unit</span></code> or
+via doctests within a Python component. These should generally not require
+a Galaxy instance and should quickly test just a component or a few
+components of Galaxy’s backend code.</p>
+<section id="doctests-to-stand-alone-tests">
+<h3>doctests to stand-alone tests?<a class="headerlink" href="#doctests-to-stand-alone-tests" title="Link to this heading">¶</a></h3>
+<p>doctests tend to be more brittle and more restrictive. I (&#64;jmchilton)
+would strongly suggest writing stand-alone unit testing files separate
+from the code itself unless the tests are so clean and so isolated they
+serve as high-quality documentation for the component under test.</p>
+</section>
+<section id="slow-unit-tests">
+<h3>Slow ‘Unit’ Tests<a class="headerlink" href="#slow-unit-tests" title="Link to this heading">¶</a></h3>
+<p>There are tests in Galaxy that test integration with external sources
+that do not require a full Galaxy server. While these aren’t really
+“unit” tests in a traditional sense, they are unit tests from a Galaxy
+perspective because they do not depend on a Galaxy server.</p>
+<p>These tests should be marked with the <code class="docutils literal notranslate"><span class="pre">&#64;external_dependency_management</span></code>
+decorator, and can then be tested with <code class="docutils literal notranslate"><span class="pre">tox</span> <span class="pre">-e</span> <span class="pre">mulled</span></code>.</p>
+</section>
+<section id="continuous-integration">
+<h3>Continuous Integration<a class="headerlink" href="#continuous-integration" title="Link to this heading">¶</a></h3>
+<p>The Python unit tests are run against each pull request to Galaxy using
+CircleCI. If any of these tests fail, the pull request will be marked
+red. This test suite is moderately prone to having tests fail that are
+unrelated to the pull request being tested; if this test suite fails on
+a pull request with changes that seem to be unrelated to the pull request -
+ping the Galaxy committers on the pull request and request a re-run. The
+CircleCI test definition for these tests is located in <code class="docutils literal notranslate"><span class="pre">.circleci/config.yml</span></code>
+below Galaxy’s root.</p>
+</section>
+</section>
+<section id="es6-unit">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">Frontend/ES6 Unit Tests</a><a class="headerlink" href="#es6-unit" title="Link to this heading">¶</a></h2>
+<p>Detailed information on writing Galaxy client tests can be found in
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/dev/client/README.md#client-side-unit-testing">client/README.md</a>.</p>
+<section id="id1">
+<h3>Continuous Integration<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<p>The client tests are run against each pull request to Galaxy using
+GitHub actions. If any of these tests fail, the pull request will be marked
+red. This test suite is moderately prone to having tests fail that are
+unrelated to the pull request being tested; if this test suite fails on
+a pull request with changes that seem to be unrelated to the pull request -
+ping the Galaxy committers on the pull request and request a re-run. The
+GitHub actions workflow definition for these tests is located in
+<code class="docutils literal notranslate"><span class="pre">.github/workflows/jest.yaml</span></code> below Galaxy’s root.</p>
+</section>
+</section>
+<section id="framework">
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">Tool Framework Tests</a><a class="headerlink" href="#framework" title="Link to this heading">¶</a></h2>
+<p>A great deal of the complexity and interface exposed to Galaxy plugin
+developers comes in the form of Galaxy tool wrapper definition files.
+Likewise, a lot of the legacy behavior Galaxy needs to maintain is
+maintained for older tool definitions. For this reason, a lot of Galaxy’s
+complex internals can just be tested by simply running a tool test.
+Obviously Galaxy is much more complex than this, but a surprising amount
+of Galaxy’s tests are simply tool tests. This suite of tools that
+have their tests exercised is called the “Tool Framework Tests”
+or simply “Framework Tests”.</p>
+<p>Adding a tool test is as simple as finding a related tool in the sample
+tools (<code class="docutils literal notranslate"><span class="pre">test/functional/tools</span></code>) and adding a test block to that file
+or adding a new tool to this directory and referencing it in the
+sample tool configuration XML (<code class="docutils literal notranslate"><span class="pre">test/functional/tools/sample_tool_conf.xml</span></code>).</p>
+<p>General information on writing Galaxy Tool Tests can be found in Planemo’s
+documentation - for instance in the <a class="reference external" href="https://planemo.readthedocs.io/en/latest/writing_advanced.html#test-driven-development">Test-Driven Development</a>
+section.</p>
+<section id="id2">
+<h3>Continuous Integration<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<p>The Tool framework tests are run against each pull request to Galaxy using
+GitHub actions. If any of these tests fail, the pull request will be marked
+red. This test suite is fairly stable and typically there are not
+transiently failed tests unrelated to the pull request being tested. The
+GitHub actions workflow definition for these tests is located in
+<code class="docutils literal notranslate"><span class="pre">.github/workflows/framework.yaml</span></code> below Galaxy’s root.</p>
+</section>
+</section>
+<section id="api">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">API Tests</a><a class="headerlink" href="#api" title="Link to this heading">¶</a></h2>
+<p>These tests are located in <code class="docutils literal notranslate"><span class="pre">lib/galaxy_test/api</span></code> and test various aspects
+of the Galaxy API, as well as general backend aspects of Galaxy using the API.</p>
+<section id="an-example-lib-galaxy-test-api-test-roles-py">
+<h3>An Example: <code class="docutils literal notranslate"><span class="pre">lib/galaxy_test/api/test_roles.py</span></code><a class="headerlink" href="#an-example-lib-galaxy-test-api-test-roles-py" title="Link to this heading">¶</a></h3>
+<p>This test file shows a fairly typical API test. It demonstrates the basic
+structure of a test, how to <code class="docutils literal notranslate"><span class="pre">GET</span></code> and <code class="docutils literal notranslate"><span class="pre">POST</span></code> against the API, and how to use
+both typical user and admin user-only functionality.</p>
+</section>
+<section id="common-code-for-populating-fixture-data">
+<h3>Common Code for Populating Fixture Data<a class="headerlink" href="#common-code-for-populating-fixture-data" title="Link to this heading">¶</a></h3>
+<p>The <a class="reference internal" href="#../lib/galaxy_test.base.html#module-galaxy_test.base.populators"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">galaxy_test.base.populators</span></code> module</span></a> contains detailed docstrings
+describing the concept and implementation of “Populators” that can be used
+for this purposes.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">test_roles.py</span></code> example creates a <code class="docutils literal notranslate"><span class="pre">DatasetPopulator</span></code>
+object that it uses to get some common information from the configured
+Galaxy server under test.</p>
+<p>Populators are used extensively throughout API tests as well as integration
+and Selenium tests to both populate data to test (histories, workflows,
+collections, libraries, etc..) as well as access information from the
+Galaxy server (e.g. fetch information from datasets, users, Galaxy’s
+configuration, etc.).</p>
+<p>Populators and API tests in general make heavy use of the <a class="reference external" href="https://requests.readthedocs.io/">requests
+library</a> for Python.</p>
+</section>
+<section id="api-test-assertions">
+<h3>API Test Assertions<a class="headerlink" href="#api-test-assertions" title="Link to this heading">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">galaxy_test.base.api_asserts</span></code> module contains common
+assertion functions used to check API request status codes, dictionary
+content, and Galaxy specific error messages.</p>
+<p>See <a class="reference internal" href="#../lib/galaxy_test.base.html#module-galaxy_test.base.api_asserts"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">galaxy_test.base.api_asserts</span></code> documentation</span></a>
+for details on each function and information on verifying Galaxy API error codes.</p>
+</section>
+<section id="id3">
+<h3>Continuous Integration<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<p>The API tests are run against each pull request to Galaxy using
+GitHub actions. If any of these tests fail, the pull request will be marked
+red. This test suite is fairly stable and typically there are not
+transiently failed tests unrelated to the pull request being tested. The
+GitHub actions workflow definition for these tests is located in
+<code class="docutils literal notranslate"><span class="pre">.github/workflows/api.yaml</span></code> below Galaxy’s root.</p>
+</section>
+</section>
+<section id="integration">
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">Integration Tests</a><a class="headerlink" href="#integration" title="Link to this heading">¶</a></h2>
+<p>These tests are located in <code class="docutils literal notranslate"><span class="pre">test/integration</span></code>. These tests have access
+to all the same API utilities as API tests described above, but can access
+Galaxy internals and may define hooks for configuring Galaxy in certain ways
+during startup.</p>
+<p>Galaxy integration tests in some ways are more powerful than API tests -
+they can both control Galaxy’s configuration and can access Galaxy’s
+internals. However, this power comes at a real cost - each test case must
+spin up its own Galaxy server (a relatively expensive operation) and the
+tests cannot be executed against external Galaxy servers (it wouldn’t make
+sense to, given these custom hooks during configuration of the server).
+For these reasons, we bundle up Galaxy API tests for use in deployment
+testing of production setups. Therefore Galaxy API tests are generally preferred,
+while integration tests should be implemented only when an API test is not
+possible or practical.</p>
+<p>Integration tests can make use of dataset populators and API assertions
+as described above in the API test documentation. It is worth reviewing
+that documentation before digging into integration examples.</p>
+<section id="an-example-test-integration-test-quota-py">
+<h3>An Example: <code class="docutils literal notranslate"><span class="pre">test/integration/test_quota.py</span></code><a class="headerlink" href="#an-example-test-integration-test-quota-py" title="Link to this heading">¶</a></h3>
+<p>This is a really simple example that does some testing with the Quotas
+API of Galaxy. This API is off by default so it must be enabled for the
+test. The top of the test file demonstrates both how to create an
+integration test and how to modify Galaxy’s configuration for the test.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#...</span>
+<span class="kn">from</span> <span class="nn">galaxy_test.driver</span> <span class="kn">import</span> <span class="n">integration_util</span>
+
+
+<span class="k">class</span> <span class="nc">QuotaIntegrationTestCase</span><span class="p">(</span><span class="n">integration_util</span><span class="o">.</span><span class="n">IntegrationTestCase</span><span class="p">):</span>
+    <span class="n">require_admin_user</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">handle_galaxy_config_kwds</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="n">config</span><span class="p">[</span><span class="s2">&quot;enable_quotas&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1">#...</span>
+</pre></div>
+</div>
+<p>Integration test cases extend the <code class="docutils literal notranslate"><span class="pre">IntegrationTestCase</span></code> class defined in
+the <code class="docutils literal notranslate"><span class="pre">galaxy_test.driver.integration_util</span></code> module (located in
+<code class="docutils literal notranslate"><span class="pre">lib/galaxy_test/driver/integration_uti.py</span></code> below Galaxy’s root).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">require_admin_user</span></code> option above tell the test framework that the
+default user configured for API interactions must be an admin user.</p>
+<p>This example overrides Galaxy’s configuration using the
+<code class="docutils literal notranslate"><span class="pre">handle_galaxy_config_kwds</span></code> class method. This method is called before
+a Galaxy server is created, and is passed the testing server’s default
+configuration as the <code class="docutils literal notranslate"><span class="pre">config</span></code> argument to that class method. This
+<code class="docutils literal notranslate"><span class="pre">config</span></code> object is effectively the Python representation of the Galaxy
+configuration file (<code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code>) used to start the Python server.
+Almost anything you can do in <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code>, you can modify the Galaxy
+server to do using the same keys. Examples of various ways integration tests
+have modified this dictionary include setting up custom object stores
+(e.g. <code class="docutils literal notranslate"><span class="pre">objectstore/test_mixed_store_by.py</span></code>),
+setting up non-local job runners (e.g. <code class="docutils literal notranslate"><span class="pre">test_cli_runners.py</span></code>), setting
+up custom job destinations (e.g. <code class="docutils literal notranslate"><span class="pre">test_job_recovery.py</span></code>), and configuring
+Galaxy for tool shed operations (e.g. <code class="docutils literal notranslate"><span class="pre">test_repository_operations.py</span></code>).</p>
+<p>There may be cases where an integration test is used not to allow
+some custom configuration of Galaxy but to access Galaxy’s internals.
+Integration tests have direct access to Galaxy’s <code class="docutils literal notranslate"><span class="pre">app</span></code> object via
+<code class="docutils literal notranslate"><span class="pre">self._app</span></code> and direct access to the database as a result. An example of
+such a test is <code class="docutils literal notranslate"><span class="pre">test_workflow_refactoring.py</span></code>. This test required accessing
+the way workflow steps are stored in the database and not just how they are
+serialized by the API, so it tests database models directly. Generally
+though, this type of usage should be avoided.</p>
+</section>
+<section id="id4">
+<h3>Continuous Integration<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<p>The Integration tests are run against each pull request to Galaxy using
+GitHub actions. If any of these tests fail, the pull request will be marked
+red. This test suite is moderately prone to having tests fail that are
+unrelated to the pull request being tested; if this test suite fails on
+a pull request with changes that seem to be unrelated to the pull request -
+ping the Galaxy committers on the pull request and request a re-run. The
+GitHub actions workflow definition for these tests is located in
+<code class="docutils literal notranslate"><span class="pre">.github/workflows/integration.yaml</span></code> below Galaxy’s root.</p>
+</section>
+</section>
+<section id="selenium">
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">Selenium Tests</a><a class="headerlink" href="#selenium" title="Link to this heading">¶</a></h2>
+<p>These are full stack tests meant to test the Galaxy UI with real
+browsers and are located in <code class="docutils literal notranslate"><span class="pre">lib/galaxy_test/selenium</span></code>.</p>
+<section id="jupyter-selenium">
+<h3>Jupyter + Selenium<a class="headerlink" href="#jupyter-selenium" title="Link to this heading">¶</a></h3>
+<p>Jupyter can leveraged to develop Selenium test cases interactively,
+checkout out the <a class="reference internal" href="../lib/galaxy_test.selenium.jupyter.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">galaxy_test.selenium.jupyter</span></code> documentation</span></a>
+for more a full discussion of this.</p>
+</section>
+<section id="id5">
+<h3>Continuous Integration<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<p>The Selenium tests are run against each pull request to Galaxy using
+GitHub actions. If any of these tests fail, the pull request will be marked
+red. This test suite is moderately prone to having tests fail that are
+unrelated to the pull request being tested; if this test suite fails on
+a pull request with changes that seem to be unrelated to the pull request -
+ping the Galaxy committers on the pull request and request a re-run. The
+GitHub actions workflow definition for these tests is located in
+<code class="docutils literal notranslate"><span class="pre">.github/workflows/selenium.yaml</span></code> below Galaxy’s root.</p>
+</section>
+</section>
+<section id="selenium-integration">
+<h2><a class="toc-backref" href="#id15" role="doc-backlink">Selenium Integration Tests</a><a class="headerlink" href="#selenium-integration" title="Link to this heading">¶</a></h2>
+<p>These tests are located in <code class="docutils literal notranslate"><span class="pre">test/integration_selenium</span></code> and simply
+combine the capabilities of Selenium tests and Integration tests
+(both described above) into test cases that can do both. There
+are no new capabilities or gotchas of this test suite beyond
+what is described above in these sections.</p>
+<p>A quintessential example is <code class="docutils literal notranslate"><span class="pre">test/integration_selenium/test_upload_ftp.py</span></code>.
+Testing the FTP capabilities of the user interface requires both
+Selenium to drive the test case and a custom Galaxy configuration
+that mocks out an FTP directory and points the Galaxy server at it
+with various options (<code class="docutils literal notranslate"><span class="pre">ftp_upload_dir</span></code>, <code class="docutils literal notranslate"><span class="pre">ftp_upload_site</span></code>).</p>
+<section id="id6">
+<h3>Continuous Integration<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<p>The Selenium integration tests are run against each pull request to Galaxy using
+GitHub actions. If any of these tests fail, the pull request will be marked
+red. This test suite is moderately prone to having tests fail that are
+unrelated to the pull request being tested; if this test suite fails on
+a pull request with changes that seem to be unrelated to the pull request -
+ping the Galaxy committers on the pull request and request a re-run. The
+GitHub actions workflow definition for these tests is located in
+<code class="docutils literal notranslate"><span class="pre">.github/workflows/selenium_integration.yaml</span></code> below Galaxy’s root.</p>
+</section>
+</section>
+<section id="running-tests">
+<h2><a class="toc-backref" href="#id16" role="doc-backlink">Running Python Tests</a><a class="headerlink" href="#running-tests" title="Link to this heading">¶</a></h2>
+<p>The best information about how to run Galaxy’s Python tests can be
+found in the help output of <code class="docutils literal notranslate"><span class="pre">run_tests.sh</span> <span class="pre">--help</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&#39;run_tests.sh -id bbb&#39;                  for testing one tool with id &#39;bbb&#39; (&#39;bbb&#39; is the tool id)
+&#39;run_tests.sh -sid ccc&#39;                 for testing one section with sid &#39;ccc&#39; (&#39;ccc&#39; is the string after &#39;section::&#39;)
+&#39;run_tests.sh -list&#39;                    for listing all the tool ids
+&#39;run_tests.sh -api (test_path)&#39;         for running all the test scripts in the ./lib/galaxy_test/api directory, test_path
+                                    can be pytest selector
+&#39;run_tests.sh -cwl (test_path)&#39;         for running all the test scripts in the ./lib/galaxy_test/api/cwl directory, test_path
+                                    can be pytest selector
+&#39;run_tests.sh -integration (test_path)&#39; for running all integration test scripts in the ./test/integration directory, test_path
+                                    can be pytest selector
+&#39;run_tests.sh -toolshed (test_path)&#39;    for running all the test scripts in the ./lib/tool_shed/test directory
+&#39;run_tests.sh -installed&#39;               for running tests of Tool Shed installed tools
+&#39;run_tests.sh -main&#39;                    for running tests of tools shipped with Galaxy
+&#39;run_tests.sh -framework&#39;               for running through example tool tests testing framework features in test/functional/tools&quot;
+&#39;run_tests.sh -framework -id toolid&#39;    for testing one framework tool (in test/functional/tools/) with id &#39;toolid&#39;
+&#39;run_tests.sh -data_managers -id data_manager_id&#39;    for testing one Data Manager with id &#39;data_manager_id&#39;
+&#39;run_tests.sh -unit&#39;                    for running all unit tests (doctests and tests in test/unit)
+&#39;run_tests.sh -unit (test_selector)&#39;    for running unit tests on specified test path (using pytest selector syntax)
+&#39;run_tests.sh -selenium&#39;                for running all selenium web tests (in lib/galaxy_test/selenium)
+&#39;run_tests.sh -selenium (test_selector)&#39; for running specified selenium web tests (using pytest selector syntax)
+
+This wrapper script largely serves as a point documentation and convenience for
+running Galaxy&#39;s Python tests. All Python tests shipped with Galaxy can be run with
+pytest directly. Galaxy&#39;s client unit tests can be run with make client-test
+or yarn directly as documented in detail in client/README.md.
+
+The main test types are as follows:
+
+- API: These tests are located in lib/galaxy_test/api and test various aspects of the Galaxy
+   API and test general backend aspects of Galaxy using the API.
+- Integration: These tests are located in test/integration and test special
+   configurations of Galaxy. All API tests assume a particular Galaxy configuration
+   defined by test/base/driver_util.py and integration tests can be used to
+   launch and test Galaxy in other configurations.
+- Framework: These tests are all Galaxy tool tests and can be found in
+   test/functional/tools. These are for the most part meant to test and
+   demonstrate features of the tool evaluation environment and of Galaxy tool XML
+   files.
+- Unit: These are Python unit tests either defined as doctests or inside of
+   test/unit. These should generally not require a Galaxy instance and should
+   quickly test just a component or a few components of Galaxy&#39;s backend code.
+- Selenium: These are full stack tests meant to test the Galaxy UI with real
+   browsers and are located in lib/galaxy_test/selenium.
+- ToolShed: These are web tests that use the older Python web testing
+   framework twill to test ToolShed related functionality. These are
+   located in lib/tool_shed/test.
+
+Python testing is done via pytest. Specific tests can be selected
+using the syntax described at https://docs.pytest.org/en/latest/how-to/usage.html .
+A few examples are shown below.
+
+Run all API tests:
+    ./run_tests.sh -api
+
+The same test as above can be run using pytest directly as follows:
+    pytest lib/galaxy_test/api
+
+However, when using pytest directly, output options defined in this
+file aren&#39;t respected and a new Galaxy instance will be created for each
+Test class (this scripts optimizes it so all tests can share a Galaxy
+instance).
+
+Run a full class of API tests:
+    ./run_tests.sh -api lib/galaxy_test/api/test_tools.py::TestToolsApi
+
+Run a specific API test:
+    ./run_tests.sh -api lib/galaxy_test/api/test_tools.py::TestToolsApi::test_map_over_with_output_format_actions
+
+Run all selenium tests (Under Linux using Docker):
+    # Start selenium chrome Docker container
+    docker run -d -p 4444:4444 -v /dev/shm:/dev/shm selenium/standalone-chrome:3.0.1-aluminum
+    GALAXY_TEST_SELENIUM_REMOTE=1 ./run_tests.sh -selenium
+
+Run a specific selenium test (under Linux or Mac OS X after installing geckodriver or chromedriver):
+    ./run_tests.sh -selenium lib/galaxy_test/selenium/test_registration.py::TestRegistration::test_reregister_username_fails
+
+Run a selenium test against a running server while watching client (fastest iterating on client tests):
+    ./run.sh &amp; # run Galaxy on 8080
+    make client-dev-server &amp; # watch for client changes
+    export GALAXY_TEST_EXTERNAL=http://localhost:8081/  # Target tests at server.
+    . .venv/bin/activate # source the virtualenv so can skip run_tests.sh.
+    pytest lib/galaxy_test/selenium/test_workflow_editor.py::TestWorkflowEditor::test_data_input
+
+Note About Selenium Tests:
+
+If using a local selenium driver such as a Chrome or Firefox based one
+either chromedriver or geckodriver needs to be installed an placed on
+the PATH.
+
+More information on geckodriver can be found at
+https://github.com/mozilla/geckodriver and more information on
+chromedriver can be found at
+https://sites.google.com/chromium.org/driver/ .
+
+By default Galaxy will check the PATH for these and pick
+whichever it finds. This can be overridden by setting
+GALAXY_TEST_SELENIUM_BROWSER to either FIREFOX, CHROME, or something
+more esoteric (including OPERA).
+
+If PyVirtualDisplay is installed Galaxy will attempt to run this
+browser in a headless mode. This can be disabled by setting
+GALAXY_TEST_SELENIUM_HEADLESS to 0 however.
+
+Selenium can also be setup a remote service - to target a service set
+GALAXY_TEST_SELENIUM_REMOTE to 1. The target service may be configured
+with GALAXY_TEST_SELENIUM_REMOTE_PORT and
+GALAXY_TEST_SELENIUM_REMOTE_HOST. By default Galaxy will assume the
+remote service being targetted is CHROME - but this can be overridden
+with GALAXY_TEST_SELENIUM_BROWSER.
+
+In this remote mode, please ensure that GALAXY_TEST_HOST is set to a
+host that is accessible from the Selenium host. By default under Linux
+if GALAXY_TEST_SELENIUM_REMOTE is set, Galaxy will set this to be the IP
+address Docker exposes localhost on to its child containers. This trick
+doesn&#39;t work on Mac OS X and so GALAXY_TEST_HOST will need to be crafted
+carefully ahead of time.
+
+For Selenium test cases a stack trace is usually insufficient to diagnose
+problems. For this reason, GALAXY_TEST_ERRORS_DIRECTORY is populated with
+a new directory of information for each failing test case. This information
+includes a screenshot, a stack trace, and the DOM of the currently rendered
+Galaxy instance. The new directories are created with names that include
+information about the failed test method name and the timestamp. By default,
+GALAXY_TEST_ERRORS_DIRECTORY will be set to database/errors.
+
+The Selenium tests seem to be subject to transient failures at a higher
+rate than the rest of the tests in Galaxy. Though this is unfortunate,
+they have more moving pieces so this is perhaps not surprising. One can
+set the GALAXY_TEST_SELENIUM_RETRIES to a number greater than 0 to
+automatically retry every failed test case the specified number of times.
+
+External Tests:
+
+A small subset of tests can be run against an existing Galaxy
+instance. The external Galaxy instance URL can be configured with
+--external_url. If this is set, either --external_master_key or
+--external_user_key must be set as well - more tests can be executed
+with --external_master_key than with a user key.
+
+Extra options:
+
+ --verbose_errors      Force some tests produce more verbose error reporting.
+ --no_cleanup          Do not delete temp files for Python functional tests
+                       (-toolshed, -framework, etc...)
+ --coverage            Generate a test coverage report. This option currently
+                       works with every Python test, but the
+                       results may not be reliable with Selenium or other
+                       frameworks that primarily test the client.
+ --debug               On python test error or failure invoke a pdb shell for
+                       interactive debugging of the test
+ --report_file         Path of HTML report to produce (for Python Galaxy
+                       functional tests). If not given, a default filename will
+                       be used, and reported on stderr at the end of the run.
+ --xunit_report_file   Path of XUnit report to produce (for Python Galaxy
+                       functional tests).
+ --skip-venv           Do not create .venv (passes this flag to
+                       common_startup.sh)
+ --external_url        External URL to use for Galaxy testing (only certain
+                       tests).
+ --external_master_key Master API key used to configure external tests.
+ --external_user_key   User API used for external tests - not required if
+                       external_master_key is specified.
+  --skip_flakey_fails  Skip flakey tests on error (sets
+                       GALAXY_TEST_SKIP_FLAKEY_TESTS_ON_ERROR=1).
+
+Environment Variables:
+
+In addition to the above command-line options, many environment variables
+can be used to control the Galaxy functional testing processing. Command-line
+options above like (--external_url) will set environment variables - in such
+cases the command line argument takes precedent over environment variables set
+at the time of running this script.
+
+General Test Environment Variables
+
+GALAXY_TEST_COVERAGE            If set, it is equivalent to passing the
+                                --coverage option.
+
+Functional Test Environment Variables
+
+GALAXY_TEST_DBURI               Database connection string used for functional
+                                test database for Galaxy.
+GALAXY_TEST_INSTALL_DBURI       Database connection string used for functional
+                                test database for Galaxy&#39;s install framework.
+GALAXY_TEST_INSTALL_DB_MERGED   Set to use same database for Galaxy and install
+                                framework, this defaults to True for Galaxy
+                                tests an False for shed tests.
+GALAXY_TEST_DB_TEMPLATE         If GALAXY_TEST_DBURI is unset, this URL can be
+                                retrieved and should be an sqlite database that
+                                will be upgraded and tested against.
+GALAXY_TEST_TMP_DIR             Temp directory used for files required by
+                                Galaxy server setup for Galaxy functional tests.
+GALAXY_TEST_SAVE                Location to save certain test files (such as
+                                tool outputs).
+GALAXY_TEST_EXTERNAL            Target an external Galaxy as part of testing.
+GALAXY_TEST_JOB_CONFIG_FILE     Job config file to use for the test.
+GALAXY_CONFIG_MASTER_API_KEY    Master or admin API key to use as part of
+                                testing with GALAXY_TEST_EXTERNAL.
+GALAXY_TEST_USER_API_KEY        User API key to use as part of testing with
+                                GALAXY_TEST_EXTERNAL.
+GALAXY_TEST_VERBOSE_ERRORS      Enable more verbose errors during API tests.
+GALAXY_TEST_UPLOAD_ASYNC        Upload tool test inputs asynchronously (may
+                                overwhelm sqlite database).
+GALAXY_TEST_RAW_DIFF            Don&#39;t slice up tool test diffs to keep output
+                                managable - print all output. (default off)
+GALAXY_TEST_DEFAULT_WAIT        Max time allowed for a tool test before Galaxy
+                                gives up (default 86400) - tools may define a
+                                maxseconds attribute to extend this.
+GALAXY_TEST_TOOL_DEPENDENCY_DIR tool dependency dir to use for Galaxy during
+                                functional tests.
+GALAXY_TEST_FILE_DIR            Test data sources (default to
+              test-data,https://github.com/galaxyproject/galaxy-test-data.git)
+GALAXY_TEST_DIRECTORY           /test
+GALAXY_TEST_TOOL_DATA_PATH      Set to override tool data path during tool
+                                shed tests.
+GALAXY_TEST_FETCH_DATA          Fetch remote test data to
+                                GALAXY_TEST_DATA_REPO_CACHE as part of tool
+                                tests if it is not available locally (default
+                                to True). Requires git to be available on the
+                                command-line.
+GALAXY_TEST_DATA_REPO_CACHE     Where to cache remote test data to (default to
+                                test-data-cache).
+GALAXY_TEST_SKIP_FLAKEY_TESTS_ON_ERROR
+                                Skip tests annotated with @flakey on test errors.
+HTTP_ACCEPT_LANGUAGE            Defaults to &#39;en&#39;
+GALAXY_TEST_NO_CLEANUP          Do not cleanup main test directory after tests,
+                                the deprecated option TOOL_SHED_TEST_NO_CLEANUP
+                                does the same thing.
+GALAXY_TEST_HOST                Host to use for Galaxy server setup for
+                                testing.
+GALAXY_TEST_PORT                Port to use for Galaxy server setup for
+                                testing.
+GALAXY_TEST_TOOL_PATH           Path defaulting to &#39;tools&#39;.
+GALAXY_TEST_SHED_TOOL_CONF      Shed toolbox conf (defaults to
+                                config/shed_tool_conf.xml) used when testing
+                                installed to tools with -installed.
+TOOL_SHED_TEST_HOST             Host to use for shed server setup for testing.
+TOOL_SHED_TEST_PORT             Port to use for shed server setup for testing.
+TOOL_SHED_TEST_FILE_DIR         Defaults to lib/tool_shed/test/test_data.
+TOOL_SHED_TEST_TMP_DIR          Defaults to random /tmp directory - place for
+                                tool shed test server files to be placed.
+TOOL_SHED_TEST_OMIT_GALAXY      Do not launch a Galaxy server for tool shed
+                                testing.
+GALAXY_TEST_DISABLE_ACCESS_LOG  Do not log access messages
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="faq.html" class="btn btn-neutral float-left" title="How Do I…" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="debugging_tests.html" class="btn btn-neutral float-right" title="Debugging Galaxy Tests" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Galaxy Committers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

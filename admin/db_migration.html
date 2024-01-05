@@ -1,0 +1,715 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galaxy Database Schema Migrations &mdash; Galaxy Project 23.1.5.dev0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+
+  
+    <link rel="canonical" href="https://docs.galaxyproject.org/en/master/admin/db_migration.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=da3e81e8"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Galaxy Reports" href="reports.html" />
+    <link rel="prev" title="Conda for Tool Dependencies" href="conda_faq.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Galaxy Project
+          </a>
+              <div class="version">
+                23.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../releases/index.html">Releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.1_announce_user.html">June 2023 Galaxy Release (v 23.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.0_announce_user.html">2023 Galaxy Release (v 23.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.05_announce_user.html">May 2022 Galaxy Release (v 22.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.01_announce_user.html">January 2022 Galaxy Release (v 22.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.09_announce_user.html">September 2021 Galaxy Release (v 21.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.05_announce_user.html">May 2021 Galaxy Release (v 21.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.01_announce_user.html">January 2021 Galaxy Release (v 21.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.09_announce_user.html">September 2020 Galaxy Release (v 20.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.05_announce_user.html">May 2020 Galaxy Release (v 20.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.01_announce_user.html">January 2020 Galaxy Release (v 20.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.09_announce_user.html">September 2019 Galaxy Release (v 19.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.05_announce_user.html">May 2019 Galaxy Release (v 19.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.01_announce_user.html">January 2019 Galaxy Release (v 19.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.09_announce.html">September 2018 Galaxy Release (v 18.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.05_announce.html">May 2018 Galaxy Release (v 18.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.01_announce.html">January 2018 Galaxy Release (v 18.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.09_announce.html">September 2017 Galaxy Release (v 17.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.05_announce.html">May 2017 Galaxy Release (v 17.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.01_announce.html">January 2017 Galaxy Release (v 17.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.10_announce.html">October 2016 Galaxy Release (v 16.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.07_announce.html">July 2016 Galaxy Release (v 16.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.04_announce.html">April 2016 Galaxy Release (v 16.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.01_announce.html">January 2016 Galaxy Release (v 16.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.10_announce.html">October 2015 Galaxy Release (v 15.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.07_announce.html">July 2015 Galaxy Release (v 15.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.05_announce.html">May 2015 Galaxy Release (v 15.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.03_announce.html">March 2015 Galaxy Release (v 15.03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.01_announce.html">January 2015 Galaxy Release (v 15.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.10_announce.html">October 2014 Galaxy Release (v 14.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.08_announce.html">August 2014 Galaxy Release (v 14.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.06_announce.html">June 2014 Galaxy Release (v 14.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.04_announce.html">April 2014 Galaxy Release (v 14.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.02_announce.html">February 2014 Galaxy Release (v 14.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.11_announce.html">November 2013 Galaxy Release (v 13.11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.08_announce.html">August 2013 Galaxy Release (v 13.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.06_announce.html">June 2013 Galaxy Release (v 13.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.04_announce.html">April 2013 Galaxy Release (v 13.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.02_announce.html">February 2013 Galaxy Release (v 13.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.01_announce.html">January 2013 Galaxy Release (v 13.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/older_releases.html">Galaxy Releases older than v 13.01</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Admin Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Administration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="python.html">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="framework_dependencies.html">Framework Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">Galaxy Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logging.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="production.html">Production Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nginx.html">Proxying Galaxy with NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apache.html">Proxying Galaxy with Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scaling.html">Scaling and Load Balancing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cluster.html">Connecting to a Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jobs.html">Galaxy Job Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tool_panel.html">Tool Panel Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mq.html">Message queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependency_resolvers.html">Dependency Resolvers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="container_resolvers.html">Containers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="container_resolvers.html#other-considerations">Other considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conda_faq.html">Conda for Tool Dependencies</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Galaxy Database Schema Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reports.html">Galaxy Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="useful_scripts.html">Scripts &amp; Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrating_to_gunicorn.html">Migrating from uWSGI to Gunicorn and FastAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="special_topics/index.html">Special topics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/ftp.html">Galaxy FTP Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/interactivetools.html">Galaxy InteractiveTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/mulled_containers.html">Containers for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/grt.html">Galactic Radio Telescope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/gtn.html">Galaxy Training Materials Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/job_metrics.html">Job Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/webhooks.html">Galaxy Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/vault.html">Storing secrets in the vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/performance_tracking.html">Galaxy Performance Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/bug_reports.html">Bug Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/gdpr_compliance.html">GDPR Compliance</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/index.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dev/schema.html">Galaxy Tool XML File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/api_guidelines.html">API Design Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/build_a_job_runner.html">Build a job runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/finding_and_improving_slow_code.html">Finding and improving slow Galaxy code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_managers.html">Data managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_types.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/faq.html">How Do I…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/writing_tests.html">Writing Tests for Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html">Debugging Galaxy Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html#debugging-tests-that-run-out-of-memory">Debugging tests that run out of memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy.html">Debugging Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy_slurm.html">Debugging Galaxy: Slurm Compute Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/translating.html">Translating the Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/create_point_release.html">Creating Galaxy Point Releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api_doc.html">Galaxy API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/quickstart.html"> Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/api.html"> Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ts_api_doc.html">Tool Shed API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/ts_api.html"> API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../lib/modules.html">Application Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy.html">galaxy package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_ext.html">galaxy_ext package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_test.html">galaxy_test package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/tool_shed.html">tool_shed package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../project/organization.html">Project Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#procedure-documents">Procedure Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#committers">Committers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#release-branches">Release branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#handling-pull-requests">Handling Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#issue-reporting">Issue Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../project/issues.html">Issue Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#issue-reporting">Issue Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#milestones">Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#labeling-structure">Labeling Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#the-roadmap">The Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#voting">Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#automation">Automation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Galaxy Project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Galaxy Deployment &amp; Administration</a></li>
+      <li class="breadcrumb-item active">Galaxy Database Schema Migrations</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/admin/db_migration.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="galaxy-database-schema-migrations">
+<h1>Galaxy Database Schema Migrations<a class="headerlink" href="#galaxy-database-schema-migrations" title="Link to this heading">¶</a></h1>
+<p>Galaxy’s database schema migration system is built on top of <a class="reference external" href="https://alembic.sqlalchemy.org">Alembic</a> - a lightweight database migration tool for usage with SQLAlchemy.
+(This documentation applies to release 22.05 and up. Prior to 22.05, Galaxy used SQLAlchemy Migrate.)</p>
+<section id="administering-galaxy-upgrading-and-downgrading-the-database">
+<h2>Administering Galaxy: upgrading and downgrading the database<a class="headerlink" href="#administering-galaxy-upgrading-and-downgrading-the-database" title="Link to this heading">¶</a></h2>
+<p>To initialize an empty database (or create a new SQLite database) start Galaxy. However, this approach is safe only if booting to a single process. A better approach is to use the <a class="reference internal" href="#init"><em>init</em></a> command: <code class="docutils literal notranslate"><span class="pre">manage_db.sh</span> <span class="pre">init</span></code>.</p>
+<p>To upgrade or downgrade an existing database, you’ll need to use the <code class="docutils literal notranslate"><span class="pre">manage_db.sh</span></code> script, which is the recommended way to interact with Galaxy’s database schema migration system.</p>
+<section id="manage-db-sh">
+<h3>manage_db.sh<a class="headerlink" href="#manage-db-sh" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">manage_db</span><span class="o">.</span><span class="n">sh</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">c</span> <span class="n">CONFIG</span><span class="p">]</span> <span class="p">{</span><span class="n">upgrade</span><span class="p">,</span><span class="n">downgrade</span><span class="p">,</span><span class="n">version</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">dbversion</span><span class="p">,</span><span class="n">dv</span><span class="p">,</span><span class="n">init</span><span class="p">}</span> <span class="o">...</span>
+
+<span class="n">positional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="p">{</span><span class="n">upgrade</span><span class="p">,</span><span class="n">downgrade</span><span class="p">,</span><span class="n">version</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">dbversion</span><span class="p">,</span><span class="n">dv</span><span class="p">,</span><span class="n">init</span><span class="p">}</span>
+    <span class="n">upgrade</span>             <span class="n">Upgrade</span> <span class="n">to</span> <span class="n">a</span> <span class="n">later</span> <span class="n">version</span>
+    <span class="n">downgrade</span>           <span class="n">Revert</span> <span class="n">to</span> <span class="n">a</span> <span class="n">previous</span> <span class="n">version</span>
+    <span class="n">version</span> <span class="p">(</span><span class="n">v</span><span class="p">)</span>         <span class="n">Show</span> <span class="n">the</span> <span class="n">head</span> <span class="n">revision</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">migrations</span> <span class="n">script</span> <span class="n">directory</span>
+    <span class="n">dbversion</span> <span class="p">(</span><span class="n">dv</span><span class="p">)</span>      <span class="n">Show</span> <span class="n">the</span> <span class="n">current</span> <span class="n">revision</span> <span class="k">for</span> <span class="n">Galaxy</span><span class="s1">&#39;s database</span>
+    <span class="n">init</span>                <span class="n">Initialize</span> <span class="n">empty</span> <span class="n">database</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+<span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+  <span class="o">-</span><span class="n">c</span> <span class="n">CONFIG</span><span class="p">,</span> <span class="o">--</span><span class="n">galaxy</span><span class="o">-</span><span class="n">config</span> <span class="n">CONFIG</span>
+                        <span class="n">Alternate</span> <span class="n">Galaxy</span> <span class="n">configuration</span> <span class="n">file</span>
+</pre></div>
+</div>
+<section id="subcommands">
+<h4>Subcommands<a class="headerlink" href="#subcommands" title="Link to this heading">¶</a></h4>
+<section id="upgrade">
+<h5>upgrade<a class="headerlink" href="#upgrade" title="Link to this heading">¶</a></h5>
+<p>Upgrade to a later version. The revision argument is optional.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">manage_db</span><span class="o">.</span><span class="n">sh</span> <span class="n">upgrade</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">sql</span><span class="p">]</span> <span class="p">[</span><span class="n">revision</span><span class="p">]</span>
+
+<span class="n">positional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="n">revision</span>    <span class="n">Revision</span> <span class="n">identifier</span> <span class="ow">or</span> <span class="n">release</span> <span class="n">tag</span>
+
+<span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>  <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+  <span class="o">--</span><span class="n">sql</span>       <span class="n">Don</span><span class="s1">&#39;t emit SQL to database - dump to standard output/file instead.</span>
+</pre></div>
+</div>
+<p>If you are upgrading a database that has not been version-controlled by Alembic, you should run this
+command for the first time without the revision argument: <code class="docutils literal notranslate"><span class="pre">./manage_db.sh</span> <span class="pre">upgrade</span></code> - this will ensure
+proper initialization of the migration system for your database(s).</p>
+<p>If you are upgrading to a specific release, you may use a release tag as the revision argument:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">manage_db</span><span class="o">.</span><span class="n">sh</span> <span class="n">upgrade</span> <span class="n">release_22</span><span class="mf">.05</span>
+<span class="o">./</span><span class="n">manage_db</span><span class="o">.</span><span class="n">sh</span> <span class="n">upgrade</span> <span class="mf">22.05</span>
+</pre></div>
+</div>
+<p>You can upgrade to releases 22.05 and up.</p>
+<p>For the <code class="docutils literal notranslate"><span class="pre">--sql</span></code> option, see <a class="reference external" href="https://alembic.sqlalchemy.org/en/latest/offline.html">Alembic documentation on offline mode</a>.</p>
+</section>
+<section id="downgrade">
+<h5>downgrade<a class="headerlink" href="#downgrade" title="Link to this heading">¶</a></h5>
+<p>Revert to a previous version.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">manage_db</span><span class="o">.</span><span class="n">sh</span> <span class="n">downgrade</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">sql</span><span class="p">]</span> <span class="n">revision</span>
+
+<span class="n">positional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="n">revision</span>    <span class="n">Revision</span> <span class="n">identifier</span> <span class="ow">or</span> <span class="n">release</span> <span class="n">tag</span>
+
+<span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>  <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+  <span class="o">--</span><span class="n">sql</span>       <span class="n">Don</span><span class="s1">&#39;t emit SQL to database - dump to standard output/file instead.</span>
+</pre></div>
+</div>
+<p>If you are downgrading to a specific release, you may use a release tag as the revision argument:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">manage_db</span><span class="o">.</span><span class="n">sh</span> <span class="n">downgrade</span> <span class="n">release_22</span><span class="mf">.01</span>
+<span class="o">./</span><span class="n">manage_db</span><span class="o">.</span><span class="n">sh</span> <span class="n">downgrade</span> <span class="mf">22.01</span>
+</pre></div>
+</div>
+<p>The oldest release you can downgrade to is 22.01.</p>
+<p><em>Note that when you downgrade to 22.01, your database should be under version control by
+SQLAlchemy Migrate (the migrations tool used prior to release 22.05). Your database should have a
+table <code class="docutils literal notranslate"><span class="pre">migrate_version</span></code> that contains version 180.</em></p>
+<p>For the <code class="docutils literal notranslate"><span class="pre">--sql</span></code> option, see <a class="reference external" href="https://alembic.sqlalchemy.org/en/latest/offline.html">Alembic documentation on offline mode</a>.
+Note that in this mode, instead of specifying a revision identifier, you have to specify a range of revisions using the following format: <code class="docutils literal notranslate"><span class="pre">&lt;from-rev&gt;:&lt;to-ref&gt;</span></code>.</p>
+</section>
+<section id="version">
+<h5>version<a class="headerlink" href="#version" title="Link to this heading">¶</a></h5>
+<p>Show the latest (i.e., head) revisions in the codebase.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Activating</span> <span class="n">virtualenv</span> <span class="n">at</span> <span class="o">.</span><span class="n">venv</span>
+\<span class="n">usage</span><span class="p">:</span> <span class="n">manage_db</span><span class="o">.</span><span class="n">sh</span> <span class="n">version</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">v</span><span class="p">]</span>
+
+<span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>     <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+  <span class="o">-</span><span class="n">v</span><span class="p">,</span> <span class="o">--</span><span class="n">verbose</span>  <span class="n">Display</span> <span class="n">more</span> <span class="n">detailed</span> <span class="n">output</span>
+</pre></div>
+</div>
+</section>
+<section id="dbversion">
+<h5>dbversion<a class="headerlink" href="#dbversion" title="Link to this heading">¶</a></h5>
+<p>Show the current revision for Galaxy’s database. If the database revision corresponds to the head revision in the codebase, it will be marked as <code class="docutils literal notranslate"><span class="pre">(head)</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">manage_db</span><span class="o">.</span><span class="n">sh</span> <span class="n">dbversion</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">v</span><span class="p">]</span>
+
+<span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>     <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+  <span class="o">-</span><span class="n">v</span><span class="p">,</span> <span class="o">--</span><span class="n">verbose</span>  <span class="n">Display</span> <span class="n">more</span> <span class="n">detailed</span> <span class="n">output</span>
+</pre></div>
+</div>
+</section>
+<section id="init">
+<h5>init<a class="headerlink" href="#init" title="Link to this heading">¶</a></h5>
+<p>Initialize an empty database (or create a new SQLite database).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">manage_db</span><span class="o">.</span><span class="n">sh</span> <span class="n">init</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span>
+
+<span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>  <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+</section>
+<section id="advanced-usage">
+<h2>Advanced usage<a class="headerlink" href="#advanced-usage" title="Link to this heading">¶</a></h2>
+<p>The following sections provide more details on the migration system and describe commands that are relevant for development scenarios.</p>
+<section id="overview">
+<h3>Overview<a class="headerlink" href="#overview" title="Link to this heading">¶</a></h3>
+<p>The purpose of the database schema migration system is to support automated, incremental, reversible changes to Galaxy’s database schema. Central to this is the concept of a database version (more specifically, database <em>schema</em> version). A version is represented by a revision script (the terms <em>version</em> and <em>revision</em> may be used interchangeably). Executing a revision script will upgrade, or downgrade, the database schema by applying the changes specified in the script.</p>
+<p>Galaxy keeps track of the database schema version in two places: one is a directory we refer to as “the migration environment” (located at <code class="docutils literal notranslate"><span class="pre">lib/galaxy/model/migrations/alembic</span></code>), the other is the <code class="docutils literal notranslate"><span class="pre">alembic_version</span></code> table in the database. For Galaxy to run, these versions must be the same, which, essentially, means that the version of the database matches the version expected by the codebase.</p>
+<p>On startup, the system checks if the version in the database matches the version in the codebase. If they do not match, and the <code class="docutils literal notranslate"><span class="pre">database_auto_migrate</span></code> configuration option is not set, Galaxy will fail with an error message explaining how to proceed. In most cases, you’ll need to upgrade the database schema to the current version, which is represented by the latest revision script in the migration environment.</p>
+<section id="a-note-on-models-and-branch-labels">
+<h4>A note on models and branch labels<a class="headerlink" href="#a-note-on-models-and-branch-labels" title="Link to this heading">¶</a></h4>
+<p>Galaxy’s data model includes the <a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy/model/__init__.py">galaxy model</a> and the <a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy/model/tool_shed_install/__init__.py">install model</a>.
+These two models may be persisted in one combined database (which is the default) or two separate databases (which is enabled by setting the
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy/webapps/galaxy/config_schema.yml#L157"><code class="docutils literal notranslate"><span class="pre">install_database_connection</span></code></a> configuration option).</p>
+<p>These models are represented by migration <a class="reference external" href="https://alembic.sqlalchemy.org/en/latest/branches.html">branches</a> (versioning lineages with a common base) labeled as <em>gxy</em> for the galaxy model and <em>tsi</em> for the install model. If both models are hosted in the same databases, the branches will share the same Alembic version table; otherwise, each database has its own version table.</p>
+<p>Each branch has its own version history, represented by revision scripts located in the branch version directory (<code class="docutils literal notranslate"><span class="pre">migrations/alembic/versions_gxy</span></code> for <em>gxy</em> and <code class="docutils literal notranslate"><span class="pre">migrations/alembic/versions_tsi</span></code> for <em>tsi</em>).</p>
+<p>For a more detailed description of the system’s internals, see pull request <a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/13108">#13108</a>.</p>
+</section>
+</section>
+<section id="migration-management-scripts">
+<h3>Migration management scripts<a class="headerlink" href="#migration-management-scripts" title="Link to this heading">¶</a></h3>
+<p>The <strong><code class="docutils literal notranslate"><span class="pre">manage_db.sh</span></code></strong> script is the recommended way to interact with Galaxy’s database schema migration system.
+It provides access to a subset of commands offered by Alembic’s CLI, while hiding some of the
+implementation complexity of Galaxy’s model. The provided commands and options should be
+sufficient for most use cases involving Galaxy development or system and database administration.</p>
+<p>Additionally, Galaxy provides two scripts for advanced usage: <code class="docutils literal notranslate"><span class="pre">db_dev.sh</span></code> and <code class="docutils literal notranslate"><span class="pre">run_alembic.sh</span></code>. Both are located in the <code class="docutils literal notranslate"><span class="pre">scripts</span></code> directory.</p>
+<p>The <strong><code class="docutils literal notranslate"><span class="pre">db_dev.sh</span></code></strong> script is similar to <code class="docutils literal notranslate"><span class="pre">manage_db.sh</span></code>, but provides additional commands and options.</p>
+<p>The <strong><code class="docutils literal notranslate"><span class="pre">run_alembic.sh</span></code></strong> script is a thin wrapper around the Alembic CLI runner. It offers more
+flexibility and the full scope of Alembic’s CLI commands and options; however, it requires more detailed command arguments, as well as basic familiarity with <a class="reference external" href="https://alembic.sqlalchemy.org/en/latest/branches.html">Alembic branches</a>.</p>
+<section id="revision-identifiers">
+<h4>Revision identifiers<a class="headerlink" href="#revision-identifiers" title="Link to this heading">¶</a></h4>
+<p>Some of the commands accept revision identifiers as arguments. A revision is usually identified by a
+12-digit hexadecimal number (i.e., <code class="docutils literal notranslate"><span class="pre">6a67bf27e6a6</span></code>). Anytime you need to refer to a specific
+revision, you have the option to use a partial number.</p>
+<p>For example, you may use <code class="docutils literal notranslate"><span class="pre">./db_dev.sh</span> <span class="pre">upgrade</span> <span class="pre">6a</span></code> instead of <code class="docutils literal notranslate"><span class="pre">./db_dev.sh</span> <span class="pre">upgrade</span> <span class="pre">6a67bf27e6a6</span></code> if <code class="docutils literal notranslate"><span class="pre">6a</span></code> is sufficient to uniquely identify that revision.</p>
+<p>(Ref: <a class="reference external" href="https://alembic.sqlalchemy.org/en/latest/tutorial.html#partial-revision-identifiers">Alembic documentation</a>)</p>
+</section>
+<section id="relative-migration-identifiers">
+<h4>Relative migration identifiers<a class="headerlink" href="#relative-migration-identifiers" title="Link to this heading">¶</a></h4>
+<p>You may also use Alembic’s syntax for relative migration identifiers for the upgrade/downgrade commands:</p>
+<p>To move 2 versions from the current version, a decimal value <code class="docutils literal notranslate"><span class="pre">+N</span></code> can be supplied:</p>
+<p><code class="docutils literal notranslate"><span class="pre">./db_dev.sh</span> <span class="pre">upgrade</span> <span class="pre">+2</span></code></p>
+<p>Negative values are accepted for downgrades:</p>
+<p><code class="docutils literal notranslate"><span class="pre">./db_dev.sh</span> <span class="pre">downgrade</span> <span class="pre">-2</span></code></p>
+<p>Relative identifiers may also be in terms of a specific revision. For example, to upgrade to
+revision 6a67bf27e6a6 plus two additional steps:</p>
+<p><code class="docutils literal notranslate"><span class="pre">./db_dev.sh</span> <span class="pre">upgrade</span> <span class="pre">6a67bf27e6a6+2</span></code>.</p>
+<p>You may also combine relative migration identifiers with partial revision identifiers:</p>
+<p><code class="docutils literal notranslate"><span class="pre">./db_dev.sh</span> <span class="pre">upgrade</span> <span class="pre">6a+2</span></code>.</p>
+<p>(Ref: <a class="reference external" href="https://alembic.sqlalchemy.org/en/latest/tutorial.html#relative-migration-identifiers">Alembic documentation</a>)</p>
+<p><em>Revision identifiers and relative migration identifiers can be used with all the provided scripts.</em></p>
+</section>
+</section>
+<section id="db-dev-sh">
+<h3>db_dev.sh<a class="headerlink" href="#db-dev-sh" title="Link to this heading">¶</a></h3>
+<p>This script offers a set of common database schema migration operations that are executed on the <em>gxy</em> branch, which, in the vast majority of cases, is all you need to develop and administer Galaxy.
+To run operations on the <em>tsi</em> branch, you need to use <code class="docutils literal notranslate"><span class="pre">run_alembic.sh</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">db_dev</span><span class="o">.</span><span class="n">sh</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">c</span> <span class="n">CONFIG</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">raiseerr</span><span class="p">]</span> <span class="p">{</span><span class="n">upgrade</span><span class="p">,</span><span class="n">downgrade</span><span class="p">,</span><span class="n">version</span><span class="p">,</span><span class="n">v</span><span class="p">,</span>
+       <span class="n">dbversion</span><span class="p">,</span><span class="n">dv</span><span class="p">,</span><span class="n">history</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">show</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">revision</span><span class="p">,</span><span class="n">init</span><span class="p">}</span> <span class="o">...</span>
+
+<span class="n">positional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="p">{</span><span class="n">upgrade</span><span class="p">,</span><span class="n">downgrade</span><span class="p">,</span><span class="n">version</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">dbversion</span><span class="p">,</span><span class="n">dv</span><span class="p">,</span><span class="n">history</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">show</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">revision</span><span class="p">,</span><span class="n">init</span><span class="p">}</span>
+    <span class="n">upgrade</span>             <span class="n">Upgrade</span> <span class="n">to</span> <span class="n">a</span> <span class="n">later</span> <span class="n">version</span>
+    <span class="n">downgrade</span>           <span class="n">Revert</span> <span class="n">to</span> <span class="n">a</span> <span class="n">previous</span> <span class="n">version</span>
+    <span class="n">version</span> <span class="p">(</span><span class="n">v</span><span class="p">)</span>         <span class="n">Show</span> <span class="n">the</span> <span class="n">head</span> <span class="n">revision</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">migrations</span> <span class="n">script</span> <span class="n">directory</span>
+    <span class="n">dbversion</span> <span class="p">(</span><span class="n">dv</span><span class="p">)</span>      <span class="n">Show</span> <span class="n">the</span> <span class="n">current</span> <span class="n">revision</span> <span class="k">for</span> <span class="n">Galaxy</span><span class="s1">&#39;s database</span>
+    <span class="n">history</span> <span class="p">(</span><span class="n">h</span><span class="p">)</span>         <span class="n">List</span> <span class="n">revision</span> <span class="n">scripts</span> <span class="ow">in</span> <span class="n">chronological</span> <span class="n">order</span>
+    <span class="n">show</span> <span class="p">(</span><span class="n">s</span><span class="p">)</span>            <span class="n">Show</span> <span class="n">the</span> <span class="n">revision</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">denoted</span> <span class="n">by</span> <span class="n">the</span> <span class="n">given</span> <span class="n">symbol</span>
+    <span class="n">revision</span>            <span class="n">Create</span> <span class="n">a</span> <span class="n">new</span> <span class="n">revision</span> <span class="n">file</span>
+    <span class="n">init</span>                <span class="n">Initialize</span> <span class="n">empty</span> <span class="n">database</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+<span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+  <span class="o">-</span><span class="n">c</span> <span class="n">CONFIG</span><span class="p">,</span> <span class="o">--</span><span class="n">galaxy</span><span class="o">-</span><span class="n">config</span> <span class="n">CONFIG</span>
+                        <span class="n">Alternate</span> <span class="n">Galaxy</span> <span class="n">configuration</span> <span class="n">file</span>
+  <span class="o">--</span><span class="n">raiseerr</span>            <span class="n">Raise</span> <span class="n">a</span> <span class="n">full</span> <span class="n">stack</span> <span class="n">trace</span> <span class="n">on</span> <span class="n">error</span>
+</pre></div>
+</div>
+<section id="id1">
+<h4>Subcommands<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h4>
+<section id="id2">
+<h5>upgrade<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h5>
+<p>This command is identical to the <em>upgrade</em> command in the <code class="docutils literal notranslate"><span class="pre">manage_db.sh</span></code> script.</p>
+<p>Upgrade to a later version. The revision argument is optional.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">db_dev</span><span class="o">.</span><span class="n">sh</span> <span class="n">upgrade</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">sql</span><span class="p">]</span> <span class="p">[</span><span class="n">revision</span><span class="p">]</span>
+
+<span class="n">positional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="n">revision</span>    <span class="n">Revision</span> <span class="n">identifier</span> <span class="ow">or</span> <span class="n">release</span> <span class="n">tag</span>
+
+<span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>  <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+  <span class="o">--</span><span class="n">sql</span>       <span class="n">Don</span><span class="s1">&#39;t emit SQL to database - dump to standard output/file instead.</span>
+</pre></div>
+</div>
+<p>Omitting the revision argument is equivalent to specifying <code class="docutils literal notranslate"><span class="pre">heads</span></code> as the revision identifier; in
+that case, the database(s) will be upgraded to the latest revisions in both branches, <em>gxy</em> and
+<em>tsi</em>.</p>
+<p>If you are upgrading a database that has not been version-controlled by Alembic, you should run this
+command for the first time without the revision argument: <code class="docutils literal notranslate"><span class="pre">./db_dev.sh</span> <span class="pre">upgrade</span></code> - this will ensure
+proper initialization of the migration system for your database(s).</p>
+<p>If you are upgrading to a specific release, you may use a release tag as the revision argument:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">manage_db</span><span class="o">.</span><span class="n">sh</span> <span class="n">upgrade</span> <span class="n">release_22</span><span class="mf">.05</span>
+<span class="o">./</span><span class="n">manage_db</span><span class="o">.</span><span class="n">sh</span> <span class="n">upgrade</span> <span class="mf">22.05</span>
+</pre></div>
+</div>
+<p>You can upgrade to releases 22.05 and up.</p>
+<p>For the <code class="docutils literal notranslate"><span class="pre">--sql</span></code> option, see <a class="reference external" href="https://alembic.sqlalchemy.org/en/latest/offline.html">Alembic documentation on offline mode</a>.</p>
+</section>
+<section id="id3">
+<h5>downgrade<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h5>
+<p>This command is identical to the <em>upgrade</em> command in the <code class="docutils literal notranslate"><span class="pre">manage_db.sh</span></code> script.</p>
+<p>Revert to a previous version.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">db_dev</span><span class="o">.</span><span class="n">sh</span> <span class="n">downgrade</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">sql</span><span class="p">]</span> <span class="n">revision</span>
+
+<span class="n">positional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="n">revision</span>    <span class="n">Revision</span> <span class="n">identifier</span> <span class="ow">or</span> <span class="n">release</span> <span class="n">tag</span>
+
+<span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>  <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+  <span class="o">--</span><span class="n">sql</span>       <span class="n">Don</span><span class="s1">&#39;t emit SQL to database - dump to standard output/file instead.</span>
+</pre></div>
+</div>
+<p>Specifying <code class="docutils literal notranslate"><span class="pre">base</span></code> as the revision identifier will downgrade both branches, <em>gxy</em> and <em>tsi</em>, to their
+initial state prior to any revisions; the <code class="docutils literal notranslate"><span class="pre">alembic_version</span></code> table will be empty.</p>
+<p>If you are downgrading to a specific release, you may use a release tag as the revision argument:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">manage_db</span><span class="o">.</span><span class="n">sh</span> <span class="n">downgrade</span> <span class="n">release_22</span><span class="mf">.01</span>
+<span class="o">./</span><span class="n">manage_db</span><span class="o">.</span><span class="n">sh</span> <span class="n">downgrade</span> <span class="mf">22.01</span>
+</pre></div>
+</div>
+<p>The oldest release you can downgrade to is 22.01. Downgrading to 22.01 is the same as specifying
+<code class="docutils literal notranslate"><span class="pre">base</span></code> as the revision identifier.</p>
+<p><em>Note that when you downgrade to 22.01, your database should be under version control by
+SQLAlchemy Migrate (the migrations tool used prior to release 22.05). Your database should have a
+table <code class="docutils literal notranslate"><span class="pre">migrate_version</span></code> that contains version 180.</em></p>
+<p>For the <code class="docutils literal notranslate"><span class="pre">--sql</span></code> option, see <a class="reference external" href="https://alembic.sqlalchemy.org/en/latest/offline.html">Alembic documentation on offline mode</a>.
+Note that in this mode, instead of specifying a revision identifier, you have to specify a range of revisions using the following format: <code class="docutils literal notranslate"><span class="pre">&lt;from-rev&gt;:&lt;to-ref&gt;</span></code>*.</p>
+<p>*You cannot use this script to downgrade past the initial Alembic revisions that created the <em>gxy</em> and <em>tsi</em> branches.</p>
+</section>
+<section id="id4">
+<h5>version<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h5>
+<p>This command is identical to the <em>upgrade</em> command in the <code class="docutils literal notranslate"><span class="pre">manage_db.sh</span></code> script.</p>
+<p>Show the latest (i.e., head) revisions in the codebase.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Activating</span> <span class="n">virtualenv</span> <span class="n">at</span> <span class="o">.</span><span class="n">venv</span>
+\<span class="n">usage</span><span class="p">:</span> <span class="n">db_dev</span><span class="o">.</span><span class="n">sh</span> <span class="n">version</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">v</span><span class="p">]</span>
+
+<span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>     <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+  <span class="o">-</span><span class="n">v</span><span class="p">,</span> <span class="o">--</span><span class="n">verbose</span>  <span class="n">Display</span> <span class="n">more</span> <span class="n">detailed</span> <span class="n">output</span>
+</pre></div>
+</div>
+<p>The output of this command will include the head revisions for both branches:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ .db_dev.sh version
+186d4835587b (gxy) (head)
+d4a650f47a3c (tsi) (head)
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h5>dbversion<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h5>
+<p>This command is identical to the <em>upgrade</em> command in the <code class="docutils literal notranslate"><span class="pre">manage_db.sh</span></code> script.</p>
+<p>Show the current revision for Galaxy’s database.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">db_dev</span><span class="o">.</span><span class="n">sh</span> <span class="n">dbversion</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">v</span><span class="p">]</span>
+
+<span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>     <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+  <span class="o">-</span><span class="n">v</span><span class="p">,</span> <span class="o">--</span><span class="n">verbose</span>  <span class="n">Display</span> <span class="n">more</span> <span class="n">detailed</span> <span class="n">output</span>
+</pre></div>
+</div>
+<p>If the database revision corresponds to the head revision
+in the codebase, it will be marked as <code class="docutils literal notranslate"><span class="pre">(head)</span></code>. The output will be slightly more verbose and will vary
+depending on the database.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ./db_dev.sh dbversion
+INFO:alembic.runtime.migration:Context impl PostgresqlImpl.
+INFO:alembic.runtime.migration:Will assume transactional DDL.
+d4a650f47a3c (head)
+6a67bf27e6a6
+</pre></div>
+</div>
+</section>
+<section id="history">
+<h5>history<a class="headerlink" href="#history" title="Link to this heading">¶</a></h5>
+<p>List revision scripts in chronological order.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">db_dev</span><span class="o">.</span><span class="n">sh</span> <span class="n">history</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">v</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">i</span><span class="p">]</span>
+
+<span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+  <span class="o">-</span><span class="n">v</span><span class="p">,</span> <span class="o">--</span><span class="n">verbose</span>         <span class="n">Display</span> <span class="n">more</span> <span class="n">detailed</span> <span class="n">output</span>
+  <span class="o">-</span><span class="n">i</span><span class="p">,</span> <span class="o">--</span><span class="n">indicate</span><span class="o">-</span><span class="n">current</span>
+                        <span class="n">Indicate</span> <span class="n">current</span> <span class="n">revision</span>
+</pre></div>
+</div>
+<p>Depending on your setup, the list may include revision histories for both branches. The oldest
+revisions are the ones that created the <em>gxy</em> and <em>tsi</em> branches (introduced in 22.05). The
+<code class="docutils literal notranslate"><span class="pre">--indicate-current</span></code> option is particularly useful when you need to determine how far behind (or
+ahead) your database version is compared to the version expected by your codebase:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ./db_dev.sh history --indicate-current
+6a67bf27e6a6 -&gt; 186d4835587b (gxy) (head), drop job_state_history.update_time column
+b182f655505f -&gt; 6a67bf27e6a6 (gxy) (current), deferred data tables
+e7b6dcb09efd -&gt; b182f655505f (gxy), add workflow.source_metadata column
+&lt;base&gt; -&gt; e7b6dcb09efd (gxy), create gxy branch
+&lt;base&gt; -&gt; d4a650f47a3c (tsi) (head), create tsi branch
+</pre></div>
+</div>
+</section>
+<section id="show">
+<h5>show<a class="headerlink" href="#show" title="Link to this heading">¶</a></h5>
+<p>Show the revision(s) denoted by the given revision identifier.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">db_dev</span><span class="o">.</span><span class="n">sh</span> <span class="n">show</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="n">revision</span>
+
+<span class="n">positional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="n">revision</span>    <span class="n">Revision</span> <span class="n">identifier</span>
+
+<span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>  <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+</pre></div>
+</div>
+</section>
+<section id="revision">
+<h5>revision<a class="headerlink" href="#revision" title="Link to this heading">¶</a></h5>
+<p>Create a new revision file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">db_dev</span><span class="o">.</span><span class="n">sh</span> <span class="n">revision</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="o">-</span><span class="n">m</span> <span class="n">MESSAGE</span> <span class="p">[</span><span class="o">--</span><span class="n">rev</span><span class="o">-</span><span class="nb">id</span> <span class="n">REV_ID</span><span class="p">]</span>
+
+<span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+  <span class="o">-</span><span class="n">m</span> <span class="n">MESSAGE</span><span class="p">,</span> <span class="o">--</span><span class="n">message</span> <span class="n">MESSAGE</span>
+                        <span class="n">Message</span> <span class="n">string</span> <span class="n">to</span> <span class="n">use</span> <span class="k">with</span> <span class="s1">&#39;revision&#39;</span>
+  <span class="o">--</span><span class="n">rev</span><span class="o">-</span><span class="nb">id</span> <span class="n">REV_ID</span>       <span class="n">Specify</span> <span class="n">a</span> <span class="n">revision</span> <span class="nb">id</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">generating</span> <span class="n">one</span>
+                        <span class="p">(</span><span class="n">This</span> <span class="n">option</span> <span class="ow">is</span> <span class="k">for</span> <span class="n">testing</span> <span class="n">purposes</span> <span class="n">only</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">--message</span></code> argument is required: this ensures a readable revision history. The message is
+appended to the new revision identifier to form the filename for the new revision script, so it
+should be a succinct description of the change:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ./db_dev.sh revision --message &quot;add column foo to table bar&quot;
+[output omitted]
+
+$ ls lib/galaxy/model/migrations/alembic/versions_gxy/
+a2e418ad6a15_add_column_foo_to_table_bar.py
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h5>init<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h5>
+<p>Initialize an empty database (or create a new SQLite database) for both branches, <em>gxy</em> and <em>tsi</em>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">db_dev</span><span class="o">.</span><span class="n">sh</span> <span class="n">init</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span>
+
+<span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>  <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="run-alembic-sh">
+<h3>run_alembic.sh<a class="headerlink" href="#run-alembic-sh" title="Link to this heading">¶</a></h3>
+<p>If you need to run operations on the <em>tsi</em> branch, or you need access to the full scope of command
+line options provided by Alembic, you should use the <code class="docutils literal notranslate"><span class="pre">run_alembic.sh</span></code> script, which is a thin
+wrapper around Alembic’s CLI runner. The script modifies the path, initializes the Python virtual
+environment, retrieves any necessary configuration values, and invokes the Alembic CLI runner with
+appropriate arguments.</p>
+<p>Keep in mind that since Galaxy uses branch labels to distinguish between the galaxy and the install
+models, in most cases, you’ll need to identify the target branch to which your command should be
+applied.</p>
+<section id="examples-of-usage">
+<h4>Examples of usage<a class="headerlink" href="#examples-of-usage" title="Link to this heading">¶</a></h4>
+<p>Remember to first backup your database(s).</p>
+<section id="upgrading">
+<h5>Upgrading<a class="headerlink" href="#upgrading" title="Link to this heading">¶</a></h5>
+<p>Upgrade to the head revision (both, <em>gxy</em> and <em>tsi</em> branches):</p>
+<p><code class="docutils literal notranslate"><span class="pre">./run_alembic.sh</span> <span class="pre">upgrade</span> <span class="pre">heads</span></code></p>
+<p>Upgrade to the head revision (<em>gxy</em> branch):</p>
+<p><code class="docutils literal notranslate"><span class="pre">./run_alembic.sh</span> <span class="pre">upgrade</span> <span class="pre">gxy&#64;head</span></code></p>
+<p>Upgrade to 1 revision above the current (<em>tsi</em> branch):</p>
+<p><code class="docutils literal notranslate"><span class="pre">./run_alembic.sh</span> <span class="pre">upgrade</span> <span class="pre">tsi&#64;+1</span></code></p>
+<p>Upgrade to a specific revision:</p>
+<p><code class="docutils literal notranslate"><span class="pre">./run_alembic.sh</span> <span class="pre">upgrade</span> <span class="pre">[revision</span> <span class="pre">identifier]</span></code></p>
+<p>Upgrade to 1 revision above a specific revision:</p>
+<p><code class="docutils literal notranslate"><span class="pre">./run_alembic.sh</span> <span class="pre">upgrade</span> <span class="pre">[revision</span> <span class="pre">identifier]+1</span></code></p>
+</section>
+<section id="downgrading">
+<h5>Downgrading<a class="headerlink" href="#downgrading" title="Link to this heading">¶</a></h5>
+<p>Downgrade to base revision (<em>gxy</em> branch):</p>
+<p><code class="docutils literal notranslate"><span class="pre">./run_alembic.sh</span> <span class="pre">downgrade</span> <span class="pre">gxy&#64;base</span></code></p>
+<p>Downgrade to 1 revision below current (<em>tsi</em> branch):</p>
+<p><code class="docutils literal notranslate"><span class="pre">./run_alembic.sh</span> <span class="pre">downgrade</span> <span class="pre">tsi&#64;-1</span></code></p>
+<p>Downgrade to a specific revision:</p>
+<p><code class="docutils literal notranslate"><span class="pre">./run_alembic.sh</span> <span class="pre">downgrade</span> <span class="pre">[revision</span> <span class="pre">identifier]</span></code></p>
+<p>Downgrade to 1 revision below specific revision:</p>
+<p><code class="docutils literal notranslate"><span class="pre">./run_alembic.sh</span> <span class="pre">downgrade</span> <span class="pre">[revision</span> <span class="pre">identifier]-1</span> </code></p>
+</section>
+<section id="creating-new-revisions">
+<h5>Creating new revisions<a class="headerlink" href="#creating-new-revisions" title="Link to this heading">¶</a></h5>
+<p>To create a revision for the galaxy model:</p>
+<p><code class="docutils literal notranslate"><span class="pre">./run_alembic.sh</span> <span class="pre">revision</span> <span class="pre">--head=gxy&#64;head</span> <span class="pre">--message</span> <span class="pre">&quot;your</span> <span class="pre">description&quot;</span></code></p>
+<p>To create a revision for the install model:</p>
+<p><code class="docutils literal notranslate"><span class="pre">./run_alembic.sh</span> <span class="pre">revision</span> <span class="pre">--head=tsi&#64;head</span> <span class="pre">--message</span> <span class="pre">&quot;your</span> <span class="pre">description&quot;</span></code></p>
+<p>Check <a class="reference external" href="https://alembic.sqlalchemy.org">Alembic’s documentation</a> for more examples.</p>
+<p><em>Note: the <code class="docutils literal notranslate"><span class="pre">run_alembic.sh</span></code> script does not support relative upgrades and downgrades without a
+revision identifier: you cannot <code class="docutils literal notranslate"><span class="pre">upgrade</span> <span class="pre">+1</span></code> or <code class="docutils literal notranslate"><span class="pre">downgrade</span> <span class="pre">-1</span></code> without providing a revision identifier.</em></p>
+</section>
+</section>
+</section>
+<section id="upgrading-from-sqlalchemy-migrate">
+<h3>Upgrading from SQLAlchemy Migrate<a class="headerlink" href="#upgrading-from-sqlalchemy-migrate" title="Link to this heading">¶</a></h3>
+<p>Galaxy no longer supports SQLAlchemy Migrate. To upgrade to Alembic, follow these steps:</p>
+<ol class="arabic">
+<li><p>Backup your database(s).</p></li>
+<li><p>Make sure your codebase is in pre-22.05 state: you will need to use the old <code class="docutils literal notranslate"><span class="pre">manage_db.sh</span></code> script which invokes the SQLAlchemy Migrate tool, which is not available in 22.05 and up. Checking out the 22.01 release branch is the simplest step.</p></li>
+<li><p>Verify that your database is at the latest SQLAlchemy Migrate version. If you have a combined database, it should be version 180 (check the <code class="docutils literal notranslate"><span class="pre">migrate_version</span></code> table). If you have separate galaxy model and install model databases, your galaxy version should be 180, and your install model version should be 17.</p>
+<p>If your database is not current, run <code class="docutils literal notranslate"><span class="pre">manage_db.sh</span> <span class="pre">upgrade</span></code> to upgrade your database.</p>
+<p>Once your database has the latest SQLAlchemy Migrate version, switch back to your current branch (22.05 or more recent).</p>
+</li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">manage_db.sh</span> <span class="pre">upgrade</span></code>.</p></li>
+</ol>
+</section>
+</section>
+<section id="developing-galaxy-creating-new-revisions">
+<h2>Developing Galaxy: creating new revisions<a class="headerlink" href="#developing-galaxy-creating-new-revisions" title="Link to this heading">¶</a></h2>
+<p>Make sure you have updated the model and have added appropriate tests before creating a new
+revision.</p>
+<p>You create a new revision file by running the <code class="docutils literal notranslate"><span class="pre">revision</span></code> subcommand of the <code class="docutils literal notranslate"><span class="pre">manage_db.sh</span></code> or the
+<code class="docutils literal notranslate"><span class="pre">run_alembic.sh</span></code> script (see sections above for usage information). Alembic generates a revision
+script in the appropriate version directory (<code class="docutils literal notranslate"><span class="pre">migrations/alembic/versions_gxy</span></code> for <em>gxy</em> and
+<code class="docutils literal notranslate"><span class="pre">migrations/alembic/versions_tsi</span></code> for <em>tsi</em>). You’ll need to fill out the <code class="docutils literal notranslate"><span class="pre">upgrade</span></code> and <code class="docutils literal notranslate"><span class="pre">downgrade</span></code>
+functions. Use Alembic documentation for examples:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://alembic.sqlalchemy.org/en/latest/tutorial.html#create-a-migration-script">https://alembic.sqlalchemy.org/en/latest/tutorial.html#create-a-migration-script</a></p></li>
+<li><p><a class="reference external" href="https://alembic.sqlalchemy.org/en/latest/ops.html">https://alembic.sqlalchemy.org/en/latest/ops.html</a></p></li>
+</ul>
+<p>We encourage you to use Galaxy-specific utility functions (<code class="docutils literal notranslate"><span class="pre">galaxy/model/migrations/util.py</span></code>) when appropriate. Don’t forget to provide tests for any modifications you make to the model (most likely, you will need to add them to the appropriate <code class="docutils literal notranslate"><span class="pre">test/unit/data/model/mapping/test_*model_mapping.py</span></code> module.</p>
+<p>After that, run the upgrade script: <code class="docutils literal notranslate"><span class="pre">./manage_db.sh</span> <span class="pre">upgrade</span></code>. And you’re done!</p>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">¶</a></h2>
+<section id="how-to-handle-migrations-incorrectversionerror">
+<h3>How to handle migrations.IncorrectVersionError<a class="headerlink" href="#how-to-handle-migrations-incorrectversionerror" title="Link to this heading">¶</a></h3>
+<p>If you see this error, you’ll need to upgrade or downgrade your database <em>before</em> upgrading to
+Alembic. Whether you need to upgrade or downgrade depends on what version number is stored in
+the <code class="docutils literal notranslate"><span class="pre">migrate_version</span></code> table in your database. Alembic expects version 180, so you will need to
+upgrade if your version is less than that or, in very rare circumstances, downgrade if your version
+is 181. Please see <a class="reference external" href="https://github.com/galaxyproject/galaxy/issues/13528">this issue</a> for more details.</p>
+<section id="please-help-us-improve-this-page">
+<h4>Please help us improve this page:<a class="headerlink" href="#please-help-us-improve-this-page" title="Link to this heading">¶</a></h4>
+<p>If you encounter any migration-related errors or issues, please <a class="reference external" href="https://github.com/galaxyproject/galaxy/issues/new?assignees=&amp;amp;labels=&amp;amp;template=bug_report.md&amp;amp;title=">open an issue</a>, and we will add the solution with any relevant context to this page.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="conda_faq.html" class="btn btn-neutral float-left" title="Conda for Tool Dependencies" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="reports.html" class="btn btn-neutral float-right" title="Galaxy Reports" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Galaxy Committers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

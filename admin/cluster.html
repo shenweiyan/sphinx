@@ -1,0 +1,654 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Connecting to a Cluster &mdash; Galaxy Project 23.1.5.dev0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+
+  
+    <link rel="canonical" href="https://docs.galaxyproject.org/en/master/admin/cluster.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=da3e81e8"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Galaxy Job Configuration" href="jobs.html" />
+    <link rel="prev" title="Scaling and Load Balancing" href="scaling.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Galaxy Project
+          </a>
+              <div class="version">
+                23.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../releases/index.html">Releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.1_announce_user.html">June 2023 Galaxy Release (v 23.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.0_announce_user.html">2023 Galaxy Release (v 23.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.05_announce_user.html">May 2022 Galaxy Release (v 22.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.01_announce_user.html">January 2022 Galaxy Release (v 22.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.09_announce_user.html">September 2021 Galaxy Release (v 21.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.05_announce_user.html">May 2021 Galaxy Release (v 21.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.01_announce_user.html">January 2021 Galaxy Release (v 21.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.09_announce_user.html">September 2020 Galaxy Release (v 20.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.05_announce_user.html">May 2020 Galaxy Release (v 20.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.01_announce_user.html">January 2020 Galaxy Release (v 20.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.09_announce_user.html">September 2019 Galaxy Release (v 19.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.05_announce_user.html">May 2019 Galaxy Release (v 19.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.01_announce_user.html">January 2019 Galaxy Release (v 19.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.09_announce.html">September 2018 Galaxy Release (v 18.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.05_announce.html">May 2018 Galaxy Release (v 18.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.01_announce.html">January 2018 Galaxy Release (v 18.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.09_announce.html">September 2017 Galaxy Release (v 17.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.05_announce.html">May 2017 Galaxy Release (v 17.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.01_announce.html">January 2017 Galaxy Release (v 17.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.10_announce.html">October 2016 Galaxy Release (v 16.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.07_announce.html">July 2016 Galaxy Release (v 16.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.04_announce.html">April 2016 Galaxy Release (v 16.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.01_announce.html">January 2016 Galaxy Release (v 16.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.10_announce.html">October 2015 Galaxy Release (v 15.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.07_announce.html">July 2015 Galaxy Release (v 15.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.05_announce.html">May 2015 Galaxy Release (v 15.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.03_announce.html">March 2015 Galaxy Release (v 15.03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.01_announce.html">January 2015 Galaxy Release (v 15.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.10_announce.html">October 2014 Galaxy Release (v 14.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.08_announce.html">August 2014 Galaxy Release (v 14.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.06_announce.html">June 2014 Galaxy Release (v 14.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.04_announce.html">April 2014 Galaxy Release (v 14.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.02_announce.html">February 2014 Galaxy Release (v 14.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.11_announce.html">November 2013 Galaxy Release (v 13.11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.08_announce.html">August 2013 Galaxy Release (v 13.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.06_announce.html">June 2013 Galaxy Release (v 13.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.04_announce.html">April 2013 Galaxy Release (v 13.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.02_announce.html">February 2013 Galaxy Release (v 13.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.01_announce.html">January 2013 Galaxy Release (v 13.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/older_releases.html">Galaxy Releases older than v 13.01</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Admin Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Administration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="python.html">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="framework_dependencies.html">Framework Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">Galaxy Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logging.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="production.html">Production Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nginx.html">Proxying Galaxy with NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apache.html">Proxying Galaxy with Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scaling.html">Scaling and Load Balancing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Connecting to a Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jobs.html">Galaxy Job Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tool_panel.html">Tool Panel Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mq.html">Message queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependency_resolvers.html">Dependency Resolvers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="container_resolvers.html">Containers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="container_resolvers.html#other-considerations">Other considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conda_faq.html">Conda for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="db_migration.html">Galaxy Database Schema Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reports.html">Galaxy Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="useful_scripts.html">Scripts &amp; Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrating_to_gunicorn.html">Migrating from uWSGI to Gunicorn and FastAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="special_topics/index.html">Special topics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/ftp.html">Galaxy FTP Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/interactivetools.html">Galaxy InteractiveTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/mulled_containers.html">Containers for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/grt.html">Galactic Radio Telescope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/gtn.html">Galaxy Training Materials Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/job_metrics.html">Job Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/webhooks.html">Galaxy Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/vault.html">Storing secrets in the vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/performance_tracking.html">Galaxy Performance Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/bug_reports.html">Bug Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/gdpr_compliance.html">GDPR Compliance</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/index.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dev/schema.html">Galaxy Tool XML File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/api_guidelines.html">API Design Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/build_a_job_runner.html">Build a job runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/finding_and_improving_slow_code.html">Finding and improving slow Galaxy code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_managers.html">Data managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_types.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/faq.html">How Do I…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/writing_tests.html">Writing Tests for Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html">Debugging Galaxy Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html#debugging-tests-that-run-out-of-memory">Debugging tests that run out of memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy.html">Debugging Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy_slurm.html">Debugging Galaxy: Slurm Compute Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/translating.html">Translating the Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/create_point_release.html">Creating Galaxy Point Releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api_doc.html">Galaxy API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/quickstart.html"> Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/api.html"> Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ts_api_doc.html">Tool Shed API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/ts_api.html"> API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../lib/modules.html">Application Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy.html">galaxy package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_ext.html">galaxy_ext package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_test.html">galaxy_test package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/tool_shed.html">tool_shed package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../project/organization.html">Project Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#procedure-documents">Procedure Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#committers">Committers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#release-branches">Release branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#handling-pull-requests">Handling Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#issue-reporting">Issue Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../project/issues.html">Issue Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#issue-reporting">Issue Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#milestones">Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#labeling-structure">Labeling Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#the-roadmap">The Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#voting">Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#automation">Automation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Galaxy Project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Galaxy Deployment &amp; Administration</a></li>
+      <li class="breadcrumb-item active">Connecting to a Cluster</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/admin/cluster.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="connecting-to-a-cluster">
+<h1>Connecting to a Cluster<a class="headerlink" href="#connecting-to-a-cluster" title="Link to this heading">¶</a></h1>
+<p>Galaxy is designed to run jobs on your local system by default, but it can be configured to run jobs on a cluster.  The front-end Galaxy application runs on a single server as usual, but tools are run on cluster nodes instead.</p>
+<p>A <a class="reference internal" href="jobs.html"><span class="std std-doc">general reference for the job configuration file</span></a> is also available.</p>
+<section id="distributed-resources-managers">
+<h2>Distributed Resources Managers<a class="headerlink" href="#distributed-resources-managers" title="Link to this heading">¶</a></h2>
+<p>Galaxy is known to work with:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://adaptivecomputing.com/cherry-services/torque-resource-manager/">TORQUE Resource Manager</a></p></li>
+<li><p><a class="reference external" href="https://altair.com/pbs-professional">Altair PBS Professional</a></p></li>
+<li><p><a class="reference external" href="https://gridscheduler.sourceforge.net/">Open Grid Engine</a></p></li>
+<li><p><a class="reference external" href="https://www.altair.com/grid-engine/">Altair Grid Engine</a> (previously known as Sun Grid Engine, Oracle Grid Engine and Univa Grid Engine)</p></li>
+<li><p><a class="reference external" href="https://www.ibm.com/products/hpc-workload-management">IBM Spectrum LSF</a></p></li>
+<li><p><a class="reference external" href="https://research.cs.wisc.edu/htcondor/">HTCondor</a></p></li>
+<li><p><a class="reference external" href="https://slurm.schedmd.com/">Slurm</a></p></li>
+<li><p><a class="reference internal" href="#pulsar">Galaxy Pulsar</a> (formerly LWR)</p></li>
+<li><p><a class="reference external" href="https://aws.amazon.com/batch/">AWS Batch</a></p></li>
+</ul>
+<p>It should also work with <a class="reference external" href="https://www.drmaa.org/implementations.php">any other DRM</a> which implements a <a class="reference external" href="https://www.drmaa.org">DRMAA</a> interface. If you successfully run Galaxy with a DRM not listed here, please let us know via an email to the <a class="reference external" href="https://galaxyproject.org/mailing-lists/">galaxy-dev mailing list</a>.</p>
+<p>If you do not already have a DRM, <a class="reference internal" href="#pulsar">Pulsar</a> is available which does not require an existing cluster or a shared filesystem and can also run jobs on Windows hosts.</p>
+<p>Installing and configuring your cluster hardware and management software is outside the scope of this document (and specific to each site).  That said, a few pitfalls commonly encountered when trying to get the user Galaxy runs as (referred to in this documentation as <code class="docutils literal notranslate"><span class="pre">galaxy_user</span></code>) able to run jobs on the DRM are addressed here:</p>
+<ul class="simple">
+<li><p>The host on which the Galaxy server processes run (referred to in this documentation as <code class="docutils literal notranslate"><span class="pre">galaxy_server</span></code>) should be configured in the DRM as a “submit host”.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">galaxy_user</span></code> must have a real shell configured in your name service (<code class="docutils literal notranslate"><span class="pre">/etc/passwd</span></code>, LDAP, etc.).  System accounts may be configured with a disabled shell like <code class="docutils literal notranslate"><span class="pre">/bin/false</span></code> (Debian/Ubuntu) or <code class="docutils literal notranslate"><span class="pre">/bin/nologin</span></code> Fedora/RedHat.</p>
+<ul>
+<li><p>If Galaxy is configured to submit jobs as real user (see below) then the above must be true for all users of Galaxy.</p></li>
+</ul>
+</li>
+<li><p>The Galaxy server and the worker nodes are running the same version of Python (worker nodes will run Python scripts calling the Galaxy code and its dependencies to set job output file metadata).</p></li>
+</ul>
+<p>To continue, you should have a working DRM that <code class="docutils literal notranslate"><span class="pre">galaxy_user</span></code> can successfully submit jobs to.</p>
+</section>
+<section id="preliminary-setup">
+<h2>Preliminary Setup<a class="headerlink" href="#preliminary-setup" title="Link to this heading">¶</a></h2>
+<p>Galaxy (with the exception of the <a class="reference internal" href="#pulsar">Pulsar</a> runner) currently requires a shared filesystem between the application server and the cluster nodes. There is some legacy code in the PBS runner that does file staging, but its operational status is unknown. The path to Galaxy must be exactly the same on both the nodes and the application server (although it is possible to use symlinks to partially subvert the absolute path requirement). This is because absolute paths are used to refer to datasets and tools when running the command on the cluster node. The shared filesystem and absolute pathnames are limitations that will eventually be removed as development time permits.</p>
+<p>For example, if Galaxy is installed like so:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">galaxy_user@galaxy_server% </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/galaxyproject/galaxy.git<span class="w"> </span>/clusterfs/galaxy/galaxy-app
+</pre></div>
+</div>
+<p>Then that directory should be accessible from all cluster nodes:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">galaxy_user@galaxy_server% </span>qsub<span class="w"> </span>-I
+<span class="go">qsub: waiting for job 1234.torque.server to start</span>
+<span class="go">qsub: job 1234.torque.server ready</span>
+
+<span class="gp">galaxy_user@node1% </span><span class="nb">cd</span><span class="w"> </span>/clusterfs/galaxy/galaxy-app
+<span class="gp">galaxy_user@node1%</span>
+</pre></div>
+</div>
+<p>If your cluster nodes have Internet access (NAT is okay) and you want to run the data source tools (upload, ucsc, etc.) on the cluster (doing so is highly recommended), set <code class="docutils literal notranslate"><span class="pre">new_file_path</span></code> in <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code> to a directory somewhere in your shared filesystem:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">new_file_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/clusterfs/galaxy/tmp</span>
+</pre></div>
+</div>
+<p>You may also find that attribute caching in your filesystem causes problems with job completion since it interferes with Galaxy detecting the presence and correct sizes of output files. In NFS caching can be disabled with the <code class="docutils literal notranslate"><span class="pre">-noac</span></code> mount option on Linux (on the Galaxy server), but this may have a significant impact on performance since all attributes will have to be read from the file server upon every file access. You should try the <code class="docutils literal notranslate"><span class="pre">retry_job_output_collection</span></code> option in <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code> first to see if this solves the problem.</p>
+</section>
+<section id="runner-configuration">
+<h2>Runner Configuration<a class="headerlink" href="#runner-configuration" title="Link to this heading">¶</a></h2>
+<p><strong>This documentation covers configuration of the various runner plugins, not how to distribute jobs to the various plugins.</strong> Consult the <a class="reference internal" href="jobs.html"><span class="std std-doc">job configuration file documentation</span></a> for full details on the correct syntax, and for instructions on how to configure tools to actually use the runners explained below.</p>
+<section id="local">
+<h3>Local<a class="headerlink" href="#local" title="Link to this heading">¶</a></h3>
+<p>Runs jobs locally on the Galaxy application server (no DRM).</p>
+<section id="workers">
+<h4>Workers<a class="headerlink" href="#workers" title="Link to this heading">¶</a></h4>
+<p>It is possible to configure the number of concurrent local jobs that can be run by using the <code class="docutils literal notranslate"><span class="pre">workers</span></code> attribute on the plugin.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;plugins&gt;</span>
+<span class="w">    </span><span class="nt">&lt;plugin</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;local&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;runner&quot;</span><span class="w"> </span><span class="na">load=</span><span class="s">&quot;galaxy.jobs.runners.local:LocalJobRunner&quot;</span><span class="w"> </span><span class="na">workers=</span><span class="s">&quot;8&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/plugins&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="slots">
+<h4>Slots<a class="headerlink" href="#slots" title="Link to this heading">¶</a></h4>
+<p>For each destination using the local runner, it is possible to specify the number of CPU slots to assign (default is 1).</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;destinations&gt;</span>
+<span class="w">    </span><span class="nt">&lt;destination</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;local_1slot&quot;</span><span class="w"> </span><span class="na">runner=</span><span class="s">&quot;local&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;destination</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;local_2slots&quot;</span><span class="w"> </span><span class="na">runner=</span><span class="s">&quot;local&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;local_slots&quot;</span><span class="nt">&gt;</span>2<span class="nt">&lt;/param&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/destination&gt;</span>
+<span class="nt">&lt;/destinations&gt;</span>
+</pre></div>
+</div>
+<p>The value of <em>local_slots</em> is used to define <a class="reference external" href="https://galaxyproject.org/admin/config/galaxy-slots/">GALAXY_SLOTS</a>.</p>
+</section>
+</section>
+<section id="drmaa">
+<h3>DRMAA<a class="headerlink" href="#drmaa" title="Link to this heading">¶</a></h3>
+<p>Runs jobs via any DRM which supports the <a class="reference external" href="https://www.drmaa.org">Distributed Resource Management Application API</a>. Most commonly used to interface with <a class="reference external" href="https://altair.com/pbs-professional">PBS Professional</a>, <a class="reference external" href="https://gridscheduler.sourceforge.net/">Open Grid Scheduler</a>, <a class="reference external" href="https://www.altair.com/grid-engine/">Altair Grid Engine</a>, <a class="reference external" href="https://www.ibm.com/products/hpc-workload-management">IBM Spectrum LSF</a>, and <a class="reference external" href="https://slurm.schedmd.com/">SLURM</a>.</p>
+<section id="dependencies">
+<h4>Dependencies<a class="headerlink" href="#dependencies" title="Link to this heading">¶</a></h4>
+<p>Galaxy interfaces with DRMAA via <a class="reference external" href="https://github.com/pygridtools/drmaa-python">drmaa-python</a>. The <code class="docutils literal notranslate"><span class="pre">drmaa-python</span></code> module is provided with Galaxy, but you must tell it where your DRM’s DRMAA library is located, via the <code class="docutils literal notranslate"><span class="pre">$DRMAA_LIBRARY_PATH</span></code> environment variable, for example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">galaxy_server% export DRMAA_LIBRARY_PATH=/galaxy/lsf/7.0/linux2.6-glibc2.3-x86_64/lib/libdrmaa.so</span>
+<span class="go">galaxy_server% export DRMAA_LIBRARY_PATH=/galaxy/sge/lib/lx24-amd64/libdrmaa.so</span>
+</pre></div>
+</div>
+</section>
+<section id="drm-notes">
+<h4>DRM Notes<a class="headerlink" href="#drm-notes" title="Link to this heading">¶</a></h4>
+<p><strong>Limitations</strong>: The DRMAA runner does not work if Galaxy is configured to run jobs as real user, because in this setting jobs are submitted with an external script, i.e. in an extra DRMAA session, and the session based (python) DRMAA library can only query jobs within the session in which started them. Furthermore, the DRMAA job runner only distinguishes successful and failed jobs and ignores information about possible failure sources, e.g. runtime / memory violation, which could be used for job resubmission. Specialized job runners are abvailable that are not affected by these limitations, e.g. univa and slurm runners.</p>
+<p><strong>TORQUE</strong>: The DRMAA runner can also be used (instead of the <a class="reference internal" href="#pbs">PBS</a> runner) to submit jobs to TORQUE, however, problems have been reported when using the <code class="docutils literal notranslate"><span class="pre">libdrmaa.so</span></code> provided with TORQUE.  Using this library will result in a segmentation fault when the drmaa runner attempts to write the job template, and any native job runner options will not be passed to the DRM.  Instead, you should compile the <a class="reference external" href="https://apps.man.poznan.pl/trac/pbs-drmaa/wiki">pbs-drmaa</a> library and use this as the value for <code class="docutils literal notranslate"><span class="pre">$DRMAA_LIBRARY_PATH</span></code>.</p>
+<p><strong>Slurm</strong>: You will need to install <a class="reference external" href="https://github.com/natefoo/slurm-drmaa/">slurm-drmaa</a>. In production on <a class="reference external" href="https://usegalaxy.org">usegalaxy.org</a> we observed pthread deadlocks in slurm-drmaa that would cause Galaxy job handlers to eventually stop processing jobs until the handler was restarted. Compiling slurm-drmaa using the compiler flags <code class="docutils literal notranslate"><span class="pre">-g</span> <span class="pre">-O0</span></code> (keep debugging symbols, disable optimization) caused the deadlock to disappear.</p>
+</section>
+<section id="parameters-and-configuration">
+<h4>Parameters and Configuration<a class="headerlink" href="#parameters-and-configuration" title="Link to this heading">¶</a></h4>
+<p>Most <a class="reference external" href="https://ogf.org/documents/GFD.143.pdf">options defined in the DRMAA interface</a> are supported.  Exceptions include <code class="docutils literal notranslate"><span class="pre">remoteCommand</span></code>, <code class="docutils literal notranslate"><span class="pre">jobName</span></code>, <code class="docutils literal notranslate"><span class="pre">outputPath</span></code>, and <code class="docutils literal notranslate"><span class="pre">errorPath</span></code> since these attributes are set by Galaxy.  To pass parameters to your underlying DRM, use the <code class="docutils literal notranslate"><span class="pre">nativeSpecification</span></code> parameter.  The format of this parameter is dependent upon the underlying DRM.  However, for Grid Engine, it is the list of command line parameters that would be passed to <code class="docutils literal notranslate"><span class="pre">qsub(1)</span></code>.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;plugins&gt;</span>
+<span class="w">    </span><span class="nt">&lt;plugin</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;drmaa&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;runner&quot;</span><span class="w"> </span><span class="na">load=</span><span class="s">&quot;galaxy.jobs.runners.drmaa:DRMAAJobRunner&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/plugins&gt;</span>
+<span class="nt">&lt;destinations</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;sge_default&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;destination</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;sge_default&quot;</span><span class="w"> </span><span class="na">runner=</span><span class="s">&quot;drmaa&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;destination</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;big_jobs&quot;</span><span class="w"> </span><span class="na">runner=</span><span class="s">&quot;drmaa&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;nativeSpecification&quot;</span><span class="nt">&gt;</span>-P<span class="w"> </span>bignodes<span class="w"> </span>-R<span class="w"> </span>y<span class="w"> </span>-pe<span class="w"> </span>threads<span class="w"> </span>8<span class="nt">&lt;/param&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/destination&gt;</span>
+<span class="nt">&lt;/destinations&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="univa">
+<h3>Univa<a class="headerlink" href="#univa" title="Link to this heading">¶</a></h3>
+<p>The so called Univa job runner extends the DRMAA job runner to circumvent the limitations of the DRMAA runner. Despite its name it <strong>may</strong> be used for various DRMAA based setups in the following cases (currently this has been tested for UNIVA only):</p>
+<ul class="simple">
+<li><p>If jobs run as the Galaxy user it can be used for any DRMAA based system.</p></li>
+<li><p>If jobs are not run as Galaxy user (e.g. as real user) then the runner can be used if <code class="docutils literal notranslate"><span class="pre">qstat</span></code> and <code class="docutils literal notranslate"><span class="pre">qacct</span></code> are available to query jobs.</p></li>
+</ul>
+<p>Unlike the DRMAA runner which uses only <code class="docutils literal notranslate"><span class="pre">drmaa.job_status</span></code> to query jobs the Univa runner uses <code class="docutils literal notranslate"><span class="pre">drmaa.job_status</span></code> and <code class="docutils literal notranslate"><span class="pre">drmaa.wait</span></code> if possible and if this fails (e.g. in a real user setting) <code class="docutils literal notranslate"><span class="pre">qstat</span></code> and <code class="docutils literal notranslate"><span class="pre">qacct</span></code> to query jobs.</p>
+<section id="dependencies-parameters-and-configuration">
+<h4>Dependencies, Parameters, and Configuration<a class="headerlink" href="#dependencies-parameters-and-configuration" title="Link to this heading">¶</a></h4>
+<p>All as in the DRMAA runner, in <code class="docutils literal notranslate"><span class="pre">job_conf.xml</span></code> use <code class="docutils literal notranslate"><span class="pre">galaxy.jobs.runners.univa:UnivaJobRunner</span></code> instead of <code class="docutils literal notranslate"><span class="pre">galaxy.jobs.runners.drmaa:DRMAAJobRunner</span></code>.</p>
+</section>
+</section>
+<section id="pbs">
+<h3>PBS<a class="headerlink" href="#pbs" title="Link to this heading">¶</a></h3>
+<p>Runs jobs via the <a class="reference external" href="https://adaptivecomputing.com/cherry-services/torque-resource-manager/">TORQUE Resource Manager</a>. For PBS Pro, use <a class="reference internal" href="#drmaa">DRMAA</a>.</p>
+<section id="id1">
+<h4>Dependencies<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h4>
+<p>Galaxy uses the <a class="reference external" href="https://github.com/ehiggs/pbs-python">pbs_python</a> module to interface with TORQUE.  pbs_python must be compiled against your TORQUE installation, so it cannot be provided with Galaxy. You can install the package as follows:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">galaxy_user@galaxy_server% </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ehiggs/pbs-python
+<span class="gp">galaxy_user@galaxy_server% </span><span class="nb">cd</span><span class="w"> </span>pbs-python
+<span class="gp">galaxy_user@galaxy_server% </span><span class="nb">source</span><span class="w"> </span>/clusterfs/galaxy/galaxy-app/.venv/bin/activate
+<span class="gp">galaxy_user@galaxy_server% </span>python<span class="w"> </span>setup.py<span class="w"> </span>install
+</pre></div>
+</div>
+<p>As of May 2014 there are still some outstanding bugs in pbs_python. Notably, error code translation is out of alignment.  For example if you get error #15025 “Bad UID for Job Execution” pbs_python will report this error incorrectly as “Queue already exists”.  You may consult the <a class="reference external" href="https://github.com/adaptivecomputing/torque/blob/4.2.7/src/include/pbs_error_db.h">TORQUE source code</a> for the proper error message that corresponds with a given error number.</p>
+</section>
+<section id="id2">
+<h4>Parameters and Configuration<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h4>
+<p>Most options available to <code class="docutils literal notranslate"><span class="pre">qsub(1b)</span></code> and <code class="docutils literal notranslate"><span class="pre">pbs_submit(3b)</span></code> are supported.  Exceptions include <code class="docutils literal notranslate"><span class="pre">-o/Output_Path</span></code>, <code class="docutils literal notranslate"><span class="pre">-e/Error_Path</span></code>, and <code class="docutils literal notranslate"><span class="pre">-N/Job_Name</span></code> since these PBS job attributes are set by Galaxy.  Parameters can be specified by either their flag (as used with <code class="docutils literal notranslate"><span class="pre">qsub</span></code>) or long name (as used with <code class="docutils literal notranslate"><span class="pre">pbs_submit</span></code>).</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;plugins&gt;</span>
+<span class="w">    </span><span class="nt">&lt;plugin</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;pbs&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;runner&quot;</span><span class="w"> </span><span class="na">load=</span><span class="s">&quot;galaxy.jobs.runners.pbs:PBSJobRunner&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/plugins&gt;</span>
+<span class="nt">&lt;destinations</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;pbs_default&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;destination</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;pbs_default&quot;</span><span class="w"> </span><span class="na">runner=</span><span class="s">&quot;pbs&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;destination</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;other_cluster&quot;</span><span class="w"> </span><span class="na">runner=</span><span class="s">&quot;pbs&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;destination&quot;</span><span class="nt">&gt;</span>@other.cluster<span class="nt">&lt;/param&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/destination&gt;</span>
+<span class="w">    </span><span class="nt">&lt;destination</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;long_jobs&quot;</span><span class="w"> </span><span class="na">runner=</span><span class="s">&quot;pbs&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;Resource_List&quot;</span><span class="nt">&gt;</span>walltime=72:00:00,nodes=1:ppn=8<span class="nt">&lt;/param&gt;</span>
+<span class="w">        </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;-p&quot;</span><span class="nt">&gt;</span>128<span class="nt">&lt;/param&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/destination&gt;</span>
+<span class="nt">&lt;/destinations&gt;</span>
+</pre></div>
+</div>
+<p>The value of <em>ppn=</em> is used by PBS to define the environment variable <code class="docutils literal notranslate"><span class="pre">$PBS_NCPUS</span></code> which in turn is used by galaxy for <a class="reference external" href="https://galaxyproject.org/admin/config/galaxy-slots/">GALAXY_SLOTS</a>.</p>
+</section>
+</section>
+<section id="condor">
+<h3>Condor<a class="headerlink" href="#condor" title="Link to this heading">¶</a></h3>
+<p>Runs jobs via the <a class="reference external" href="https://research.cs.wisc.edu/htcondor/">HTCondor</a> DRM.  There are no configurable parameters.  Galaxy’s interface is via calls to HTCondor’s command line tools, rather than via an API.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;plugins&gt;</span>
+<span class="w">    </span><span class="nt">&lt;plugin</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;condor&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;runner&quot;</span><span class="w"> </span><span class="na">load=</span><span class="s">&quot;galaxy.jobs.runners.condor:CondorJobRunner&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/plugins&gt;</span>
+<span class="nt">&lt;destinations&gt;</span>
+<span class="w">    </span><span class="nt">&lt;destination</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;condor&quot;</span><span class="w"> </span><span class="na">runner=</span><span class="s">&quot;condor&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/destinations&gt;</span>
+</pre></div>
+</div>
+<p>Galaxy will submit jobs to HTCondor as the “galaxy” user (or whatever user the Galaxy server runs as).  In order for vanilla job execution to work as expected, your cluster should be configured with a common UID_DOMAIN to allow Galaxy’s jobs to run as “galaxy” everywhere (instead of “nobody”).</p>
+<p>If you need to add additional parameters to your condor submission, you can do so by supplying <code class="docutils literal notranslate"><span class="pre">&lt;param/&gt;</span></code>s:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;destinations&gt;</span>
+<span class="w">    </span><span class="nt">&lt;destination</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;condor&quot;</span><span class="w"> </span><span class="na">runner=</span><span class="s">&quot;condor&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;Requirements&quot;</span><span class="nt">&gt;</span>(machine<span class="w"> </span>==<span class="w"> </span>some.specific.host)<span class="nt">&lt;/param&gt;</span>
+<span class="w">        </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;request_cpus&quot;</span><span class="nt">&gt;</span>4<span class="nt">&lt;/param&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/destination&gt;</span>
+<span class="nt">&lt;/destinations&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="pulsar">
+<h3>Pulsar<a class="headerlink" href="#pulsar" title="Link to this heading">¶</a></h3>
+<p>Runs jobs via Galaxy <a class="reference external" href="https://pulsar.readthedocs.io/">Pulsar</a>. Pulsar does not require an existing cluster or a shared filesystem and can also run jobs on Windows hosts. It also has the ability to interface with all of the DRMs supported by Galaxy. Pulsar provides a much looser coupling between Galaxy job execution and the Galaxy server host than is possible with Galaxy’s native job execution code.</p>
+</section>
+<section id="cli">
+<h3>CLI<a class="headerlink" href="#cli" title="Link to this heading">¶</a></h3>
+<p>Runs jobs via a command-line/shell interface. The CLI runner itself takes plugins of two types:</p>
+<ul class="simple">
+<li><p>Shell: For interacting with different shell types. Plugins for rsh, ssh, and gsi-ssh are provided.</p></li>
+<li><p>Job: For interacting with a DRM via the DRM’s command-line interface. A plugin for Torque is provided</p></li>
+</ul>
+<p>If you are interested in developing additional plugins, see <code class="docutils literal notranslate"><span class="pre">lib/galaxy/jobs/runners/util/cli/</span></code> for examples.</p>
+<section id="id3">
+<h4>Parameters and Configuration<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h4>
+<p>The cli runner requires, at a minimum, two parameters:</p>
+<dl class="simple myst">
+<dt><code class="docutils literal notranslate"><span class="pre">shell_plugin</span></code></dt><dd><p>This required parameter should be <a class="reference external" href="https://github.com/galaxyproject/galaxy/tree/dev/lib/galaxy/jobs/runners/util/cli/shell">a cli_shell class</a> currently one of: <code class="docutils literal notranslate"><span class="pre">LocalShell</span></code>, <code class="docutils literal notranslate"><span class="pre">RemoteShell</span></code>, <code class="docutils literal notranslate"><span class="pre">SecureShell</span></code>, <code class="docutils literal notranslate"><span class="pre">ParamikoShell</span></code>, or <code class="docutils literal notranslate"><span class="pre">GlobusSecureShell</span></code> describing which shell plugin to use.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">job_plugin</span></code></dt><dd><p>This required parameter should be <a class="reference external" href="https://github.com/galaxyproject/galaxy/tree/dev/lib/galaxy/jobs/runners/util/cli/job">a cli_job class</a> currently one of <code class="docutils literal notranslate"><span class="pre">Torque</span></code>, <code class="docutils literal notranslate"><span class="pre">SlurmTorque</span></code>, or <code class="docutils literal notranslate"><span class="pre">Slurm</span></code>.</p>
+</dd>
+</dl>
+<p>All other parameters are specific to the chosen plugins. Parameters to pass to the shell plugin begin with the id <code class="docutils literal notranslate"><span class="pre">shell_</span></code> and parameters to pass to the job plugin begin with the id <code class="docutils literal notranslate"><span class="pre">job_</span></code>.</p>
+</section>
+<section id="shell-plugins">
+<h4>Shell Plugins<a class="headerlink" href="#shell-plugins" title="Link to this heading">¶</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">RemoteShell</span></code> plugin uses <code class="docutils literal notranslate"><span class="pre">rsh(1)</span></code> to connect to a remote system and execute shell commands.</p>
+<dl class="simple myst">
+<dt><code class="docutils literal notranslate"><span class="pre">shell_username</span></code></dt><dd><p>Optional user to log in to the remote system as. If unset uses <code class="docutils literal notranslate"><span class="pre">rsh</span></code>’s default behavior (attempt to log in with the current user’s username).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">shell_hostname</span></code></dt><dd><p>Remote system hostname to log in to.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">shell_rsh</span></code></dt><dd><p><code class="docutils literal notranslate"><span class="pre">rsh</span></code>-like command to excute (e.g. <code class="docutils literal notranslate"><span class="pre">&lt;param</span> <span class="pre">id=&quot;shell_rsh&quot;&gt;/opt/example/bin/remsh&lt;/param&gt;</span></code>) - just defaults to <code class="docutils literal notranslate"><span class="pre">rst</span></code>.</p>
+</dd>
+</dl>
+<p>The <code class="docutils literal notranslate"><span class="pre">RemoteShell</span></code> parameters translate to a command line of <code class="docutils literal notranslate"><span class="pre">%</span> <span class="pre">&lt;shell_rsh&gt;</span> <span class="pre">[-l</span> <span class="pre">&lt;shell_username&gt;]</span> <span class="pre">&lt;shell_hostname&gt;</span> <span class="pre">&quot;&lt;remote_command_with_args&gt;&quot;</span></code>, where the inclusion of <code class="docutils literal notranslate"><span class="pre">-l</span></code> is dependent on whether <code class="docutils literal notranslate"><span class="pre">shell_username</span></code> is set. Alternate values for <code class="docutils literal notranslate"><span class="pre">shell_rsh</span></code> must be compatible with this syntax.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">SecureShell</span></code> plugin works like the <code class="docutils literal notranslate"><span class="pre">RemoteShell</span></code> plugin and takes the same parameters, with the following differences:</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">shell_rsh</span></code> default value is <code class="docutils literal notranslate"><span class="pre">ssh</span></code></p></li>
+<li><p>The command line that will be executed is <code class="docutils literal notranslate"><span class="pre">%</span> <span class="pre">&lt;shell_rsh&gt;</span> <span class="pre">-oStrictHostKeyChecking=yes</span> <span class="pre">-oConnectTimeout=60</span> <span class="pre">[-l</span> <span class="pre">&lt;shell_username&gt;]</span> <span class="pre">&lt;shell_hostname&gt;</span> <span class="pre">&quot;&lt;remote_command_with_args&gt;&quot;</span></code></p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">GlobusSecureShell</span></code> plugin works like the <code class="docutils literal notranslate"><span class="pre">SecureShell</span></code> plugin and takes the same parameters, with the following difference:</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">shell_rsh</span></code> default value is <code class="docutils literal notranslate"><span class="pre">gsi-ssh</span></code></p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">ParamikoShell</span></code> option was added in 17.09 with this pull request https://github.com/galaxyproject/galaxy/pull/4358 from Marius van den Beek.</p>
+</section>
+<section id="job-plugins">
+<h4>Job Plugins<a class="headerlink" href="#job-plugins" title="Link to this heading">¶</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">Torque</span></code> plugin uses <code class="docutils literal notranslate"><span class="pre">qsub(1)</span></code> and <code class="docutils literal notranslate"><span class="pre">qstat(1)</span></code> to interface with a Torque server on the command line.</p>
+<dl class="simple myst">
+<dt><code class="docutils literal notranslate"><span class="pre">job_&lt;PBS_JOB_ATTR&gt;</span></code></dt><dd><p><code class="docutils literal notranslate"><span class="pre">&lt;PBS_JOB_ATTR&gt;</span></code> refers to a <code class="docutils literal notranslate"><span class="pre">qsub(1B)</span></code> or <code class="docutils literal notranslate"><span class="pre">pbs_submit(3B)</span></code> argument/attribute
+(e.g. <code class="docutils literal notranslate"><span class="pre">&lt;param</span> <span class="pre">id=&quot;job_Resource_List&quot;&gt;walltime=24:00:00,ncpus=4&lt;/param&gt;</span></code>).</p>
+</dd>
+</dl>
+<p>Torque attributes can be defined in either their short (e.g. <a class="reference external" href="https://www.linuxcertif.com/man/1/qsub.1B/">qsub(1B)</a> argument as used on the command line or in a script as <code class="docutils literal notranslate"><span class="pre">#PBS</span> <span class="pre">-&lt;ARG&gt;</span></code>) or long (e.g. <a class="reference external" href="https://www.linuxcertif.com/man/3/pbs_submit.3B/">pbs_submit(3B)</a> attribute as used in the C library) forms. Some additional examples follow:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;param</span> <span class="pre">id=&quot;job_-q&quot;&gt;queue&lt;/param&gt;</span></code>: set the PBS destination (in this example, a queue), equivalent to <code class="docutils literal notranslate"><span class="pre">&lt;param</span> <span class="pre">id=&quot;job_destination&quot;&gt;queue&lt;/param&gt;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;param</span> <span class="pre">id=&quot;job_Priority&quot;&gt;128&lt;/param&gt;</span></code>: set the job priority, equivalent to <code class="docutils literal notranslate"><span class="pre">&lt;param</span> <span class="pre">id=&quot;job_-p&quot;&gt;128&lt;/param&gt;</span></code></p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;plugins&gt;</span>
+<span class="w">    </span><span class="nt">&lt;plugin</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;cli&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;runner&quot;</span><span class="w"> </span><span class="na">load=</span><span class="s">&quot;galaxy.jobs.runners.cli:ShellJobRunner&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/plugins&gt;</span>
+<span class="nt">&lt;destinations</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;cli_default&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;destination</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;cli_default&quot;</span><span class="w"> </span><span class="na">runner=</span><span class="s">&quot;cli&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;shell_plugin&quot;</span><span class="nt">&gt;</span>SecureShell<span class="nt">&lt;/param&gt;</span>
+<span class="w">        </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;job_plugin&quot;</span><span class="nt">&gt;</span>Torque<span class="nt">&lt;/param&gt;</span>
+<span class="w">        </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;shell_hostname&quot;</span><span class="nt">&gt;</span>cluster.example.org<span class="nt">&lt;/param&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/destination&gt;</span>
+<span class="w">    </span><span class="nt">&lt;destination</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;long_jobs&quot;</span><span class="w"> </span><span class="na">runner=</span><span class="s">&quot;cli&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;job_Resource_List&quot;</span><span class="nt">&gt;</span>walltime=72:00:00,nodes=1:ppn=8<span class="nt">&lt;/param&gt;</span>
+<span class="w">        </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;job_-p&quot;</span><span class="nt">&gt;</span>128<span class="nt">&lt;/param&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/destination&gt;</span>
+<span class="nt">&lt;/destinations&gt;</span>
+</pre></div>
+</div>
+<p>Most options available to <code class="docutils literal notranslate"><span class="pre">qsub(1b)</span></code> and <code class="docutils literal notranslate"><span class="pre">pbs_submit(3b)</span></code> are supported.  Exceptions include <code class="docutils literal notranslate"><span class="pre">-o/Output_Path</span></code>, <code class="docutils literal notranslate"><span class="pre">-e/Error_Path</span></code>, and <code class="docutils literal notranslate"><span class="pre">-N/Job_Name</span></code> since these PBS job attributes are set by Galaxy.</p>
+</section>
+</section>
+<section id="aws-batch">
+<h3>AWS Batch<a class="headerlink" href="#aws-batch" title="Link to this heading">¶</a></h3>
+<p>Runs jobs via <a class="reference external" href="https://aws.amazon.com/batch/">AWS Batch</a>. Built on top of AWS Elastic Container Service (ECS), AWS Batch enables users to run hundreds of thousands of jobs with little configuration.</p>
+<section id="id4">
+<h4>Dependencies<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h4>
+<p>The AWS Batch job runner requires AWS Elastic File System (EFS) to be mounted as a shared file system that enables both Galaxy and job containers to read and write files. In a typical use case, Galaxy is installed on an AWS EC2 instance where an EFS drive is mounted, and all job-related paths, such as objects, jobs_directory, tool_directory and so on, are placed on the EFS drive. Galaxy admins configure Batch compute environments, Batch job queues and proper AWS IAM roles, and specify them as destination parameters.
+AWS Batch job runner requires <a class="reference external" href="https://github.com/boto/boto3">boto3</a> to be installed in Galaxy’s environment.</p>
+</section>
+<section id="id5">
+<h4>Parameters and Configuration<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h4>
+<p>AWS Batch job runner sends jobs to Batch compute environment that is composed of either Fargate or EC2. While Fargate provides a series of lightweight compute resources (up to 4 vcpu and 30 GB memory), EC2 offers broader choices. With <code class="docutils literal notranslate"><span class="pre">auto_platform</span></code> enabled, this runner supports mapping to the best fit type of resources based on the requested <code class="docutils literal notranslate"><span class="pre">vcpu</span></code> and <code class="docutils literal notranslate"><span class="pre">memory</span></code>, i.e., Fargate is preferred over EC2 when <code class="docutils literal notranslate"><span class="pre">vcpu</span></code> and <code class="docutils literal notranslate"><span class="pre">memory</span></code> are below the limits (4 and 30 gb, respectively). If <code class="docutils literal notranslate"><span class="pre">GPU</span></code> computing is needed for a destination, a job queue built on top of a GPU-enabled compute environment must be provisioned.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;plugins&gt;</span>
+<span class="w">    </span><span class="nt">&lt;plugin</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;aws_batch&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;runner&quot;</span><span class="w"> </span><span class="na">load=</span><span class="s">&quot;galaxy.jobs.runners.aws:AWSBatchJobRunner&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="cm">&lt;!-- Run `aws configure` with aws cli or set params below --&gt;</span>
+<span class="w">        </span><span class="cm">&lt;!-- &lt;param id=&quot;aws_access_key_id&quot;&gt;xxxxxxxxx&lt;/param&gt;</span>
+<span class="cm">        &lt;param id=&quot;aws_secret_access_key&quot;&gt;xxxxxxxxxxxxxxxxxxx&lt;/param&gt;</span>
+<span class="cm">        &lt;param id=&quot;region&quot;&gt;us-west-1&lt;/param&gt; --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/plugin&gt;</span>
+<span class="nt">&lt;/plugins&gt;</span>
+<span class="nt">&lt;destinations&gt;</span>
+<span class="w">    </span><span class="nt">&lt;destination</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;aws_batch_auto&quot;</span><span class="w"> </span><span class="na">runner=</span><span class="s">&quot;aws_batch&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;docker_enabled&quot;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/param&gt;</span>
+<span class="w">        </span><span class="cm">&lt;!-- `docker_enabled = true` is always required --&gt;</span>
+<span class="w">        </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;job_queue&quot;</span><span class="nt">&gt;</span>arn_for_Fargate_job_queue,<span class="w"> </span>arn_for_EC2_job_queue<span class="nt">&lt;/param&gt;</span>
+<span class="w">        </span><span class="cm">&lt;!-- Fargete and non-GPU EC2 --&gt;</span>
+<span class="w">        </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;job_role_arn&quot;</span><span class="nt">&gt;</span>arn:aws:iam::xxxxxxxxxxxxxxxxxx<span class="nt">&lt;/param&gt;</span>
+<span class="w">        </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;vcpu&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/param&gt;</span>
+<span class="w">        </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;memory&quot;</span><span class="nt">&gt;</span>2048<span class="nt">&lt;/param&gt;</span>
+<span class="w">        </span><span class="cm">&lt;!-- MB, default is 2048 --&gt;</span>
+<span class="w">        </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;efs_filesystem_id&quot;</span><span class="nt">&gt;</span>fs-xxxxxxxxxxxxxx<span class="nt">&lt;/param&gt;</span>
+<span class="w">        </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;efs_mount_point&quot;</span><span class="nt">&gt;</span>/mnt/efs/fs1<span class="nt">&lt;/param&gt;</span>
+<span class="w">        </span><span class="cm">&lt;!-- This is the location where the EFS is mounted --&gt;</span>
+<span class="w">        </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;fargate_version&quot;</span><span class="nt">&gt;</span>1.4.0<span class="nt">&lt;/param&gt;</span>
+<span class="w">        </span><span class="cm">&lt;!-- `fargate_version` is required to use Fargate compute resources --&gt;</span>
+<span class="w">        </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;auto_platform&quot;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/param&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/destination&gt;</span>
+<span class="w">    </span><span class="nt">&lt;destination</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;aws_batch_gpu&quot;</span><span class="w"> </span><span class="na">runner=</span><span class="s">&quot;aws_batch&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;docker_enabled&quot;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/param&gt;</span>
+<span class="w">        </span><span class="cm">&lt;!-- `docker_enabled = true` is always required --&gt;</span>
+<span class="w">        </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;job_queue&quot;</span><span class="nt">&gt;</span>arn_for_gpu_job_queue<span class="nt">&lt;/param&gt;</span>
+<span class="w">        </span><span class="cm">&lt;!-- Job queue must be built on GPU-specific compute environment --&gt;</span>
+<span class="w">        </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;job_role_arn&quot;</span><span class="nt">&gt;</span>arn:aws:iam::xxxxxxxxxxxxxxxxxx<span class="nt">&lt;/param&gt;</span>
+<span class="w">        </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;vcpu&quot;</span><span class="nt">&gt;</span>4<span class="nt">&lt;/param&gt;</span>
+<span class="w">        </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;memory&quot;</span><span class="nt">&gt;</span>20000<span class="nt">&lt;/param&gt;</span>
+<span class="w">        </span><span class="cm">&lt;!-- MB, default is 2048 --&gt;</span>
+<span class="w">        </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;gpu&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/param&gt;</span>
+<span class="w">        </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;efs_filesystem_id&quot;</span><span class="nt">&gt;</span>fs-xxxxxxxxxxxxxx<span class="nt">&lt;/param&gt;</span>
+<span class="w">        </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;efs_mount_point&quot;</span><span class="nt">&gt;</span>/mnt/efs/fs1<span class="nt">&lt;/param&gt;</span>
+<span class="w">            </span><span class="cm">&lt;!-- This is the location where the EFS is mounted --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/destination&gt;</span>
+<span class="nt">&lt;/destinations&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="submitting-jobs-as-the-real-user">
+<h2>Submitting Jobs as the Real User<a class="headerlink" href="#submitting-jobs-as-the-real-user" title="Link to this heading">¶</a></h2>
+<p>Galaxy runs as a process on your server as whatever user starts the server - usually an account created for the purpose of running Galaxy. Jobs will be submitted to your cluster(s) as this user. In environments where users in Galaxy are guaranteed to be users on the underlying system (i.e. Galaxy is configured to use external authentication), it may be desirable to submit jobs to the cluster as the user logged in to Galaxy rather than Galaxy’s system user.</p>
+<section id="caveats">
+<h3>Caveats<a class="headerlink" href="#caveats" title="Link to this heading">¶</a></h3>
+<p>Since this is a complex problem, the current solution does have some caveats:</p>
+<ul class="simple">
+<li><p>All of the datasets stored in Galaxy will have to be readable on the underlying filesystem by all Galaxy users. Said users need not have direct access to any systems which mount these filesystems, only the ability to run jobs on clusters that mount them. But I expect that in most environments, users will have the ability to submit jobs to these clusters or log in to these clusters outside of Galaxy, so this will be a security concern to evaluate for most environments.</p>
+<ul>
+<li><p><em>Technical details</em> - Since Galaxy maintains dataset sharing internally and all files are owned by the Galaxy user, when running jobs only under a single user, permissions can be set such that only the Galaxy user can read all datasets. Since the dataset may be shared by multiple users, it is not suitable to simply change ownership of inputs before a job runs (what if another user tried to use the same dataset as an input during this time?). This could possibly be solved if Galaxy had tight control over extended ACLs on the file, but since many different ACL schemes exist, Galaxy would need a module for each scheme to be supported.</p></li>
+</ul>
+</li>
+<li><p>The real user system works by changing ownership of the job’s working directory to the system prior to running the job, and back to the Galaxy user once the job has completed. It does this by executing a site-customizable script via <a class="reference external" href="https://www.sudo.ws/">sudo</a>.</p>
+<ul>
+<li><p>Two possibilities to determine the system user that corresponds to a galaxy user are implemented: i) the user whos name matches the Galaxy user’s email address (with the &#64;domain stripped off) and ii) the user whos name is equal to the galaxy user name. Until release 17.05 only the former option is available. The latter option is suitable for Galaxy installations that user external authentification (e.g. LDAP) against a source that is also the source of the system users.</p></li>
+<li><p>The script accepts a path and does nothing to ensure that this path is a Galaxy working directory per default (and not at all up to release 17.05). So anyone who has access to the Galaxy user could use this script and sudo to change the ownership of any file or directory. Furthermore, anyone with write access to the script could introduce arbitrary (harmful) code – so it might be a good idea to give write access only to trustworthy users, e.g., root.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="configuration">
+<h3>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">¶</a></h3>
+<p>You’ll need to ensure that all datasets are stored on the filesystem such that they are readable by all users that will use Galaxy: either made readable by a group, or world-readable. If using a group, set your <code class="docutils literal notranslate"><span class="pre">umask(1)</span></code> to <code class="docutils literal notranslate"><span class="pre">027</span></code> or for world-readable, use <code class="docutils literal notranslate"><span class="pre">022</span></code> Setting the umask assumes your underlying filesystem uses POSIX permissions, so if this is not the case, your environment changes may be different. For <a class="reference external" href="https://github.com/galaxyproject/gravity/">gravity</a> setups (which are the default since release 22.01) the default umask can be set in the <code class="docutils literal notranslate"><span class="pre">gravity:</span></code> section of <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">gravity</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">umask</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">027</span>
+</pre></div>
+</div>
+<p>The directory specified in <code class="docutils literal notranslate"><span class="pre">new_file_path</span></code> in the Galaxy config should be world-writable, cluster-accessible (via the same absolute path) and have its sticky bit (+t) set. This directory should also be cleaned regularly using a script or program as is appropriate for your site, since temporary files created here may not always be cleaned up under certain conditions.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">outputs_to_working_directory</span></code> option in the Galaxy config <strong>must</strong> be set to <code class="docutils literal notranslate"><span class="pre">True</span></code>. This ensures that a tool/job’s outputs are written to the temporary working directory, which (when using the real user system) is owned by the real user who submitted the job. If left set to the default (<code class="docutils literal notranslate"><span class="pre">False</span></code>), the tool will attempt to write directly to the directory specified in <code class="docutils literal notranslate"><span class="pre">file_path</span></code> (by default, <code class="docutils literal notranslate"><span class="pre">database/files/</span></code>), which must be owned by the Galaxy user (and thus will not be writable by the real user).</p>
+<p>For releases later than 17.05 you can configure the method how the system user is determined in <code class="docutils literal notranslate"><span class="pre">config/galaxy.yml</span></code> via the variable <code class="docutils literal notranslate"><span class="pre">real_system_username</span></code>. For determining the system user from the email adress stored in Galaxy set it to <code class="docutils literal notranslate"><span class="pre">user_email</span></code>, otherwise for determining the system user from the Galaxy user name set it to <code class="docutils literal notranslate"><span class="pre">username</span></code>.</p>
+<p>Once these are set, you must set the <code class="docutils literal notranslate"><span class="pre">drmaa_external_*</span></code> and <code class="docutils literal notranslate"><span class="pre">external_chown_script</span></code> settings in the Galaxy config and configure <code class="docutils literal notranslate"><span class="pre">sudo(8)</span></code> to allow them to be run. A sudo config using the three scripts set in the sample <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code> would be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">galaxy</span>  <span class="n">ALL</span> <span class="o">=</span> <span class="p">(</span><span class="n">root</span><span class="p">)</span> <span class="n">NOPASSWD</span><span class="p">:</span> <span class="n">SETENV</span><span class="p">:</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">galaxy</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">drmaa_external_runner</span><span class="o">.</span><span class="n">py</span>
+<span class="n">galaxy</span>  <span class="n">ALL</span> <span class="o">=</span> <span class="p">(</span><span class="n">root</span><span class="p">)</span> <span class="n">NOPASSWD</span><span class="p">:</span> <span class="n">SETENV</span><span class="p">:</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">galaxy</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">drmaa_external_killer</span><span class="o">.</span><span class="n">py</span>
+<span class="n">galaxy</span>  <span class="n">ALL</span> <span class="o">=</span> <span class="p">(</span><span class="n">root</span><span class="p">)</span> <span class="n">NOPASSWD</span><span class="p">:</span> <span class="n">SETENV</span><span class="p">:</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">galaxy</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">external_chown_script</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>If your sudo config contains <code class="docutils literal notranslate"><span class="pre">Defaults</span>&#160;&#160;&#160; <span class="pre">requiretty</span></code>, this option must be disabled.</p>
+<p>For Galaxy releases &gt; 17.05, the sudo call has been moved to <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code> and is thereby configurable by the Galaxy admin. This can be of interest because sudo removes <code class="docutils literal notranslate"><span class="pre">PATH</span></code>, <code class="docutils literal notranslate"><span class="pre">LD_LIBRARY_PATH</span></code>, etc. variables per default in some installations. In such cases the sudo calls in the three variables in galaxy.yml can be adapted, e.g., <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">-E</span> <span class="pre">PATH=...</span> <span class="pre">LD_LIBRARY_PATH=...</span> <span class="pre">/PATH/TO/GALAXY/scripts/drmaa_external_runner.py</span></code>. In order to allow setting the variables this way adaptions to the sudo configuration might be necessary. For example, the path to the python inside the galaxy’s python virtualenv may have to be inserted before the script call to make sure the virtualenv is used for drmaa submissions of real user jobs.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">drmaa_external_runjob_script</span><span class="p">:</span> <span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">.</span><span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python</span> <span class="n">scripts</span><span class="o">/</span><span class="n">drmaa_external_runner</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">assign_all_groups</span>
+</pre></div>
+</div>
+<p>Also for Galaxy releases &gt; 17.05: In order to allow <code class="docutils literal notranslate"><span class="pre">external_chown_script.py</span></code> to chown only path below certain entry points the variable <code class="docutils literal notranslate"><span class="pre">ALLOWED_PATHS</span></code> in the python script can be adapted. It is sufficient to include the directorries <code class="docutils literal notranslate"><span class="pre">job_working_directory</span></code> and <code class="docutils literal notranslate"><span class="pre">new_file_path</span></code> as configured in <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code>.</p>
+<p>It is also a good idea to make sure that only trusted users, e.g. root, have write access to all three scripts.</p>
+<p>Another important change is to set the <code class="docutils literal notranslate"><span class="pre">max-retries</span></code> option to <code class="docutils literal notranslate"><span class="pre">0</span></code> in <code class="docutils literal notranslate"><span class="pre">auth_conf.xml</span></code>.</p>
+<p>Some maintenance and support of this code will be provided via the usual <a class="reference external" href="https://galaxyproject.org/support/">Support</a> channels, but improvements and fixes would be greatly welcomed, as this is a complex feature which is not used by the Galaxy Development Team.</p>
+</section>
+</section>
+<section id="special-environment-variables-for-job-resources">
+<h2>Special environment variables for job resources<a class="headerlink" href="#special-environment-variables-for-job-resources" title="Link to this heading">¶</a></h2>
+<p>Galaxy <em>tries</em> to define special environment variables for each job that contain
+the information on the number of available slots and the amount of available
+memory:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GALAXY_SLOTS</span></code>: number of available slots</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GALAXY_MEMORY_MB</span></code>: total amount of available memory in MB</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GALAXY_MEMORY_MB_PER_SLOT</span></code>: amount of memory that is available for each slot in MB</p></li>
+</ul>
+<p>More precisely Galaxy inserts bash code in the job submit script that
+tries to determine these values. This bash code is defined here:</p>
+<ul class="simple">
+<li><p>lib/galaxy/jobs/runners/util/job_script/CLUSTER_SLOTS_STATEMENT.sh</p></li>
+<li><p>lib/galaxy/jobs/runners/util/job_script/MEMORY_STATEMENT.sh</p></li>
+</ul>
+<p>If this code is unable to determine the variables, then they will not be set.
+Therefore in the tool XML files the variables should be used with a default,
+e.g. <code class="docutils literal notranslate"><span class="pre">\${GALAXY_SLOTS:-1}</span></code> (see also https://planemo.readthedocs.io/en/latest/writing_advanced.html#cluster-usage).</p>
+<p>In particular <code class="docutils literal notranslate"><span class="pre">GALAXY_MEMORY_MB</span></code> and <code class="docutils literal notranslate"><span class="pre">GALAXY_MEMORY_MB_PER_SLOT</span></code> are currently
+defined only for a few cluster types. Contributions are very welcome, e.g. let
+the Galaxy developers know how to modify that file to support your cluster.</p>
+</section>
+<section id="contributors">
+<h2>Contributors<a class="headerlink" href="#contributors" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Oleksandr Moskalenko</strong>, debugged a number of problems related to running jobs as the real user and using DRMAA with TORQUE.</p></li>
+<li><p><strong>Jaime Frey</strong>, developer of the HTCondor job runner plugin.</p></li>
+<li><p><strong>Ilya Chorny</strong>, developer of the original “real user” job running code.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="scaling.html" class="btn btn-neutral float-left" title="Scaling and Load Balancing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="jobs.html" class="btn btn-neutral float-right" title="Galaxy Job Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Galaxy Committers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

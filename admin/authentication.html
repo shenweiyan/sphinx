@@ -1,0 +1,490 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Authentication &mdash; Galaxy Project 23.1.5.dev0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+
+  
+    <link rel="canonical" href="https://docs.galaxyproject.org/en/master/admin/authentication.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=da3e81e8"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tool Panel Administration" href="tool_panel.html" />
+    <link rel="prev" title="Galaxy Job Configuration" href="jobs.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Galaxy Project
+          </a>
+              <div class="version">
+                23.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../releases/index.html">Releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.1_announce_user.html">June 2023 Galaxy Release (v 23.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.0_announce_user.html">2023 Galaxy Release (v 23.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.05_announce_user.html">May 2022 Galaxy Release (v 22.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.01_announce_user.html">January 2022 Galaxy Release (v 22.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.09_announce_user.html">September 2021 Galaxy Release (v 21.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.05_announce_user.html">May 2021 Galaxy Release (v 21.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.01_announce_user.html">January 2021 Galaxy Release (v 21.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.09_announce_user.html">September 2020 Galaxy Release (v 20.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.05_announce_user.html">May 2020 Galaxy Release (v 20.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.01_announce_user.html">January 2020 Galaxy Release (v 20.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.09_announce_user.html">September 2019 Galaxy Release (v 19.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.05_announce_user.html">May 2019 Galaxy Release (v 19.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.01_announce_user.html">January 2019 Galaxy Release (v 19.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.09_announce.html">September 2018 Galaxy Release (v 18.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.05_announce.html">May 2018 Galaxy Release (v 18.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.01_announce.html">January 2018 Galaxy Release (v 18.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.09_announce.html">September 2017 Galaxy Release (v 17.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.05_announce.html">May 2017 Galaxy Release (v 17.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.01_announce.html">January 2017 Galaxy Release (v 17.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.10_announce.html">October 2016 Galaxy Release (v 16.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.07_announce.html">July 2016 Galaxy Release (v 16.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.04_announce.html">April 2016 Galaxy Release (v 16.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.01_announce.html">January 2016 Galaxy Release (v 16.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.10_announce.html">October 2015 Galaxy Release (v 15.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.07_announce.html">July 2015 Galaxy Release (v 15.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.05_announce.html">May 2015 Galaxy Release (v 15.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.03_announce.html">March 2015 Galaxy Release (v 15.03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.01_announce.html">January 2015 Galaxy Release (v 15.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.10_announce.html">October 2014 Galaxy Release (v 14.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.08_announce.html">August 2014 Galaxy Release (v 14.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.06_announce.html">June 2014 Galaxy Release (v 14.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.04_announce.html">April 2014 Galaxy Release (v 14.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.02_announce.html">February 2014 Galaxy Release (v 14.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.11_announce.html">November 2013 Galaxy Release (v 13.11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.08_announce.html">August 2013 Galaxy Release (v 13.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.06_announce.html">June 2013 Galaxy Release (v 13.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.04_announce.html">April 2013 Galaxy Release (v 13.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.02_announce.html">February 2013 Galaxy Release (v 13.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.01_announce.html">January 2013 Galaxy Release (v 13.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/older_releases.html">Galaxy Releases older than v 13.01</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Admin Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Administration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="python.html">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="framework_dependencies.html">Framework Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">Galaxy Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logging.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="production.html">Production Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nginx.html">Proxying Galaxy with NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apache.html">Proxying Galaxy with Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scaling.html">Scaling and Load Balancing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cluster.html">Connecting to a Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jobs.html">Galaxy Job Configuration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tool_panel.html">Tool Panel Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mq.html">Message queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependency_resolvers.html">Dependency Resolvers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="container_resolvers.html">Containers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="container_resolvers.html#other-considerations">Other considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conda_faq.html">Conda for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="db_migration.html">Galaxy Database Schema Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reports.html">Galaxy Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="useful_scripts.html">Scripts &amp; Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrating_to_gunicorn.html">Migrating from uWSGI to Gunicorn and FastAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="special_topics/index.html">Special topics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/ftp.html">Galaxy FTP Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/interactivetools.html">Galaxy InteractiveTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/mulled_containers.html">Containers for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/grt.html">Galactic Radio Telescope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/gtn.html">Galaxy Training Materials Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/job_metrics.html">Job Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/webhooks.html">Galaxy Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/vault.html">Storing secrets in the vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/performance_tracking.html">Galaxy Performance Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/bug_reports.html">Bug Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/gdpr_compliance.html">GDPR Compliance</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/index.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dev/schema.html">Galaxy Tool XML File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/api_guidelines.html">API Design Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/build_a_job_runner.html">Build a job runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/finding_and_improving_slow_code.html">Finding and improving slow Galaxy code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_managers.html">Data managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_types.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/faq.html">How Do I…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/writing_tests.html">Writing Tests for Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html">Debugging Galaxy Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html#debugging-tests-that-run-out-of-memory">Debugging tests that run out of memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy.html">Debugging Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy_slurm.html">Debugging Galaxy: Slurm Compute Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/translating.html">Translating the Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/create_point_release.html">Creating Galaxy Point Releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api_doc.html">Galaxy API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/quickstart.html"> Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/api.html"> Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ts_api_doc.html">Tool Shed API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/ts_api.html"> API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../lib/modules.html">Application Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy.html">galaxy package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_ext.html">galaxy_ext package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_test.html">galaxy_test package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/tool_shed.html">tool_shed package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../project/organization.html">Project Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#procedure-documents">Procedure Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#committers">Committers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#release-branches">Release branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#handling-pull-requests">Handling Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#issue-reporting">Issue Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../project/issues.html">Issue Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#issue-reporting">Issue Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#milestones">Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#labeling-structure">Labeling Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#the-roadmap">The Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#voting">Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#automation">Automation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Galaxy Project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Galaxy Deployment &amp; Administration</a></li>
+      <li class="breadcrumb-item active">Authentication</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/admin/authentication.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="authentication">
+<h1>Authentication<a class="headerlink" href="#authentication" title="Link to this heading">¶</a></h1>
+<p>Galaxy supports the following authentication mechanisms:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#galaxy-database">Galaxy Database</a> - Galaxy-specific login using e-mail address and password (the default);</p></li>
+<li><p><a class="reference internal" href="#oidc-and-oauth2-0">OIDC and OAuth2.0</a> - Login to Galaxy using your Google account, without having to create a Galaxy user;</p></li>
+<li><p><a class="reference internal" href="#authentication-framework">Authentication Framework</a> - A plugin-driven framework supporting LDAP/Active Directory and PAM;</p></li>
+<li><p><a class="reference internal" href="#remote-user-authentication">Proxy Authentication</a> - HTTP <a class="reference external" href="http://httpd.apache.org/docs/current/mod/mod_cgi.html#env">remote user</a> provided by any front-end Web server.</p></li>
+</ul>
+<section id="galaxy-database">
+<h2>Galaxy Database<a class="headerlink" href="#galaxy-database" title="Link to this heading">¶</a></h2>
+<p>Without any additional configuration Galaxy will simply use its database to maintain usernames and passwords. The
+Galaxy user interface and API provide functions allowing users to register accounts, change passwords, etc….</p>
+<p>If deploying Galaxy using the default authentication option, user activation can be enabled also. This is documented
+<a class="reference internal" href="#user-activation">below</a>.</p>
+</section>
+<section id="oidc-and-oauth2-0">
+<h2>OIDC and OAuth2.0<a class="headerlink" href="#oidc-and-oauth2-0" title="Link to this heading">¶</a></h2>
+<p>Leveraging OpenID Connect (OIDC) protocol, we enable login to Galaxy without explicitly creating a Galaxy user. This feature is disabled by default. In short, to enable this feature, a Galaxy server admin has to take the following two steps:</p>
+<ol class="arabic simple">
+<li><p>Define the Galaxy instance on an OIDC identity provider. At the moment, we support Google and Okta. To set a Galaxy instance on Google, go to <em>credentials</em> section at <a class="reference external" href="https://console.developers.google.com/">developers console</a>, and configure the instance. At the end, you’ll receive <em>client ID</em> and <em>client secret</em> take a note of these two tokens. For Okta, create a new application in Okta, type <em>web</em>. At the end you should take note of the <em>client ID</em> and <em>client secret</em> tokens.</p></li>
+<li><p>Configure Galaxy. In the <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code> file enable the OIDC service using the <code class="docutils literal notranslate"><span class="pre">enable_oidc</span></code> key and set the two configuration files (i.e., <code class="docutils literal notranslate"><span class="pre">oidc_config_file</span></code> and <code class="docutils literal notranslate"><span class="pre">oidc_backends_config_file</span></code>), based on the IdP information.</p></li>
+</ol>
+<p>The configuration is explained with provider-specific details at <a class="reference external" href="https://galaxyproject.org/authnz/config/oidc/">User Authentication Configuration</a>. How to authenticate from the user perspective we describe <a class="reference external" href="https://galaxyproject.org/authnz/use/oidc/">here</a>.</p>
+</section>
+<section id="authentication-framework">
+<h2>Authentication Framework<a class="headerlink" href="#authentication-framework" title="Link to this heading">¶</a></h2>
+<p>Galaxy is distributed with a plugin-driven authentication framework for which the default database authentication is
+just one (and the default plugin). This framework can be used to allow Galaxy to delegate authentication to
+an LDAP server, an Active Directory server, or to PAM.</p>
+<p>Currently, we provide two variants of the LDAP authenticator namely, <code class="docutils literal notranslate"><span class="pre">ldap</span></code> and <code class="docutils literal notranslate"><span class="pre">ldap3</span></code>. Both are identical implementations that use different Python modules for binding and making queries to a LDAP server. The authenticator
+<code class="docutils literal notranslate"><span class="pre">ldap</span></code> is based on the <a class="reference external" href="https://www.python-ldap.org/">python-ldap</a> module which is a wrapper around the
+OpenLDAP’s client library <code class="docutils literal notranslate"><span class="pre">libldap</span></code>. Currently, <code class="docutils literal notranslate"><span class="pre">python-ldap</span></code> does not provide pre-built Python wheel packages and hence, the OpenLDAP client libraries are needed to install <code class="docutils literal notranslate"><span class="pre">python-ldap</span></code> on the Galaxy server.</p>
+<p>On the otherhand, <code class="docutils literal notranslate"><span class="pre">ldap3</span></code> is a pure-Python implementation of the OpenLDAP client library and has no external dependencies. This package can be installed out-of-the-box, so we recommend to use it when the OpenLDAP client libraries are not available on the Galaxy server.</p>
+<p>These same mechanisms can also be configured by proxies serving Galaxy (e.g. nginx or Apache), but configuring them
+within Galaxy allows users to use the Galaxy UI for logging in instead of relying on a proxy.</p>
+<p>To configure one or more authentication plugins, simply copy <code class="docutils literal notranslate"><span class="pre">config/auth_conf.xml.sample</span></code> to <code class="docutils literal notranslate"><span class="pre">config/auth_conf.xml</span></code>.
+The provided sample configuration file has numerous commented out examples and serves as the most up-to-date source
+of documentation on configuring these plugins.</p>
+<p>It is relatively straight-forward to add a custom authenticator to the framework. In this example, we will demonstrate
+a new authenticator based on the LDAP authenticator that performs custom checks besides password verification for
+authenticating a user on the Galaxy instance. First, we will create an authenticator source file
+<code class="docutils literal notranslate"><span class="pre">lib/galaxy/auth/providers/ldap_custom.py</span></code> with the following content:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">ipaddress</span>
+
+<span class="kn">from</span> <span class="nn">..providers.ldap_ad</span> <span class="kn">import</span> <span class="n">LDAP</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">LDAPCustom</span><span class="p">(</span><span class="n">LDAP</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Attempts to authenticate users against an LDAP server.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">plugin_type</span> <span class="o">=</span> <span class="s2">&quot;ldap_custom&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">authenticate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        See abstract method documentation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;continue-on-failure&quot;</span><span class="p">,</span> <span class="s2">&quot;False&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;False&quot;</span><span class="p">:</span>
+            <span class="n">failure_mode</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># reject and do not continue</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">failure_mode</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># reject but continue</span>
+        <span class="c1"># Check if user&#39;s remote IP is declared in whitelisted IPs</span>
+        <span class="k">if</span> <span class="s2">&quot;white-listed-ips&quot;</span> <span class="ow">in</span> <span class="n">options</span><span class="p">:</span>
+            <span class="n">user_remote_ip</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">remote_addr</span>
+            <span class="c1"># Get all white listed IPs from the config file</span>
+            <span class="n">white_listed_ips</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;white-listed-ips&quot;</span><span class="p">)</span>
+            <span class="c1"># Convert them into a list</span>
+            <span class="n">white_listed_ips</span> <span class="o">=</span> <span class="n">white_listed_ips</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+            <span class="c1"># Convert user remote IP into IPv4Address object</span>
+            <span class="n">user_remote_ip_obj</span> <span class="o">=</span> <span class="n">ipaddress</span><span class="o">.</span><span class="n">IPv4Address</span><span class="p">(</span><span class="n">user_remote_ip</span><span class="p">)</span>
+            <span class="n">white_listed_ip_objs</span> <span class="o">=</span> <span class="p">[</span><span class="n">ipaddress</span><span class="o">.</span><span class="n">IPv4Network</span><span class="p">(</span><span class="n">ip</span><span class="p">)</span> <span class="k">for</span> <span class="n">ip</span> <span class="ow">in</span> <span class="n">white_listed_ip_objs</span><span class="p">]</span>
+            <span class="c1"># Make sure white_listed_ip_objs is not empty</span>
+            <span class="k">if</span> <span class="n">white_listed_ip_objs</span><span class="p">:</span>
+                <span class="c1"># Effectively we are checking if remote ip network subnet</span>
+                <span class="c1"># is subset of allowed subnets. If at least one subnet matches,</span>
+                <span class="c1"># we allow user to authenticate</span>
+                <span class="n">allowed</span> <span class="o">=</span> <span class="nb">any</span><span class="p">(</span><span class="n">user_remote_ip_obj</span> <span class="ow">in</span> <span class="n">sn</span> <span class="k">for</span> <span class="n">sn</span> <span class="ow">in</span> <span class="n">white_listed_ip_objs</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">allowed</span><span class="p">:</span>
+                    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;LDAP authentication: User remote IP is not listed in whitelisted IPs&quot;</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="n">failure_mode</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">authenticate</span><span class="p">(</span><span class="n">email</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;LDAPCustom&quot;</span><span class="p">,)</span>
+
+</pre></div>
+</div>
+<p>In this simple custom LDAP authenticator, we are verifying the remote IP address of the client is declared in the whitelisted
+IP addresses. The so-called <code class="docutils literal notranslate"><span class="pre">white-listed-ips</span></code> can be provided within the <code class="docutils literal notranslate"><span class="pre">auth_config.xml</span></code> file. However this can be done in
+many ways depending on the deployments like getting white listed IPs from LDAP query or simply reading it from a file on the
+file system. This list of IP addresses can be a global whitelist or IP addresses per user. In order to use this authenticator,
+we need to declare it in the <code class="docutils literal notranslate"><span class="pre">auth_config.xml</span></code> file as <code class="docutils literal notranslate"><span class="pre">&lt;type&gt;ldap_custom&lt;/type&gt;</span></code>.</p>
+</section>
+<section id="remote-user-authentication">
+<h2>Remote User Authentication<a class="headerlink" href="#remote-user-authentication" title="Link to this heading">¶</a></h2>
+<p>If Galaxy is deployed with either nginx or Apache serving as a front-end proxy for Galaxy requests, they can be configured
+to authenticate users and pass this authentication information along to Galaxy using the HTTP remote user mechanism. See, for
+example, the <a class="reference external" href="http://httpd.apache.org/docs/2.4/howto/auth.html">authentication and authorization guide for the Apache Web server</a>
+for an impression of the possibilities. Thus, by the time Galaxy is aware of a request, the user identity will have been determined
+and there will be no need for Galaxy to do any additional authentication work, such as showing a login screen or checking user
+credentials.</p>
+<p>However, accepting an identity asserted by the Web server does not relieve Galaxy from having to create a user account for
+such an identity. Thus, Galaxy automatically creates a user for each identity of this kind, recording that the user is
+“external” and also creating a random password in order to effectively disable traditionally performed logins for the user,
+although the remote user mechanism should normally prohibit any login mechanism other than that imposed by the Web server,
+and the “external” flag should itself prohibit the traditional mechanism being used with the user concerned. When a remote
+user returns to Galaxy and is not already logged in, the details of the user are retrieved according to the identity
+information supplied by the Web server.</p>
+<p>Enabling remote user authentication requires you to edit Galaxy’s configuration file and set <code class="docutils literal notranslate"><span class="pre">use_remote_user</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code>.
+This file is likely located in <code class="docutils literal notranslate"><span class="pre">config/galaxy.yml</span></code> and can be created by copying Galaxy’s sample <code class="docutils literal notranslate"><span class="pre">config/galaxy.yml.sample</span></code>.</p>
+<p>Additional Galaxy configuration options related to remote user authentication are documented in Galaxy’s sample
+configuration file. The options <code class="docutils literal notranslate"><span class="pre">remote_user_maildomain</span></code>, <code class="docutils literal notranslate"><span class="pre">remote_user_header</span></code>, and <code class="docutils literal notranslate"><span class="pre">normalize_remote_user_email</span></code> can
+adapt Galaxy to different responses from the proxy, while <code class="docutils literal notranslate"><span class="pre">remote_user_secret</span></code> can be used to provide added
+security, and <code class="docutils literal notranslate"><span class="pre">remote_user_logout_href</span></code> can be used to fix Galaxy’s logout for the deployed setup.</p>
+</section>
+<section id="user-activation">
+<h2>User Activation<a class="headerlink" href="#user-activation" title="Link to this heading">¶</a></h2>
+<p>Galaxy admins using the default authentication mechanism have an option to turn on the email verification feature
+to require users to provide working email during the registration. You can also turn on the disposable email domains
+filter to disable registration for users using known disposable email provider.</p>
+<p>How to set up this config is presented here.</p>
+<p><em>Note: SQLite database is not supported with this feature. Please use PostgreSQL.</em></p>
+<section id="account-activation-feature">
+<h3>Account activation feature<a class="headerlink" href="#account-activation-feature" title="Link to this heading">¶</a></h3>
+<p>In the Galaxy config file <strong>config/galaxy.yml</strong> there is the user activation setting that you have to turn on. By default it is off.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">user_activation_on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+<p>There is also the option for tracking jobs in database that is required to be turned on for the account activation to be effective. By default it is off.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">track_jobs_in_database</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+<p>After you turn on both of these every user that will try to register after this configuration file takes effect will have the activation email sent to the email address provided. Unless the <code class="docutils literal notranslate"><span class="pre">activation_grace_period</span></code> (see below) is set, the user won’t be able to login before the activation happens.</p>
+<p>Furthermore in order for this to work correctly smtp server and email need be set:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">smtp_server</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">some.server.edu:587</span>
+<span class="nt">smtp_username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example_username</span>
+<span class="nt">smtp_password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example_passsword</span>
+<span class="nt">email_from</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">galaxy-instance@example.com</span>
+</pre></div>
+</div>
+<p>Smtp server takes care of the email sending and the <code class="docutils literal notranslate"><span class="pre">email_from</span></code> is used as the <em>From</em> address in the verification email.</p>
+</section>
+<section id="email-template">
+<h3>Email template<a class="headerlink" href="#email-template" title="Link to this heading">¶</a></h3>
+<p>You can modify the activation email body by modifying the provided templates. You can use them in <a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/release_23.0/lib/galaxy/config/templates/mail/activation-email.html">html</a> or <a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/release_23.0/lib/galaxy/config/templates/mail/activation-email.txt">txt</a> depending on your emailing configuration.</p>
+<p>The mapping of mentioned templates’ variables to config options is as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;terms_url&quot;</span><span class="p">:</span> <span class="n">config</span><span class="o">.</span><span class="n">terms_url</span><span class="p">,</span>
+<span class="s2">&quot;contact_email&quot;</span><span class="p">:</span> <span class="n">config</span><span class="o">.</span><span class="n">error_email_to</span><span class="p">,</span>
+<span class="s2">&quot;instance_resource_url&quot;</span><span class="p">:</span> <span class="n">config</span><span class="o">.</span><span class="n">instance_resource_url</span><span class="p">,</span>
+<span class="s2">&quot;custom_message&quot;</span><span class="p">:</span> <span class="n">config</span><span class="o">.</span><span class="n">custom_activation_email_message</span><span class="p">,</span>
+</pre></div>
+</div>
+</section>
+<section id="changing-email-address">
+<h3>Changing email address<a class="headerlink" href="#changing-email-address" title="Link to this heading">¶</a></h3>
+<p>If an activated user changes email address in user settings, their account will be deactivated. A new activation link will be sent and the user will have to visit it to activate the account again.</p>
+</section>
+<section id="grace-period">
+<h3>Grace period<a class="headerlink" href="#grace-period" title="Link to this heading">¶</a></h3>
+<p>In case you want the account activation feature but don’t want to disable login completely you can set the <code class="docutils literal notranslate"><span class="pre">activation_grace_period</span></code> parameter. It specifies, in hours, the period in between registration time and the login time that the user will be allowed to log in even with an inactive account.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Activation grace period. Activation is not forced (login is not disabled) until</span>
+<span class="c1"># grace period has passed. Users under grace period can&#39;t run jobs (see inactivity_box_content).</span>
+<span class="c1"># In hours. Default is 3. Enter 0 to disable grace period.</span>
+<span class="c1"># Users with OpenID logins have grace period forever.</span>
+<span class="c1">#activation_grace_period = 3</span>
+</pre></div>
+</div>
+<p>However with inactive account the user won’t be able to run jobs and warning message will be shown to them at the top of the page. It is customizable via the <code class="docutils literal notranslate"><span class="pre">inactivity_box_content</span></code> parameter.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Used for warning box for inactive accounts (unable to run jobs).</span>
+<span class="c1"># In use only if activation_grace_period is set.</span>
+<span class="c1">#inactivity_box_content = Your account has not been activated yet. Please activate your account by verifying your email address. For now you can access everything at Galaxy but your jobs won&#39;t run.</span>
+</pre></div>
+</div>
+</section>
+<section id="disposable-email-address-filtering">
+<h3>Disposable email address filtering<a class="headerlink" href="#disposable-email-address-filtering" title="Link to this heading">¶</a></h3>
+<p>To prevent users from using unwanted email addresses for the email activation admins can select from two methods of filtering: domain blocking and allowing.</p>
+<section id="blocklist">
+<h4>Blocklist<a class="headerlink" href="#blocklist" title="Link to this heading">¶</a></h4>
+<p>The domain blocklist can be turned on through the <code class="docutils literal notranslate"><span class="pre">email_domain_blocklist_file</span></code> path parameter. Users that use disposable email domains defined at the file in this provided path will be refused registration.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># E-mail domains blocklist is used for filtering out users that are using disposable email address</span>
+<span class="c1"># during the registration. If their address domain matches any domain in the BL they are refused the registration.</span>
+<span class="n">email_domain_blocklist_file</span> <span class="o">=</span> <span class="n">config</span><span class="o">/</span><span class="n">disposable_email_blocklist</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+<p>In the file each domain is on its own line and without the <em>&#64;</em> sign. Example of the blocklist file format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">drdrb</span><span class="o">.</span><span class="n">com</span>
+<span class="n">mailinator</span><span class="o">.</span><span class="n">com</span>
+<span class="n">sogetthis</span><span class="o">.</span><span class="n">com</span>
+<span class="n">spamgourmet</span><span class="o">.</span><span class="n">com</span>
+<span class="n">trashmail</span><span class="o">.</span><span class="n">net</span>
+</pre></div>
+</div>
+<p>A disposable domains blocklist file for download and modification is <a class="reference external" href="https://github.com/martenson/disposable-email-domains/blob/master/disposable_email_blocklist.conf">at GitHub</a></p>
+</section>
+<section id="allowlist">
+<h4>Allowlist<a class="headerlink" href="#allowlist" title="Link to this heading">¶</a></h4>
+<p>The domain allowlist can be turned on through the <code class="docutils literal notranslate"><span class="pre">email_domain_allowlist_file</span></code> path parameter. The file has the same format as the <code class="docutils literal notranslate"><span class="pre">email_domain_blocklist_file</span></code> above. The difference is that domains <em>outside</em> of the allowlist will not be allowed for account registration.</p>
+</section>
+</section>
+</section>
+<section id="authentication-related-code">
+<h2>Authentication Related Code<a class="headerlink" href="#authentication-related-code" title="Link to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">lib/galaxy/webapps/galaxy/controllers/user.py</span></code> file provides much of the authentication-related logic in the <code class="docutils literal notranslate"><span class="pre">User</span></code> class. Of the supported mechanisms, only those needing to perform actual authentication work require any substantial amount of code in this file; the integration of “remote user” information is performed in the <code class="docutils literal notranslate"><span class="pre">lib/galaxy/web/framework/__init__.py</span></code> file.</p>
+<p>Within the <code class="docutils literal notranslate"><span class="pre">User</span></code> class, code supporting authentication mechanisms will need to provide the following things:</p>
+<ul class="simple">
+<li><p>Support within the <code class="docutils literal notranslate"><span class="pre">login</span></code> method for any additional information shown in the login screen. Since the login screen is likely to be modified to show alternative authentication methods alongside the conventional e-mail and password fields, it is possible that information such as identity providers will also need to be made available in order to simplify the experience for users.</p></li>
+<li><p>A separate method to handle the initial stage of authentication for the mechanism. For example, OpenID authentication requests are handled by the <code class="docutils literal notranslate"><span class="pre">openid_auth</span></code> method initially.</p></li>
+<li><p>Additional methods to handle any subsequent stages of authentication. For example, OpenID authentication involves the handling of subsequent requests in the <code class="docutils literal notranslate"><span class="pre">openid_process</span></code>, <code class="docutils literal notranslate"><span class="pre">openid_associate</span></code> and <code class="docutils literal notranslate"><span class="pre">openid_manage</span></code> methods.</p></li>
+</ul>
+<section id="database-tables">
+<h3>Database Tables<a class="headerlink" href="#database-tables" title="Link to this heading">¶</a></h3>
+<p>The database employs a <code class="docutils literal notranslate"><span class="pre">galaxy_user</span></code> table which records the details of all registered users, and this table is exposed to the code through the <code class="docutils literal notranslate"><span class="pre">User</span></code> abstraction found in <code class="docutils literal notranslate"><span class="pre">lib/galaxy/model/mapping.py</span></code>. Each logged-in user is assigned a session which references the user in the <code class="docutils literal notranslate"><span class="pre">galaxy_session</span></code> table (exposed via <code class="docutils literal notranslate"><span class="pre">GalaxySession</span></code>).</p>
+<p>User information from external sources, such as OpenID, is found in peripheral tables such as <code class="docutils literal notranslate"><span class="pre">galaxy_user_openid</span></code> (exposed by <code class="docutils literal notranslate"><span class="pre">UserOpenID</span></code>) and references the registered user and session of that user.</p>
+</section>
+<section id="authenticating-a-user">
+<h3>Authenticating a User<a class="headerlink" href="#authenticating-a-user" title="Link to this heading">¶</a></h3>
+<p>The following steps are followed in any code that seeks to recognise a user within Galaxy and allow access to the application:</p>
+<ol class="arabic simple">
+<li><p>The identity credential, currently the e-mail address of the user, is used to find any previously-registered user in the database.</p></li>
+<li><p>Where no user exists and the login mechanism requires explicit registration, authentication fails at this point. Otherwise, a user is automatically created for previously unknown identities.</p></li>
+<li><p>For conventional accounts requiring a password, authentication fails at this point if a valid password is not specified. Otherwise, an alternative mechanism for completing authentication may be invoked.</p></li>
+<li><p>Upon completion of the authentication of a user’s identity, any association of that identity with the Galaxy user instance may be performed. For example, an OpenID identity may be associated with a user created for that identity.</p></li>
+<li><p>Finally, the login is handled using the <code class="docutils literal notranslate"><span class="pre">handle_user_login</span></code> method on the <code class="docutils literal notranslate"><span class="pre">GalaxyWebTransaction</span></code> object, associating the user with a new session.</p></li>
+</ol>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="jobs.html" class="btn btn-neutral float-left" title="Galaxy Job Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tool_panel.html" class="btn btn-neutral float-right" title="Tool Panel Administration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Galaxy Committers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

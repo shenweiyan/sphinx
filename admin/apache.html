@@ -1,0 +1,593 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proxying Galaxy with Apache &mdash; Galaxy Project 23.1.5.dev0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+
+  
+    <link rel="canonical" href="https://docs.galaxyproject.org/en/master/admin/apache.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=da3e81e8"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Scaling and Load Balancing" href="scaling.html" />
+    <link rel="prev" title="Proxying Galaxy with NGINX" href="nginx.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Galaxy Project
+          </a>
+              <div class="version">
+                23.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../releases/index.html">Releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.1_announce_user.html">June 2023 Galaxy Release (v 23.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.0_announce_user.html">2023 Galaxy Release (v 23.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.05_announce_user.html">May 2022 Galaxy Release (v 22.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.01_announce_user.html">January 2022 Galaxy Release (v 22.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.09_announce_user.html">September 2021 Galaxy Release (v 21.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.05_announce_user.html">May 2021 Galaxy Release (v 21.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.01_announce_user.html">January 2021 Galaxy Release (v 21.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.09_announce_user.html">September 2020 Galaxy Release (v 20.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.05_announce_user.html">May 2020 Galaxy Release (v 20.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.01_announce_user.html">January 2020 Galaxy Release (v 20.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.09_announce_user.html">September 2019 Galaxy Release (v 19.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.05_announce_user.html">May 2019 Galaxy Release (v 19.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.01_announce_user.html">January 2019 Galaxy Release (v 19.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.09_announce.html">September 2018 Galaxy Release (v 18.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.05_announce.html">May 2018 Galaxy Release (v 18.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.01_announce.html">January 2018 Galaxy Release (v 18.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.09_announce.html">September 2017 Galaxy Release (v 17.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.05_announce.html">May 2017 Galaxy Release (v 17.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.01_announce.html">January 2017 Galaxy Release (v 17.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.10_announce.html">October 2016 Galaxy Release (v 16.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.07_announce.html">July 2016 Galaxy Release (v 16.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.04_announce.html">April 2016 Galaxy Release (v 16.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.01_announce.html">January 2016 Galaxy Release (v 16.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.10_announce.html">October 2015 Galaxy Release (v 15.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.07_announce.html">July 2015 Galaxy Release (v 15.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.05_announce.html">May 2015 Galaxy Release (v 15.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.03_announce.html">March 2015 Galaxy Release (v 15.03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.01_announce.html">January 2015 Galaxy Release (v 15.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.10_announce.html">October 2014 Galaxy Release (v 14.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.08_announce.html">August 2014 Galaxy Release (v 14.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.06_announce.html">June 2014 Galaxy Release (v 14.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.04_announce.html">April 2014 Galaxy Release (v 14.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.02_announce.html">February 2014 Galaxy Release (v 14.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.11_announce.html">November 2013 Galaxy Release (v 13.11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.08_announce.html">August 2013 Galaxy Release (v 13.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.06_announce.html">June 2013 Galaxy Release (v 13.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.04_announce.html">April 2013 Galaxy Release (v 13.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.02_announce.html">February 2013 Galaxy Release (v 13.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.01_announce.html">January 2013 Galaxy Release (v 13.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/older_releases.html">Galaxy Releases older than v 13.01</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Admin Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Administration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="python.html">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="framework_dependencies.html">Framework Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">Galaxy Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logging.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="production.html">Production Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nginx.html">Proxying Galaxy with NGINX</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Proxying Galaxy with Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scaling.html">Scaling and Load Balancing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cluster.html">Connecting to a Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jobs.html">Galaxy Job Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tool_panel.html">Tool Panel Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mq.html">Message queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependency_resolvers.html">Dependency Resolvers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="container_resolvers.html">Containers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="container_resolvers.html#other-considerations">Other considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conda_faq.html">Conda for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="db_migration.html">Galaxy Database Schema Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reports.html">Galaxy Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="useful_scripts.html">Scripts &amp; Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrating_to_gunicorn.html">Migrating from uWSGI to Gunicorn and FastAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="special_topics/index.html">Special topics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/ftp.html">Galaxy FTP Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/interactivetools.html">Galaxy InteractiveTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/mulled_containers.html">Containers for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/grt.html">Galactic Radio Telescope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/gtn.html">Galaxy Training Materials Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/job_metrics.html">Job Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/webhooks.html">Galaxy Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/vault.html">Storing secrets in the vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/performance_tracking.html">Galaxy Performance Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/bug_reports.html">Bug Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/gdpr_compliance.html">GDPR Compliance</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/index.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dev/schema.html">Galaxy Tool XML File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/api_guidelines.html">API Design Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/build_a_job_runner.html">Build a job runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/finding_and_improving_slow_code.html">Finding and improving slow Galaxy code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_managers.html">Data managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_types.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/faq.html">How Do I…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/writing_tests.html">Writing Tests for Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html">Debugging Galaxy Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html#debugging-tests-that-run-out-of-memory">Debugging tests that run out of memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy.html">Debugging Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy_slurm.html">Debugging Galaxy: Slurm Compute Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/translating.html">Translating the Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/create_point_release.html">Creating Galaxy Point Releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api_doc.html">Galaxy API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/quickstart.html"> Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/api.html"> Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ts_api_doc.html">Tool Shed API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/ts_api.html"> API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../lib/modules.html">Application Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy.html">galaxy package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_ext.html">galaxy_ext package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_test.html">galaxy_test package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/tool_shed.html">tool_shed package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../project/organization.html">Project Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#procedure-documents">Procedure Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#committers">Committers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#release-branches">Release branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#handling-pull-requests">Handling Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#issue-reporting">Issue Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../project/issues.html">Issue Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#issue-reporting">Issue Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#milestones">Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#labeling-structure">Labeling Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#the-roadmap">The Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#voting">Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#automation">Automation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Galaxy Project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Galaxy Deployment &amp; Administration</a></li>
+      <li class="breadcrumb-item active">Proxying Galaxy with Apache</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/admin/apache.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="proxying-galaxy-with-apache">
+<h1>Proxying Galaxy with Apache<a class="headerlink" href="#proxying-galaxy-with-apache" title="Link to this heading">¶</a></h1>
+<p>In a production environment, it is recommended to run Galaxy behind a proxy web server for performance and security
+reasons. The proxy server sits between clients and your Galaxy server, relaying requests between them and offloading
+some of the more menial and resource-intensive tasks.</p>
+<p><a class="reference external" href="https://httpd.apache.org/">The Apache HTTP Server</a> is a widely deployed and very featureful general purpose web server with mature
+proxying capabilities.</p>
+<p>Instructions for <a class="reference internal" href="nginx.html"><span class="std std-doc">proxying with NGINX</span></a>, which is the proxy server used by The Galaxy Project’s public
+servers, <a class="reference external" href="https://galaxyproject.org/main/">usegalaxy.org</a> (“Main”) and <a class="reference external" href="https://galaxyproject.org/test/">Test</a>, as well as the <a class="reference external" href="https://github.com/bgruening/docker-galaxy-stable">Docker Galaxy project</a>, are
+also available.</p>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">¶</a></h2>
+<p>This documentation should be used in conjunction with the <a class="reference internal" href="scaling.html"><span class="doc std std-doc">Scaling and Load Balancing</span></a> documentation, which you should
+familiarize yourself with prior to setting up your proxy.</p>
+<p>You will need to ensure that inbound (and outbound) traffic on the HTTP (TCP port 80) and HTTPS (TCP port 443) ports is
+permitted by your server’s firewall/security.</p>
+<p><strong>Documentation Conventions:</strong></p>
+<p>For the purposes of this example, we assume that:</p>
+<ul class="simple">
+<li><p><strong>Debian</strong> refers to any <em>Debian</em>-based Linux distribution (including Ubuntu)</p></li>
+<li><p><strong>EL</strong> refers to any <em>RedHat Enterprise Linux</em>-based Linux distribution (including CentOS)</p></li>
+<li><p>the Galaxy server is installed at <code class="docutils literal notranslate"><span class="pre">/srv/galaxy/server</span></code></p></li>
+<li><p>Apache runs as the user <code class="docutils literal notranslate"><span class="pre">www-data</span></code> (this is the default under Debian)</p></li>
+<li><p>Galaxy runs as the user <code class="docutils literal notranslate"><span class="pre">galaxy</span></code> with primary group <code class="docutils literal notranslate"><span class="pre">galaxy</span></code></p></li>
+<li><p>Galaxy is served from the hostname <code class="docutils literal notranslate"><span class="pre">galaxy.example.org</span></code></p></li>
+</ul>
+<p>Throughout the configuration examples in this document, in order to avoid repetition, <code class="docutils literal notranslate"><span class="pre">#...</span></code> is used to denote a
+location where existing or previously given configuration statements would appear.</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Please note that Galaxy’s files - code, datasets, and so forth - should <em>never</em> be located on disk inside
+Apache’s document root. By default, this would expose all of Galaxy (including datasets) to anyone on the web.</p>
+</div>
+<section id="apache-proxy-prerequisites">
+<h3>Apache Proxy Prerequisites<a class="headerlink" href="#apache-proxy-prerequisites" title="Link to this heading">¶</a></h3>
+<p>Currently, the only recommended way to proxy Galaxy with Apache is using <code class="docutils literal notranslate"><span class="pre">mod_rewrite</span></code> and <code class="docutils literal notranslate"><span class="pre">mod_proxy</span></code>.
+These modules must be enabled in the Apache config. The main proxy directives, <code class="docutils literal notranslate"><span class="pre">ProxyRequests</span></code> and <code class="docutils literal notranslate"><span class="pre">ProxyVia</span></code> do <strong>not</strong> need to be enabled.</p>
+<p>Additionally, these directions are written for Apache 2.4+. Apache 2.4 for EL 6 can be obtained from the <a class="reference external" href="https://wiki.centos.org/SpecialInterestGroup/SCLo/CollectionsList">CentOS SCLo
+SIG Repo</a>. Otherwise, your system package manager’s version of Apache should be suitable.</p>
+<p>Ensure that the <code class="docutils literal notranslate"><span class="pre">mod_headers</span></code>, <code class="docutils literal notranslate"><span class="pre">mod_rewrite</span></code> and <code class="docutils literal notranslate"><span class="pre">mod_proxy</span></code>modules are loaded. Although not
+required, the configuration examples also use <code class="docutils literal notranslate"><span class="pre">mod_deflate</span></code> and <code class="docutils literal notranslate"><span class="pre">mod_expires</span></code> for increased client/server performance,
+so these should also be enabled.</p>
+<p>On Debian you can install the necessary packages and enable the modules this with the following:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt-get<span class="w"> </span>install<span class="w"> </span>apache2
+<span class="gp">$ </span>a2enmod<span class="w"> </span>headers<span class="w"> </span>deflate<span class="w"> </span>expires<span class="w"> </span>rewrite<span class="w"> </span>proxy
+<span class="go">Enabling module headers.</span>
+<span class="go">Considering dependency filter for deflate:</span>
+<span class="go">Module filter already enabled</span>
+<span class="go">Module deflate already enabled</span>
+<span class="go">Enabling module expires.</span>
+<span class="go">Enabling module rewrite.</span>
+<span class="go">Enabling module proxy.</span>
+<span class="go">To activate the new configuration, you need to run:</span>
+<span class="go">  service apache2 restart</span>
+</pre></div>
+</div>
+<p>And on EL:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span>httpd
+</pre></div>
+</div>
+</section>
+</section>
+<section id="basic-configuration">
+<h2>Basic configuration<a class="headerlink" href="#basic-configuration" title="Link to this heading">¶</a></h2>
+<p>The use of SSL is <strong>strongly encouraged</strong> to avoid exposure of confidential information such as datasets and user
+credentials to eavesdroppers. The instructions in this document are for setting up an SSL-enabled Galaxy server.</p>
+<p>When setting up an SSL server, simply enabling SSL with the default options is not enough to have a secure server. In
+most cases, the configuration is weak and vulnerable to one or more of the multitude of SSL attacks that have been
+recently prevalent.  The <a class="reference external" href="https://www.ssllabs.com/projects/best-practices/">Qualys SSL/TLS Deployment Best Practices</a> is an excellent and up-to-date guide covering
+everything necessary for securing an SSL server. In addition, the <a class="reference external" href="https://ssl-config.mozilla.org/">Mozilla SSL Configuration Generator</a> can provide you
+with a best practices config tailored to your desired security level and software versions.</p>
+<p>Finally, Google’s <a class="reference external" href="https://pagespeed.web.dev/">PageSpeed Insights</a> tool is helpful for determining how you can improve responsiveness as related to
+proxying, such as verifying that caching and compression are configured properly.</p>
+<p>If you need to run more than one site on your Galaxy server, there are two options:</p>
+<ul class="simple">
+<li><p>Run them on the same server but serve them on different hostnames</p></li>
+<li><p>Serve them from different URL prefixes on a single hostname</p></li>
+</ul>
+<p>The former option is typically cleaner, but if serving more than one SSL site, you will need an SSL certificate with
+<a class="reference external" href="http://wiki.cacert.org/FAQ/subjectAltName">subjectAltNames</a> for each hostname served by the server.</p>
+<section id="serving-galaxy-at-the-web-server-root">
+<h3>Serving Galaxy at the Web Server Root<a class="headerlink" href="#serving-galaxy-at-the-web-server-root" title="Link to this heading">¶</a></h3>
+<p>This configuration assumes that Galaxy will be the only site on your server using the given hostname (e.g.
+<code class="docutils literal notranslate"><span class="pre">https://galaxy.example.org</span></code>).</p>
+<p>Beginning with Galaxy Release 22.01, the default application server that Galaxy runs under is Gunicorn. Because of this,
+the HTTP protocol should be used for communication between Apache and Galaxy, rather
+than the uWSGI protocol used in earlier version of this document.
+Legacy instructions for proxying via uWSGI can be found in the <a class="reference external" href="https://docs.galaxyproject.org/en/release_21.09/admin/apache.html">Galaxy Release 21.09 proxy documentation</a>.</p>
+<p>Since Apache is more efficient than Gunicorn at serving static content, it is best to serve it directly, reducing the load
+on the Galaxy process and allowing for more effective compression (if enabled), caching, and pipelining. Directives to
+do so are included in the example below.</p>
+<p>The following configuration is not exhaustive, only the portions most relevant to serving Galaxy are shown, these should
+be incorporated with your existing/default Apache config as is appropriate for your server.  Notably, the Apache package
+you installed most likely has a multi-file config layout. If you are not already familiar with that layout and where
+best to place your configuration, you can learn more in the <a class="reference internal" href="proxy_package_layout.html"><span class="doc std std-doc">Proxy Package Layouts</span></a>
+documentation.</p>
+<div class="highlight-apache notranslate"><div class="highlight"><pre><span></span><span class="nb">SSLProtocol</span><span class="w">             </span><span class="k">all</span><span class="w"> </span>-SSLv3
+<span class="nb">SSLCipherSuite</span><span class="w">          </span>ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA:ECDHE-ECDSA-AES128-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-SHA:ECDHE-RSA-AES256-SHA:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES256-SHA256
+<span class="nb">SSLHonorCipherOrder</span><span class="w">     </span><span class="k">on</span>
+<span class="nb">SSLCompression</span><span class="w">          </span><span class="k">off</span>
+<span class="nb">SSLSessionTickets</span><span class="w">       </span><span class="k">off</span>
+
+<span class="c"># OCSP stapling</span>
+<span class="nb">SSLUseStapling</span><span class="w">          </span><span class="k">on</span>
+<span class="nb">SSLStaplingResponderTimeout</span><span class="w"> </span><span class="m">5</span>
+<span class="nb">SSLStaplingReturnResponderErrors</span><span class="w"> </span><span class="k">off</span>
+<span class="nb">SSLStaplingCache</span><span class="w">        </span>shmcb:/var/run/ocsp(128000)
+
+<span class="nt">&lt;VirtualHost</span><span class="w"> </span><span class="s">_default_:80</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nb">Redirect</span><span class="w"> </span>permanent<span class="w"> </span>/<span class="w"> </span>https://galaxy.example.org
+<span class="nt">&lt;/VirtualHost&gt;</span>
+
+<span class="nt">&lt;VirtualHost</span><span class="w"> </span><span class="s">_default_:443</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nb">SSLEngine</span><span class="w"> </span><span class="k">on</span>
+<span class="w">    </span><span class="nb">SSLCertificateFile</span><span class="w">      </span><span class="sx">/etc/apache2/ssl/server.crt</span>
+<span class="w">    </span><span class="nb">SSLCertificateKeyFile</span><span class="w">   </span><span class="sx">/etc/apache2/ssl/server.key</span>
+
+<span class="w">    </span><span class="c"># Enable HSTS</span>
+<span class="w">    </span><span class="nb">Header</span><span class="w"> </span>always<span class="w"> </span>set<span class="w"> </span>Strict-Transport-Security<span class="w"> </span><span class="s2">&quot;max-age=15552000; includeSubdomains&quot;</span>
+
+<span class="w">    </span><span class="c"># Preserve Host, needed for uploads</span>
+<span class="w">    </span><span class="nb">ProxyPreserveHost</span><span class="w"> </span><span class="k">on</span>
+
+<span class="w">    </span><span class="c"># use a variable for convenience</span>
+<span class="w">    </span><span class="nb">Define</span><span class="w"> </span>galaxy_root<span class="w"> </span><span class="sx">/srv/galaxy/server</span>
+
+<span class="w">    </span><span class="c"># don&#39;t decode encoded slashes in path info</span>
+<span class="w">    </span><span class="nb">AllowEncodedSlashes</span><span class="w"> </span>NoDecode
+
+<span class="w">    </span><span class="c"># enable compression on all relevant types</span>
+<span class="w">    </span><span class="nb">AddOutputFilterByType</span><span class="w"> </span>DEFLATE<span class="w"> </span>text/html<span class="w"> </span>text/plain<span class="w"> </span>text/xml
+<span class="w">    </span><span class="nb">AddOutputFilterByType</span><span class="w"> </span>DEFLATE<span class="w"> </span>text/css
+<span class="w">    </span><span class="nb">AddOutputFilterByType</span><span class="w"> </span>DEFLATE<span class="w"> </span>application/x-javascript<span class="w"> </span>application/javascript<span class="w"> </span>application/ecmascript
+<span class="w">    </span><span class="nb">AddOutputFilterByType</span><span class="w"> </span>DEFLATE<span class="w"> </span>application/rss+xml
+<span class="w">    </span><span class="nb">AddOutputFilterByType</span><span class="w"> </span>DEFLATE<span class="w"> </span>application/xml
+<span class="w">    </span><span class="nb">AddOutputFilterByType</span><span class="w"> </span>DEFLATE<span class="w"> </span>application/json
+
+<span class="w">    </span><span class="c"># allow access to static content</span>
+<span class="w">    </span><span class="nt">&lt;Directory</span><span class="w"> </span><span class="s">&quot;${galaxy_root}/static&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nb">AllowOverride</span><span class="w"> </span><span class="k">None</span>
+<span class="w">        </span><span class="nb">Require</span><span class="w"> </span><span class="k">all</span><span class="w"> </span>granted
+<span class="w">    </span><span class="nt">&lt;/Directory&gt;</span>
+
+<span class="w">    </span><span class="c"># Galaxy needs to know that this is https for generating URLs</span>
+<span class="w">    </span><span class="nb">RequestHeader</span><span class="w"> </span>set<span class="w"> </span><span class="s2">&quot;X-Forwarded-Proto&quot;</span><span class="w"> </span>expr=%{REQUEST_SCHEME}
+
+<span class="w">    </span><span class="c"># allow up to 3 minutes for Galaxy to respond to slow requests before timing out</span>
+<span class="w">    </span><span class="nb">ProxyTimeout</span><span class="w"> </span><span class="m">180</span>
+
+<span class="w">    </span><span class="c"># proxy all requests not matching other locations to Gunicorn</span>
+<span class="w">    </span><span class="nb">ProxyPass</span><span class="w"> </span>/<span class="w"> </span>unix:/srv/galaxy/var/gunicorn.sock|http://localhost/
+<span class="w">    </span><span class="c"># or Gunicorn on a TCP socket</span>
+<span class="w">    </span><span class="c"># ProxyPass / http://localhost:4001/</span>
+
+<span class="w">    </span><span class="c"># serve framework static content</span>
+<span class="w">    </span><span class="nb">RewriteEngine</span><span class="w"> </span><span class="k">On</span>
+<span class="w">    </span><span class="nb">RewriteRule</span><span class="w"> </span>^/static/(.*)<span class="w"> </span>${galaxy_root}/static/$1<span class="w"> </span>[L]
+<span class="w">    </span><span class="nb">RewriteRule</span><span class="w"> </span>^/favicon.ico<span class="w"> </span>${galaxy_root}/static/favicon.ico<span class="w"> </span>[L]
+<span class="w">    </span><span class="nb">RewriteRule</span><span class="w"> </span>^/robots.txt<span class="w"> </span>${galaxy_root}/static/robots.txt<span class="w"> </span>[L]
+
+<span class="w">    </span><span class="c"># enable caching on static content</span>
+<span class="w">    </span><span class="nt">&lt;Location</span><span class="w"> </span><span class="s">&quot;/static&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nb">ExpiresActive</span><span class="w"> </span><span class="k">On</span>
+<span class="w">        </span><span class="nb">ExpiresDefault</span><span class="w"> </span><span class="s2">&quot;access plus 24 hours&quot;</span>
+<span class="w">    </span><span class="nt">&lt;/Location&gt;</span>
+
+<span class="w">    </span><span class="c"># serve visualization plugin static content</span>
+<span class="w">    </span><span class="nt">&lt;Directory</span><span class="w"> </span><span class="s">&quot;${galaxy_root}/config/plugins/(.+)/(.+)/static&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nb">AllowOverride</span><span class="w"> </span><span class="k">None</span>
+<span class="w">        </span><span class="nb">Require</span><span class="w"> </span><span class="k">all</span><span class="w"> </span>granted
+<span class="w">    </span><span class="nt">&lt;/Directory&gt;</span>
+<span class="w">    </span><span class="nb">RewriteRule</span><span class="w"> </span>^/plugins/(.+)/(.+)/static/(.*)$<span class="w"> </span>${galaxy_root}/config/plugins/$1/$2/static/$3<span class="w"> </span>[L]
+<span class="nt">&lt;/VirtualHost&gt;</span>
+</pre></div>
+</div>
+<p>Be sure to set <code class="docutils literal notranslate"><span class="pre">galaxy_root</span></code> to the path to your copy of Galaxy and modify the value of <code class="docutils literal notranslate"><span class="pre">ProxyPass</span> <span class="pre">/</span></code>  to match your
+Gunicorn socket path. With the default configuration, Gunicorn will bind to a TCP socket, so you will need Gunicorn to bind to a UNIX domain socket as described in the <a class="reference internal" href="scaling.html"><span class="std std-doc">Scaling and Load Balancing</span></a> documentation. If using a UNIX domain
+socket, be sure to pay particular attention to the discussion of users and permissions.</p>
+</section>
+<section id="additional-notes">
+<h3>Additional Notes<a class="headerlink" href="#additional-notes" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Do not</strong> simply copy the SSL configuration directives and expect them to work on your server or to be secure! These
+are provided as examples of some of the best practices as of the time of writing, but will not always be up to date.
+Use the guides referenced in <a class="reference internal" href="#basic-configuration">basic configuration</a> section to configure SSL properly.</p></li>
+<li><p>If your existing Apache configuration contains a line or included config file defining a default server, be sure to
+disable it by commenting its <code class="docutils literal notranslate"><span class="pre">&lt;VirtualHost&gt;</span></code> or preventing its inclusion (under Debian this is done by removing its
+symlink from <code class="docutils literal notranslate"><span class="pre">/etc/apache2/sites-enabled</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ProxyTimeout</span></code> can be adjusted as appropriate for your site. This is the amount of time allowed for communication
+between Apache and Gunicorn to block while waiting for a response from Galaxy, and is useful for holding client (browser)
+connections while Gunicorn is restarting Galaxy subprocesses or Galaxy is performing a slow operation.</p></li>
+<li><p>If your Apache server is set up to use <code class="docutils literal notranslate"><span class="pre">mod_security</span></code>, you may need to modify the value of the <code class="docutils literal notranslate"><span class="pre">SecRequestBodyLimit</span></code>.
+The default value on some systems will limit uploads to only a few kilobytes.</p></li>
+<li><p>Some Galaxy URLs contain encoded slashes (%2F) in the path and Apache will not serve these URLs by default, which is
+the reason for inclusion of the <code class="docutils literal notranslate"><span class="pre">AllowEncodedSlashes</span></code> directive. Note: The <code class="docutils literal notranslate"><span class="pre">NoDecode</span></code> value was added in Apache2
+2.2.18, which is newer than EL 6’s provided 2.2.15.</p></li>
+<li><p>If you must serve Galaxy without SSL, you would simply replace the <code class="docutils literal notranslate"><span class="pre">443</span></code> with <code class="docutils literal notranslate"><span class="pre">80</span></code> in the SSL <code class="docutils literal notranslate"><span class="pre">VirtualHost</span></code> block
+and remove the non-SSL block and all SSL directives.</p></li>
+<li><p>If the proxy works but you are getting 404 errors for Galaxy’s static content, be sure that the user that Apache runs
+as has access to Galaxy’s <code class="docutils literal notranslate"><span class="pre">static/</span></code> directory (and all its parent directories) on the filesystem. You can test this on
+the command line with e.g. <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">-u</span> <span class="pre">www-data</span> <span class="pre">ls</span> <span class="pre">/srv/galaxy/server/static</span></code>.</p></li>
+<li><p>A sample configuration for this setup is available <a class="reference external" href="https://github.com/mvdbeek/galaxy_doc_examples/tree/main/apache">here</a>.</p></li>
+</ul>
+</section>
+<section id="serving-galaxy-at-a-url-prefix">
+<h3>Serving Galaxy at a URL Prefix<a class="headerlink" href="#serving-galaxy-at-a-url-prefix" title="Link to this heading">¶</a></h3>
+<p>It may be necessary to serve Galaxy from an address other than the web server root (<code class="docutils literal notranslate"><span class="pre">https://www.example.org/galaxy</span></code>),
+instead of <code class="docutils literal notranslate"><span class="pre">https://galaxy.example.org</span></code>). To do this, you need to make the following changes to the configuration in the
+previous section:</p>
+<ol class="arabic">
+<li><p>In the Apache config, prefix all of the location directives with your prefix, like so:</p>
+<div class="highlight-apache notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="c">#...</span>
+
+<span class="w">    </span><span class="c"># proxy all requests not matching other locations to Gunicorn</span>
+<span class="w">    </span><span class="nb">ProxyPass</span><span class="w"> </span><span class="sx">/galaxy</span><span class="w"> </span>unix:///srv/galaxy/var/gunicorn.sock|http://localhost/galaxy
+<span class="w">    </span><span class="c"># or Gunicorn on a TCP socket</span>
+<span class="w">    </span><span class="c">#ProxyPass /galaxy http://127.0.0.1:4001/galaxy</span>
+
+<span class="w">    </span><span class="c"># serve framework static content</span>
+<span class="w">    </span><span class="nb">RewriteEngine</span><span class="w"> </span><span class="k">On</span>
+<span class="w">    </span><span class="nb">RewriteRule</span><span class="w"> </span>^/galaxy/$<span class="w"> </span><span class="sx">/galaxy</span><span class="w"> </span>[R,L]
+<span class="w">    </span><span class="nb">RewriteRule</span><span class="w"> </span>^/galaxy/static/(.*)<span class="w"> </span>${galaxy_root}/static/$1<span class="w"> </span>[L]
+<span class="w">    </span><span class="nb">RewriteRule</span><span class="w"> </span>^/galaxy/favicon.ico<span class="w"> </span>${galaxy_root}/static/favicon.ico<span class="w"> </span>[L]
+<span class="nb">RewriteRule</span><span class="w"> </span>^/galaxy/robots.txt<span class="w"> </span>${galaxy_root}/static/robots.txt<span class="w"> </span>[L]
+</pre></div>
+</div>
+</li>
+<li><p>The Galaxy application needs to be aware that it is running with a prefix (for generating URLs in dynamic pages).
+This is accomplished by configuring Galaxy and Gunicorn in your <code class="docutils literal notranslate"><span class="pre">config/galaxy.yml</span></code> file like so and restarting Galaxy:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">gravity</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gunicorn</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># ...</span>
+<span class="w">    </span><span class="nt">bind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/srv/galaxy/var/gunicorn.sock</span>
+<span class="w">    </span><span class="nt">extra_args</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;--forwarded-allow-ips=&quot;*&quot;&#39;</span>
+<span class="nt">galaxy</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># ...</span>
+<span class="w">    </span><span class="nt">galaxy_url_prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/galaxy</span>
+<span class="w">    </span><span class="c1"># ...</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Older versions of Galaxy required you to set the <code class="docutils literal notranslate"><span class="pre">cookie_path</span></code> option. This is no longer necessary as of
+Galaxy release 19.05 as it is now set automatically, but the (now undocumented) option still remains and
+overrides the automatic setting. If you have this option set, unset it unless you know what you’re doing.</p>
+</div>
+<p>Be sure to consult the <a class="reference internal" href="scaling.html"><span class="std std-doc">Scaling and Load Balancing</span></a> documentation.</p>
+</li>
+</ol>
+</section>
+</section>
+<section id="advanced-configuration-topics">
+<h2>Advanced Configuration Topics<a class="headerlink" href="#advanced-configuration-topics" title="Link to this heading">¶</a></h2>
+<section id="sending-files-with-apache">
+<h3>Sending Files With Apache<a class="headerlink" href="#sending-files-with-apache" title="Link to this heading">¶</a></h3>
+<p>Galaxy sends files (e.g. dataset downloads) by opening the file and streaming it in chunks through the proxy server.
+However, this ties up the Galaxy process, which can impact the performance of other operations (see <a class="reference internal" href="production.html"><span class="std std-doc">Production Server
+Configuration</span></a> for a more in-depth explanation).</p>
+<p>Apache can assume this task instead and, as an added benefit, speed up downloads. In addition, both the IGV genome browser and JBrowse tool (run within Galaxy) require support for the HTTP <em>Range</em> header, and this is only available if the proxy serves datasets.
+This is accomplished through the use of <code class="docutils literal notranslate"><span class="pre">mod_xsendfile</span></code>, a 3rd-party Apache module. Dataset security is maintained in this configuration because Apache will
+still check with Galaxy to ensure that the requesting user has permission to access the dataset before sending it.</p>
+<p>To enable it, you must first install <code class="docutils literal notranslate"><span class="pre">mod_xsendfile</span></code>. This is usually available via your package manager
+(<code class="docutils literal notranslate"><span class="pre">libapache2-mod-xsendfile</span></code> on Debian and <code class="docutils literal notranslate"><span class="pre">mod_xsendfile</span></code> from EPEL on EL). Once installed, add the appropriate
+<code class="docutils literal notranslate"><span class="pre">LoadModule</span></code> directive to your Apache configuration (<code class="docutils literal notranslate"><span class="pre">LoadModule</span> <span class="pre">xsendfile_module</span> <span class="pre">/path/to/mod_xsendfile.so</span></code>, but both
+the Debian and EPEL packages do this for you upon installation).</p>
+<p>The, add <code class="docutils literal notranslate"><span class="pre">XSendFile</span></code> directives to your proxy configuration:</p>
+<div class="highlight-apache notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Location</span><span class="w"> </span><span class="s">&quot;/&quot;</span><span class="nt">&gt;</span>
+<span class="w">     </span><span class="nb">XSendFile</span><span class="w"> </span><span class="k">on</span>
+<span class="w">     </span><span class="nb">XSendFilePath</span><span class="w"> </span>/
+<span class="nt">&lt;/Location&gt;</span>
+</pre></div>
+</div>
+<p>Next, edit <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code> and make the following change before restarting Galaxy:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">galaxy</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># ...</span>
+<span class="w">    </span><span class="nt">apache_xsendfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+<p>For this to work, the user under which your Apache server runs will need read access to Galaxy’s <code class="docutils literal notranslate"><span class="pre">files_path</span></code> directory
+(by default, <code class="docutils literal notranslate"><span class="pre">database/files/</span></code>) and its contents. This is most easily done by adding the Apache user to the Galaxy user’s
+primary group and setting the <code class="docutils literal notranslate"><span class="pre">umask(2)</span></code> to create files with the group read permission set. If you start Galaxy from
+the command line, you can do this like so:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">admin@server$ </span>sudo<span class="w"> </span>usermod<span class="w"> </span>-a<span class="w"> </span>-G<span class="w"> </span>galaxy<span class="w"> </span>www-data<span class="w">    </span><span class="c1"># add `www-data` user to `galaxy` group</span>
+<span class="gp">admin@server$ </span>sudo<span class="w"> </span>-iu<span class="w"> </span>galaxy
+<span class="gp">galaxy@server$ </span><span class="nb">umask</span><span class="w"> </span><span class="m">027</span>
+<span class="gp">galaxy@server$ </span>sh<span class="w"> </span>run.sh
+</pre></div>
+</div>
+<p>If you start Galaxy from supervisord, you can set the <code class="docutils literal notranslate"><span class="pre">umask</span></code> option in the <a class="reference external" href="http://supervisord.org/configuration.html#program-x-section-settings">program
+section</a> after adding the Apache user to the Galaxy
+group as shown above.</p>
+</section>
+<section id="external-user-authentication">
+<h3>External user authentication<a class="headerlink" href="#external-user-authentication" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://galaxyproject.org/admin/config/apache-external-user-auth/">Apache for External Authentication</a></p></li>
+<li><p><a class="reference internal" href="authentication.html"><span class="std std-doc">Built-in Galaxy External Authentication</span></a></p></li>
+</ul>
+<section id="display-sites">
+<h4>Display Sites<a class="headerlink" href="#display-sites" title="Link to this heading">¶</a></h4>
+<p>Display sites such as UCSC work not by sending data directly from Galaxy to UCSC via the client’s browser, but by
+sending UCSC a URL to the data in Galaxy that the UCSC server will retrieve data from. Since enabling authentication
+will place <strong>all</strong> of Galaxy behind authentication, such display sites will no longer be able to access data via that
+URL. If <code class="docutils literal notranslate"><span class="pre">display_servers</span></code> is set to a non-empty value in <code class="docutils literal notranslate"><span class="pre">$galaxy_root/config/galaxy.yml</span></code>, this tells Galaxy it should
+allow the named servers access to data in Galaxy. However, you still need to configure Apache to allow access to the
+datasets. An example config is provided here that allows the UCSC Main/Test backends:</p>
+<div class="highlight-apache notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Location</span><span class="w"> </span><span class="s">&quot;/root/display_as&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nb">Satisfy</span><span class="w"> </span><span class="k">Any</span>
+<span class="w">    </span><span class="nb">Order</span><span class="w"> </span>deny,allow
+<span class="w">    </span><span class="nb">Deny</span><span class="w"> </span>from<span class="w"> </span><span class="k">all</span>
+<span class="w">    </span><span class="nb">Allow</span><span class="w"> </span>from<span class="w"> </span>hgw1.cse.ucsc.edu
+<span class="w">    </span><span class="nb">Allow</span><span class="w"> </span>from<span class="w"> </span>hgw2.cse.ucsc.edu
+<span class="w">    </span><span class="nb">Allow</span><span class="w"> </span>from<span class="w"> </span>hgw3.cse.ucsc.edu
+<span class="w">    </span><span class="nb">Allow</span><span class="w"> </span>from<span class="w"> </span>hgw4.cse.ucsc.edu
+<span class="w">    </span><span class="nb">Allow</span><span class="w"> </span>from<span class="w"> </span>hgw5.cse.ucsc.edu
+<span class="w">    </span><span class="nb">Allow</span><span class="w"> </span>from<span class="w"> </span>hgw6.cse.ucsc.edu
+<span class="w">    </span><span class="nb">Allow</span><span class="w"> </span>from<span class="w"> </span>hgw7.cse.ucsc.edu
+<span class="w">    </span><span class="nb">Allow</span><span class="w"> </span>from<span class="w"> </span>hgw8.cse.ucsc.edu
+<span class="nt">&lt;/Location&gt;</span>
+</pre></div>
+</div>
+<p><strong>PLEASE NOTE that this introduces a security hole</strong> , the impact of which depends on whether you have restricted access
+to the dataset via Galaxy’s <a class="reference external" href="https://galaxyproject.org/learn/privacy-features/">internal dataset permissions</a>.</p>
+<ul class="simple">
+<li><p>By default, data in Galaxy is public. Normally with a Galaxy server behind authentication in a proxy server this is of
+little concern since only clients who’ve authenticated can access Galaxy. However, if display site exceptions are made
+as shown above, anyone could use those public sites to bypass authentication and view any <strong>public</strong> dataset on your
+Galaxy server. If you have not changed from the default and most of your datasets are public, you should consider
+running your own display sites that are also behind authentication rather than using the public ones.</p></li>
+<li><p>For datasets for which access has been restricted to one or more roles (i.e. it is no longer “public”), access for
+reading via external browsers is only allowed for a brief period, when someone with access permission clicks the
+“display at…” link. During this period, anyone who has the dataset ID would then be able to use the browser to view
+this dataset. Although such a scenario is unlikely, it is technically possible.</p></li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="nginx.html" class="btn btn-neutral float-left" title="Proxying Galaxy with NGINX" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="scaling.html" class="btn btn-neutral float-right" title="Scaling and Load Balancing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Galaxy Committers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

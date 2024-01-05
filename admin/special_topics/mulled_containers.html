@@ -1,0 +1,390 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Containers for Tool Dependencies &mdash; Galaxy Project 23.1.5.dev0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+
+  
+    <link rel="canonical" href="https://docs.galaxyproject.org/en/master/admin/special_topics/mulled_containers.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/documentation_options.js?v=da3e81e8"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Galactic Radio Telescope" href="grt.html" />
+    <link rel="prev" title="Galaxy InteractiveTools" href="interactivetools.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Galaxy Project
+          </a>
+              <div class="version">
+                23.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../releases/index.html">Releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/23.1_announce_user.html">June 2023 Galaxy Release (v 23.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/23.0_announce_user.html">2023 Galaxy Release (v 23.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/22.05_announce_user.html">May 2022 Galaxy Release (v 22.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/22.01_announce_user.html">January 2022 Galaxy Release (v 22.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/21.09_announce_user.html">September 2021 Galaxy Release (v 21.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/21.05_announce_user.html">May 2021 Galaxy Release (v 21.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/21.01_announce_user.html">January 2021 Galaxy Release (v 21.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/20.09_announce_user.html">September 2020 Galaxy Release (v 20.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/20.05_announce_user.html">May 2020 Galaxy Release (v 20.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/20.01_announce_user.html">January 2020 Galaxy Release (v 20.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/19.09_announce_user.html">September 2019 Galaxy Release (v 19.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/19.05_announce_user.html">May 2019 Galaxy Release (v 19.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/19.01_announce_user.html">January 2019 Galaxy Release (v 19.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/18.09_announce.html">September 2018 Galaxy Release (v 18.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/18.05_announce.html">May 2018 Galaxy Release (v 18.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/18.01_announce.html">January 2018 Galaxy Release (v 18.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/17.09_announce.html">September 2017 Galaxy Release (v 17.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/17.05_announce.html">May 2017 Galaxy Release (v 17.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/17.01_announce.html">January 2017 Galaxy Release (v 17.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/16.10_announce.html">October 2016 Galaxy Release (v 16.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/16.07_announce.html">July 2016 Galaxy Release (v 16.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/16.04_announce.html">April 2016 Galaxy Release (v 16.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/16.01_announce.html">January 2016 Galaxy Release (v 16.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/15.10_announce.html">October 2015 Galaxy Release (v 15.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/15.07_announce.html">July 2015 Galaxy Release (v 15.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/15.05_announce.html">May 2015 Galaxy Release (v 15.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/15.03_announce.html">March 2015 Galaxy Release (v 15.03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/15.01_announce.html">January 2015 Galaxy Release (v 15.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/14.10_announce.html">October 2014 Galaxy Release (v 14.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/14.08_announce.html">August 2014 Galaxy Release (v 14.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/14.06_announce.html">June 2014 Galaxy Release (v 14.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/14.04_announce.html">April 2014 Galaxy Release (v 14.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/14.02_announce.html">February 2014 Galaxy Release (v 14.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/13.11_announce.html">November 2013 Galaxy Release (v 13.11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/13.08_announce.html">August 2013 Galaxy Release (v 13.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/13.06_announce.html">June 2013 Galaxy Release (v 13.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/13.04_announce.html">April 2013 Galaxy Release (v 13.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/13.02_announce.html">February 2013 Galaxy Release (v 13.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/13.01_announce.html">January 2013 Galaxy Release (v 13.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/older_releases.html">Galaxy Releases older than v 13.01</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Admin Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Administration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python.html">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../framework_dependencies.html">Framework Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../config.html">Galaxy Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../config_logging.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../production.html">Production Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../security.html">Security considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nginx.html">Proxying Galaxy with NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apache.html">Proxying Galaxy with Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scaling.html">Scaling and Load Balancing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cluster.html">Connecting to a Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../jobs.html">Galaxy Job Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tool_panel.html">Tool Panel Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mq.html">Message queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dependency_resolvers.html">Dependency Resolvers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../container_resolvers.html">Containers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../container_resolvers.html#other-considerations">Other considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../conda_faq.html">Conda for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../db_migration.html">Galaxy Database Schema Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reports.html">Galaxy Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../useful_scripts.html">Scripts &amp; Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../options.html">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../migrating_to_gunicorn.html">Migrating from uWSGI to Gunicorn and FastAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Special topics</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ftp.html">Galaxy FTP Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interactivetools.html">Galaxy InteractiveTools</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Containers for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grt.html">Galactic Radio Telescope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gtn.html">Galaxy Training Materials Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_metrics.html">Job Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html">Galaxy Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vault.html">Storing secrets in the vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance_tracking.html">Galaxy Performance Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bug_reports.html">Bug Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gdpr_compliance.html">GDPR Compliance</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev/index.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/schema.html">Galaxy Tool XML File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/api_guidelines.html">API Design Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/build_a_job_runner.html">Build a job runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/finding_and_improving_slow_code.html">Finding and improving slow Galaxy code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/data_managers.html">Data managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/data_types.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/faq.html">How Do I…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/writing_tests.html">Writing Tests for Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/debugging_tests.html">Debugging Galaxy Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/debugging_tests.html#debugging-tests-that-run-out-of-memory">Debugging tests that run out of memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/debugging_galaxy.html">Debugging Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/debugging_galaxy_slurm.html">Debugging Galaxy: Slurm Compute Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/translating.html">Translating the Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/create_point_release.html">Creating Galaxy Point Releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_doc.html">Galaxy API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../api/quickstart.html"> Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/api.html"> Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ts_api_doc.html">Tool Shed API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../api/ts_api.html"> API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../lib/modules.html">Application Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../lib/galaxy.html">galaxy package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lib/galaxy_ext.html">galaxy_ext package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lib/galaxy_test.html">galaxy_test package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lib/tool_shed.html">tool_shed package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../project/organization.html">Project Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../project/organization.html#procedure-documents">Procedure Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/organization.html#committers">Committers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/organization.html#release-branches">Release branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/organization.html#handling-pull-requests">Handling Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/organization.html#issue-reporting">Issue Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../project/issues.html">Issue Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../project/issues.html#issue-reporting">Issue Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/issues.html#milestones">Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/issues.html#labeling-structure">Labeling Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/issues.html#the-roadmap">The Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/issues.html#voting">Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/issues.html#automation">Automation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Galaxy Project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Special Topics</a></li>
+      <li class="breadcrumb-item active">Containers for Tool Dependencies</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/admin/special_topics/mulled_containers.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="containers-for-tool-dependencies">
+<h1>Containers for Tool Dependencies<a class="headerlink" href="#containers-for-tool-dependencies" title="Link to this heading">¶</a></h1>
+<p>Galaxy tools (also called wrappers) are able to use Conda packages
+(see more information in our <a class="reference internal" href="../conda_faq.html"><span class="doc">Galaxy Conda documentation</span></a>) and Docker containers as dependency resolvers.
+The <a class="reference external" href="https://galaxyproject.org/iuc/">IUC</a> recommends to use Conda packages as the primary dependency resolver, mainly because Docker is not
+available on every (HPC-) system. Conda on the other hand can be installed by Galaxy and maintained
+entirely in user-space. Nevertheless, Docker and containers in general have some unique features and
+there are many use-cases in the Galaxy community that make containerized tools very appealing.</p>
+<p>Since 2014 Galaxy supports running tools in Docker containers via a special <a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/dev/test/functional/tools/catDocker.xml#L4">container annotation</a> inside of the
+requirement field.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;requirements&gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- Container based dependency handling --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;container</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;docker&quot;</span><span class="nt">&gt;</span>busybox:ubuntu-14.04<span class="nt">&lt;/container&gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- Conda based dependency handling --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;requirement</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;package&quot;</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;8.22&quot;</span><span class="nt">&gt;</span>gnu_coreutils<span class="nt">&lt;/requirement&gt;</span>
+<span class="nt">&lt;/requirements&gt;</span>
+</pre></div>
+</div>
+<p>This approach has shown two limitations that slowed down the adoption by tool developers.
+First, every tool needs to be annotated with a container name (as shown above) and this container needs
+to be created beforehand, usually manually. The second reason is that a Galaxy tool aims to be deployed everywhere,
+independet of the underlying system, meaning if Docker is not available Galaxy should use Conda packages.
+This puts an additional burden on tool developers who need to take care of two dependency resolvers. This setup can cause
+different tool results depending on the resolver, because both the Conda package and the Docker container are
+usually not created out of the same recipe and maybe were compiled in a different way, use different sources etc.</p>
+<p>Not an ideal solution and something we wanted to solve.</p>
+<p>Here we demonstrate a solution that can create Containers out of Conda packages automatically.
+This can be either used to support communities like <a class="reference external" href="https://github.com/biocontainers">BioContainers</a> to create Containers
+before deploying a Galaxy tool, or this can be used by Galaxy to create Containers on-demand and on-the-fly if one
+is not available already.</p>
+<section id="automatic-build-of-linux-containers">
+<h2>Automatic build of Linux containers<a class="headerlink" href="#automatic-build-of-linux-containers" title="Link to this heading">¶</a></h2>
+<p>We utilize <a class="reference external" href="https://github.com/mulled/mulled">mulled</a> with <a class="reference external" href="https://github.com/involucro/involucro">involucro</a> to automatically convert all packages in <a class="reference external" href="https://bioconda.github.io/">Bioconda</a> into Linux containers images
+(Docker and rkt at the moment) and make them available at the <a class="reference external" href="https://quay.io/organization/biocontainers">BioContainers Quay.io account</a>.</p>
+<p>We have developed small utilities around this technology stack, which is currently included in the <code class="docutils literal notranslate"><span class="pre">galaxy-tool-util</span></code>
+package, which can be installed simply using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">galaxy-tool-util</span></code>. Here is a short introduction:</p>
+<section id="search-for-containers">
+<h3>Search for containers<a class="headerlink" href="#search-for-containers" title="Link to this heading">¶</a></h3>
+<p>This will search for Docker containers (in the biocontainers organisation on quay.io), Singularity containers (located at <a class="reference external" href="https://depot.galaxyproject.org/singularity/">https://depot.galaxyproject.org/singularity/</a>), Conda packages (in the bioconda channel), and GitHub files (on the bioconda-recipes repository.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mulled-search<span class="w"> </span>--destination<span class="w"> </span>docker<span class="w"> </span>conda<span class="w"> </span>--search<span class="w"> </span>vsearch
+</pre></div>
+</div>
+<p>The user can specify the location(s) for a search using the <code class="docutils literal notranslate"><span class="pre">--destination</span></code> option. The search term is specified using <code class="docutils literal notranslate"><span class="pre">--search</span></code>. Multiple search terms can be specified simultaneously; in this case, the search will also encompass multi-package containers. For example, <code class="docutils literal notranslate"><span class="pre">--search</span> <span class="pre">samtools</span> <span class="pre">bamtools</span></code>, will return <code class="docutils literal notranslate"><span class="pre">mulled-v2-0560a8046fc82aa4338588eca29ff18edab2c5aa:c17ce694dd57ab0ac1a2b86bb214e65fedef760e-0</span></code>, in addition to all individual samtools and bamtools results.</p>
+<p>If the user wishes to specify a quay.io organization or Conda channel for the search, this may be done using the <code class="docutils literal notranslate"><span class="pre">--organization</span></code> and <code class="docutils literal notranslate"><span class="pre">--channel</span></code> options respectively, e.g. <code class="docutils literal notranslate"><span class="pre">--channel</span> <span class="pre">conda-forge</span></code>. Enabling <code class="docutils literal notranslate"><span class="pre">--json</span></code> causes results to be returned in JSON format.</p>
+</section>
+<section id="calculate-a-mulled-hash">
+<h3>Calculate a mulled hash<a class="headerlink" href="#calculate-a-mulled-hash" title="Link to this heading">¶</a></h3>
+<p>Each mulled container is identified with a hash such as <code class="docutils literal notranslate"><span class="pre">mulled-v2-8186960447c5cb2faa697666dc1e6d919ad23f3e</span></code>. You can calculate this hash using the <code class="docutils literal notranslate"><span class="pre">mulled-hash</span></code> command, submitting a comma-separated list of package names:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mulled-hash<span class="w"> </span><span class="nv">samtools</span><span class="o">=</span><span class="m">1</span>.3.1,bedtools<span class="o">=</span><span class="m">2</span>.22
+mulled-v2-8186960447c5cb2faa697666dc1e6d919ad23f3e:d52e471b5bfa168ac813d54fc5dfe7f96ade56e6
+</pre></div>
+</div>
+<p>The user can specify whether to generate hashes for either version 1 or version 2 containers with <code class="docutils literal notranslate"><span class="pre">--hash</span></code>; version 2 is the default.</p>
+</section>
+<section id="build-all-packages-from-bioconda-from-the-last-24h">
+<h3>Build all packages from bioconda from the last 24h<a class="headerlink" href="#build-all-packages-from-bioconda-from-the-last-24h" title="Link to this heading">¶</a></h3>
+<p>The BioConda community is building a container for every package they create with a command similar to this.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mulled-build-channel<span class="w"> </span>--channel<span class="w"> </span>bioconda<span class="w"> </span>--namespace<span class="w"> </span>biocontainers<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--involucro-path<span class="w"> </span>./involucro<span class="w"> </span>--recipes-dir<span class="w"> </span>./bioconda-recipes<span class="w"> </span>--diff-hours<span class="w"> </span><span class="m">25</span><span class="w"> </span>build
+</pre></div>
+</div>
+</section>
+<section id="building-docker-containers-for-local-conda-packages">
+<h3>Building Docker containers for local Conda packages<a class="headerlink" href="#building-docker-containers-for-local-conda-packages" title="Link to this heading">¶</a></h3>
+<p>Conda packages can be tested with creating a <em>busybox</em> based container for this particular package in the following way.
+This also demonstrates how you can build a container locally and on-the-fly.</p>
+<blockquote>
+<div><p>&gt; we modified the <code class="docutils literal notranslate"><span class="pre">samtools</span></code> package to version 3.0 to make it clear we are using a local version</p>
+</div></blockquote>
+<ol class="arabic simple">
+<li><p>Build your recipe</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conda<span class="w"> </span>build<span class="w"> </span>recipes/samtools
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Index your local builds</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conda<span class="w"> </span>index<span class="w"> </span>/home/bag/miniconda2/conda-bld/linux-64/
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Build a container for your local package</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mulled-build<span class="w"> </span>build-and-test<span class="w"> </span><span class="s1">&#39;samtools=3.0--0&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--extra-channel<span class="w"> </span>file://home/bag/miniconda2/conda-bld/<span class="w"> </span>--test<span class="w"> </span><span class="s1">&#39;samtools --help&#39;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">--0</span></code> indicates the build version of the conda package. It is recommended to specify this number, otherwise
+you will override already existing images. For Python Conda packages this extension might look like this <code class="docutils literal notranslate"><span class="pre">--py35_1</span></code>.</p>
+</section>
+<section id="build-test-and-push-a-conda-forge-package-to-biocontainers">
+<h3>Build, test, and push a conda-forge package to biocontainers<a class="headerlink" href="#build-test-and-push-a-conda-forge-package-to-biocontainers" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>&gt; You need to have write access to the biocontainers repository</p>
+</div></blockquote>
+<p>You can build packages from other Conda channels as well, not only from BioConda. <code class="docutils literal notranslate"><span class="pre">pandoc</span></code> tool is available from the
+conda-forge channel and conda-forge is also enabled by default in Galaxy. To build <code class="docutils literal notranslate"><span class="pre">pandoc</span></code> and push it to biocontainrs
+you could do something along these lines.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mulled-build<span class="w"> </span>build-and-test<span class="w"> </span><span class="s1">&#39;pandoc=1.17.2--0&#39;</span><span class="w"> </span>--test<span class="w"> </span><span class="s1">&#39;pandoc --help&#39;</span><span class="w"> </span>-n<span class="w"> </span>biocontainers
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mulled-build<span class="w"> </span>push<span class="w"> </span><span class="s1">&#39;pandoc=1.17.2--0&#39;</span><span class="w"> </span>--test<span class="w"> </span><span class="s1">&#39;pandoc --help&#39;</span><span class="w"> </span>-n<span class="w"> </span>biocontainers
+</pre></div>
+</div>
+</section>
+<section id="build-singularity-containers-from-docker-containers">
+<h3>Build Singularity containers from Docker containers<a class="headerlink" href="#build-singularity-containers-from-docker-containers" title="Link to this heading">¶</a></h3>
+<p>Singularity containers can be built from Docker containers using the <code class="docutils literal notranslate"><span class="pre">mulled-update-singularity-containers</span></code> command.</p>
+<p>To generate a single container:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mulled-update-singularity-containers<span class="w"> </span>--containers<span class="w"> </span>samtools:1.6--0<span class="w"> </span>--logfile<span class="w"> </span>/tmp/sing/test.log<span class="w"> </span>--filepath<span class="w"> </span>/tmp/sing/<span class="w"> </span>--installation<span class="w"> </span>/usr/local/bin/singularity
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">--containers</span></code> indicates the container name (here <code class="docutils literal notranslate"><span class="pre">samtools:1.6--0</span></code>), <code class="docutils literal notranslate"><span class="pre">--filepath</span></code> the location where the containers should be placed, and <code class="docutils literal notranslate"><span class="pre">--installation</span></code> the location of the Singularity installation. (This can be found using <code class="docutils literal notranslate"><span class="pre">whereis</span> <span class="pre">singularity</span></code>.)</p>
+<p>Multiple containers can be installed simultaneously by giving <code class="docutils literal notranslate"><span class="pre">--containers</span></code> more than one argument:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mulled-update-singularity-containers<span class="w"> </span>--containers<span class="w"> </span>samtools:1.6--0<span class="w"> </span>bamtools:2.4.1--0<span class="w"> </span>--filepath<span class="w"> </span>/tmp/sing/<span class="w"> </span>--installation<span class="w"> </span>/usr/local/bin/singularity
+</pre></div>
+</div>
+<p>For a large number of containers, it may be more convenient to employ the <code class="docutils literal notranslate"><span class="pre">--container-list</span></code> option:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mulled-update-singularity-containers<span class="w"> </span>--container-list<span class="w"> </span>list.txt<span class="w"> </span>--filepath<span class="w"> </span>/tmp/sing/<span class="w"> </span>--installation<span class="w"> </span>/usr/local/bin/singularity
+</pre></div>
+</div>
+<p>Here <code class="docutils literal notranslate"><span class="pre">list.txt</span></code> should contain a list of containers, each on a new line.</p>
+<p>In order to generate the list file the <code class="docutils literal notranslate"><span class="pre">mulled-list</span></code> command may be useful. The following command returns a list of all Docker containers available on the quay.io biocontainers organization, excluding those already available as Singularity containers on <a class="reference external" href="https://depot.galaxyproject.org/singularity/">https://depot.galaxyproject.org/singularity/</a> .</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mulled-list<span class="w"> </span>--source<span class="w"> </span>docker<span class="w"> </span>--not-singularity<span class="w"> </span>--blacklist<span class="w"> </span>blacklist.txt<span class="w"> </span>--file<span class="w"> </span>output.txt
+</pre></div>
+</div>
+<p>The list of containers will be saved as <code class="docutils literal notranslate"><span class="pre">output.txt</span></code>. The (optional) <code class="docutils literal notranslate"><span class="pre">--blacklist</span></code> option may be used to exclude containers which should not included in the output; <code class="docutils literal notranslate"><span class="pre">blacklist.txt</span></code> should contain a list of the ‘blacklisted’ containers, each on a new line.</p>
+<p>The generated containers should also be tested. This can be achieved by affixing <code class="docutils literal notranslate"><span class="pre">--testing</span> <span class="pre">test-output.log</span></code> to the <code class="docutils literal notranslate"><span class="pre">mulled-update-singularity-containers</span></code> command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mulled-update-singularity-containers<span class="w"> </span>--container-list<span class="w"> </span>list.txt<span class="w"> </span>--filepath<span class="w"> </span>/tmp/sing/<span class="w"> </span>--installation<span class="w"> </span>/usr/local/bin/singularity<span class="w"> </span>--testing<span class="w"> </span>test-output.log
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="interactivetools.html" class="btn btn-neutral float-left" title="Galaxy InteractiveTools" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="grt.html" class="btn btn-neutral float-right" title="Galactic Radio Telescope" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Galaxy Committers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,412 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Framework Dependencies &mdash; Galaxy Project 23.1.5.dev0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+
+  
+    <link rel="canonical" href="https://docs.galaxyproject.org/en/master/admin/framework_dependencies.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=da3e81e8"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Galaxy Configuration" href="config.html" />
+    <link rel="prev" title="Supported Python versions" href="python.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Galaxy Project
+          </a>
+              <div class="version">
+                23.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../releases/index.html">Releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.1_announce_user.html">June 2023 Galaxy Release (v 23.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.0_announce_user.html">2023 Galaxy Release (v 23.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.05_announce_user.html">May 2022 Galaxy Release (v 22.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.01_announce_user.html">January 2022 Galaxy Release (v 22.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.09_announce_user.html">September 2021 Galaxy Release (v 21.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.05_announce_user.html">May 2021 Galaxy Release (v 21.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.01_announce_user.html">January 2021 Galaxy Release (v 21.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.09_announce_user.html">September 2020 Galaxy Release (v 20.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.05_announce_user.html">May 2020 Galaxy Release (v 20.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.01_announce_user.html">January 2020 Galaxy Release (v 20.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.09_announce_user.html">September 2019 Galaxy Release (v 19.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.05_announce_user.html">May 2019 Galaxy Release (v 19.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.01_announce_user.html">January 2019 Galaxy Release (v 19.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.09_announce.html">September 2018 Galaxy Release (v 18.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.05_announce.html">May 2018 Galaxy Release (v 18.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.01_announce.html">January 2018 Galaxy Release (v 18.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.09_announce.html">September 2017 Galaxy Release (v 17.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.05_announce.html">May 2017 Galaxy Release (v 17.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.01_announce.html">January 2017 Galaxy Release (v 17.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.10_announce.html">October 2016 Galaxy Release (v 16.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.07_announce.html">July 2016 Galaxy Release (v 16.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.04_announce.html">April 2016 Galaxy Release (v 16.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.01_announce.html">January 2016 Galaxy Release (v 16.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.10_announce.html">October 2015 Galaxy Release (v 15.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.07_announce.html">July 2015 Galaxy Release (v 15.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.05_announce.html">May 2015 Galaxy Release (v 15.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.03_announce.html">March 2015 Galaxy Release (v 15.03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.01_announce.html">January 2015 Galaxy Release (v 15.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.10_announce.html">October 2014 Galaxy Release (v 14.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.08_announce.html">August 2014 Galaxy Release (v 14.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.06_announce.html">June 2014 Galaxy Release (v 14.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.04_announce.html">April 2014 Galaxy Release (v 14.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.02_announce.html">February 2014 Galaxy Release (v 14.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.11_announce.html">November 2013 Galaxy Release (v 13.11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.08_announce.html">August 2013 Galaxy Release (v 13.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.06_announce.html">June 2013 Galaxy Release (v 13.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.04_announce.html">April 2013 Galaxy Release (v 13.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.02_announce.html">February 2013 Galaxy Release (v 13.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.01_announce.html">January 2013 Galaxy Release (v 13.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/older_releases.html">Galaxy Releases older than v 13.01</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Admin Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Administration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="python.html">Supported Python versions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Framework Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">Galaxy Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logging.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="production.html">Production Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nginx.html">Proxying Galaxy with NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apache.html">Proxying Galaxy with Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scaling.html">Scaling and Load Balancing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cluster.html">Connecting to a Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jobs.html">Galaxy Job Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tool_panel.html">Tool Panel Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mq.html">Message queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependency_resolvers.html">Dependency Resolvers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="container_resolvers.html">Containers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="container_resolvers.html#other-considerations">Other considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conda_faq.html">Conda for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="db_migration.html">Galaxy Database Schema Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reports.html">Galaxy Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="useful_scripts.html">Scripts &amp; Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrating_to_gunicorn.html">Migrating from uWSGI to Gunicorn and FastAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="special_topics/index.html">Special topics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/ftp.html">Galaxy FTP Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/interactivetools.html">Galaxy InteractiveTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/mulled_containers.html">Containers for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/grt.html">Galactic Radio Telescope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/gtn.html">Galaxy Training Materials Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/job_metrics.html">Job Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/webhooks.html">Galaxy Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/vault.html">Storing secrets in the vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/performance_tracking.html">Galaxy Performance Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/bug_reports.html">Bug Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/gdpr_compliance.html">GDPR Compliance</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/index.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dev/schema.html">Galaxy Tool XML File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/api_guidelines.html">API Design Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/build_a_job_runner.html">Build a job runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/finding_and_improving_slow_code.html">Finding and improving slow Galaxy code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_managers.html">Data managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_types.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/faq.html">How Do I…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/writing_tests.html">Writing Tests for Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html">Debugging Galaxy Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html#debugging-tests-that-run-out-of-memory">Debugging tests that run out of memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy.html">Debugging Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy_slurm.html">Debugging Galaxy: Slurm Compute Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/translating.html">Translating the Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/create_point_release.html">Creating Galaxy Point Releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api_doc.html">Galaxy API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/quickstart.html"> Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/api.html"> Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ts_api_doc.html">Tool Shed API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/ts_api.html"> API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../lib/modules.html">Application Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy.html">galaxy package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_ext.html">galaxy_ext package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_test.html">galaxy_test package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/tool_shed.html">tool_shed package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../project/organization.html">Project Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#procedure-documents">Procedure Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#committers">Committers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#release-branches">Release branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#handling-pull-requests">Handling Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#issue-reporting">Issue Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../project/issues.html">Issue Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#issue-reporting">Issue Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#milestones">Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#labeling-structure">Labeling Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#the-roadmap">The Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#voting">Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#automation">Automation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Galaxy Project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Galaxy Deployment &amp; Administration</a></li>
+      <li class="breadcrumb-item active">Framework Dependencies</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/admin/framework_dependencies.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="framework-dependencies">
+<span id="id1"></span><h1>Framework Dependencies<a class="headerlink" href="#framework-dependencies" title="Link to this heading">¶</a></h1>
+<p>Galaxy is a large Python application with a long list of <a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy/dependencies/pipfiles/default/pinned-requirements.txt">Python module dependencies</a>. As a result, the Galaxy
+developers have made significant effort to provide these dependencies in as simple a method as possible while remaining
+compatible with the <a class="reference external" href="https://packaging.python.org">Python packaging best practices</a>. Thus, Galaxy’s runtime setup procedure makes use of <a class="reference external" href="https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments">virtualenv</a>
+for package environment isolation, <a class="reference external" href="https://packaging.python.org/tutorials/installing-packages/#use-pip-for-installing">pip</a> for installation, and <a class="reference external" href="https://packaging.python.org/tutorials/installing-packages/#source-distributions-vs-wheels">wheel</a> to provide pre-built versions of dependencies.</p>
+<p>In addition to framework dependencies, since Galaxy 18.09, the client (UI) is no longer provided in its built format
+when downloading Galaxy. For more information, see <a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/dev/client/README.md">https://github.com/galaxyproject/galaxy/blob/dev/client/README.md</a> .</p>
+<section id="how-it-works">
+<h2>How it works<a class="headerlink" href="#how-it-works" title="Link to this heading">¶</a></h2>
+<p>Upon startup (with <code class="docutils literal notranslate"><span class="pre">run.sh</span></code>), the startup scripts will:</p>
+<ol class="arabic simple">
+<li><p>Create a Python <a class="reference external" href="https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments">virtualenv</a> in the directory <code class="docutils literal notranslate"><span class="pre">.venv</span></code>.</p></li>
+<li><p>Unset the <code class="docutils literal notranslate"><span class="pre">$PYTHONPATH</span></code> environment variable (if set) as this can interfere with installing dependencies.</p></li>
+<li><p>Download and install packages from the <a class="reference external" href="https://wheels.galaxyproject.org/">Galaxy project wheel server</a>, as well as the <a class="reference external" href="https://pypi.org">Python
+Package Index</a> (aka PyPI) , using <a class="reference external" href="https://packaging.python.org/tutorials/installing-packages/#use-pip-for-installing">pip</a>.</p></li>
+<li><p>Start Galaxy using <code class="docutils literal notranslate"><span class="pre">.venv/bin/python</span></code>.</p></li>
+</ol>
+</section>
+<section id="options">
+<h2>Options<a class="headerlink" href="#options" title="Link to this heading">¶</a></h2>
+<p>A variety of options to <code class="docutils literal notranslate"><span class="pre">run.sh</span></code> are available to control the above behavior:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--skip-venv</span></code>: Do not create or use a virtualenv.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--skip-wheels</span></code>: Do not install wheels.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--no-create-venv</span></code>: Do not create a virtualenv, but use one if it exists at <code class="docutils literal notranslate"><span class="pre">.venv</span></code> or if <code class="docutils literal notranslate"><span class="pre">$VIRTUAL_ENV</span></code> is set
+(this variable is set by virtualenv’s <code class="docutils literal notranslate"><span class="pre">activate</span></code>).</p></li>
+</ul>
+</section>
+<section id="managing-dependencies-manually">
+<h2>Managing dependencies manually<a class="headerlink" href="#managing-dependencies-manually" title="Link to this heading">¶</a></h2>
+<section id="create-a-virtualenv">
+<h3>Create a virtualenv<a class="headerlink" href="#create-a-virtualenv" title="Link to this heading">¶</a></h3>
+<p>Using a <a class="reference external" href="https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments">virtualenv</a> in <code class="docutils literal notranslate"><span class="pre">.venv</span></code> under the Galaxy source tree is not required. More complicated Galaxy setups may
+choose to use a virtualenv external to the Galaxy source tree, which can be done either by not using <code class="docutils literal notranslate"><span class="pre">run.sh</span></code> directly
+(an example of this can be found under the <a class="reference internal" href="scaling.html"><span class="doc">Scaling and Load Balancing</span></a> documentation) or using the <code class="docutils literal notranslate"><span class="pre">--no-create-venv</span></code>
+option, explained in the <a class="reference internal" href="#options">Options</a> section. It is also possible to force Galaxy to start without a virtualenv at all,
+but you should not do this unless you know what you’re doing.</p>
+<p>To manually create a virtualenv, you will first need to obtain virtualenv.  There are a variety of ways to do this:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">virtualenv</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">virtualenv</span></code></p></li>
+<li><p>Install your Linux distribution’s virtualenv package from the system package manager (e.g. <code class="docutils literal notranslate"><span class="pre">apt-get</span> <span class="pre">install</span>
+<span class="pre">python-virtualenv</span></code>).</p></li>
+<li><p>Download the <a class="reference external" href="https://pypi.python.org/pypi/virtualenv">virtualenv source from PyPI</a>, untar, and run the
+<code class="docutils literal notranslate"><span class="pre">virtualenv.py</span></code> script contained within as <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">virtualenv.py</span> <span class="pre">/path/to/galaxy/virtualenv</span></code></p></li>
+</ul>
+<p>Once this is done, create a virtualenv. In our example, the virtualenv will live in <code class="docutils literal notranslate"><span class="pre">/srv/galaxy/venv</span></code> and the Galaxy
+source code has been cloned to <code class="docutils literal notranslate"><span class="pre">/srv/galaxy/server</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>virtualenv<span class="w"> </span>/srv/galaxy/venv
+<span class="go">New python executable in /srv/galaxy/venv/bin/python</span>
+<span class="go">Installing setuptools, pip, wheel...done.</span>
+<span class="gp">$ </span>.<span class="w"> </span>/srv/galaxy/venv/bin/activate
+<span class="gp gp-VirtualEnv">(venv)</span><span class="gp">$</span>
+</pre></div>
+</div>
+</section>
+<section id="install-dependencies">
+<h3>Install dependencies<a class="headerlink" href="#install-dependencies" title="Link to this heading">¶</a></h3>
+<p>Normally, <code class="docutils literal notranslate"><span class="pre">run.sh</span></code> calls <a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/dev/scripts/common_startup.sh">common_startup.sh</a>, which creates the virtualenv and installs dependencies. You can call
+this script yourself to set up Galaxy pip and the dependencies without creating a virtualenv using the
+<code class="docutils literal notranslate"><span class="pre">--no-create-venv</span></code> option:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(venv)</span><span class="gp">$ </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="w"> </span>sh<span class="w"> </span>/srv/galaxy/server/scripts/common_startup.sh<span class="w"> </span>--no-create-venv
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If your <code class="docutils literal notranslate"><span class="pre">$PYTHONPATH</span></code> is set, it may interfere with the dependency installation process. Without
+<code class="docutils literal notranslate"><span class="pre">--no-create-venv</span></code> the <code class="docutils literal notranslate"><span class="pre">$PYTHONPATH</span></code> variable will be automatically unset, but we assume you know what you’re
+doing and may want it left intact if you are using <code class="docutils literal notranslate"><span class="pre">--no-create-venv</span></code>. If you encounter problems, try unsetting
+<code class="docutils literal notranslate"><span class="pre">$PYTHONPATH</span></code> as shown in the example above.</p>
+</div>
+</section>
+</section>
+<section id="dependency-management-complications">
+<h2>Dependency management complications<a class="headerlink" href="#dependency-management-complications" title="Link to this heading">¶</a></h2>
+<p>Certain deployment scenarios or other software may complicate Galaxy dependency management. If you use any of these,
+relevant information can be found in the corresponding subsection below.</p>
+<section id="galaxy-job-handlers">
+<h3>Galaxy job handlers<a class="headerlink" href="#galaxy-job-handlers" title="Link to this heading">¶</a></h3>
+<p>All Galaxy jobs run a metadata detection step on the job outputs upon completion of the tool. The metadata detection
+step requires many of Galaxy’s dependencies. Because of this, it’s necessary to make sure the metadata detection step
+runs in Galaxy’s virtualenv. If you run a relatively simple Galaxy deployment (e.g. <code class="docutils literal notranslate"><span class="pre">run.sh</span></code>) then this is assured for
+you automatically. In more complicated setups (running under supervisor and/or the virtualenv used to start Galaxy is
+not on a shared filesystem) it may be necessary to make sure the handlers know where the virtualenv (or a virtualenv
+containing Galaxy’s dependencies) can be found.</p>
+<p>If the virtualenv cannot be located, you will see job failures due to Python <code class="docutils literal notranslate"><span class="pre">ImportError</span></code> exceptions, like so:</p>
+<div class="highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;/srv/galaxy/tmp/job_working_directory/001/set_metadata_RK41sy.py&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span>    <span class="kn">from</span> <span class="nn">galaxy_ext.metadata.set_metadata</span> <span class="kn">import</span> <span class="n">set_metadata</span><span class="p">;</span> <span class="n">set_metadata</span><span class="p">()</span>
+  File <span class="nb">&quot;/srv/galaxy/server/lib/galaxy_ext/metadata/set_metadata.py&quot;</span>, line <span class="m">23</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span>    <span class="kn">from</span> <span class="nn">sqlalchemy.orm</span> <span class="kn">import</span> <span class="n">clear_mappers</span>
+<span class="gr">ImportError</span>: <span class="n">No module named sqlalchemy.orm</span>
+</pre></div>
+</div>
+<p>If this is the case, you can instruct jobs to activate the virtualenv with an <code class="docutils literal notranslate"><span class="pre">env</span></code> tag in <code class="docutils literal notranslate"><span class="pre">job_conf.xml</span></code>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;destination</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;cluster&quot;</span><span class="w"> </span><span class="na">runner=</span><span class="s">&quot;drmaa&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- ... other destination params --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;env</span><span class="w"> </span><span class="na">file=</span><span class="s">&quot;/cluster/galaxy/venv/bin/activate&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/destination&gt;</span>
+</pre></div>
+</div>
+<p>If your Galaxy server has a different Python version installed than the one on the cluster worker nodes, you might encounter an error containing this message:</p>
+<div class="highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="x">File &quot;/usr/lib/python2.7/weakref.py&quot;, line 14, in &lt;module&gt;</span>
+<span class="x">    from _weakref import (</span>
+<span class="x">ImportError: cannot import name _remove_dead_weakref</span>
+</pre></div>
+</div>
+<p>If you encounter this error or your Galaxy server’s virtualenv isn’t available on the cluster you can create one manually using the instructions under <a class="reference internal" href="#managing-dependencies-manually">Managing dependencies manually</a> and activate it using the above-mentioned <code class="docutils literal notranslate"><span class="pre">env</span></code> tag in <code class="docutils literal notranslate"><span class="pre">job_conf.xml</span></code>.</p>
+</section>
+<section id="pulsar">
+<h3>Pulsar<a class="headerlink" href="#pulsar" title="Link to this heading">¶</a></h3>
+<p>If using <a class="reference external" href="https://pulsar.readthedocs.io/">Pulsar</a>’s option to set metadata on the remote server, the same conditions as with <a class="reference internal" href="#galaxy-job-handlers">Galaxy job handlers</a>
+apply. You should create a virtualenv on the remote resource, install Galaxy’s dependencies in to it, and set an
+<code class="docutils literal notranslate"><span class="pre">&lt;env&gt;</span></code> tag pointing to the virtualenv’s <code class="docutils literal notranslate"><span class="pre">activate</span></code> as in the <a class="reference internal" href="#galaxy-job-handlers">Galaxy job handlers</a> section. Instructions on how to
+create a virtualenv can be found under the <a class="reference internal" href="#managing-dependencies-manually">Managing dependencies manually</a> section.</p>
+</section>
+<section id="conda">
+<h3>Conda<a class="headerlink" href="#conda" title="Link to this heading">¶</a></h3>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>These instruction apply to Galaxy release 19.01 or newer. Please consult the documentation for your version of Galaxy.</p>
+</div>
+<p><a class="reference external" href="https://conda.io/">Conda</a> and <a class="reference external" href="https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments">virtualenv</a> are incompatible, unless an adapted <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code> package from the <a class="reference external" href="https://conda-forge.org/">conda-forge</a> channel is used.
+Galaxy can create a virtualenv using the adapted virtualenv package. Once a valid <code class="docutils literal notranslate"><span class="pre">.venv</span></code> environment exists it will be used.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you would like to use a virtualenv created by Conda, the simplest method is:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Ensure <code class="docutils literal notranslate"><span class="pre">.venv</span></code> does not exist.</p></li>
+<li><p>Place <code class="docutils literal notranslate"><span class="pre">conda</span></code> on your PATH if it isn’t.</p></li>
+<li><p>Start galaxy using <code class="docutils literal notranslate"><span class="pre">sh</span> <span class="pre">run.sh</span></code> or execute <code class="docutils literal notranslate"><span class="pre">sh</span> <span class="pre">scripts/common_startup.sh</span></code>.</p></li>
+</ol>
+</div></blockquote>
+<p>A Conda environment named <code class="docutils literal notranslate"><span class="pre">_galaxy_</span></code> will be created and the appropriate virtualenv package will be installed into this environment.
+Using this environment a <code class="docutils literal notranslate"><span class="pre">.venv</span></code> is initialized. This is a one-time setup, and all other activation and dependency
+management happens exactly as if a system Python was used for creating <code class="docutils literal notranslate"><span class="pre">.venv</span></code>.</p>
+</div>
+</section>
+</section>
+<section id="adding-additional-galaxy-dependencies">
+<h2>Adding additional Galaxy dependencies<a class="headerlink" href="#adding-additional-galaxy-dependencies" title="Link to this heading">¶</a></h2>
+<p>New packages can be added to Galaxy, or the versions of existing packages can be
+updated, using <a class="reference external" href="https://python-poetry.org/">poetry</a> and <a class="reference external" href="https://github.com/galaxyproject/wheelforge/">Wheelforge</a>.</p>
+<p>If wheels already exist on PyPI for all platforms and Python versions supported
+by Galaxy, you can skip to step 3 in the process below.</p>
+<ol class="arabic simple">
+<li><p>Clone <a class="reference external" href="https://github.com/galaxyproject/wheelforge/">https://github.com/galaxyproject/wheelforge/</a> and add or edit the
+<cite>meta.yaml</cite> file for the package you would like to build.</p></li>
+<li><p>Submit a pull request to <a class="reference external" href="https://github.com/galaxyproject/wheelforge/">Wheelforge</a>.</p></li>
+<li><p>Add the new dependency to the <cite>[tool.poetry.dependencies]</cite> (or to <cite>[tool.poetry.group.dev.dependencies]</cite> if only needed for Galaxy development) section of <cite>pyproject.toml</cite> .</p></li>
+<li><p>Run <cite>make update-dependencies</cite> to update the requirements file in <a class="reference external" href="https://github.com/galaxyproject/galaxy/tree/dev/lib/galaxy/dependencies">lib/galaxy/dependencies</a>.</p></li>
+<li><p>Submit a pull request to Galaxy with your changes.</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="python.html" class="btn btn-neutral float-left" title="Supported Python versions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="config.html" class="btn btn-neutral float-right" title="Galaxy Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Galaxy Committers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,478 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galaxy Issue Management &mdash; Galaxy Project 23.1.5.dev0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+
+  
+    <link rel="canonical" href="https://docs.galaxyproject.org/en/master/project/issues.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=da3e81e8"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Galaxy Core Governance" href="organization.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Galaxy Project
+          </a>
+              <div class="version">
+                23.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../releases/index.html">Releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.1_announce_user.html">June 2023 Galaxy Release (v 23.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.0_announce_user.html">2023 Galaxy Release (v 23.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.05_announce_user.html">May 2022 Galaxy Release (v 22.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.01_announce_user.html">January 2022 Galaxy Release (v 22.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.09_announce_user.html">September 2021 Galaxy Release (v 21.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.05_announce_user.html">May 2021 Galaxy Release (v 21.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.01_announce_user.html">January 2021 Galaxy Release (v 21.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.09_announce_user.html">September 2020 Galaxy Release (v 20.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.05_announce_user.html">May 2020 Galaxy Release (v 20.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.01_announce_user.html">January 2020 Galaxy Release (v 20.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.09_announce_user.html">September 2019 Galaxy Release (v 19.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.05_announce_user.html">May 2019 Galaxy Release (v 19.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.01_announce_user.html">January 2019 Galaxy Release (v 19.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.09_announce.html">September 2018 Galaxy Release (v 18.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.05_announce.html">May 2018 Galaxy Release (v 18.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.01_announce.html">January 2018 Galaxy Release (v 18.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.09_announce.html">September 2017 Galaxy Release (v 17.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.05_announce.html">May 2017 Galaxy Release (v 17.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.01_announce.html">January 2017 Galaxy Release (v 17.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.10_announce.html">October 2016 Galaxy Release (v 16.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.07_announce.html">July 2016 Galaxy Release (v 16.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.04_announce.html">April 2016 Galaxy Release (v 16.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.01_announce.html">January 2016 Galaxy Release (v 16.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.10_announce.html">October 2015 Galaxy Release (v 15.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.07_announce.html">July 2015 Galaxy Release (v 15.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.05_announce.html">May 2015 Galaxy Release (v 15.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.03_announce.html">March 2015 Galaxy Release (v 15.03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.01_announce.html">January 2015 Galaxy Release (v 15.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.10_announce.html">October 2014 Galaxy Release (v 14.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.08_announce.html">August 2014 Galaxy Release (v 14.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.06_announce.html">June 2014 Galaxy Release (v 14.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.04_announce.html">April 2014 Galaxy Release (v 14.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.02_announce.html">February 2014 Galaxy Release (v 14.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.11_announce.html">November 2013 Galaxy Release (v 13.11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.08_announce.html">August 2013 Galaxy Release (v 13.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.06_announce.html">June 2013 Galaxy Release (v 13.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.04_announce.html">April 2013 Galaxy Release (v 13.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.02_announce.html">February 2013 Galaxy Release (v 13.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.01_announce.html">January 2013 Galaxy Release (v 13.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/older_releases.html">Galaxy Releases older than v 13.01</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Admin Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../admin/index.html">Administration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../admin/python.html">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/framework_dependencies.html">Framework Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/config.html">Galaxy Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/config_logging.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/production.html">Production Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/security.html">Security considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/nginx.html">Proxying Galaxy with NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/apache.html">Proxying Galaxy with Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/scaling.html">Scaling and Load Balancing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/cluster.html">Connecting to a Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/jobs.html">Galaxy Job Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/tool_panel.html">Tool Panel Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/mq.html">Message queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/dependency_resolvers.html">Dependency Resolvers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/container_resolvers.html">Containers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/container_resolvers.html#other-considerations">Other considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/conda_faq.html">Conda for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/db_migration.html">Galaxy Database Schema Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/reports.html">Galaxy Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/useful_scripts.html">Scripts &amp; Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/options.html">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/migrating_to_gunicorn.html">Migrating from uWSGI to Gunicorn and FastAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/special_topics/index.html">Special topics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/ftp.html">Galaxy FTP Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/interactivetools.html">Galaxy InteractiveTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/mulled_containers.html">Containers for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/grt.html">Galactic Radio Telescope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/gtn.html">Galaxy Training Materials Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/job_metrics.html">Job Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/webhooks.html">Galaxy Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/vault.html">Storing secrets in the vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/performance_tracking.html">Galaxy Performance Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/bug_reports.html">Bug Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/gdpr_compliance.html">GDPR Compliance</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/index.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dev/schema.html">Galaxy Tool XML File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/api_guidelines.html">API Design Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/build_a_job_runner.html">Build a job runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/finding_and_improving_slow_code.html">Finding and improving slow Galaxy code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_managers.html">Data managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_types.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/faq.html">How Do I…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/writing_tests.html">Writing Tests for Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html">Debugging Galaxy Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html#debugging-tests-that-run-out-of-memory">Debugging tests that run out of memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy.html">Debugging Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy_slurm.html">Debugging Galaxy: Slurm Compute Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/translating.html">Translating the Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/create_point_release.html">Creating Galaxy Point Releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api_doc.html">Galaxy API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/quickstart.html"> Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/api.html"> Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ts_api_doc.html">Tool Shed API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/ts_api.html"> API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../lib/modules.html">Application Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy.html">galaxy package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_ext.html">galaxy_ext package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_test.html">galaxy_test package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/tool_shed.html">tool_shed package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About Project</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="organization.html">Project Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="organization.html#procedure-documents">Procedure Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="organization.html#committers">Committers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="organization.html#release-branches">Release branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="organization.html#handling-pull-requests">Handling Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="organization.html#issue-reporting">Issue Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Issue Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#issue-reporting">Issue Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#milestones">Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#labeling-structure">Labeling Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-roadmap">The Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#voting">Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#automation">Automation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Galaxy Project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Galaxy Issue Management</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/project/issues.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="galaxy-issue-management">
+<h1>Galaxy Issue Management<a class="headerlink" href="#galaxy-issue-management" title="Link to this heading">¶</a></h1>
+<p>The purpose of this document is to formalize how we manage the full
+cycle (reporting, tracking progress, resolution) of both
+feature/enhancement ideas and bugs, as well as providing a few general
+guidelines for longer term planning for various Galaxy related projects.
+Some inspiration taken from the way the
+<a class="reference external" href="https://github.com/docker/docker">Docker</a> project labels issues.</p>
+<section id="issue-reporting">
+<h2>Issue Reporting<a class="headerlink" href="#issue-reporting" title="Link to this heading">¶</a></h2>
+<p>Issues (bugs, feature requests, etc.) should be reported at <a class="reference external" href="https://github.com/galaxyproject/galaxy/issues/">GitHub issues</a>, and
+handling of issues follows the procedures described in this document.</p>
+</section>
+<section id="milestones">
+<h2>Milestones<a class="headerlink" href="#milestones" title="Link to this heading">¶</a></h2>
+<p>Every pull request should, prior to merge, be assigned to the milestone
+corresponding to the Galaxy release it will first appear in (15.10,
+16.01, and so on). This, along with the tags applied, will be used to
+generate the release notes.</p>
+<p>Any non-PR issue assigned to a milestone <em>must</em> be resolved or
+reassigned prior to publishing that release. This is the primary
+mechanism by which we force reconciliation (issue/bug fixed, closed, or
+intentionally postponed) prior to release, and prevent things falling
+through the cracks. In practice, bugs should almost always be tagged
+with a milestone which forces the reconciliation date. Issues <em>may</em> be,
+but they don’t necessarily have to be – this is subjective and it
+depends on whether or not the issue should be revisited prior to the
+corresponding release.</p>
+<p>Effective use of milestones should prevent bugs from falling through the
+cracks, and will provide a mechanism for forcing the revisitation(and
+thus progress or even potential discard) of ideas for enhancements or
+features.</p>
+<section id="deferring-issues">
+<h3>Deferring Issues<a class="headerlink" href="#deferring-issues" title="Link to this heading">¶</a></h3>
+<p>To prevent the review of issues attached to milestones from becoming too
+cumbersome, and to encourage active review and handling of issues, any
+contributor can choose to ‘defer’ an issue attached to an upcoming
+release milestone to a later one. To do this, simply reassign the issue
+to the new milestone and leave a comment so that others notice,
+something like ‘Issue deferred to target_milestone_reference, does not
+block release current_milestone_reference’.</p>
+<p>Once deferred, an issue can’t simply be reattached back to the earlier
+milestone – this requires a PR. The intent here is to make it such that
+if a contributor wants to force an issue to be handle with a release,
+they need to put the work forward to do so or convince someone else to.</p>
+</section>
+</section>
+<section id="labeling-structure">
+<h2>Labeling Structure<a class="headerlink" href="#labeling-structure" title="Link to this heading">¶</a></h2>
+<p>To allow for easy search, filtering, and general issue management every
+issue or PR (not tagged <code class="docutils literal notranslate"><span class="pre">procedures</span></code> or <code class="docutils literal notranslate"><span class="pre">planning</span></code>) is expected to
+have two labels which indicate the type (<code class="docutils literal notranslate"><span class="pre">kind/</span></code>) and focus
+area (<code class="docutils literal notranslate"><span class="pre">area/</span></code>) of the issue. Any issue without these tags will
+automatically have a <code class="docutils literal notranslate"><span class="pre">triage</span></code> label applied indicating that it needs
+human intervention to be correctly tagged. These <code class="docutils literal notranslate"><span class="pre">triage</span></code> tagged
+issues will be regularly reviewed and tagged as appropriate.</p>
+<section id="kind-labels">
+<h3>Kind Labels<a class="headerlink" href="#kind-labels" title="Link to this heading">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">kind</span></code> label set is used for classifying the type of contribution or
+request/report to separate enhancements and new features from bugs, etc.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">kind/bug</span></code> - something is broken, and it needs fixing</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kind/enhancement</span></code> - polish to an existing feature or interface</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kind/feature</span></code> - something brand new</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kind/refactoring</span></code> - cleanup or refactoring of existing code, no
+functional changes</p></li>
+</ul>
+</section>
+<section id="status-labels">
+<h3>Status Labels<a class="headerlink" href="#status-labels" title="Link to this heading">¶</a></h3>
+<p>The default status of an issue or PR is “ready for review”. If that is not the
+case, the state should be communicated as follows:</p>
+<ul class="simple">
+<li><p>for issues, by using the <code class="docutils literal notranslate"><span class="pre">status/planning</span></code> label;</p></li>
+<li><p>for PRs, by using the <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests#draft-pull-requests">draft</a>
+state.</p></li>
+</ul>
+<p>Note that there are no <code class="docutils literal notranslate"><span class="pre">status/complete</span></code>, <code class="docutils literal notranslate"><span class="pre">status/wontfix</span></code>,
+<code class="docutils literal notranslate"><span class="pre">status/duplicate</span></code>, or other terminal status indicators. This is
+intentional to keep the tail end of bookkeeping from getting onerous.
+These sorts of terminal states <em>and their justifications</em> (e.g. the
+reason why it’s a wontfix, or a reference to the duplicate issue) should
+be indicated in the closing comment by the issue closer.</p>
+<p>The following statuses may be applied to issues that need to be revisited
+after some event.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">status/needs</span> <span class="pre">feedback</span></code> - this issue or pull request is waiting for
+a response from the author. The issue or pull request may be assumed stale
+and closed after a month. The committers reserve the right to close issues
+and pull requests without this process, but this tag makes tracking explicit
+and easy.</p></li>
+</ul>
+</section>
+<section id="area-labels">
+<h3>Area Labels<a class="headerlink" href="#area-labels" title="Link to this heading">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">area</span></code> label is used for tagging issues and pull requests to a
+particular focus area. This allows for easy searching within that
+particular domain, as well as more organized release notes.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">area/admin</span></code> - Changes to admin functionality of the Galaxy webapp</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/API</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/auth</span></code> - Authentication and authorization</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/client-build</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/compliance</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/configuration</span></code> - Galaxy’s configuration system</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/cwl</span></code> - changes related to supporting the common workflow language in Galaxy</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/database</span></code> - Change to Galaxy’s database or data access layer</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/dataset-collections</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/datatypes</span></code> - Changes to Galaxy’s datatypes</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/datatype-framework</span></code> - Changes to Galaxy’s datatype and metadata framework</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/dependencies</span></code> - Changes related to Python or JavaScript dependencies of Galaxy itself</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/documentation</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/framework</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/histories</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/i18n</span></code> - Internationalization and localization</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/interactive-tools</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/jobs</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/jobs/kubernetes</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/libraries</span></code> - Change related to data libraries</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/objectstore</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/performance</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/reports</span></code> - The reports webapp</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/rules</span></code> - Rule builder</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/security</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/scripts</span></code> - Changes to scripts used to run or manage Galaxy.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/testing</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/testing/api</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/testing/integration</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/testing/selenium</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/tool-framework</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/tool-dependencies</span></code> - Changes to dependency resolution (including Conda)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/tools</span></code> - Changes to specific tools in Galaxy</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/toolshed</span></code>- Changes to the Tool Shed client or server</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/UI-UX</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/upload</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/util</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/visualizations</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/webhooks</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/workflows</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/workflows/editor</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/workflows/reports</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area/workflows/subworkflows</span></code></p></li>
+</ul>
+<p>New labels should be proposed by opening a pull request against this document
+in the dev branch of Galaxy.</p>
+</section>
+<section id="other-useful-labels">
+<h3>Other Useful Labels<a class="headerlink" href="#other-useful-labels" title="Link to this heading">¶</a></h3>
+<p>While the three labels sets indicating kind, status, and area are
+required there are several other labels that are be useful and/or have
+special purpose.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">procedures</span></code> is a special tag that indicates that the issue is
+related to project governance, and it overrides the need for the trio
+of kind/status/area tags, and these are never auto-flagged for
+triage. More details are available in the
+<a class="reference internal" href="organization.html"><span class="doc">Galaxy Core Governance</span></a> document.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">planning</span></code> is also a special tag that indicates the issue is
+related to larger-scale issue planning. These issues are typically
+meta-issues containing checklists and references to other issues
+which are subcomponents and stepping stones necessary for issue
+resolution. These <em>can</em> utilize the <code class="docutils literal notranslate"><span class="pre">area/*</span></code> tags but are not
+required to. Status and type make little sense here.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">friendliness/beginner</span></code> can be used to indicate a nice entry-level
+issue that only requires limited understanding of the larger Galaxy
+framework and ecosystem. This is useful for encouraging new
+contributors. This tag may alternatively be called <code class="docutils literal notranslate"><span class="pre">help</span> <span class="pre">wanted</span></code>.
+<code class="docutils literal notranslate"><span class="pre">hacktoberfest</span></code> or <code class="docutils literal notranslate"><span class="pre">paper-cut</span></code> are event specific tags that denote
+similar things about an issue.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">friendliness/intermediate</span></code> can be used to indicate an advanced
+level issue that requires decent understanding of the larger Galaxy
+framework and system.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">friendliness/unfriendly</span></code> can be used to mark issues that require
+deep understanding of the framework and/or exquisite programming
+abilities.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">minor</span></code> is a special tag used to generate release notes. It should
+only be applied to pull requests made by committers that fix
+functionality modified during the same release cycle. Such fixes are
+unimportant for release notes. No pull request issued by someone
+outside the committers group should have this tag applied because
+these pull requests must be highlighted in the release notes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">major</span></code> is a special tag used to generate release notes. In practice
+this should be applied to at most a couple dozen pull requests each
+release and is used to prioritize important items of note for the
+top of release notes sections.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">merge</span></code> tag used to indicate PR that only merges a change that has
+been previously added. Used to filter things out of release notes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">feature-request</span></code> is used to indicate a request for change or feature.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">triage</span></code> is a tag automatically added by a GalaxyBot to indicate that
+the issue needs to be evaluated and properly tagged.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">confirmed</span></code> is a tag that should only be applied to issues that also have
+<code class="docutils literal notranslate"><span class="pre">kind/bug</span></code>. The <code class="docutils literal notranslate"><span class="pre">confirmed</span></code> tag indicates a committer has verified the
+bug affects the actual current Galaxy development branch and isn’t a usage
+issue, a previously fixed issue, etc..</p></li>
+</ul>
+</section>
+</section>
+<section id="the-roadmap">
+<h2>The Roadmap<a class="headerlink" href="#the-roadmap" title="Link to this heading">¶</a></h2>
+<p>We will maintain a single <code class="docutils literal notranslate"><span class="pre">roadmap</span></code> GitHub project which will
+describe (at a very high level) the <em>current</em> major areas of focus for
+the project. This project will link to issues and PRs, which will go into
+much more detail and might link to other sub-issues, projects, or PRs.</p>
+<p>This <code class="docutils literal notranslate"><span class="pre">roadmap</span></code> project is subject to periodic review every release.</p>
+<p>The current roadmap project is <a class="reference external" href="https://github.com/galaxyproject/galaxy/projects/8">here</a>.</p>
+</section>
+<section id="voting">
+<h2>Voting<a class="headerlink" href="#voting" title="Link to this heading">¶</a></h2>
+<p>Users can vote for issues by commenting with a +1. It’s possible to sort
+the issue list by ‘most commented’ which would be a good indicator of
+what issues are ‘hot’, though this doesn’t necessarily indicate a high
+vote. It’s possible that that this is good enough and in some ways
+potentially more useful to find ‘hot’ issues than a flat vote count.</p>
+</section>
+<section id="automation">
+<h2>Automation<a class="headerlink" href="#automation" title="Link to this heading">¶</a></h2>
+<p>For now, we will rely on a few simple automation rules:</p>
+<ul class="simple">
+<li><p>All PRs, unless tagged <code class="docutils literal notranslate"><span class="pre">procedures</span></code> or <code class="docutils literal notranslate"><span class="pre">planning</span></code> will
+automatically be tagged <code class="docutils literal notranslate"><span class="pre">triage</span></code>, indicating that they require
+attention.</p></li>
+<li><p>All PRs that are not assigned to a milestone will be tagged
+<code class="docutils literal notranslate"><span class="pre">triage</span></code> to indicate that they require attention prior to merge.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="organization.html" class="btn btn-neutral float-left" title="Galaxy Core Governance" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Galaxy Committers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

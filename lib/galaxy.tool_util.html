@@ -1,0 +1,516 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>galaxy.tool_util package &mdash; Galaxy Project 23.1.5.dev0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+
+  
+    <link rel="canonical" href="https://docs.galaxyproject.org/en/master/lib/galaxy.tool_util.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=da3e81e8"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="galaxy.tool_util.biotools package" href="galaxy.tool_util.biotools.html" />
+    <link rel="prev" title="galaxy.tool_shed.util package" href="galaxy.tool_shed.util.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Galaxy Project
+          </a>
+              <div class="version">
+                23.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../releases/index.html">Releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.1_announce_user.html">June 2023 Galaxy Release (v 23.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.0_announce_user.html">2023 Galaxy Release (v 23.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.05_announce_user.html">May 2022 Galaxy Release (v 22.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.01_announce_user.html">January 2022 Galaxy Release (v 22.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.09_announce_user.html">September 2021 Galaxy Release (v 21.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.05_announce_user.html">May 2021 Galaxy Release (v 21.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.01_announce_user.html">January 2021 Galaxy Release (v 21.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.09_announce_user.html">September 2020 Galaxy Release (v 20.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.05_announce_user.html">May 2020 Galaxy Release (v 20.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.01_announce_user.html">January 2020 Galaxy Release (v 20.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.09_announce_user.html">September 2019 Galaxy Release (v 19.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.05_announce_user.html">May 2019 Galaxy Release (v 19.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.01_announce_user.html">January 2019 Galaxy Release (v 19.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.09_announce.html">September 2018 Galaxy Release (v 18.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.05_announce.html">May 2018 Galaxy Release (v 18.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.01_announce.html">January 2018 Galaxy Release (v 18.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.09_announce.html">September 2017 Galaxy Release (v 17.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.05_announce.html">May 2017 Galaxy Release (v 17.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.01_announce.html">January 2017 Galaxy Release (v 17.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.10_announce.html">October 2016 Galaxy Release (v 16.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.07_announce.html">July 2016 Galaxy Release (v 16.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.04_announce.html">April 2016 Galaxy Release (v 16.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.01_announce.html">January 2016 Galaxy Release (v 16.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.10_announce.html">October 2015 Galaxy Release (v 15.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.07_announce.html">July 2015 Galaxy Release (v 15.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.05_announce.html">May 2015 Galaxy Release (v 15.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.03_announce.html">March 2015 Galaxy Release (v 15.03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.01_announce.html">January 2015 Galaxy Release (v 15.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.10_announce.html">October 2014 Galaxy Release (v 14.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.08_announce.html">August 2014 Galaxy Release (v 14.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.06_announce.html">June 2014 Galaxy Release (v 14.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.04_announce.html">April 2014 Galaxy Release (v 14.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.02_announce.html">February 2014 Galaxy Release (v 14.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.11_announce.html">November 2013 Galaxy Release (v 13.11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.08_announce.html">August 2013 Galaxy Release (v 13.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.06_announce.html">June 2013 Galaxy Release (v 13.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.04_announce.html">April 2013 Galaxy Release (v 13.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.02_announce.html">February 2013 Galaxy Release (v 13.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.01_announce.html">January 2013 Galaxy Release (v 13.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/older_releases.html">Galaxy Releases older than v 13.01</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Admin Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../admin/index.html">Administration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../admin/python.html">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/framework_dependencies.html">Framework Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/config.html">Galaxy Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/config_logging.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/production.html">Production Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/security.html">Security considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/nginx.html">Proxying Galaxy with NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/apache.html">Proxying Galaxy with Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/scaling.html">Scaling and Load Balancing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/cluster.html">Connecting to a Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/jobs.html">Galaxy Job Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/tool_panel.html">Tool Panel Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/mq.html">Message queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/dependency_resolvers.html">Dependency Resolvers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/container_resolvers.html">Containers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/container_resolvers.html#other-considerations">Other considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/conda_faq.html">Conda for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/db_migration.html">Galaxy Database Schema Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/reports.html">Galaxy Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/useful_scripts.html">Scripts &amp; Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/options.html">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/migrating_to_gunicorn.html">Migrating from uWSGI to Gunicorn and FastAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/special_topics/index.html">Special topics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/ftp.html">Galaxy FTP Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/interactivetools.html">Galaxy InteractiveTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/mulled_containers.html">Containers for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/grt.html">Galactic Radio Telescope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/gtn.html">Galaxy Training Materials Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/job_metrics.html">Job Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/webhooks.html">Galaxy Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/vault.html">Storing secrets in the vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/performance_tracking.html">Galaxy Performance Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/bug_reports.html">Bug Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/gdpr_compliance.html">GDPR Compliance</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../dev/index.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dev/schema.html">Galaxy Tool XML File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/api_guidelines.html">API Design Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/build_a_job_runner.html">Build a job runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/finding_and_improving_slow_code.html">Finding and improving slow Galaxy code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_managers.html">Data managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_types.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/faq.html">How Do I…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/writing_tests.html">Writing Tests for Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html">Debugging Galaxy Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html#debugging-tests-that-run-out-of-memory">Debugging tests that run out of memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy.html">Debugging Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy_slurm.html">Debugging Galaxy: Slurm Compute Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/translating.html">Translating the Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/create_point_release.html">Creating Galaxy Point Releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api_doc.html">Galaxy API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/quickstart.html"> Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/api.html"> Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ts_api_doc.html">Tool Shed API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/ts_api.html"> API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Application Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="galaxy.html">galaxy package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy_ext.html">galaxy_ext package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy_test.html">galaxy_test package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tool_shed.html">tool_shed package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../project/organization.html">Project Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#procedure-documents">Procedure Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#committers">Committers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#release-branches">Release branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#handling-pull-requests">Handling Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#issue-reporting">Issue Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../project/issues.html">Issue Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#issue-reporting">Issue Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#milestones">Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#labeling-structure">Labeling Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#the-roadmap">The Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#voting">Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#automation">Automation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Galaxy Project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">lib</a></li>
+          <li class="breadcrumb-item"><a href="galaxy.html">galaxy package</a></li>
+      <li class="breadcrumb-item active">galaxy.tool_util package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/lib/galaxy.tool_util.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-galaxy.tool_util">
+<span id="galaxy-tool-util-package"></span><h1>galaxy.tool_util package<a class="headerlink" href="#module-galaxy.tool_util" title="Link to this heading">¶</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="galaxy.tool_util.biotools.html">galaxy.tool_util.biotools package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.biotools.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.biotools.html#module-galaxy.tool_util.biotools.interface">galaxy.tool_util.biotools.interface module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.tool_util.biotools.html#galaxy.tool_util.biotools.interface.ParsedBiotoolsEntry"><code class="docutils literal notranslate"><span class="pre">ParsedBiotoolsEntry</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.biotools.html#galaxy.tool_util.biotools.interface.ParsedBiotoolsEntry.biotoolsID"><code class="docutils literal notranslate"><span class="pre">ParsedBiotoolsEntry.biotoolsID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.biotools.html#galaxy.tool_util.biotools.interface.ParsedBiotoolsEntry.edam_topics"><code class="docutils literal notranslate"><span class="pre">ParsedBiotoolsEntry.edam_topics</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.biotools.html#galaxy.tool_util.biotools.interface.ParsedBiotoolsEntry.edam_operations"><code class="docutils literal notranslate"><span class="pre">ParsedBiotoolsEntry.edam_operations</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.tool_util.biotools.html#galaxy.tool_util.biotools.interface.BiotoolsEntry"><code class="docutils literal notranslate"><span class="pre">BiotoolsEntry</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.biotools.html#galaxy.tool_util.biotools.interface.BiotoolsEntry.biotoolsID"><code class="docutils literal notranslate"><span class="pre">BiotoolsEntry.biotoolsID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.biotools.html#galaxy.tool_util.biotools.interface.BiotoolsEntry.topic"><code class="docutils literal notranslate"><span class="pre">BiotoolsEntry.topic</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.biotools.html#galaxy.tool_util.biotools.interface.BiotoolsEntry.function"><code class="docutils literal notranslate"><span class="pre">BiotoolsEntry.function</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.biotools.html#galaxy.tool_util.biotools.interface.BiotoolsEntry.from_json"><code class="docutils literal notranslate"><span class="pre">BiotoolsEntry.from_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.biotools.html#galaxy.tool_util.biotools.interface.BiotoolsEntry.edam_info"><code class="docutils literal notranslate"><span class="pre">BiotoolsEntry.edam_info</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.tool_util.biotools.html#galaxy.tool_util.biotools.interface.simplify_edam_dicts"><code class="docutils literal notranslate"><span class="pre">simplify_edam_dicts()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.tool_util.biotools.html#galaxy.tool_util.biotools.interface.simplify_edam_dict"><code class="docutils literal notranslate"><span class="pre">simplify_edam_dict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.biotools.html#galaxy-tool-util-biotools-source-module">galaxy.tool_util.biotools.source module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="galaxy.tool_util.client.html">galaxy.tool_util.client package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.client.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.client.html#galaxy-tool-util-client-staging-module">galaxy.tool_util.client.staging module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="galaxy.tool_util.cwl.html">galaxy.tool_util.cwl package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.cwl.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.cwl.html#module-galaxy.tool_util.cwl.cwltool_deps">galaxy.tool_util.cwl.cwltool_deps module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.tool_util.cwl.html#galaxy.tool_util.cwl.cwltool_deps.ensure_cwltool_available"><code class="docutils literal notranslate"><span class="pre">ensure_cwltool_available()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.tool_util.cwl.html#galaxy.tool_util.cwl.cwltool_deps.needs_shell_quoting"><code class="docutils literal notranslate"><span class="pre">needs_shell_quoting()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.cwl.html#galaxy-tool-util-cwl-parser-module">galaxy.tool_util.cwl.parser module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.cwl.html#galaxy-tool-util-cwl-representation-module">galaxy.tool_util.cwl.representation module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.cwl.html#galaxy-tool-util-cwl-runnable-module">galaxy.tool_util.cwl.runnable module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.cwl.html#galaxy-tool-util-cwl-runtime-actions-module">galaxy.tool_util.cwl.runtime_actions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.cwl.html#galaxy-tool-util-cwl-schema-module">galaxy.tool_util.cwl.schema module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.cwl.html#galaxy-tool-util-cwl-util-module">galaxy.tool_util.cwl.util module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="galaxy.tool_util.deps.html">galaxy.tool_util.deps package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.deps.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.tool_util.deps.container_resolvers.html">galaxy.tool_util.deps.container_resolvers package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.deps.container_resolvers.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.deps.container_resolvers.html#galaxy-tool-util-deps-container-resolvers-explicit-module">galaxy.tool_util.deps.container_resolvers.explicit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.deps.container_resolvers.html#galaxy-tool-util-deps-container-resolvers-mulled-module">galaxy.tool_util.deps.container_resolvers.mulled module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.tool_util.deps.mulled.html">galaxy.tool_util.deps.mulled package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.deps.mulled.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.deps.mulled.html#galaxy-tool-util-deps-mulled-get-tests-module">galaxy.tool_util.deps.mulled.get_tests module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.deps.mulled.html#galaxy-tool-util-deps-mulled-mulled-build-module">galaxy.tool_util.deps.mulled.mulled_build module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.deps.mulled.html#galaxy-tool-util-deps-mulled-mulled-build-channel-module">galaxy.tool_util.deps.mulled.mulled_build_channel module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.deps.mulled.html#galaxy-tool-util-deps-mulled-mulled-build-files-module">galaxy.tool_util.deps.mulled.mulled_build_files module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.deps.mulled.html#galaxy-tool-util-deps-mulled-mulled-build-tool-module">galaxy.tool_util.deps.mulled.mulled_build_tool module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.deps.mulled.html#galaxy-tool-util-deps-mulled-mulled-hash-module">galaxy.tool_util.deps.mulled.mulled_hash module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.deps.mulled.html#galaxy-tool-util-deps-mulled-mulled-list-module">galaxy.tool_util.deps.mulled.mulled_list module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.deps.mulled.html#galaxy-tool-util-deps-mulled-mulled-search-module">galaxy.tool_util.deps.mulled.mulled_search module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.deps.mulled.html#galaxy-tool-util-deps-mulled-mulled-update-singularity-containers-module">galaxy.tool_util.deps.mulled.mulled_update_singularity_containers module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.deps.mulled.html#galaxy-tool-util-deps-mulled-util-module">galaxy.tool_util.deps.mulled.util module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.tool_util.deps.resolvers.html">galaxy.tool_util.deps.resolvers package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.deps.resolvers.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.deps.resolvers.html#galaxy-tool-util-deps-resolvers-brewed-tool-shed-packages-module">galaxy.tool_util.deps.resolvers.brewed_tool_shed_packages module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.deps.resolvers.html#galaxy-tool-util-deps-resolvers-conda-module">galaxy.tool_util.deps.resolvers.conda module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.deps.resolvers.html#galaxy-tool-util-deps-resolvers-galaxy-packages-module">galaxy.tool_util.deps.resolvers.galaxy_packages module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.deps.resolvers.html#galaxy-tool-util-deps-resolvers-homebrew-module">galaxy.tool_util.deps.resolvers.homebrew module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.deps.resolvers.html#galaxy-tool-util-deps-resolvers-lmod-module">galaxy.tool_util.deps.resolvers.lmod module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.deps.resolvers.html#galaxy-tool-util-deps-resolvers-modules-module">galaxy.tool_util.deps.resolvers.modules module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.deps.resolvers.html#galaxy-tool-util-deps-resolvers-resolver-mixins-module">galaxy.tool_util.deps.resolvers.resolver_mixins module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.deps.resolvers.html#galaxy-tool-util-deps-resolvers-tool-shed-packages-module">galaxy.tool_util.deps.resolvers.tool_shed_packages module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.deps.resolvers.html#galaxy-tool-util-deps-resolvers-unlinked-tool-shed-packages-module">galaxy.tool_util.deps.resolvers.unlinked_tool_shed_packages module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.deps.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.deps.html#galaxy-tool-util-deps-brew-exts-module">galaxy.tool_util.deps.brew_exts module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.deps.html#galaxy-tool-util-deps-brew-util-module">galaxy.tool_util.deps.brew_util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.deps.html#galaxy-tool-util-deps-commands-module">galaxy.tool_util.deps.commands module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.deps.html#galaxy-tool-util-deps-conda-compat-module">galaxy.tool_util.deps.conda_compat module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.deps.html#galaxy-tool-util-deps-conda-util-module">galaxy.tool_util.deps.conda_util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.deps.html#galaxy-tool-util-deps-container-classes-module">galaxy.tool_util.deps.container_classes module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.deps.html#galaxy-tool-util-deps-container-volumes-module">galaxy.tool_util.deps.container_volumes module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.deps.html#galaxy-tool-util-deps-containers-module">galaxy.tool_util.deps.containers module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.deps.html#galaxy-tool-util-deps-dependencies-module">galaxy.tool_util.deps.dependencies module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.deps.html#galaxy-tool-util-deps-docker-util-module">galaxy.tool_util.deps.docker_util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.deps.html#galaxy-tool-util-deps-dockerfiles-module">galaxy.tool_util.deps.dockerfiles module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.deps.html#galaxy-tool-util-deps-installable-module">galaxy.tool_util.deps.installable module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.deps.html#galaxy-tool-util-deps-requirements-module">galaxy.tool_util.deps.requirements module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.deps.html#galaxy-tool-util-deps-singularity-util-module">galaxy.tool_util.deps.singularity_util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.deps.html#galaxy-tool-util-deps-views-module">galaxy.tool_util.deps.views module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="galaxy.tool_util.linters.html">galaxy.tool_util.linters package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.linters.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.linters.html#module-galaxy.tool_util.linters.citations">galaxy.tool_util.linters.citations module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.tool_util.linters.html#galaxy.tool_util.linters.citations.lint_citations"><code class="docutils literal notranslate"><span class="pre">lint_citations()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.linters.html#module-galaxy.tool_util.linters.command">galaxy.tool_util.linters.command module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.tool_util.linters.html#galaxy.tool_util.linters.command.lint_command"><code class="docutils literal notranslate"><span class="pre">lint_command()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.tool_util.linters.html#galaxy.tool_util.linters.command.get_command"><code class="docutils literal notranslate"><span class="pre">get_command()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.linters.html#galaxy-tool-util-linters-cwl-module">galaxy.tool_util.linters.cwl module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.linters.html#module-galaxy.tool_util.linters.general">galaxy.tool_util.linters.general module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.tool_util.linters.html#galaxy.tool_util.linters.general.lint_general"><code class="docutils literal notranslate"><span class="pre">lint_general()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.linters.html#galaxy-tool-util-linters-help-module">galaxy.tool_util.linters.help module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.linters.html#galaxy-tool-util-linters-inputs-module">galaxy.tool_util.linters.inputs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.linters.html#galaxy-tool-util-linters-outputs-module">galaxy.tool_util.linters.outputs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.linters.html#galaxy-tool-util-linters-stdio-module">galaxy.tool_util.linters.stdio module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.linters.html#galaxy-tool-util-linters-tests-module">galaxy.tool_util.linters.tests module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.linters.html#module-galaxy.tool_util.linters.xml_order">galaxy.tool_util.linters.xml_order module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.tool_util.linters.html#galaxy.tool_util.linters.xml_order.lint_xml_order"><code class="docutils literal notranslate"><span class="pre">lint_xml_order()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="galaxy.tool_util.locations.html">galaxy.tool_util.locations package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.locations.html#galaxy.tool_util.locations.ToolLocationResolver"><code class="docutils literal notranslate"><span class="pre">ToolLocationResolver</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.tool_util.locations.html#galaxy.tool_util.locations.ToolLocationResolver.scheme"><code class="docutils literal notranslate"><span class="pre">ToolLocationResolver.scheme</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.tool_util.locations.html#galaxy.tool_util.locations.ToolLocationResolver.get_tool_source_path"><code class="docutils literal notranslate"><span class="pre">ToolLocationResolver.get_tool_source_path()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.locations.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.locations.html#galaxy-tool-util-locations-dockstore-module">galaxy.tool_util.locations.dockstore module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.locations.html#module-galaxy.tool_util.locations.file">galaxy.tool_util.locations.file module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.tool_util.locations.html#galaxy.tool_util.locations.file.HttpToolResolver"><code class="docutils literal notranslate"><span class="pre">HttpToolResolver</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.locations.html#galaxy.tool_util.locations.file.HttpToolResolver.scheme"><code class="docutils literal notranslate"><span class="pre">HttpToolResolver.scheme</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.locations.html#galaxy.tool_util.locations.file.HttpToolResolver.get_tool_source_path"><code class="docutils literal notranslate"><span class="pre">HttpToolResolver.get_tool_source_path()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.locations.html#galaxy-tool-util-locations-http-module">galaxy.tool_util.locations.http module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="galaxy.tool_util.ontologies.html">galaxy.tool_util.ontologies package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.ontologies.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.ontologies.html#galaxy-tool-util-ontologies-ontology-data-module">galaxy.tool_util.ontologies.ontology_data module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="galaxy.tool_util.parser.html">galaxy.tool_util.parser package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.parser.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.parser.html#galaxy-tool-util-parser-cwl-module">galaxy.tool_util.parser.cwl module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.parser.html#galaxy-tool-util-parser-factory-module">galaxy.tool_util.parser.factory module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.parser.html#galaxy-tool-util-parser-interface-module">galaxy.tool_util.parser.interface module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.parser.html#galaxy-tool-util-parser-output-actions-module">galaxy.tool_util.parser.output_actions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.parser.html#galaxy-tool-util-parser-output-collection-def-module">galaxy.tool_util.parser.output_collection_def module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.parser.html#galaxy-tool-util-parser-output-objects-module">galaxy.tool_util.parser.output_objects module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.parser.html#galaxy-tool-util-parser-stdio-module">galaxy.tool_util.parser.stdio module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.parser.html#galaxy-tool-util-parser-util-module">galaxy.tool_util.parser.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.parser.html#galaxy-tool-util-parser-xml-module">galaxy.tool_util.parser.xml module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.parser.html#galaxy-tool-util-parser-yaml-module">galaxy.tool_util.parser.yaml module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="galaxy.tool_util.toolbox.html">galaxy.tool_util.toolbox package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.toolbox.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.tool_util.toolbox.filters.html">galaxy.tool_util.toolbox.filters package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.tool_util.toolbox.lineages.html">galaxy.tool_util.toolbox.lineages package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.toolbox.lineages.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.toolbox.lineages.html#galaxy-tool-util-toolbox-lineages-factory-module">galaxy.tool_util.toolbox.lineages.factory module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.toolbox.lineages.html#galaxy-tool-util-toolbox-lineages-interface-module">galaxy.tool_util.toolbox.lineages.interface module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.tool_util.toolbox.views.html">galaxy.tool_util.toolbox.views package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.toolbox.views.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.toolbox.views.html#galaxy-tool-util-toolbox-views-definitions-module">galaxy.tool_util.toolbox.views.definitions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.toolbox.views.html#galaxy-tool-util-toolbox-views-edam-module">galaxy.tool_util.toolbox.views.edam module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.toolbox.views.html#galaxy-tool-util-toolbox-views-interface-module">galaxy.tool_util.toolbox.views.interface module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.toolbox.views.html#galaxy-tool-util-toolbox-views-sources-module">galaxy.tool_util.toolbox.views.sources module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.toolbox.views.html#galaxy-tool-util-toolbox-views-static-module">galaxy.tool_util.toolbox.views.static module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.toolbox.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.toolbox.html#galaxy-tool-util-toolbox-base-module">galaxy.tool_util.toolbox.base module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.toolbox.html#galaxy-tool-util-toolbox-integrated-panel-module">galaxy.tool_util.toolbox.integrated_panel module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.toolbox.html#galaxy-tool-util-toolbox-panel-module">galaxy.tool_util.toolbox.panel module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.toolbox.html#galaxy-tool-util-toolbox-parser-module">galaxy.tool_util.toolbox.parser module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.toolbox.html#galaxy-tool-util-toolbox-tags-module">galaxy.tool_util.toolbox.tags module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.toolbox.html#galaxy-tool-util-toolbox-watcher-module">galaxy.tool_util.toolbox.watcher module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="galaxy.tool_util.unittest_utils.html">galaxy.tool_util.unittest_utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.unittest_utils.html#galaxy.tool_util.unittest_utils.mock_trans"><code class="docutils literal notranslate"><span class="pre">mock_trans()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.unittest_utils.html#galaxy.tool_util.unittest_utils.t_data_downloader_for"><code class="docutils literal notranslate"><span class="pre">t_data_downloader_for()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.unittest_utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.unittest_utils.html#module-galaxy.tool_util.unittest_utils.sample_data">galaxy.tool_util.unittest_utils.sample_data module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="galaxy.tool_util.verify.html">galaxy.tool_util.verify package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.verify.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.tool_util.verify.asserts.html">galaxy.tool_util.verify.asserts package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.verify.asserts.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.verify.asserts.html#galaxy-tool-util-verify-asserts-archive-module">galaxy.tool_util.verify.asserts.archive module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.verify.asserts.html#galaxy-tool-util-verify-asserts-hdf5-module">galaxy.tool_util.verify.asserts.hdf5 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.verify.asserts.html#galaxy-tool-util-verify-asserts-size-module">galaxy.tool_util.verify.asserts.size module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.verify.asserts.html#galaxy-tool-util-verify-asserts-tabular-module">galaxy.tool_util.verify.asserts.tabular module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.verify.asserts.html#galaxy-tool-util-verify-asserts-text-module">galaxy.tool_util.verify.asserts.text module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.tool_util.verify.asserts.html#galaxy-tool-util-verify-asserts-xml-module">galaxy.tool_util.verify.asserts.xml module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.verify.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.verify.html#galaxy-tool-util-verify-interactor-module">galaxy.tool_util.verify.interactor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.verify.html#galaxy-tool-util-verify-script-module">galaxy.tool_util.verify.script module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.verify.html#galaxy-tool-util-verify-test-data-module">galaxy.tool_util.verify.test_data module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.tool_util.verify.html#galaxy-tool-util-verify-wait-module">galaxy.tool_util.verify.wait module</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+</section>
+<section id="module-galaxy.tool_util.edam_util">
+<span id="galaxy-tool-util-edam-util-module"></span><h2>galaxy.tool_util.edam_util module<a class="headerlink" href="#module-galaxy.tool_util.edam_util" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="galaxy.tool_util.edam_util.load_edam_tree">
+<span class="sig-prename descclassname"><span class="pre">galaxy.tool_util.edam_util.</span></span><span class="sig-name descname"><span class="pre">load_edam_tree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">included_terms</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/tool_util/edam_util.html#load_edam_tree"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.tool_util.edam_util.load_edam_tree" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="galaxy-tool-util-fetcher-module">
+<h2>galaxy.tool_util.fetcher module<a class="headerlink" href="#galaxy-tool-util-fetcher-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-tool-util-lint-module">
+<h2>galaxy.tool_util.lint module<a class="headerlink" href="#galaxy-tool-util-lint-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-tool-util-loader-module">
+<h2>galaxy.tool_util.loader module<a class="headerlink" href="#galaxy-tool-util-loader-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-tool-util-loader-directory-module">
+<h2>galaxy.tool_util.loader_directory module<a class="headerlink" href="#galaxy-tool-util-loader-directory-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-tool-util-output-checker-module">
+<h2>galaxy.tool_util.output_checker module<a class="headerlink" href="#galaxy-tool-util-output-checker-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-tool-util-provided-metadata-module">
+<h2>galaxy.tool_util.provided_metadata module<a class="headerlink" href="#galaxy-tool-util-provided-metadata-module" title="Link to this heading">¶</a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="galaxy.tool_shed.util.html" class="btn btn-neutral float-left" title="galaxy.tool_shed.util package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="galaxy.tool_util.biotools.html" class="btn btn-neutral float-right" title="galaxy.tool_util.biotools package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Galaxy Committers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

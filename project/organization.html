@@ -1,0 +1,461 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galaxy Core Governance &mdash; Galaxy Project 23.1.5.dev0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+
+  
+    <link rel="canonical" href="https://docs.galaxyproject.org/en/master/project/organization.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=da3e81e8"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Galaxy Issue Management" href="issues.html" />
+    <link rel="prev" title="tool_shed.webapp.util package" href="../lib/tool_shed.webapp.util.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Galaxy Project
+          </a>
+              <div class="version">
+                23.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../releases/index.html">Releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.1_announce_user.html">June 2023 Galaxy Release (v 23.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.0_announce_user.html">2023 Galaxy Release (v 23.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.05_announce_user.html">May 2022 Galaxy Release (v 22.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.01_announce_user.html">January 2022 Galaxy Release (v 22.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.09_announce_user.html">September 2021 Galaxy Release (v 21.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.05_announce_user.html">May 2021 Galaxy Release (v 21.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.01_announce_user.html">January 2021 Galaxy Release (v 21.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.09_announce_user.html">September 2020 Galaxy Release (v 20.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.05_announce_user.html">May 2020 Galaxy Release (v 20.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.01_announce_user.html">January 2020 Galaxy Release (v 20.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.09_announce_user.html">September 2019 Galaxy Release (v 19.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.05_announce_user.html">May 2019 Galaxy Release (v 19.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.01_announce_user.html">January 2019 Galaxy Release (v 19.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.09_announce.html">September 2018 Galaxy Release (v 18.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.05_announce.html">May 2018 Galaxy Release (v 18.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.01_announce.html">January 2018 Galaxy Release (v 18.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.09_announce.html">September 2017 Galaxy Release (v 17.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.05_announce.html">May 2017 Galaxy Release (v 17.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.01_announce.html">January 2017 Galaxy Release (v 17.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.10_announce.html">October 2016 Galaxy Release (v 16.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.07_announce.html">July 2016 Galaxy Release (v 16.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.04_announce.html">April 2016 Galaxy Release (v 16.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.01_announce.html">January 2016 Galaxy Release (v 16.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.10_announce.html">October 2015 Galaxy Release (v 15.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.07_announce.html">July 2015 Galaxy Release (v 15.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.05_announce.html">May 2015 Galaxy Release (v 15.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.03_announce.html">March 2015 Galaxy Release (v 15.03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.01_announce.html">January 2015 Galaxy Release (v 15.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.10_announce.html">October 2014 Galaxy Release (v 14.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.08_announce.html">August 2014 Galaxy Release (v 14.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.06_announce.html">June 2014 Galaxy Release (v 14.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.04_announce.html">April 2014 Galaxy Release (v 14.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.02_announce.html">February 2014 Galaxy Release (v 14.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.11_announce.html">November 2013 Galaxy Release (v 13.11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.08_announce.html">August 2013 Galaxy Release (v 13.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.06_announce.html">June 2013 Galaxy Release (v 13.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.04_announce.html">April 2013 Galaxy Release (v 13.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.02_announce.html">February 2013 Galaxy Release (v 13.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.01_announce.html">January 2013 Galaxy Release (v 13.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/older_releases.html">Galaxy Releases older than v 13.01</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Admin Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../admin/index.html">Administration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../admin/python.html">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/framework_dependencies.html">Framework Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/config.html">Galaxy Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/config_logging.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/production.html">Production Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/security.html">Security considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/nginx.html">Proxying Galaxy with NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/apache.html">Proxying Galaxy with Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/scaling.html">Scaling and Load Balancing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/cluster.html">Connecting to a Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/jobs.html">Galaxy Job Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/tool_panel.html">Tool Panel Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/mq.html">Message queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/dependency_resolvers.html">Dependency Resolvers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/container_resolvers.html">Containers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/container_resolvers.html#other-considerations">Other considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/conda_faq.html">Conda for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/db_migration.html">Galaxy Database Schema Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/reports.html">Galaxy Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/useful_scripts.html">Scripts &amp; Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/options.html">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/migrating_to_gunicorn.html">Migrating from uWSGI to Gunicorn and FastAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/special_topics/index.html">Special topics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/ftp.html">Galaxy FTP Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/interactivetools.html">Galaxy InteractiveTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/mulled_containers.html">Containers for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/grt.html">Galactic Radio Telescope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/gtn.html">Galaxy Training Materials Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/job_metrics.html">Job Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/webhooks.html">Galaxy Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/vault.html">Storing secrets in the vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/performance_tracking.html">Galaxy Performance Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/bug_reports.html">Bug Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/gdpr_compliance.html">GDPR Compliance</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/index.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dev/schema.html">Galaxy Tool XML File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/api_guidelines.html">API Design Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/build_a_job_runner.html">Build a job runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/finding_and_improving_slow_code.html">Finding and improving slow Galaxy code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_managers.html">Data managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_types.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/faq.html">How Do I…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/writing_tests.html">Writing Tests for Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html">Debugging Galaxy Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html#debugging-tests-that-run-out-of-memory">Debugging tests that run out of memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy.html">Debugging Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy_slurm.html">Debugging Galaxy: Slurm Compute Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/translating.html">Translating the Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/create_point_release.html">Creating Galaxy Point Releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api_doc.html">Galaxy API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/quickstart.html"> Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/api.html"> Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ts_api_doc.html">Tool Shed API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/ts_api.html"> API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../lib/modules.html">Application Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy.html">galaxy package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_ext.html">galaxy_ext package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_test.html">galaxy_test package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/tool_shed.html">tool_shed package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About Project</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Project Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#procedure-documents">Procedure Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#committers">Committers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#release-branches">Release branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#handling-pull-requests">Handling Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#issue-reporting">Issue Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="issues.html">Issue Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="issues.html#issue-reporting">Issue Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="issues.html#milestones">Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="issues.html#labeling-structure">Labeling Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="issues.html#the-roadmap">The Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="issues.html#voting">Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="issues.html#automation">Automation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Galaxy Project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Galaxy Core Governance</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/project/organization.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="galaxy-core-governance">
+<h1>Galaxy Core Governance<a class="headerlink" href="#galaxy-core-governance" title="Link to this heading">¶</a></h1>
+<p>This document informally outlines the organizational structure governing the
+Galaxy core code base hosted at <a class="reference external" href="https://github.com/galaxyproject/galaxy">https://github.com/galaxyproject/galaxy</a> . This
+governance extends to code-related activities of this repository such as
+releases and packaging. This governance does not include infrastructure such
+as Galaxy’s Trello board, the Galaxy mailing lists, etc… or other Galaxy-
+related projects belonging to the <code class="docutils literal notranslate"><span class="pre">galaxyproject</span></code> organization on GitHub.</p>
+<section id="procedure-documents">
+<h2>Procedure Documents<a class="headerlink" href="#procedure-documents" title="Link to this heading">¶</a></h2>
+<p>The documents whose modification requires the special process specified below
+are:</p>
+<ul class="simple">
+<li><p>this document</p></li>
+<li><p><a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/dev/CODE_OF_CONDUCT.md">CODE_OF_CONDUCT</a>.</p></li>
+<li><p><a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/dev/SECURITY.md">SECURITY_POLICY</a>.</p></li>
+</ul>
+</section>
+<section id="committers">
+<h2>Committers<a class="headerlink" href="#committers" title="Link to this heading">¶</a></h2>
+<p>The <em>committers</em> group is the group of trusted developers and advocates who
+manage the core Galaxy code base. They assume many roles required to achieve
+the project’s goals, especially those that require a high level of trust.</p>
+<p>Galaxy Project <em>committers</em> are the only individuals who may commit to the
+core Galaxy code base. All commits must be made in accordance with procedures
+outlined below. In particular, in most cases
+direct commit access is not allowed and this access is restricted to merging
+pull requests issued by others.</p>
+<p><em>Committers</em> may participate in all formal votes, including votes to modify team
+membership, merge pull requests, and modify the <em>Procedure Documents</em> listed
+above.</p>
+<section id="members">
+<h3>Members<a class="headerlink" href="#members" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Enis Afgan (&#64;afgane)</p></li>
+<li><p>Dannon Baker (&#64;dannon)</p></li>
+<li><p>Matthias Bernt (&#64;bernt-matthias)</p></li>
+<li><p>Daniel Blankenberg (&#64;blankenberg)</p></li>
+<li><p>Dave Bouvier (&#64;davebx)</p></li>
+<li><p>Martin Čech (&#64;martenson)</p></li>
+<li><p>John Chilton (&#64;jmchilton)</p></li>
+<li><p>Nate Coraor (&#64;natefoo)</p></li>
+<li><p>John Davis (&#64;jdavcs)</p></li>
+<li><p>Jeremy Goecks (&#64;jgoecks)</p></li>
+<li><p>Nuwan Goonasekera (&#64;nuwang)</p></li>
+<li><p>Björn Grüning (&#64;bgruening)</p></li>
+<li><p>Aysam Guerler (&#64;guerler)</p></li>
+<li><p>Jennifer Hillman Jackson (&#64;jennaj)</p></li>
+<li><p>David López (&#64;davelopez)</p></li>
+<li><p>Laila Los (&#64;ElectronicBlueberry)</p></li>
+<li><p>Anton Nekrutenko (&#64;nekrut)</p></li>
+<li><p>Helena Rasche (&#64;hexylena)</p></li>
+<li><p>Nicola Soranzo (&#64;nsoranzo)</p></li>
+<li><p>Marius van den Beek (&#64;mvdbeek)</p></li>
+</ul>
+</section>
+<section id="membership">
+<h3>Membership<a class="headerlink" href="#membership" title="Link to this heading">¶</a></h3>
+<p>The <em>committers</em> group was seeded with the group of active developers and
+advocates with commit access to the repository as of May 2015. This group
+subsequently voted in new members.</p>
+<p>Any member of the <em>committers</em> group may nominate an individual for membership
+to the <em>committers</em> group. Such individuals must have demonstrated:</p>
+<ul class="simple">
+<li><p>Good grasp of the design of Galaxy core project.</p></li>
+<li><p>Solid track record of being constructive and helpful.</p></li>
+<li><p>Significant contributions to the project.</p></li>
+<li><p>Willingness to dedicate some time to improving Galaxy.</p></li>
+</ul>
+<p>The above list of people is the canonical source used to determine membership to
+the <em>committers</em> group - as such new members may be added to this group by
+opening a pull request adding a qualified person to this list. Pull requests
+modifying the membership of this list are subject to the normal rules for pull
+requests that modify governance procedures outlined below, with one exception: a
+<em>committer</em> may not vote against their own removal from the group (for obvious
+reasons).</p>
+<p>Given the responsibilities and power invested in this group, it is important
+that individuals not actively working on Galaxy anymore are removed from the
+group. If individuals in this group intend to change jobs or reallocate
+volunteer activities and will no longer be active in the Galaxy community, they
+should withdraw from membership of this group. Periodically, active members may
+review this group and request that inactive members are removed - this should
+not be interpreted as a condemnation of these inactive members but merely as a
+reflection of the desire to keep this group focused enough to remain effective.</p>
+</section>
+<section id="direct-commit-access">
+<h3>Direct Commit Access<a class="headerlink" href="#direct-commit-access" title="Link to this heading">¶</a></h3>
+<p>A <em>committer</em> may only commit directly to the Galaxy repository (i.e. outside of
+a pull request and not following the procedures described below) the following
+four categories of changes:</p>
+<ul class="simple">
+<li><p>Patches for serious security vulnerabilities.</p></li>
+<li><p>Cherry-picking and/or merging of existing approved commits to other branches.</p></li>
+<li><p>Everything under <code class="docutils literal notranslate"><span class="pre">packages/</span></code> .</p></li>
+<li><p>Release notes and changelogs.</p></li>
+</ul>
+</section>
+</section>
+<section id="release-branches">
+<h2>Release branches<a class="headerlink" href="#release-branches" title="Link to this heading">¶</a></h2>
+<p>A <em>release branch</em> is created every few months from the <code class="docutils literal notranslate"><span class="pre">dev</span></code> branch of the
+Galaxy repository. A newly created release branch is in a <em>frozen</em> state until
+the committers decide that it is ready for public consumption. At this point, a
+release tag will be assigned to a commit in the branch, changing the release
+state to <em>tagged</em>.</p>
+</section>
+<section id="handling-pull-requests">
+<h2>Handling Pull Requests<a class="headerlink" href="#handling-pull-requests" title="Link to this heading">¶</a></h2>
+<p>Everyone is encouraged to express opinions and issue non-binding votes on pull
+requests, but only members of the <em>committers</em> group may issue binding votes
+on pull requests.</p>
+<p>Votes on pull requests should take the form of +1, 0, -1, and fractions as
+outlined by the <a class="reference external" href="https://www.apache.org/foundation/voting.html">Apache Software Foundation voting rules</a>. The following are
+equivalent to a +1 vote:</p>
+<ul class="simple">
+<li><p>a <a class="reference external" href="https://blog.github.com/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/">thumbs up reaction</a>
+on the pull request description;</p></li>
+<li><p>approving the pull request when submitting a
+<a class="reference external" href="https://help.github.com/articles/reviewing-proposed-changes-in-a-pull-request/">review</a>.</p></li>
+</ul>
+<p>The latter is the preferred method because it is integrated in GitHub, it allows
+tracking the moment when the review was submitted, and it sends a notification
+to subscribers.</p>
+<p>Pull requests changing or clarifying the <em>Procedure Documents</em> (listed above):</p>
+<ul class="simple">
+<li><p>Must be made to the <code class="docutils literal notranslate"><span class="pre">dev</span></code> branch of this repository.</p></li>
+<li><p>Must remain open for at least 192 hours (unless every qualified <em>committer</em> has
+voted).</p></li>
+<li><p>Require binding <em>+1</em> votes from at least 25% of qualified <em>committers</em> with no
+<em>-1</em> binding votes.</p></li>
+<li><p>Should be titled with the prefix <em>[PROCEDURES]</em> and tagged with
+the <em>procedures</em> tag in Github.</p></li>
+<li><p>Should not be modified once open. If changes are needed, the pull request
+should be closed, re-opened with modifications, and votes reset.</p></li>
+<li><p>Should be restricted to just modifying the procedures and generally should not
+contain code modifications.</p></li>
+<li><p>If the pull request adds or removes <em>committers</em>, there must be a separate
+pull request for each person added or removed.</p></li>
+<li><p>Members of the <em>committers</em> group may submit PRs updating their own name or
+username in the <code class="docutils literal notranslate"><span class="pre">members</span></code> section of this file.  This type of change is not
+subject to the 192 hour nor 25% rule, and can be merged by any other member.</p></li>
+</ul>
+<p>Any other pull request requires at least 1 <em>+1</em> binding vote from someone other
+than the author of the pull request. A member of the <em>committers</em> group merging
+a pull request is considered an implicit +1.</p>
+<p>Pull requests modifying frozen and tagged release branches should be restricted
+to bug fixes. As an exception, pull requests which only add new datatypes can
+target a frozen branch or the latest tagged release branch.</p>
+<p>A pull request marked <em>[WIP]</em> (i.e. work in progress) in the title by its
+author(s) may <em>not</em> be merged without coordinating the removal of that mark with
+the pull request author(s). Nevertheless, pull request authors should normally
+use the <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests#draft-pull-requests">draft</a>
+state to indicate a work-in-progress pull request.</p>
+<section id="timelines">
+<h3>Timelines<a class="headerlink" href="#timelines" title="Link to this heading">¶</a></h3>
+<p>Except in the case of pull requests modifying governance procedures, there are
+generally no objective guidelines defining how long pull requests must remain
+open for comment. Subjectively speaking though - larger and more potentially
+controversial pull requests containing enhancements should remain open for a at
+least a few days to give everyone the opportunity to weigh in.</p>
+</section>
+<section id="vetoes">
+<h3>Vetoes<a class="headerlink" href="#vetoes" title="Link to this heading">¶</a></h3>
+<p>A note on vetoes (<em>-1</em> votes), taken verbatim from the
+<a class="reference external" href="https://www.apache.org/foundation/voting.html">Apache Software Foundation voting rules</a>:</p>
+<blockquote>
+<div><p>“A code-modification proposal may be stopped dead in its tracks by a <em>-1</em> vote
+by a qualified voter. This constitutes a veto, and it cannot be overruled nor
+overridden by anyone. Vetoes stand until and unless withdrawn by their casters.</p>
+<p>To prevent vetoes from being used capriciously, they must be accompanied by a
+technical justification showing why the change is bad (opens a security
+exposure, negatively affects performance, etc. ). A veto without a
+justification is invalid and has no weight.”</p>
+</div></blockquote>
+<p>For votes regarding non-coding issues such as procedure changes, the requirement
+that a veto is accompanied by a <em>technical</em> justification is relaxed somewhat,
+though a well reasoned justification must still be included.</p>
+</section>
+<section id="reversions">
+<h3>Reversions<a class="headerlink" href="#reversions" title="Link to this heading">¶</a></h3>
+<p>A <em>-1</em> vote on any recently merged pull request requires an immediate
+reversion of the merged pull request. The backout of such a pull request
+invokes a mandatory, minimum 72 hour, review period.</p>
+<ul class="simple">
+<li><p>Recently merged pull requests are defined as a being within the past 168 hours (7
+days), so as to not prevent forward progress, while allowing for reversions of
+things merged without proper review and consensus.</p></li>
+<li><p>The person issuing the <em>-1</em> vote will, upon commenting <em>-1</em> with technical
+justification per the vetoes section, immediately open a pull request to
+revert the original merge in question. If any <em>committer</em> other than the <em>-1</em>
+issuer deems the justification technical - regardless of whether they agree
+with justification - that <em>committer</em> must then merge the pull request to
+revert.</p></li>
+</ul>
+</section>
+<section id="labeling-and-milestones">
+<h3>Labeling and Milestones<a class="headerlink" href="#labeling-and-milestones" title="Link to this heading">¶</a></h3>
+<p>Pull request labeling and milestone usage follows the procedures described in
+<a class="reference internal" href="issues.html"><span class="doc">Galaxy Issue Management</span></a>.</p>
+</section>
+</section>
+<section id="issue-reporting">
+<h2>Issue Reporting<a class="headerlink" href="#issue-reporting" title="Link to this heading">¶</a></h2>
+<p>Issues (bugs, feature requests, etc.) should be reported and handled as
+described in <a class="reference internal" href="issues.html"><span class="doc">Galaxy Issue Management</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../lib/tool_shed.webapp.util.html" class="btn btn-neutral float-left" title="tool_shed.webapp.util package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="issues.html" class="btn btn-neutral float-right" title="Galaxy Issue Management" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Galaxy Committers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

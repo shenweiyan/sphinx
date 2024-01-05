@@ -1,0 +1,392 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Design Guidelines &mdash; Galaxy Project 23.1.5.dev0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+
+  
+    <link rel="canonical" href="https://docs.galaxyproject.org/en/master/dev/api_guidelines.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=da3e81e8"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Build a job runner" href="build_a_job_runner.html" />
+    <link rel="prev" title="Galaxy Tool XML File" href="schema.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Galaxy Project
+          </a>
+              <div class="version">
+                23.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../releases/index.html">Releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.1_announce_user.html">June 2023 Galaxy Release (v 23.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.0_announce_user.html">2023 Galaxy Release (v 23.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.05_announce_user.html">May 2022 Galaxy Release (v 22.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.01_announce_user.html">January 2022 Galaxy Release (v 22.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.09_announce_user.html">September 2021 Galaxy Release (v 21.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.05_announce_user.html">May 2021 Galaxy Release (v 21.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.01_announce_user.html">January 2021 Galaxy Release (v 21.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.09_announce_user.html">September 2020 Galaxy Release (v 20.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.05_announce_user.html">May 2020 Galaxy Release (v 20.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.01_announce_user.html">January 2020 Galaxy Release (v 20.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.09_announce_user.html">September 2019 Galaxy Release (v 19.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.05_announce_user.html">May 2019 Galaxy Release (v 19.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.01_announce_user.html">January 2019 Galaxy Release (v 19.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.09_announce.html">September 2018 Galaxy Release (v 18.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.05_announce.html">May 2018 Galaxy Release (v 18.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.01_announce.html">January 2018 Galaxy Release (v 18.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.09_announce.html">September 2017 Galaxy Release (v 17.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.05_announce.html">May 2017 Galaxy Release (v 17.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.01_announce.html">January 2017 Galaxy Release (v 17.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.10_announce.html">October 2016 Galaxy Release (v 16.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.07_announce.html">July 2016 Galaxy Release (v 16.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.04_announce.html">April 2016 Galaxy Release (v 16.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.01_announce.html">January 2016 Galaxy Release (v 16.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.10_announce.html">October 2015 Galaxy Release (v 15.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.07_announce.html">July 2015 Galaxy Release (v 15.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.05_announce.html">May 2015 Galaxy Release (v 15.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.03_announce.html">March 2015 Galaxy Release (v 15.03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.01_announce.html">January 2015 Galaxy Release (v 15.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.10_announce.html">October 2014 Galaxy Release (v 14.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.08_announce.html">August 2014 Galaxy Release (v 14.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.06_announce.html">June 2014 Galaxy Release (v 14.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.04_announce.html">April 2014 Galaxy Release (v 14.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.02_announce.html">February 2014 Galaxy Release (v 14.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.11_announce.html">November 2013 Galaxy Release (v 13.11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.08_announce.html">August 2013 Galaxy Release (v 13.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.06_announce.html">June 2013 Galaxy Release (v 13.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.04_announce.html">April 2013 Galaxy Release (v 13.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.02_announce.html">February 2013 Galaxy Release (v 13.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.01_announce.html">January 2013 Galaxy Release (v 13.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/older_releases.html">Galaxy Releases older than v 13.01</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Admin Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../admin/index.html">Administration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../admin/python.html">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/framework_dependencies.html">Framework Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/config.html">Galaxy Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/config_logging.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/production.html">Production Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/security.html">Security considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/nginx.html">Proxying Galaxy with NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/apache.html">Proxying Galaxy with Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/scaling.html">Scaling and Load Balancing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/cluster.html">Connecting to a Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/jobs.html">Galaxy Job Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/tool_panel.html">Tool Panel Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/mq.html">Message queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/dependency_resolvers.html">Dependency Resolvers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/container_resolvers.html">Containers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/container_resolvers.html#other-considerations">Other considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/conda_faq.html">Conda for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/db_migration.html">Galaxy Database Schema Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/reports.html">Galaxy Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/useful_scripts.html">Scripts &amp; Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/options.html">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/migrating_to_gunicorn.html">Migrating from uWSGI to Gunicorn and FastAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/special_topics/index.html">Special topics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/ftp.html">Galaxy FTP Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/interactivetools.html">Galaxy InteractiveTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/mulled_containers.html">Containers for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/grt.html">Galactic Radio Telescope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/gtn.html">Galaxy Training Materials Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/job_metrics.html">Job Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/webhooks.html">Galaxy Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/vault.html">Storing secrets in the vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/performance_tracking.html">Galaxy Performance Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/bug_reports.html">Bug Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/gdpr_compliance.html">GDPR Compliance</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="schema.html">Galaxy Tool XML File</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">API Design Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build_a_job_runner.html">Build a job runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="finding_and_improving_slow_code.html">Finding and improving slow Galaxy code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_managers.html">Data managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_types.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html">How Do I…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="writing_tests.html">Writing Tests for Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging_tests.html">Debugging Galaxy Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging_tests.html#debugging-tests-that-run-out-of-memory">Debugging tests that run out of memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging_galaxy.html">Debugging Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging_galaxy_slurm.html">Debugging Galaxy: Slurm Compute Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translating.html">Translating the Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create_point_release.html">Creating Galaxy Point Releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api_doc.html">Galaxy API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/quickstart.html"> Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/api.html"> Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ts_api_doc.html">Tool Shed API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/ts_api.html"> API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../lib/modules.html">Application Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy.html">galaxy package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_ext.html">galaxy_ext package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_test.html">galaxy_test package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/tool_shed.html">tool_shed package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../project/organization.html">Project Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#procedure-documents">Procedure Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#committers">Committers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#release-branches">Release branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#handling-pull-requests">Handling Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#issue-reporting">Issue Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../project/issues.html">Issue Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#issue-reporting">Issue Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#milestones">Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#labeling-structure">Labeling Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#the-roadmap">The Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#voting">Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#automation">Automation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Galaxy Project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Development Documentation</a></li>
+      <li class="breadcrumb-item active">API Design Guidelines</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/dev/api_guidelines.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="api-design-guidelines">
+<h1>API Design Guidelines<a class="headerlink" href="#api-design-guidelines" title="Link to this heading">¶</a></h1>
+<p>The following section outlines guidelines related to extending and/or modifying
+the Galaxy API. The Galaxy API has been developed over time in an ad-hoc fashion and by
+many contributors, so clients SHOULD NOT expect the API will conform to
+these guidelines - but developers contributing to the Galaxy API SHOULD follow
+these guidelines.</p>
+<section id="before-getting-started">
+<h2>Before Getting Started<a class="headerlink" href="#before-getting-started" title="Link to this heading">¶</a></h2>
+<p>Developers should familiarize themselves with <a class="reference external" href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9">HTTP method definitions</a>. While Galaxy
+follows these imperfectly - a serious effort should be made to use HTTP
+methods (GET, POST, PUT, DELETE, etc.) correctly and consistently. More
+information about these methods with a focus on RESTful APIs can be found
+at <a class="reference external" href="https://restfulapi.net/http-methods/">https://restfulapi.net/http-methods/</a>.</p>
+<p>Developers should also familiarize themselves with the <a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">HTTP status code definitions</a>. The API responses
+should properly set the status code according to the result - in particular
+2XX responses should be used for successful requests, 4XX for various
+kinds of client errors, and 5XX for the errors on the server side.</p>
+<p>Finally, developers should familiarize themselves with <a class="reference external" href="https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design">RESTful API design</a>.
+Again, Galaxy follows generic RESTful guidelines imperfectly, but a serious
+effort should be made to design the API as RESTfully and consistently as possible.</p>
+</section>
+<section id="documenting-the-api">
+<h2>Documenting the API<a class="headerlink" href="#documenting-the-api" title="Link to this heading">¶</a></h2>
+<p>An API endpoint implementation method should include high-level docstring documentation
+for consumption at docs.galaxyproject.org.</p>
+<p>API functionality should consume and produce <a class="reference external" href="https://pydantic-docs.helpmanual.io/">Pydantic</a> <a class="reference external" href="https://pydantic-docs.helpmanual.io/usage/models/">models</a> with typed and annotated
+<a class="reference external" href="https://pydantic-docs.helpmanual.io/usage/types/">fields</a>. This information
+will be used to generate detailed <a class="reference external" href="https://www.openapis.org">OpenAPI</a> documentation for APIs in
+the near future. Typed models also improve the quality and thoroughness
+of the static checking that can be done for the Galaxy backend.</p>
+<p>To further document your API and allow other developers to see how it functions,
+new API functionality should include functional tests. These functional
+tests should be implemented in Python and added to either the API test suite
+or the integration test suite. Checkout the <a class="reference internal" href="writing_tests.html"><span class="doc">Writing Tests for Galaxy</span></a>
+documentation for more information on developing tests for Galaxy.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Galaxy documentation can be generated by running <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">docs-develop</span></code>
+from the Galaxy root. Galaxy can be type checked by running <code class="docutils literal notranslate"><span class="pre">tox</span> <span class="pre">-e</span> <span class="pre">mypy</span></code>
+from the root of Galaxy after <a class="reference external" href="https://tox.readthedocs.io/en/latest/">tox</a> has been configured.</p>
+</div>
+</section>
+<section id="error-handling">
+<h2>Error Handling<a class="headerlink" href="#error-handling" title="Link to this heading">¶</a></h2>
+<p>API methods should throw a finite number of exceptions
+(defined in <code class="xref py py-mod docutils literal notranslate"><span class="pre">galaxy.exceptions</span></code>) and these should subclass
+<code class="xref py py-class docutils literal notranslate"><span class="pre">galaxy.exceptions.MessageException</span></code> and not paste/WSGI/FastAPI HTTP exceptions.
+When possible, the framework itself should be responsible for catching these exceptions,
+setting the status code, and building an error response. Throwing these exceptions
+will ensure the API responses are consistent across frameworks and across the API.
+These exceptions allow throwers to attach arbitrary extra information.</p>
+<p>Error responses should not consist of plain text strings - they should be
+dictionaries describing the error and containing the following:</p>
+<p>The error code (<code class="docutils literal notranslate"><span class="pre">err_code</span></code>) is defined by the exception class
+and pulled from <code class="docutils literal notranslate"><span class="pre">lig/galaxy/exceptions/error_codes.json</span></code>. This JSON
+document should be used to add new error conditions or improve
+default error messages.</p>
+<p>If there is an error processing some part of the request (one item in a list
+for instance), the status code should be set to reflect the error and the
+partial result may or may not be returned depending on the controller -
+this behavior should be documented.</p>
+</section>
+<section id="backward-compatibility">
+<h2>Backward Compatibility<a class="headerlink" href="#backward-compatibility" title="Link to this heading">¶</a></h2>
+<p>Backward compatibility is important and should be maintained when possible.
+If changing behavior in a non-backward compatible way please ensure one
+of the following holds - there is a strong reason to believe no consumers
+depend on the old behavior, the behavior is effectively broken, or the API
+method being modified has not been part of a tagged dist release. If these
+conditions do not hold, please help the Galaxy release manager ensure
+information about the breaking API is highlighted in the Galaxy release
+notes.</p>
+<p>Whenever functionality needs to be added, removed, or modified that
+breaks backward compatibility in a significant way to a component used by
+the community - a “dev” variant of the API should be established and
+the community should be alerted and given a time frame for when the old
+behavior will be replaced with the new behavior.</p>
+</section>
+<section id="design">
+<h2>Design<a class="headerlink" href="#design" title="Link to this heading">¶</a></h2>
+<p>Functionality should not be copied and pasted between controllers -
+consider refactoring functionality into associated classes or short of
+that into <a class="reference external" href="http://en.wikipedia.org/wiki/Composition_over_inheritance">mixins</a> or into managers (<a class="reference internal" href="../lib/galaxy.managers.html#module-galaxy.managers" title="galaxy.managers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">galaxy.managers</span></code></a>).</p>
+<p>To whatever degree is possible, the Galaxy API controller classes
+(found in <code class="xref py py-mod docutils literal notranslate"><span class="pre">galaxy.webapps.galaxy.api</span></code>) should be as lean as
+possible. Most of the logic should be pushed into components that
+are decoupled from the actual web application and the web framework.
+The role of the controller should be simply to adapt the web request
+(tied to the web framework) to simple objects (plain Python objects,
+<a class="reference external" href="https://pydantic-docs.helpmanual.io/">Pydantic</a> models, or SQLAlchemy models), send these objects to a
+Python component lower in the stack, and finally to translate the
+response to a web response. This design will ensure that Galaxy
+application logic is usable in as many contexts as possible and
+decouple the core “business logic” of Galaxy from the web framework
+hosting it.</p>
+<p>Going forward, we anticipate the most typical way this abstract
+advice translates to concrete code flow is that API controllers
+in <code class="xref py py-mod docutils literal notranslate"><span class="pre">galaxy.webapps.galaxy.api</span></code> receive or produce <a class="reference external" href="https://pydantic-docs.helpmanual.io/">Pydantic</a>
+models and pass them to manager components defined in
+<a class="reference internal" href="../lib/galaxy.managers.html#module-galaxy.managers" title="galaxy.managers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">galaxy.managers</span></code></a>. The manager is then responsible for
+interacting with the whole backend or specific components to
+fullfil the desired request.</p>
+<p>Galaxy work contexts provide a way for API requests (and other
+components) to describe what they require from the framework
+in terms of the request (examples include the Galaxy app, a user
+to act on behalf of, or a user with a defined “current history”).
+These objects describing the web request are passed around rather
+haphazardly as an argument named <code class="docutils literal notranslate"><span class="pre">trans</span></code>. To design API methods
+to deal with <code class="docutils literal notranslate"><span class="pre">trans</span></code> in the most statically checkable and
+rigorous way - please review the docs for <code class="xref py py-mod docutils literal notranslate"><span class="pre">galaxy.managers.context</span></code>.</p>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">¶</a></h2>
+<p>A very clean, isolated example of a well documented controller
+and well annotated models is the licenses endpoint -
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">galaxy.webapps.galaxy.api.licenses</span></code>. A more complicated
+endpoint that demonstrates working with a manager and the
+Galaxy model backend is the roles endpoint - <code class="xref py py-mod docutils literal notranslate"><span class="pre">galaxy.webapps.galaxy.api.roles</span></code>.</p>
+</section>
+<section id="bioblend">
+<h2>BioBlend<a class="headerlink" href="#bioblend" title="Link to this heading">¶</a></h2>
+<p>Changes to reflect modifications to the API should be pushed upstream to
+the <a class="reference external" href="https://github.com/galaxyproject/bioblend">BioBlend</a> project if possible.</p>
+</section>
+<section id="longer-term-goals">
+<h2>Longer Term Goals<a class="headerlink" href="#longer-term-goals" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>It would be advantageous to have a clearer separation of anonymous and
+admin handling functionality.</p></li>
+<li><p>Consistent standards for range-based requests, batch requests, filtered
+requests, etc… should be established and documented here.</p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="schema.html" class="btn btn-neutral float-left" title="Galaxy Tool XML File" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="build_a_job_runner.html" class="btn btn-neutral float-right" title="Build a job runner" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Galaxy Committers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,425 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galaxy InteractiveTools &mdash; Galaxy Project 23.1.5.dev0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+
+  
+    <link rel="canonical" href="https://docs.galaxyproject.org/en/master/admin/special_topics/interactivetools.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/documentation_options.js?v=da3e81e8"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Containers for Tool Dependencies" href="mulled_containers.html" />
+    <link rel="prev" title="Galaxy FTP Uploads" href="ftp.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Galaxy Project
+          </a>
+              <div class="version">
+                23.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../releases/index.html">Releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/23.1_announce_user.html">June 2023 Galaxy Release (v 23.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/23.0_announce_user.html">2023 Galaxy Release (v 23.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/22.05_announce_user.html">May 2022 Galaxy Release (v 22.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/22.01_announce_user.html">January 2022 Galaxy Release (v 22.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/21.09_announce_user.html">September 2021 Galaxy Release (v 21.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/21.05_announce_user.html">May 2021 Galaxy Release (v 21.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/21.01_announce_user.html">January 2021 Galaxy Release (v 21.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/20.09_announce_user.html">September 2020 Galaxy Release (v 20.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/20.05_announce_user.html">May 2020 Galaxy Release (v 20.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/20.01_announce_user.html">January 2020 Galaxy Release (v 20.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/19.09_announce_user.html">September 2019 Galaxy Release (v 19.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/19.05_announce_user.html">May 2019 Galaxy Release (v 19.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/19.01_announce_user.html">January 2019 Galaxy Release (v 19.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/18.09_announce.html">September 2018 Galaxy Release (v 18.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/18.05_announce.html">May 2018 Galaxy Release (v 18.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/18.01_announce.html">January 2018 Galaxy Release (v 18.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/17.09_announce.html">September 2017 Galaxy Release (v 17.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/17.05_announce.html">May 2017 Galaxy Release (v 17.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/17.01_announce.html">January 2017 Galaxy Release (v 17.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/16.10_announce.html">October 2016 Galaxy Release (v 16.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/16.07_announce.html">July 2016 Galaxy Release (v 16.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/16.04_announce.html">April 2016 Galaxy Release (v 16.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/16.01_announce.html">January 2016 Galaxy Release (v 16.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/15.10_announce.html">October 2015 Galaxy Release (v 15.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/15.07_announce.html">July 2015 Galaxy Release (v 15.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/15.05_announce.html">May 2015 Galaxy Release (v 15.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/15.03_announce.html">March 2015 Galaxy Release (v 15.03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/15.01_announce.html">January 2015 Galaxy Release (v 15.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/14.10_announce.html">October 2014 Galaxy Release (v 14.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/14.08_announce.html">August 2014 Galaxy Release (v 14.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/14.06_announce.html">June 2014 Galaxy Release (v 14.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/14.04_announce.html">April 2014 Galaxy Release (v 14.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/14.02_announce.html">February 2014 Galaxy Release (v 14.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/13.11_announce.html">November 2013 Galaxy Release (v 13.11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/13.08_announce.html">August 2013 Galaxy Release (v 13.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/13.06_announce.html">June 2013 Galaxy Release (v 13.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/13.04_announce.html">April 2013 Galaxy Release (v 13.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/13.02_announce.html">February 2013 Galaxy Release (v 13.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/13.01_announce.html">January 2013 Galaxy Release (v 13.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../releases/older_releases.html">Galaxy Releases older than v 13.01</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Admin Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Administration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python.html">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../framework_dependencies.html">Framework Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../config.html">Galaxy Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../config_logging.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../production.html">Production Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../security.html">Security considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nginx.html">Proxying Galaxy with NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apache.html">Proxying Galaxy with Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scaling.html">Scaling and Load Balancing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cluster.html">Connecting to a Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../jobs.html">Galaxy Job Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tool_panel.html">Tool Panel Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mq.html">Message queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dependency_resolvers.html">Dependency Resolvers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../container_resolvers.html">Containers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../container_resolvers.html#other-considerations">Other considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../conda_faq.html">Conda for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../db_migration.html">Galaxy Database Schema Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reports.html">Galaxy Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../useful_scripts.html">Scripts &amp; Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../options.html">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../migrating_to_gunicorn.html">Migrating from uWSGI to Gunicorn and FastAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Special topics</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ftp.html">Galaxy FTP Uploads</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Galaxy InteractiveTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mulled_containers.html">Containers for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grt.html">Galactic Radio Telescope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gtn.html">Galaxy Training Materials Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_metrics.html">Job Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html">Galaxy Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vault.html">Storing secrets in the vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance_tracking.html">Galaxy Performance Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bug_reports.html">Bug Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gdpr_compliance.html">GDPR Compliance</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev/index.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/schema.html">Galaxy Tool XML File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/api_guidelines.html">API Design Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/build_a_job_runner.html">Build a job runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/finding_and_improving_slow_code.html">Finding and improving slow Galaxy code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/data_managers.html">Data managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/data_types.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/faq.html">How Do I…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/writing_tests.html">Writing Tests for Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/debugging_tests.html">Debugging Galaxy Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/debugging_tests.html#debugging-tests-that-run-out-of-memory">Debugging tests that run out of memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/debugging_galaxy.html">Debugging Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/debugging_galaxy_slurm.html">Debugging Galaxy: Slurm Compute Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/translating.html">Translating the Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/create_point_release.html">Creating Galaxy Point Releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_doc.html">Galaxy API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../api/quickstart.html"> Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/api.html"> Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ts_api_doc.html">Tool Shed API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../api/ts_api.html"> API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../lib/modules.html">Application Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../lib/galaxy.html">galaxy package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lib/galaxy_ext.html">galaxy_ext package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lib/galaxy_test.html">galaxy_test package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lib/tool_shed.html">tool_shed package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../project/organization.html">Project Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../project/organization.html#procedure-documents">Procedure Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/organization.html#committers">Committers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/organization.html#release-branches">Release branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/organization.html#handling-pull-requests">Handling Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/organization.html#issue-reporting">Issue Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../project/issues.html">Issue Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../project/issues.html#issue-reporting">Issue Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/issues.html#milestones">Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/issues.html#labeling-structure">Labeling Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/issues.html#the-roadmap">The Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/issues.html#voting">Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/issues.html#automation">Automation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Galaxy Project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Special Topics</a></li>
+      <li class="breadcrumb-item active">Galaxy InteractiveTools</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/admin/special_topics/interactivetools.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="galaxy-interactivetools">
+<span id="interactivetools"></span><h1>Galaxy InteractiveTools<a class="headerlink" href="#galaxy-interactivetools" title="Link to this heading">¶</a></h1>
+<p>Galaxy Interactive Tools allows launching a container-backed Galaxy Tool
+and enabling a Galaxy User to gain access to content inside in real-time.</p>
+<section id="how-galaxy-interactivetools-work">
+<h2>How Galaxy InteractiveTools work<a class="headerlink" href="#how-galaxy-interactivetools-work" title="Link to this heading">¶</a></h2>
+<p>A InteractiveTool is defined in the same familiar way as standard Galaxy Tools,
+but are specified with <code class="docutils literal notranslate"><span class="pre">tool_type=&quot;interactive&quot;</span></code>, and providing additional
+entry point information:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;entry_points&gt;</span>
+<span class="w">    </span><span class="nt">&lt;entry_point</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Display name&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;port&gt;</span>80<span class="nt">&lt;/port&gt;</span>
+<span class="w">        </span><span class="nt">&lt;url&gt;</span><span class="cp">&lt;![CDATA[optional/path/can/be/${templated}]]&gt;</span><span class="nt">&lt;/url&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/entry_point&gt;</span>
+<span class="nt">&lt;/entry_points&gt;</span>
+</pre></div>
+</div>
+<p><strong>Note</strong> that name, port, and url are each able to be templated from the InteractiveTool’s parameter dictionary.</p>
+</section>
+<section id="some-important-benefits-of-using-galaxy-interactivetools">
+<h2>Some important benefits of using Galaxy InteractiveTools<a class="headerlink" href="#some-important-benefits-of-using-galaxy-interactivetools" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>You can have and access <strong>any number of InteractiveTools at a time</strong> (admin configurable)</p></li>
+<li><p>If you accidentally close the <strong>InteractiveTool browser window</strong>, you can <strong>regain access</strong> by selecting from a <strong>list of active InteractiveTools</strong></p></li>
+<li><p>A single <strong>InteractiveTool</strong> can <strong>grant access</strong> to <strong>multiple running applications, servers, and interfaces</strong></p></li>
+<li><p><strong>InteractiveTools</strong> can be <strong>added to</strong> Galaxy <strong>Workflows</strong></p></li>
+<li><p><strong>InteractiveTools</strong> are <strong>bonafide Galaxy Tools</strong>; just specify <strong>tool_type as “interactive”</strong> and list the ports you want to expose</p></li>
+<li><p><strong>InteractiveTools</strong> can be <strong>added</strong> to and <strong>installed from the ToolShed</strong>.</p></li>
+<li><p><strong>R Shiny apps</strong>, <strong>Javascript-based VNC</strong> access to desktop environments, <strong>genome-browsers-in-a-box</strong>, <strong>interactive notebook environments</strong>, etc, are all possible with <strong>InteractiveTools</strong></p></li>
+</ul>
+</section>
+<section id="server-side-configuration-of-galaxy-interactivetools">
+<h2>Server-side configuration of Galaxy InteractiveTools<a class="headerlink" href="#server-side-configuration-of-galaxy-interactivetools" title="Link to this heading">¶</a></h2>
+<p>For production deployments and additional considerations please see the <a class="reference external" href="https://training.galaxyproject.org/training-material/topics/admin/tutorials/interactive-tools/tutorial.html">Galaxy Interactive Tools Tutorial</a>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code> file will need to be populated as seen in
+<code class="docutils literal notranslate"><span class="pre">config/galaxy.yml.interactivetools</span></code>.</p>
+<p>Galaxy InteractiveTool routing relies on wildcard subdomain routes and a proxy server that forwards requests to a running container.
+For users who manage their own DNS, you can set the appropriate A records to redirect
+<code class="docutils literal notranslate"><span class="pre">*.interactivetool.yourdomain</span></code>.</p>
+<p><cite>gravity</cite> will automatically start the needed proxy server.</p>
+<p>The following configuration is only recommended for local testing, as users will directly connect to the InteractiveTool Proxy.
+In a production setup an upstream proxy should route requests to the proxy via the <code class="docutils literal notranslate"><span class="pre">*.interactivetool.yourdomain</span></code> subdomain,
+or use path-based proxying for interactive tools that support it (<code class="docutils literal notranslate"><span class="pre">requires_domain=False</span></code>, see below for more details).</p>
+<p>Set these values in <cite>galaxy.yml</cite>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">gravity</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># ...</span>
+<span class="w">  </span><span class="nt">gx_it_proxy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4002</span>
+<span class="nt">galaxy</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># ...</span>
+<span class="w">  </span><span class="nt">interactivetools_enable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">interactivetools_map</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">database/interactivetools_map.sqlite</span>
+<span class="w">  </span><span class="nt">galaxy_infrastructure_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://localhost:8080</span>
+<span class="w">  </span><span class="c1"># Do not set the following 2 options if you are using an upstream proxy server like nginx</span>
+<span class="w">  </span><span class="nt">interactivetools_upstream_proxy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">interactivetools_proxy_host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost:4002</span>
+<span class="w">  </span><span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>If you do want to use nginx as an upstream proxy server you can use the following server section to route requests to
+the InteractiveTool proxy:</p>
+<div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1"># Listen on port 443</span>
+<span class="w">    </span><span class="kn">listen</span><span class="w">       </span><span class="s">*:443</span><span class="w"> </span><span class="s">ssl</span><span class="p">;</span>
+<span class="w">    </span><span class="c1"># Match all requests for the interactive tools subdomain</span>
+<span class="w">    </span><span class="kn">server_name</span><span class="w">  </span><span class="s">*.interactivetool.localhost</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1"># Route all domain-based interactive tool requests to the InteractiveTool proxy application</span>
+<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">proxy_redirect</span><span class="w"> </span><span class="no">off</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_http_version</span><span class="w"> </span><span class="mi">1</span><span class="s">.1</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Real-IP</span><span class="w"> </span><span class="nv">$remote_addr</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Upgrade</span><span class="w"> </span><span class="nv">$http_upgrade</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Connection</span><span class="w"> </span><span class="s">&quot;upgrade&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://localhost:4002</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Note that this nginx example uses https, so you need to have a wildcard certificate for your domain,
+and you need to adjust <code class="docutils literal notranslate"><span class="pre">galaxy_infrastructure_url</span></code> as appropriate.</p>
+<p>It is also possible to set up nginx to route path-based interactive tool URLs to the InteractiveTool proxy.
+Path-based interactive tool URLs will only be created for tools that have defined <code class="docutils literal notranslate"><span class="pre">requires_domain=False</span></code> in the tool
+XML file (which signals that the web server running on the container makes use of relative links and can serve
+content starting from any path). A tool config variable will be added in the next version to simplify this for
+tools that need to know the path to where it is served.</p>
+<p>To support path-based interactive tools through nginx proxy, add the following to the main Galaxy “server”
+section (serving port 443):</p>
+<div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="c1"># Route all path-based interactive tool requests to the InteractiveTool proxy application</span>
+<span class="k">location</span><span class="w"> </span><span class="p">~</span><span class="sr">*</span><span class="w"> </span><span class="s">^/(interactivetool/access/.+)</span>$<span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">proxy_redirect</span><span class="w"> </span><span class="no">off</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">proxy_http_version</span><span class="w"> </span><span class="mi">1</span><span class="s">.1</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Real-IP</span><span class="w"> </span><span class="nv">$remote_addr</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Upgrade</span><span class="w"> </span><span class="nv">$http_upgrade</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Connection</span><span class="w"> </span><span class="s">&quot;upgrade&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://localhost:4002</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This example config works for default values of <code class="docutils literal notranslate"><span class="pre">interactivetools_base_path</span></code> and <code class="docutils literal notranslate"><span class="pre">interactivetools_prefix</span></code> as defined in
+<code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code>. For other values, you will need to adjust the location patterns accordingly. This solution also
+requires <code class="docutils literal notranslate"><span class="pre">interactivetools_shorten_url</span></code> to be set to <code class="docutils literal notranslate"><span class="pre">false</span></code> (default).</p>
+<p>In both nginx config examples, you might want to replace localhost with your server domain (or possibly
+<code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code>), depending on your server setup.</p>
+<p>You will also need to enable a docker destination in the job_conf.xml file.
+An example <code class="docutils literal notranslate"><span class="pre">job_conf.xml</span></code> file as seen in <code class="docutils literal notranslate"><span class="pre">config/job_conf.xml.interactivetools</span></code>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="cm">&lt;!-- A sample job config for InteractiveTools using local runner. --&gt;</span>
+<span class="nt">&lt;job_conf&gt;</span>
+<span class="w">    </span><span class="nt">&lt;plugins&gt;</span>
+<span class="w">        </span><span class="nt">&lt;plugin</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;local&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;runner&quot;</span><span class="w"> </span><span class="na">load=</span><span class="s">&quot;galaxy.jobs.runners.local:LocalJobRunner&quot;</span><span class="w"> </span><span class="na">workers=</span><span class="s">&quot;4&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/plugins&gt;</span>
+<span class="w">    </span><span class="nt">&lt;destinations</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;docker_dispatch&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;destination</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;local&quot;</span><span class="w"> </span><span class="na">runner=</span><span class="s">&quot;local&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;destination</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;docker_local&quot;</span><span class="w"> </span><span class="na">runner=</span><span class="s">&quot;local&quot;</span><span class="nt">&gt;</span>
+<span class="w">          </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;docker_enabled&quot;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/param&gt;</span>
+<span class="w">          </span><span class="cm">&lt;!-- If you have not set &#39;outputs_to_working_directory: true&#39; in galaxy.yml you can remove the docker_volumes setting. --&gt;</span>
+<span class="w">          </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;docker_volumes&quot;</span><span class="nt">&gt;</span>$galaxy_root:ro,$tool_directory:ro,$job_directory:rw,$working_directory:rw,$default_file_path:ro<span class="nt">&lt;/param&gt;</span>
+<span class="w">          </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;docker_sudo&quot;</span><span class="nt">&gt;</span>false<span class="nt">&lt;/param&gt;</span>
+<span class="w">          </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;docker_net&quot;</span><span class="nt">&gt;</span>bridge<span class="nt">&lt;/param&gt;</span>
+<span class="w">          </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;docker_auto_rm&quot;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/param&gt;</span>
+<span class="w">          </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;require_container&quot;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/param&gt;</span>
+<span class="w">          </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;container_monitor&quot;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/param&gt;</span>
+<span class="w">          </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;docker_set_user&quot;</span><span class="nt">&gt;&lt;/param&gt;</span>
+<span class="w">          </span><span class="cm">&lt;!-- InteractiveTools need real hostnames or URLs to work - simply specifying IPs will not work.</span>
+<span class="cm">               If you develop interactive tools on your &#39;localhost&#39; and don&#39;t have a proper domain name</span>
+<span class="cm">               you need to tell all Docker containers a hostname where Galaxy is running.</span>
+<span class="cm">               This can be done via the add-host parameter during the `docker run` command.</span>
+<span class="cm">               &#39;localhost&#39; here is an arbitrary hostname that matches the IP address of your</span>
+<span class="cm">               Galaxy host. Make sure this hostname (&#39;localhost&#39;) is also set in your galaxy.yml file, e.g.</span>
+<span class="cm">               `galaxy_infrastructure_url: http://localhost:8080`.</span>
+<span class="cm">          --&gt;</span>
+<span class="w">          </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;docker_run_extra_arguments&quot;</span><span class="nt">&gt;</span>--add-host<span class="w"> </span>localhost:host-gateway<span class="nt">&lt;/param&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/destination&gt;</span>
+<span class="w">        </span><span class="nt">&lt;destination</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;docker_dispatch&quot;</span><span class="w"> </span><span class="na">runner=</span><span class="s">&quot;dynamic&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;type&quot;</span><span class="nt">&gt;</span>docker_dispatch<span class="nt">&lt;/param&gt;</span>
+<span class="w">            </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;docker_destination_id&quot;</span><span class="nt">&gt;</span>docker_local<span class="nt">&lt;/param&gt;</span>
+<span class="w">            </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;default_destination_id&quot;</span><span class="nt">&gt;</span>local<span class="nt">&lt;/param&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/destination&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/destinations&gt;</span>
+<span class="nt">&lt;/job_conf&gt;</span>
+</pre></div>
+</div>
+<p>InteractiveTools have been enabled for the Condor, Slurm, Pulsar and Kuberneters job runner.
+A destination configuration for Condor may look like this:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;destination</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;condor&quot;</span><span class="w"> </span><span class="na">runner=</span><span class="s">&quot;condor&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;docker_enabled&quot;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/param&gt;</span>
+<span class="w">    </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;docker_sudo&quot;</span><span class="nt">&gt;</span>false<span class="nt">&lt;/param&gt;</span>
+<span class="nt">&lt;/destination&gt;</span>
+</pre></div>
+</div>
+<p><strong>Note on resource consumption:</strong> Keep in mind that Distributed Resource
+Management (DRM) / cluster systems may have a maximum runtime configured for
+jobs. From the Galaxy point of view, such a container could run as long as the
+user desires, this may not be advisable and an admin may want to restrict the
+runtime of InteractiveTools <em>(and jobs in general)</em>. However, if the job is
+killed by the DRM, the user is not informed beforehand and data in the container
+could be discarded.</p>
+<p>Some <strong>example test InteractiveTools</strong> have been defined, and can be added to
+the <code class="docutils literal notranslate"><span class="pre">config/tool_conf.xml</span></code>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;toolbox</span><span class="w"> </span><span class="na">monitor=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;tool</span><span class="w"> </span><span class="na">file=</span><span class="s">&quot;interactive/interactivetool_jupyter_notebook.xml&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;tool</span><span class="w"> </span><span class="na">file=</span><span class="s">&quot;interactive/interactivetool_cellxgene.xml&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/toolbox&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ftp.html" class="btn btn-neutral float-left" title="Galaxy FTP Uploads" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mulled_containers.html" class="btn btn-neutral float-right" title="Containers for Tool Dependencies" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Galaxy Committers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,656 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>galaxy.datatypes.dataproviders.column &mdash; Galaxy Project 23.1.5.dev0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" href="../../../../_static/style.css" type="text/css" />
+
+  
+    <link rel="canonical" href="https://docs.galaxyproject.org/en/master/_modules/galaxy/datatypes/dataproviders/column.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/documentation_options.js?v=da3e81e8"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            Galaxy Project
+          </a>
+              <div class="version">
+                23.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../releases/index.html">Releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/23.1_announce_user.html">June 2023 Galaxy Release (v 23.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/23.0_announce_user.html">2023 Galaxy Release (v 23.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/22.05_announce_user.html">May 2022 Galaxy Release (v 22.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/22.01_announce_user.html">January 2022 Galaxy Release (v 22.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/21.09_announce_user.html">September 2021 Galaxy Release (v 21.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/21.05_announce_user.html">May 2021 Galaxy Release (v 21.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/21.01_announce_user.html">January 2021 Galaxy Release (v 21.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/20.09_announce_user.html">September 2020 Galaxy Release (v 20.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/20.05_announce_user.html">May 2020 Galaxy Release (v 20.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/20.01_announce_user.html">January 2020 Galaxy Release (v 20.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/19.09_announce_user.html">September 2019 Galaxy Release (v 19.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/19.05_announce_user.html">May 2019 Galaxy Release (v 19.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/19.01_announce_user.html">January 2019 Galaxy Release (v 19.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/18.09_announce.html">September 2018 Galaxy Release (v 18.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/18.05_announce.html">May 2018 Galaxy Release (v 18.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/18.01_announce.html">January 2018 Galaxy Release (v 18.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/17.09_announce.html">September 2017 Galaxy Release (v 17.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/17.05_announce.html">May 2017 Galaxy Release (v 17.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/17.01_announce.html">January 2017 Galaxy Release (v 17.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/16.10_announce.html">October 2016 Galaxy Release (v 16.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/16.07_announce.html">July 2016 Galaxy Release (v 16.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/16.04_announce.html">April 2016 Galaxy Release (v 16.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/16.01_announce.html">January 2016 Galaxy Release (v 16.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/15.10_announce.html">October 2015 Galaxy Release (v 15.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/15.07_announce.html">July 2015 Galaxy Release (v 15.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/15.05_announce.html">May 2015 Galaxy Release (v 15.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/15.03_announce.html">March 2015 Galaxy Release (v 15.03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/15.01_announce.html">January 2015 Galaxy Release (v 15.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/14.10_announce.html">October 2014 Galaxy Release (v 14.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/14.08_announce.html">August 2014 Galaxy Release (v 14.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/14.06_announce.html">June 2014 Galaxy Release (v 14.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/14.04_announce.html">April 2014 Galaxy Release (v 14.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/14.02_announce.html">February 2014 Galaxy Release (v 14.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/13.11_announce.html">November 2013 Galaxy Release (v 13.11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/13.08_announce.html">August 2013 Galaxy Release (v 13.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/13.06_announce.html">June 2013 Galaxy Release (v 13.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/13.04_announce.html">April 2013 Galaxy Release (v 13.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/13.02_announce.html">February 2013 Galaxy Release (v 13.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/13.01_announce.html">January 2013 Galaxy Release (v 13.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../releases/older_releases.html">Galaxy Releases older than v 13.01</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Admin Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../admin/index.html">Administration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/python.html">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/framework_dependencies.html">Framework Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/config.html">Galaxy Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/config_logging.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/production.html">Production Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/security.html">Security considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/nginx.html">Proxying Galaxy with NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/apache.html">Proxying Galaxy with Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/scaling.html">Scaling and Load Balancing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/cluster.html">Connecting to a Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/jobs.html">Galaxy Job Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/tool_panel.html">Tool Panel Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/mq.html">Message queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/dependency_resolvers.html">Dependency Resolvers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/container_resolvers.html">Containers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/container_resolvers.html#other-considerations">Other considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/conda_faq.html">Conda for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/db_migration.html">Galaxy Database Schema Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/reports.html">Galaxy Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/useful_scripts.html">Scripts &amp; Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/options.html">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/migrating_to_gunicorn.html">Migrating from uWSGI to Gunicorn and FastAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../admin/special_topics/index.html">Special topics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/special_topics/ftp.html">Galaxy FTP Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/special_topics/interactivetools.html">Galaxy InteractiveTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/special_topics/mulled_containers.html">Containers for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/special_topics/grt.html">Galactic Radio Telescope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/special_topics/gtn.html">Galaxy Training Materials Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/special_topics/job_metrics.html">Job Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/special_topics/webhooks.html">Galaxy Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/special_topics/vault.html">Storing secrets in the vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/special_topics/performance_tracking.html">Galaxy Performance Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/special_topics/bug_reports.html">Bug Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../admin/special_topics/gdpr_compliance.html">GDPR Compliance</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../dev/index.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/schema.html">Galaxy Tool XML File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/api_guidelines.html">API Design Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/build_a_job_runner.html">Build a job runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/finding_and_improving_slow_code.html">Finding and improving slow Galaxy code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/data_managers.html">Data managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/data_types.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/faq.html">How Do I…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/writing_tests.html">Writing Tests for Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/debugging_tests.html">Debugging Galaxy Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/debugging_tests.html#debugging-tests-that-run-out-of-memory">Debugging tests that run out of memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/debugging_galaxy.html">Debugging Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/debugging_galaxy_slurm.html">Debugging Galaxy: Slurm Compute Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/translating.html">Translating the Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dev/create_point_release.html">Creating Galaxy Point Releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_doc.html">Galaxy API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/quickstart.html"> Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/api.html"> Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ts_api_doc.html">Tool Shed API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/ts_api.html"> API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lib/modules.html">Application Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/galaxy.html">galaxy package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/galaxy_ext.html">galaxy_ext package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/galaxy_test.html">galaxy_test package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lib/tool_shed.html">tool_shed package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../project/organization.html">Project Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../project/organization.html#procedure-documents">Procedure Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../project/organization.html#committers">Committers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../project/organization.html#release-branches">Release branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../project/organization.html#handling-pull-requests">Handling Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../project/organization.html#issue-reporting">Issue Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../project/issues.html">Issue Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../project/issues.html#issue-reporting">Issue Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../project/issues.html#milestones">Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../project/issues.html#labeling-structure">Labeling Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../project/issues.html#the-roadmap">The Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../project/issues.html#voting">Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../project/issues.html#automation">Automation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Galaxy Project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">galaxy.datatypes.dataproviders.column</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for galaxy.datatypes.dataproviders.column</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Providers that provide lists of lists generally where each line of a source</span>
+<span class="sd">is further subdivided into multiple data (e.g. columns from a line).</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">unquote_plus</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">line</span>
+
+<span class="n">_TODO</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">move ColumnarDataProvider parsers to more sensible location</span>
+
+<span class="s2">TransposedColumnarDataProvider: provides each column as a single array</span>
+<span class="s2">    - see existing visualizations/dataprovider/basic.ColumnDataProvider</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="c1"># ----------------------------------------------------------------------------- base classes</span>
+<div class="viewcode-block" id="ColumnarDataProvider">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.column.ColumnarDataProvider">[docs]</a>
+<span class="k">class</span> <span class="nc">ColumnarDataProvider</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">RegexLineDataProvider</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Data provider that provide a list of columns from the lines of its source.</span>
+
+<span class="sd">    Columns are returned in the order given in indeces, so this provider can</span>
+<span class="sd">    re-arrange columns.</span>
+
+<span class="sd">    If any desired index is outside the actual number of columns</span>
+<span class="sd">    in the source, this provider will None-pad the output and you are guaranteed</span>
+<span class="sd">    the same number of columns as the number of indeces asked for (even if they</span>
+<span class="sd">    are filled with None).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">settings</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;indeces&quot;</span><span class="p">:</span> <span class="s2">&quot;list:int&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;column_count&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;column_types&quot;</span><span class="p">:</span> <span class="s2">&quot;list:str&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;parse_columns&quot;</span><span class="p">:</span> <span class="s2">&quot;bool&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;deliminator&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;filters&quot;</span><span class="p">:</span> <span class="s2">&quot;list:str&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+<div class="viewcode-block" id="ColumnarDataProvider.__init__">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">source</span><span class="p">,</span>
+        <span class="n">indeces</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">column_count</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">column_types</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">parsers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">parse_columns</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">deliminator</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">filters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        :param indeces: a list of indeces of columns to gather from each row</span>
+<span class="sd">                        Optional: will default to `None`.</span>
+<span class="sd">                        If `None`, this provider will return all rows (even when a</span>
+<span class="sd">                        particular row contains more/less than others).</span>
+<span class="sd">                        If a row/line does not contain an element at a given index, the</span>
+<span class="sd">                        provider will-return/fill-with a `None` value as the element.</span>
+<span class="sd">        :type indeces: list or None</span>
+
+<span class="sd">        :param column_count: an alternate means of defining indeces, use an int</span>
+<span class="sd">                             here to effectively provide the first N columns.</span>
+<span class="sd">                             Optional: will default to `None`.</span>
+<span class="sd">        :type column_count: int</span>
+
+<span class="sd">        :param column_types: a list of string names of types that the</span>
+<span class="sd">                             provider will use to look up an appropriate parser for the column.</span>
+<span class="sd">                             (e.g. &#39;int&#39;, &#39;float&#39;, &#39;str&#39;, &#39;bool&#39;)</span>
+<span class="sd">                             Optional: will default to parsing all columns as strings.</span>
+<span class="sd">        :type column_types: list of strings</span>
+
+<span class="sd">        :param parsers: a dictionary keyed with column type strings</span>
+<span class="sd">                        and with values that are functions to use when parsing those</span>
+<span class="sd">                        types.</span>
+<span class="sd">                        Optional: will default to using the function `_get_default_parsers`.</span>
+<span class="sd">        :type parsers: dictionary</span>
+
+<span class="sd">        :param parse_columns: attempt to parse columns? Optional: defaults to `True`.</span>
+<span class="sd">        :type parse_columns: bool</span>
+
+<span class="sd">        :param deliminator: character(s) used to split each row/line of the source. Optional: defaults to the tab character.</span>
+<span class="sd">        :type deliminator: str</span>
+
+<span class="sd">        .. note:: that the subclass constructors are passed kwargs - so they&#39;re</span>
+<span class="sd">                  params (limit, offset, etc.) are also applicable here.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># TODO: other columnar formats: csv, etc.</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="c1"># IMPLICIT: if no indeces, column_count, or column_types passed: return all columns</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">selected_column_indeces</span> <span class="o">=</span> <span class="n">indeces</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">column_count</span> <span class="o">=</span> <span class="n">column_count</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">column_types</span> <span class="o">=</span> <span class="n">column_types</span> <span class="ow">or</span> <span class="p">[]</span>
+        <span class="c1"># if no column count given, try to infer from indeces or column_types</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">column_count</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">selected_column_indeces</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">column_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">selected_column_indeces</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">column_types</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">column_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">column_types</span><span class="p">)</span>
+        <span class="c1"># if no indeces given, infer from column_count</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">selected_column_indeces</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">column_count</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">selected_column_indeces</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">column_count</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">deliminator</span> <span class="o">=</span> <span class="n">deliminator</span>
+
+        <span class="c1"># how/whether to parse each column value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parsers</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">parse_columns</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parsers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_default_parsers</span><span class="p">()</span>
+            <span class="c1"># overwrite with user desired parsers</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parsers</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">parsers</span> <span class="ow">or</span> <span class="p">{})</span>
+
+        <span class="n">filters</span> <span class="o">=</span> <span class="n">filters</span> <span class="ow">or</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">column_filters</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">filter_</span> <span class="ow">in</span> <span class="n">filters</span><span class="p">:</span>
+            <span class="n">parsed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_filter</span><span class="p">(</span><span class="n">filter_</span><span class="p">)</span>
+            <span class="c1"># TODO: might be better to error on bad filter/None here</span>
+            <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">parsed</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">column_filters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parsed</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ColumnarDataProvider.parse_filter">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.parse_filter">[docs]</a>
+    <span class="k">def</span> <span class="nf">parse_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filter_param_str</span><span class="p">):</span>
+        <span class="n">split</span> <span class="o">=</span> <span class="n">filter_param_str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">split</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="n">column</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">val</span> <span class="o">=</span> <span class="n">split</span>
+
+        <span class="c1"># better checking v. len and indeces</span>
+        <span class="n">column</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">column</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">column</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">column_types</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">column_types</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">,</span> <span class="s2">&quot;int&quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_numeric_filter</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">column_types</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;str&quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_string_filter</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">column_types</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;list&quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_list_filter</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="ColumnarDataProvider.create_numeric_filter">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.create_numeric_filter">[docs]</a>
+    <span class="k">def</span> <span class="nf">create_numeric_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return an anonymous filter function that will be passed the array</span>
+<span class="sd">        of parsed columns. Return None if no filter function can be</span>
+<span class="sd">        created for the given params.</span>
+
+<span class="sd">        The function will compare the column at index `column` against `val`</span>
+<span class="sd">        using the given op where op is one of:</span>
+
+<span class="sd">        - lt: less than</span>
+<span class="sd">        - le: less than or equal to</span>
+<span class="sd">        - eq: equal to</span>
+<span class="sd">        - ne: not equal to</span>
+<span class="sd">        - ge: greather than or equal to</span>
+<span class="sd">        - gt: greater than</span>
+
+<span class="sd">        `val` is cast as float here and will return None if there&#39;s a parsing error.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="s2">&quot;lt&quot;</span> <span class="o">==</span> <span class="n">op</span><span class="p">:</span>
+            <span class="k">return</span> <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">val</span>
+        <span class="k">elif</span> <span class="s2">&quot;le&quot;</span> <span class="o">==</span> <span class="n">op</span><span class="p">:</span>
+            <span class="k">return</span> <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">val</span>
+        <span class="k">elif</span> <span class="s2">&quot;eq&quot;</span> <span class="o">==</span> <span class="n">op</span><span class="p">:</span>
+            <span class="k">return</span> <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">==</span> <span class="n">val</span>
+        <span class="k">elif</span> <span class="s2">&quot;ne&quot;</span> <span class="o">==</span> <span class="n">op</span><span class="p">:</span>
+            <span class="k">return</span> <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">!=</span> <span class="n">val</span>
+        <span class="k">elif</span> <span class="s2">&quot;ge&quot;</span> <span class="o">==</span> <span class="n">op</span><span class="p">:</span>
+            <span class="k">return</span> <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">val</span>
+        <span class="k">elif</span> <span class="s2">&quot;gt&quot;</span> <span class="o">==</span> <span class="n">op</span><span class="p">:</span>
+            <span class="k">return</span> <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">val</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="ColumnarDataProvider.create_string_filter">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.create_string_filter">[docs]</a>
+    <span class="k">def</span> <span class="nf">create_string_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return an anonymous filter function that will be passed the array</span>
+<span class="sd">        of parsed columns. Return None if no filter function can be</span>
+<span class="sd">        created for the given params.</span>
+
+<span class="sd">        The function will compare the column at index `column` against `val`</span>
+<span class="sd">        using the given op where op is one of:</span>
+
+<span class="sd">        - eq: exactly matches</span>
+<span class="sd">        - has: the column contains the substring `val`</span>
+<span class="sd">        - re: the column matches the regular expression in `val`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s2">&quot;eq&quot;</span> <span class="o">==</span> <span class="n">op</span><span class="p">:</span>
+            <span class="k">return</span> <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">==</span> <span class="n">val</span>
+        <span class="k">elif</span> <span class="s2">&quot;has&quot;</span> <span class="o">==</span> <span class="n">op</span><span class="p">:</span>
+            <span class="k">return</span> <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">d</span><span class="p">[</span><span class="n">column</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="s2">&quot;re&quot;</span> <span class="o">==</span> <span class="n">op</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="n">unquote_plus</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+            <span class="k">return</span> <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">val</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">column</span><span class="p">])</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="ColumnarDataProvider.create_list_filter">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.create_list_filter">[docs]</a>
+    <span class="k">def</span> <span class="nf">create_list_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return an anonymous filter function that will be passed the array</span>
+<span class="sd">        of parsed columns. Return None if no filter function can be</span>
+<span class="sd">        created for the given params.</span>
+
+<span class="sd">        The function will compare the column at index `column` against `val`</span>
+<span class="sd">        using the given op where op is one of:</span>
+
+<span class="sd">        - eq: the list `val` exactly matches the list in the column</span>
+<span class="sd">        - has: the list in the column contains the sublist `val`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s2">&quot;eq&quot;</span> <span class="o">==</span> <span class="n">op</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_value</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="s2">&quot;list&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">==</span> <span class="n">val</span>
+        <span class="k">elif</span> <span class="s2">&quot;has&quot;</span> <span class="o">==</span> <span class="n">op</span><span class="p">:</span>
+            <span class="k">return</span> <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">d</span><span class="p">[</span><span class="n">column</span><span class="p">]</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="ColumnarDataProvider.get_default_parsers">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.get_default_parsers">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_default_parsers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return parser dictionary keyed for each columnar type</span>
+<span class="sd">        (as defined in datatypes).</span>
+
+<span class="sd">        .. note:: primitives only by default (str, int, float, boolean, None).</span>
+<span class="sd">            Other (more complex) types are retrieved as strings.</span>
+
+<span class="sd">        :returns: a dictionary of the form:</span>
+<span class="sd">            `{ &lt;parser type name&gt; : &lt;function used to parse type&gt; }`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># TODO: move to module level (or datatypes, util)</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="c1"># str is default and not needed here</span>
+            <span class="s2">&quot;int&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+            <span class="s2">&quot;float&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+            <span class="s2">&quot;bool&quot;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+            <span class="c1"># unfortunately, &#39;list&#39; is used in dataset metadata both for</span>
+            <span class="c1">#   query style maps (9th col gff) AND comma-sep strings.</span>
+            <span class="c1">#   (disabled for now)</span>
+            <span class="c1"># &#39;list&#39;  : lambda v: v.split( &#39;,&#39; ),</span>
+            <span class="c1"># &#39;csv&#39;   : lambda v: v.split( &#39;,&#39; ),</span>
+            <span class="c1"># i don&#39;t like how urlparses does sub-lists...</span>
+            <span class="c1"># &#39;querystr&#39; : lambda v: dict([ ( p.split( &#39;=&#39;, 1 ) if &#39;=&#39; in p else ( p, True ) )</span>
+            <span class="c1">#                              for p in v.split( &#39;;&#39;, 1 ) ])</span>
+            <span class="c1"># &#39;scifloat&#39;: #floating point which may be in scientific notation</span>
+            <span class="c1"># always with the 1 base, biologists?</span>
+            <span class="c1"># &#39;int1&#39;  : ( lambda i: int( i ) - 1 ),</span>
+            <span class="c1"># &#39;gffval&#39;: string or &#39;.&#39; for None</span>
+            <span class="c1"># &#39;gffint&#39;: # int or &#39;.&#39; for None</span>
+            <span class="c1"># &#39;gffphase&#39;: # 0, 1, 2, or &#39;.&#39; for None</span>
+            <span class="c1"># &#39;gffstrand&#39;: # -, +, ?, or &#39;.&#39; for None, etc.</span>
+        <span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="ColumnarDataProvider.filter">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.filter">[docs]</a>
+    <span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">line</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">line</span>
+        <span class="n">columns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_columns_from_line</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter_by_columns</span><span class="p">(</span><span class="n">columns</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ColumnarDataProvider.parse_columns_from_line">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.parse_columns_from_line">[docs]</a>
+    <span class="k">def</span> <span class="nf">parse_columns_from_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns a list of the desired, parsed columns.</span>
+<span class="sd">        :param line: the line to parse</span>
+<span class="sd">        :type line: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># TODO: too much going on in this loop - the above should all be precomputed AMAP...</span>
+        <span class="n">all_columns</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">deliminator</span><span class="p">)</span>
+        <span class="c1"># if no indeces were passed to init, return all columns</span>
+        <span class="n">selected_indeces</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">selected_column_indeces</span> <span class="ow">or</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">all_columns</span><span class="p">)))</span>
+        <span class="n">parsed_columns</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">parser_index</span><span class="p">,</span> <span class="n">column_index</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">selected_indeces</span><span class="p">):</span>
+            <span class="n">parsed_columns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parse_column_at_index</span><span class="p">(</span><span class="n">all_columns</span><span class="p">,</span> <span class="n">parser_index</span><span class="p">,</span> <span class="n">column_index</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">parsed_columns</span></div>
+
+
+<div class="viewcode-block" id="ColumnarDataProvider.parse_column_at_index">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.parse_column_at_index">[docs]</a>
+    <span class="k">def</span> <span class="nf">parse_column_at_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="n">parser_index</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the column type for the parser from `self.column_types` or `None`</span>
+<span class="sd">        if the type is unavailable.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_value</span><span class="p">(</span><span class="n">columns</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_column_type</span><span class="p">(</span><span class="n">parser_index</span><span class="p">))</span>
+        <span class="c1"># if a selected index is not within columns, return None</span>
+        <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="ColumnarDataProvider.parse_value">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.parse_value">[docs]</a>
+    <span class="k">def</span> <span class="nf">parse_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="nb">type</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Attempt to parse and return the given value based on the given type.</span>
+
+<span class="sd">        :param val: the column value to parse (often a string)</span>
+<span class="sd">        :param type: the string type &#39;name&#39; used to find the appropriate parser</span>
+<span class="sd">        :returns: the parsed value</span>
+<span class="sd">            or `value` if no `type` found in `parsers`</span>
+<span class="sd">            or `None` if there was a parser error (ValueError)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">type</span> <span class="o">==</span> <span class="s2">&quot;str&quot;</span> <span class="ow">or</span> <span class="nb">type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">val</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parsers</span><span class="p">[</span><span class="nb">type</span><span class="p">](</span><span class="n">val</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="c1"># no parser - return as string</span>
+            <span class="k">pass</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="c1"># bad value - return None</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="n">val</span></div>
+
+
+<div class="viewcode-block" id="ColumnarDataProvider.get_column_type">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.get_column_type">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_column_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the column type for the parser from `self.column_types` or `None`</span>
+<span class="sd">        if the type is unavailable.</span>
+<span class="sd">        :param index: the column index</span>
+<span class="sd">        :returns: string name of type (e.g. &#39;float&#39;, &#39;int&#39;, etc.)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">column_types</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="ColumnarDataProvider.filter_by_columns">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.filter_by_columns">[docs]</a>
+    <span class="k">def</span> <span class="nf">filter_by_columns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">columns</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">filter_fn</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">column_filters</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">filter_fn</span><span class="p">(</span><span class="n">columns</span><span class="p">):</span>
+                <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="n">columns</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="DictDataProvider">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.column.DictDataProvider">[docs]</a>
+<span class="k">class</span> <span class="nc">DictDataProvider</span><span class="p">(</span><span class="n">ColumnarDataProvider</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Data provider that zips column_names and columns from the source&#39;s contents</span>
+<span class="sd">    into a dictionary.</span>
+
+<span class="sd">    A combination use of both `column_names` and `indeces` allows &#39;picking&#39;</span>
+<span class="sd">    key/value pairs from the source.</span>
+
+<span class="sd">    .. note:: The subclass constructors are passed kwargs - so their</span>
+<span class="sd">        params (limit, offset, etc.) are also applicable here.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">settings</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;column_names&quot;</span><span class="p">:</span> <span class="s2">&quot;list:str&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+<div class="viewcode-block" id="DictDataProvider.__init__">
+<a class="viewcode-back" href="../../../../lib/galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.column.DictDataProvider.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">column_names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param column_names: an ordered list of strings that will be used as the keys</span>
+<span class="sd">            for each column in the returned dictionaries.</span>
+<span class="sd">            The number of key, value pairs each returned dictionary has will</span>
+<span class="sd">            be as short as the number of column names provided.</span>
+<span class="sd">        :type column_names:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># TODO: allow passing in a map instead of name-&gt;index { &#39;name1&#39;: index1, ... }</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">column_names</span> <span class="o">=</span> <span class="n">column_names</span> <span class="ow">or</span> <span class="p">[]</span></div>
+
+
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">parent_gen</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__iter__</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">column_values</span> <span class="ow">in</span> <span class="n">parent_gen</span><span class="p">:</span>
+            <span class="nb">map</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">column_names</span><span class="p">,</span> <span class="n">column_values</span><span class="p">))</span>
+            <span class="k">yield</span> <span class="nb">map</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Galaxy Committers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

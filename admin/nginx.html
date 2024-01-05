@@ -1,0 +1,754 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proxying Galaxy with NGINX &mdash; Galaxy Project 23.1.5.dev0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+
+  
+    <link rel="canonical" href="https://docs.galaxyproject.org/en/master/admin/nginx.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=da3e81e8"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Proxying Galaxy with Apache" href="apache.html" />
+    <link rel="prev" title="Security considerations" href="security.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Galaxy Project
+          </a>
+              <div class="version">
+                23.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../releases/index.html">Releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.1_announce_user.html">June 2023 Galaxy Release (v 23.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.0_announce_user.html">2023 Galaxy Release (v 23.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.05_announce_user.html">May 2022 Galaxy Release (v 22.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.01_announce_user.html">January 2022 Galaxy Release (v 22.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.09_announce_user.html">September 2021 Galaxy Release (v 21.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.05_announce_user.html">May 2021 Galaxy Release (v 21.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.01_announce_user.html">January 2021 Galaxy Release (v 21.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.09_announce_user.html">September 2020 Galaxy Release (v 20.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.05_announce_user.html">May 2020 Galaxy Release (v 20.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.01_announce_user.html">January 2020 Galaxy Release (v 20.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.09_announce_user.html">September 2019 Galaxy Release (v 19.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.05_announce_user.html">May 2019 Galaxy Release (v 19.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.01_announce_user.html">January 2019 Galaxy Release (v 19.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.09_announce.html">September 2018 Galaxy Release (v 18.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.05_announce.html">May 2018 Galaxy Release (v 18.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.01_announce.html">January 2018 Galaxy Release (v 18.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.09_announce.html">September 2017 Galaxy Release (v 17.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.05_announce.html">May 2017 Galaxy Release (v 17.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.01_announce.html">January 2017 Galaxy Release (v 17.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.10_announce.html">October 2016 Galaxy Release (v 16.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.07_announce.html">July 2016 Galaxy Release (v 16.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.04_announce.html">April 2016 Galaxy Release (v 16.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.01_announce.html">January 2016 Galaxy Release (v 16.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.10_announce.html">October 2015 Galaxy Release (v 15.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.07_announce.html">July 2015 Galaxy Release (v 15.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.05_announce.html">May 2015 Galaxy Release (v 15.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.03_announce.html">March 2015 Galaxy Release (v 15.03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.01_announce.html">January 2015 Galaxy Release (v 15.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.10_announce.html">October 2014 Galaxy Release (v 14.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.08_announce.html">August 2014 Galaxy Release (v 14.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.06_announce.html">June 2014 Galaxy Release (v 14.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.04_announce.html">April 2014 Galaxy Release (v 14.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.02_announce.html">February 2014 Galaxy Release (v 14.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.11_announce.html">November 2013 Galaxy Release (v 13.11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.08_announce.html">August 2013 Galaxy Release (v 13.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.06_announce.html">June 2013 Galaxy Release (v 13.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.04_announce.html">April 2013 Galaxy Release (v 13.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.02_announce.html">February 2013 Galaxy Release (v 13.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.01_announce.html">January 2013 Galaxy Release (v 13.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/older_releases.html">Galaxy Releases older than v 13.01</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Admin Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Administration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="python.html">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="framework_dependencies.html">Framework Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">Galaxy Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logging.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="production.html">Production Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security considerations</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Proxying Galaxy with NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apache.html">Proxying Galaxy with Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scaling.html">Scaling and Load Balancing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cluster.html">Connecting to a Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jobs.html">Galaxy Job Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tool_panel.html">Tool Panel Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mq.html">Message queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependency_resolvers.html">Dependency Resolvers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="container_resolvers.html">Containers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="container_resolvers.html#other-considerations">Other considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conda_faq.html">Conda for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="db_migration.html">Galaxy Database Schema Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reports.html">Galaxy Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="useful_scripts.html">Scripts &amp; Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrating_to_gunicorn.html">Migrating from uWSGI to Gunicorn and FastAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="special_topics/index.html">Special topics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/ftp.html">Galaxy FTP Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/interactivetools.html">Galaxy InteractiveTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/mulled_containers.html">Containers for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/grt.html">Galactic Radio Telescope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/gtn.html">Galaxy Training Materials Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/job_metrics.html">Job Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/webhooks.html">Galaxy Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/vault.html">Storing secrets in the vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/performance_tracking.html">Galaxy Performance Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/bug_reports.html">Bug Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/gdpr_compliance.html">GDPR Compliance</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/index.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dev/schema.html">Galaxy Tool XML File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/api_guidelines.html">API Design Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/build_a_job_runner.html">Build a job runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/finding_and_improving_slow_code.html">Finding and improving slow Galaxy code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_managers.html">Data managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_types.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/faq.html">How Do I…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/writing_tests.html">Writing Tests for Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html">Debugging Galaxy Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html#debugging-tests-that-run-out-of-memory">Debugging tests that run out of memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy.html">Debugging Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy_slurm.html">Debugging Galaxy: Slurm Compute Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/translating.html">Translating the Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/create_point_release.html">Creating Galaxy Point Releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api_doc.html">Galaxy API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/quickstart.html"> Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/api.html"> Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ts_api_doc.html">Tool Shed API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/ts_api.html"> API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../lib/modules.html">Application Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy.html">galaxy package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_ext.html">galaxy_ext package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_test.html">galaxy_test package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/tool_shed.html">tool_shed package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../project/organization.html">Project Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#procedure-documents">Procedure Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#committers">Committers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#release-branches">Release branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#handling-pull-requests">Handling Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#issue-reporting">Issue Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../project/issues.html">Issue Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#issue-reporting">Issue Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#milestones">Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#labeling-structure">Labeling Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#the-roadmap">The Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#voting">Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#automation">Automation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Galaxy Project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Galaxy Deployment &amp; Administration</a></li>
+      <li class="breadcrumb-item active">Proxying Galaxy with NGINX</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/admin/nginx.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="proxying-galaxy-with-nginx">
+<h1>Proxying Galaxy with NGINX<a class="headerlink" href="#proxying-galaxy-with-nginx" title="Link to this heading">¶</a></h1>
+<p>In a production environment, it is recommended to run Galaxy behind a proxy web server for performance and security
+reasons. The proxy server sits between clients and your Galaxy server, relaying requests between them and offloading
+some of the more menial and resource-intensive tasks.</p>
+<p><a class="reference external" href="https://nginx.org/en/">NGINX</a> is a lightweight HTTP server designed with high performance proxying in mind. The Galaxy Project’s public
+servers, <a class="reference external" href="https://galaxyproject.org/main/">usegalaxy.org</a> (“Main”) and <a class="reference external" href="https://galaxyproject.org/test/">Test</a>, as well as the <a class="reference external" href="https://github.com/bgruening/docker-galaxy-stable">Docker Galaxy project</a> use
+NGINX, rather than Apache, to proxy Galaxy. NGINX was chosen for its simple, fast load balancing and other
+proxy-oriented features.</p>
+<p>Instructions for <a class="reference internal" href="apache.html"><span class="std std-doc">proxying with Apache</span></a> are also available.</p>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">¶</a></h2>
+<p>This documentation should be used in conjunction with the <a class="reference internal" href="scaling.html"><span class="doc std std-doc">Scaling and Load Balancing</span></a> documentation, which you should
+familiarize yourself with prior to setting up your proxy.</p>
+<p>You will need to ensure that inbound (and outbound) traffic on the HTTP (TCP port 80) and HTTPS (TCP port 443) ports is
+permitted by your server’s firewall/security.</p>
+<p><strong>Documentation Conventions:</strong></p>
+<p>For the purposes of this example, we assume that:</p>
+<ul class="simple">
+<li><p><strong>Debian</strong> refers to any <em>Debian</em>-based Linux distribution (including Ubuntu)</p></li>
+<li><p><strong>EL</strong> refers to any <em>RedHat Enterprise Linux</em>-based Linux distribution (including CentOS)</p></li>
+<li><p>the Galaxy server is installed at <code class="docutils literal notranslate"><span class="pre">/srv/galaxy/server</span></code></p></li>
+<li><p>nginx runs as the user <code class="docutils literal notranslate"><span class="pre">www-data</span></code> (this is the default under Debian)</p></li>
+<li><p>Galaxy runs as the user <code class="docutils literal notranslate"><span class="pre">galaxy</span></code> with primary group <code class="docutils literal notranslate"><span class="pre">galaxy</span></code></p></li>
+<li><p>Galaxy is served from the hostname <code class="docutils literal notranslate"><span class="pre">galaxy.example.org</span></code></p></li>
+</ul>
+<p>Throughout the configuration examples in this document, in order to avoid repetition, <code class="docutils literal notranslate"><span class="pre">#...</span></code> is used to denote a
+location where existing or previously given configuration statements would appear.</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Please note that Galaxy’s files - code, datasets, and so forth - should <em>never</em> be located on disk inside
+nginx’s document root. By default, this would expose all of Galaxy (including datasets) to anyone on the web.</p>
+</div>
+<section id="nginx-proxy-prerequisities">
+<h3>NGINX Proxy Prerequisities<a class="headerlink" href="#nginx-proxy-prerequisities" title="Link to this heading">¶</a></h3>
+<p>If you are <strong>not</strong> planning to use the recommended <a class="reference internal" href="#receiving-files-via-the-tus-protocol">tus.io method</a> to handle file uploads but want to use nginx to handle uploads, you will (most likely) not be able to use your package manager’s version of nginx. The <a class="reference internal" href="#receiving-files-with-nginx-legacy">Receiving Files With NGINX</a> section explains this in detail and provides some options for installing <em>nginx + upload module</em> packages maintained by the Galaxy Committers Team.</p>
+<p>Otherwise, your system package manager’s version of nginx should be suitable. Under Debian, the
+<a class="reference external" href="https://packages.debian.org/search?keywords=nginx-light">nginx-light</a> package contains all the necessary modules used in this guide. On EL, the <a class="reference external" href="https://fedoraproject.org/wiki/EPEL">EPEL</a>
+version of nginx is suitable.</p>
+</section>
+</section>
+<section id="basic-configuration">
+<h2>Basic Configuration<a class="headerlink" href="#basic-configuration" title="Link to this heading">¶</a></h2>
+<p>The use of SSL is <strong>strongly encouraged</strong> to avoid exposure of confidential information such as datasets and user
+credentials to eavesdroppers. The instructions in this document are for setting up an SSL-enabled Galaxy server.</p>
+<p>When setting up an SSL server, simply enabling SSL with the default options is not enough to have a secure server. In
+most cases, the configuration is weak and vulnerable to one or more of the multitude of SSL attacks that have been
+recently prevalent.  The <a class="reference external" href="https://www.ssllabs.com/projects/best-practices/">Qualys SSL/TLS Deployment Best Practices</a> is an excellent and up-to-date guide covering
+everything necessary for securing an SSL server. In addition, the <a class="reference external" href="https://ssl-config.mozilla.org/">Mozilla SSL Configuration Generator</a> can provide you
+with a best practices config tailored to your desired security level and software versions.</p>
+<p>Finally, Google’s <a class="reference external" href="https://pagespeed.web.dev/">PageSpeed Insights</a> tool is helpful for determining how you can improve responsiveness as related to
+proxying, such as verifying that caching and compression are configured properly.</p>
+<p>If you need to run more than one site on your Galaxy server, there are two options:</p>
+<ul class="simple">
+<li><p>Run them on the same server but serve them on different hostnames</p></li>
+<li><p>Serve them from different URL prefixes on a single hostname</p></li>
+</ul>
+<p>The former option is typically cleaner, but if serving more than one SSL site, you will need an SSL certificate with
+<a class="reference external" href="http://wiki.cacert.org/FAQ/subjectAltName">subjectAltNames</a> for each hostname served by the server.</p>
+<section id="serving-galaxy-at-the-web-server-root">
+<h3>Serving Galaxy at the Web Server Root<a class="headerlink" href="#serving-galaxy-at-the-web-server-root" title="Link to this heading">¶</a></h3>
+<p>This configuration assumes that Galaxy will be the only site on your server using the given hostname (e.g.
+<code class="docutils literal notranslate"><span class="pre">https://galaxy.example.org</span></code>).</p>
+<p>Beginning with Galaxy Release 22.01, the default application server that Galaxy runs under is Gunicorn. Because of this,
+the HTTP protocol should be used for communication between nginx and Galaxy, rather
+than the uWSGI protocol used in earlier version of this document.
+Legacy instructions for proxying via uWSGI can be found in the <a class="reference external" href="https://docs.galaxyproject.org/en/release_21.09/admin/nginx.html">Galaxy Release 21.09 proxy documentation</a>.</p>
+<p>Since nginx is more efficient than Gunicorn at serving static content, it is best to serve it directly, reducing the load
+on the Galaxy process and allowing for more effective compression (if enabled), caching, and pipelining. Directives to
+do so are included in the example below.</p>
+<p>The following configuration is not exhaustive, only the portions most relevant to serving Galaxy are shown, these should
+be incorporated with your existing/default nginx config as is appropriate for your server. Notably, the nginx package
+you installed most likely has a multi-file config layout. If you are not already familiar with that layout and where
+best to place your configuration, you can learn more in the <a class="reference internal" href="proxy_package_layout.html"><span class="doc std std-doc">Proxy Package Layouts</span></a>
+documentation.</p>
+<div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="k">http</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">#...</span>
+
+<span class="w">    </span><span class="c1"># compress responses whenever possible</span>
+<span class="w">    </span><span class="kn">gzip</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">gzip_http_version</span><span class="w"> </span><span class="mi">1</span><span class="s">.1</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">gzip_vary</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">gzip_comp_level</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">gzip_proxied</span><span class="w"> </span><span class="s">any</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">gzip_types</span><span class="w"> </span><span class="s">text/plain</span><span class="w"> </span><span class="s">text/css</span><span class="w"> </span><span class="s">application/json</span><span class="w"> </span><span class="s">application/x-javascript</span><span class="w"> </span><span class="s">text/xml</span><span class="w"> </span><span class="s">application/xml</span><span class="w"> </span><span class="s">application/xml+rss</span><span class="w"> </span><span class="s">text/javascript</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">gzip_buffers</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="mi">8k</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1"># allow up to 3 minutes for Galaxy to respond to slow requests before timing out</span>
+<span class="w">    </span><span class="kn">proxy_read_timeout</span><span class="w"> </span><span class="mi">180</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1"># maximum file upload size</span>
+<span class="w">    </span><span class="kn">client_max_body_size</span><span class="w"> </span><span class="s">10g</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1"># allowable SSL protocols</span>
+<span class="w">    </span><span class="kn">ssl_protocols</span><span class="w"> </span><span class="s">TLSv1</span><span class="w"> </span><span class="s">TLSv1.1</span><span class="w"> </span><span class="s">TLSv1.2</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1"># use secure ciphers</span>
+<span class="w">    </span><span class="kn">ssl_ciphers</span>
+<span class="w">    </span><span class="s">ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA:ECDHE-ECDSA-AES128-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-SHA:ECDHE-RSA-AES256-SHA:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES256-SHA256</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">ssl_dhparam</span><span class="w"> </span><span class="s">/etc/nginx/ssl/dhparams.pem</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">ssl_prefer_server_ciphers</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1"># enable session reuse</span>
+<span class="w">    </span><span class="kn">ssl_session_cache</span><span class="w"> </span><span class="s">shared:SSL:8m</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">ssl_session_timeout</span><span class="w"> </span><span class="mi">5m</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1"># cert/key</span>
+<span class="w">    </span><span class="kn">ssl_certificate</span><span class="w"> </span><span class="s">/etc/nginx/ssl/server.crt</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">ssl_certificate_key</span><span class="w"> </span><span class="s">/etc/nginx/ssl/server.key</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1"># OCSP stapling</span>
+<span class="w">    </span><span class="kn">ssl_stapling</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">ssl_stapling_verify</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">ssl_trusted_certificate</span><span class="w"> </span><span class="s">/etc/nginx/ssl/ca.crt</span><span class="p">;</span>
+
+
+<span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">server_name</span><span class="w"> </span><span class="s">_</span><span class="p">;</span>
+
+<span class="w">        </span><span class="kn">return</span><span class="w"> </span><span class="mi">301</span><span class="w"> </span><span class="s">https://</span><span class="nv">$host$request_uri</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="mi">443</span><span class="w"> </span><span class="s">ssl</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:443</span><span class="w"> </span><span class="s">ssl</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">server_name</span><span class="w"> </span><span class="s">_</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1"># use a variable for convenience</span>
+<span class="w">        </span><span class="kn">set</span><span class="w"> </span><span class="nv">$galaxy_root</span><span class="w"> </span><span class="s">/srv/galaxy/server</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1"># Enable HSTS</span>
+<span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">Strict-Transport-Security</span><span class="w"> </span><span class="s">&quot;max-age=15552000</span><span class="p">;</span><span class="w"> </span><span class="kn">includeSubdomains&quot;</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1"># proxy all requests not matching other locations to Gunicorn</span>
+<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$http_host</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-For</span><span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-Proto</span><span class="w"> </span><span class="nv">$scheme</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Upgrade</span><span class="w"> </span><span class="nv">$http_upgrade</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://unix:/srv/galaxy/var/gunicorn.sock</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1"># serve framework static content</span>
+<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/static</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kn">alias</span><span class="w"> </span><span class="nv">$galaxy_root/static</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">expires</span><span class="w"> </span><span class="s">24h</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/robots.txt</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kn">alias</span><span class="w"> </span><span class="nv">$galaxy_root/static/robots.txt</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">expires</span><span class="w"> </span><span class="s">24h</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/favicon.ico</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kn">alias</span><span class="w"> </span><span class="nv">$galaxy_root/static/favicon.ico</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">expires</span><span class="w"> </span><span class="s">24h</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1"># serve visualization and plugin static content</span>
+<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">^/plugins/(?&lt;plug_type&gt;.+?)/(?&lt;vis_name&gt;.+?)/static/(?&lt;static_file&gt;.*?)$</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kn">alias</span><span class="w"> </span><span class="nv">$galaxy_root/config/plugins/$plug_type/$vis_name/static/$static_file</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">expires</span><span class="w"> </span><span class="mi">24</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Be sure to set <code class="docutils literal notranslate"><span class="pre">$galaxy_root</span></code> to the path to your copy of Galaxy and modify the value of <code class="docutils literal notranslate"><span class="pre">proxy_pass</span></code> to match your
+Gunicorn socket path. With the default configuration, gunicorn will bind to a TCP socket, so you will need to Gunicorn to bind to a UNIX domain socket as described in the <a class="reference internal" href="scaling.html"><span class="std std-doc">Scaling and Load Balancing</span></a> documentation. If using a UNIX domain
+socket, be sure to pay particular attention to the discussion of users and permissions.</p>
+</section>
+<section id="additional-notes">
+<h3>Additional Notes<a class="headerlink" href="#additional-notes" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Do not</strong> simply copy the SSL configuration directives and expect them to work on your server or to be secure! These
+are provided as examples of some of the best practices as of the time of writing, but will not always be up to date.
+Use the guides referenced in <a class="reference internal" href="#basic-configuration">basic configuration</a> section to configure SSL properly.</p></li>
+<li><p>If your existing nginx configuration contains a line or included config file defining a default server, be sure to
+disable it by commenting its <code class="docutils literal notranslate"><span class="pre">server</span> <span class="pre">{}</span></code> or preventing its inclusion (under Debian this is done by removing its
+symlink from <code class="docutils literal notranslate"><span class="pre">/etc/nginx/sites-enabled</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">proxy_read_timeout</span></code> can be adjusted as appropriate for your site. This is the amount of time allowed for
+communication between nginx and Gunicorn to block while waiting for a response from Galaxy, and is useful for holding
+client (browser) connections while Gunicorn is restarting Galaxy subprocesses or Galaxy is performing a slow operation.</p></li>
+<li><p>The parameter <code class="docutils literal notranslate"><span class="pre">client_max_body_size</span></code> specifies the maximum upload size that can be handled by POST requests through
+nginx. You should set this to the largest file size that you wish to allow for upload and that could be reasonably
+handled by your site. It defaults to 1MB, so it will need to be increased if you are dealing with genome sized
+datasets.</p></li>
+<li><p>If you must serve Galaxy without SSL, you would simply replace the <code class="docutils literal notranslate"><span class="pre">listen</span></code> directives in the SSL <code class="docutils literal notranslate"><span class="pre">server</span> <span class="pre">{}</span></code> block
+with the <code class="docutils literal notranslate"><span class="pre">listen</span></code> directives from the non-SSL <code class="docutils literal notranslate"><span class="pre">server</span> <span class="pre">{}</span></code> block and remove the non-SSL block and SSL directives from
+the <code class="docutils literal notranslate"><span class="pre">http</span> <span class="pre">{}</span></code> block.</p></li>
+<li><p>If the proxy works but you are getting 404 errors for Galaxy’s static content, be sure that the user that nginx runs
+as has access to Galaxy’s <code class="docutils literal notranslate"><span class="pre">static/</span></code> directory (and all its parent directories) on the filesystem. You can test this on
+the command line with e.g. <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">-u</span> <span class="pre">www-data</span> <span class="pre">ls</span> <span class="pre">/srv/galaxy/server/static</span></code>.</p></li>
+</ul>
+</section>
+<section id="serving-galaxy-at-a-url-prefix">
+<h3>Serving Galaxy at a URL Prefix<a class="headerlink" href="#serving-galaxy-at-a-url-prefix" title="Link to this heading">¶</a></h3>
+<p>It may be necessary to serve Galaxy from an address other than the web server root (<code class="docutils literal notranslate"><span class="pre">https://www.example.org/galaxy</span></code>),
+instead of <code class="docutils literal notranslate"><span class="pre">https://galaxy.example.org</span></code>). To do this, you need to make the following changes to the configuration in the
+previous section:</p>
+<ol class="arabic">
+<li><p>In the nginx config, prefix all of the location directives with your prefix and redirect requests from <code class="docutils literal notranslate"><span class="pre">/prefix</span></code> to
+<code class="docutils literal notranslate"><span class="pre">/prefix/</span></code> like so:</p>
+<div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="w">        </span><span class="c1">#...</span>
+
+<span class="w">        </span><span class="c1"># proxy all requests not matching other locations to Gunicorn</span>
+<span class="w">        </span><span class="k">location</span><span class="w"> </span><span class="s">/galaxy</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$http_host</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-For</span><span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-Proto</span><span class="w"> </span><span class="nv">$scheme</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Upgrade</span><span class="w"> </span><span class="nv">$http_upgrade</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://unix:/srv/galaxy/var/gunicorn.sock:/galaxy</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1"># serve framework static content</span>
+<span class="w">        </span><span class="k">location</span><span class="w"> </span><span class="s">/galaxy/static</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kn">alias</span><span class="w"> </span><span class="nv">$galaxy_root/static</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">expires</span><span class="w"> </span><span class="s">24h</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1"># additional static locations...</span>
+
+<span class="w">        </span><span class="c1"># redirect /prefix -&gt; /prefix/</span>
+<span class="w">        </span><span class="k">rewrite</span><span class="w"> </span><span class="s">^/galaxy</span>$<span class="w"> </span><span class="s">/galaxy/</span><span class="w"> </span><span class="s">last</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+<li><p>The Galaxy application needs to be aware that it is running with a prefix (for generating URLs in dynamic pages).
+This is accomplished by configuring Galaxy in your <code class="docutils literal notranslate"><span class="pre">config/galaxy.yml</span></code> file like so and restarting Galaxy:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">gravity</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gunicorn</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># ...</span>
+<span class="w">    </span><span class="nt">bind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/srv/galaxy/var/gunicorn.sock</span>
+<span class="w">    </span><span class="nt">extra_args</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;--forwarded-allow-ips=&quot;*&quot;&#39;</span>
+<span class="w">    </span><span class="c1"># ...</span>
+<span class="nt">galaxy</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># ...</span>
+<span class="w">    </span><span class="nt">galaxy_url_prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/galaxy</span>
+<span class="w">    </span><span class="c1"># ...</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Older versions of Galaxy required you to set the <code class="docutils literal notranslate"><span class="pre">cookie_path</span></code> option. This is no longer necessary as of
+Galaxy release 19.05 as it is now set automatically, but the (now undocumented) option still remains and
+overrides the automatic setting. If you have this option set, unset it unless you know what you’re doing.</p>
+</div>
+<p>Be sure to consult the <a class="reference internal" href="scaling.html"><span class="std std-doc">Scaling and Load Balancing</span></a> documentation.</p>
+</li>
+</ol>
+</section>
+</section>
+<section id="advanced-configuration-topics">
+<h2>Advanced Configuration Topics<a class="headerlink" href="#advanced-configuration-topics" title="Link to this heading">¶</a></h2>
+<section id="sending-files-with-nginx">
+<h3>Sending Files With Nginx<a class="headerlink" href="#sending-files-with-nginx" title="Link to this heading">¶</a></h3>
+<p>Galaxy sends files (e.g. dataset downloads) by opening the file and streaming it in chunks through the proxy server.
+However, this ties up the Galaxy process, which can impact the performance of other operations (see <a class="reference internal" href="production.html"><span class="std std-doc">Production Server
+Configuration</span></a> for a more in-depth explanation).</p>
+<p>Nginx can assume this task instead and, as an added benefit, speed up downloads. In addition, the Integrative Genomics Viewer (IGV), the Integrated Genome Browser (IGB), and the JBrowse tool (run within Galaxy) require support for the HTTP <em>Range</em> header, and this is only available if the proxy serves datasets.
+This is accomplished through the use of the special <code class="docutils literal notranslate"><span class="pre">X-Accel-Redirect</span></code> header. Dataset security is maintained in this configuration because nginx will still check with Galaxy to ensure that the requesting user has permission to access the dataset before sending it.</p>
+<p>To enable it, add the following to your Galaxy’s <code class="docutils literal notranslate"><span class="pre">server</span> <span class="pre">{}</span></code> block:</p>
+<div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="w">        </span><span class="k">location</span><span class="w"> </span><span class="s">/_x_accel_redirect/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kn">internal</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">alias</span><span class="w"> </span><span class="s">/</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Next, edit <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code> and make the following change before restarting Galaxy:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">galaxy</span><span class="p">:</span>
+<span class="w">    </span><span class="c1">#...</span>
+<span class="w">    </span><span class="nt">nginx_x_accel_redirect_base</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;/_x_accel_redirect&#39;</span>
+</pre></div>
+</div>
+<p>For this to work, the user under which your nginx server runs will need read access to Galaxy’s <code class="docutils literal notranslate"><span class="pre">files_path</span></code> directory
+(by default, <code class="docutils literal notranslate"><span class="pre">database/files/</span></code>) and its contents. This is most easily done by adding the nginx user to the Galaxy user’s
+primary group and setting the <code class="docutils literal notranslate"><span class="pre">umask(2)</span></code> to create files with the group read permission set. If you start Galaxy from
+the command line, you can do this like so:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">admin@server$ </span>sudo<span class="w"> </span>usermod<span class="w"> </span>-a<span class="w"> </span>-G<span class="w"> </span>galaxy<span class="w"> </span>www-data<span class="w">    </span><span class="c1"># add `www-data` user to `galaxy` group</span>
+<span class="gp">admin@server$ </span>sudo<span class="w"> </span>-iu<span class="w"> </span>galaxy
+<span class="gp">galaxy@server$ </span><span class="nb">umask</span><span class="w"> </span><span class="m">027</span>
+<span class="gp">galaxy@server$ </span>sh<span class="w"> </span>run.sh
+</pre></div>
+</div>
+<p>If you start Galaxy from supervisord, you can set the <code class="docutils literal notranslate"><span class="pre">umask</span></code> option in the <a class="reference external" href="http://supervisord.org/configuration.html#program-x-section-settings">program
+section</a> after adding the nginx user to the Galaxy
+group as shown above.</p>
+</section>
+<section id="receiving-files-via-the-tus-protocol">
+<h3>Receiving Files via the tus protocol<a class="headerlink" href="#receiving-files-via-the-tus-protocol" title="Link to this heading">¶</a></h3>
+<p><a class="reference external" href="https://tus.io/">tus</a> is a protocol based on HTTP for resumable file uploads. Resumable means that an upload can be interrupted at any moment and can be resumed without re-uploading the previous data again. An interruption may happen willingly, if the user wants to pause, or by accident in case of an network issue or server outage.</p>
+<p>Galaxy includes a WSGI middleware that implements a tus server for which no configuration is needed.
+However the middleware ties up resources on the Galaxy server process, and uploads will be interrupted
+while Galaxy restarts. A more efficient alternative is to run an external server that implements the tus protocol.
+Any tus server will work. Here we will use <a class="reference external" href="https://github.com/tus/tusd">tusd</a>.
+Binaries can be downloaded from https://github.com/tus/tusd/releases/.</p>
+<p>In this example we will set up tusd to:</p>
+<ul class="simple">
+<li><p>listen on port 1080 on localhost (<code class="docutils literal notranslate"><span class="pre">-host</span> <span class="pre">localhost</span> <span class="pre">-port</span> <span class="pre">1080</span></code>)</p></li>
+<li><p>store uploads in database/tmp (replace this with the value of new_file_path in your galaxy.yml config) (<code class="docutils literal notranslate"><span class="pre">-upload-dir=&lt;galaxy_root&gt;/database/tmp</span></code>)</p></li>
+<li><p>send an event via http to /api/upload/hooks to ensure the user is logged in (<code class="docutils literal notranslate"><span class="pre">-hooks-http=&lt;galaxy_url&gt;/api/upload/hooks</span></code>)</p></li>
+<li><p>forward authentication headers in that event (<code class="docutils literal notranslate"><span class="pre">-hooks-http-forward-headers=X-Api-Key,Cookie</span></code>)</p></li>
+</ul>
+<p>The complete command is thus (replace <code class="docutils literal notranslate"><span class="pre">&lt;galaxy_url&gt;</span></code> with your Galaxy URL and <code class="docutils literal notranslate"><span class="pre">&lt;galaxy_root&gt;</span></code> with the path to your Galaxy installation):</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>tusd<span class="w"> </span>-host<span class="w"> </span>localhost<span class="w"> </span>-port<span class="w"> </span><span class="m">1080</span><span class="w"> </span>-upload-dir<span class="o">=</span>&lt;galaxy_root&gt;/database/tmp<span class="w"> </span>-hooks-http<span class="o">=</span>&lt;galaxy_url&gt;/api/upload/hooks<span class="w"> </span>-hooks-http-forward-headers<span class="o">=</span>X-Api-Key,Cookie
+</pre></div>
+</div>
+<p>We now need to set up nginx to proxy requests to /api/upload/resumable_upload to our tusd server.
+To do this, add the following to your Galaxy’s <code class="docutils literal notranslate"><span class="pre">server</span> <span class="pre">{}</span></code> block:</p>
+<div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="w">        </span><span class="k">location</span><span class="w"> </span><span class="s">/api/upload/resumable_upload</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1"># Disable request and response buffering</span>
+<span class="w">            </span><span class="kn">proxy_request_buffering</span><span class="w">  </span><span class="no">off</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_buffering</span><span class="w">          </span><span class="no">off</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_http_version</span><span class="w">       </span><span class="mi">1</span><span class="s">.1</span><span class="p">;</span>
+
+<span class="w">            </span><span class="c1"># Add X-Forwarded-* headers</span>
+<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-Proto</span><span class="w"> </span><span class="nv">$scheme</span><span class="p">;</span>
+
+<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w">         </span><span class="s">Upgrade</span><span class="w"> </span><span class="nv">$http_upgrade</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w">         </span><span class="s">Connection</span><span class="w"> </span><span class="s">&quot;upgrade&quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">client_max_body_size</span><span class="w">     </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://localhost:1080/files</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>If you serve Galaxy at a prefix exchange <code class="docutils literal notranslate"><span class="pre">/api/upload/resumable_upload</span></code> with <code class="docutils literal notranslate"><span class="pre">/prefix/api/upload/resumable_upload</span></code>.</p>
+<p>After reloading the nginx configuration you can verify that this configuration works correctly by uploading a file to Galaxy. Make sure the tusd server logs the request. It should look similar to the following</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">tusd</span><span class="p">]</span> <span class="mi">2021</span><span class="o">/</span><span class="mi">10</span><span class="o">/</span><span class="mi">12</span> <span class="mi">13</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">14</span> <span class="n">Using</span> <span class="s1">&#39;/Users/mvandenb/src/galaxy/database/tmp&#39;</span> <span class="k">as</span> <span class="n">directory</span> <span class="n">storage</span><span class="o">.</span>
+<span class="p">[</span><span class="n">tusd</span><span class="p">]</span> <span class="mi">2021</span><span class="o">/</span><span class="mi">10</span><span class="o">/</span><span class="mi">12</span> <span class="mi">13</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">14</span> <span class="n">Using</span> <span class="mf">0.00</span><span class="n">MB</span> <span class="k">as</span> <span class="n">maximum</span> <span class="n">size</span><span class="o">.</span>
+<span class="p">[</span><span class="n">tusd</span><span class="p">]</span> <span class="mi">2021</span><span class="o">/</span><span class="mi">10</span><span class="o">/</span><span class="mi">12</span> <span class="mi">13</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">14</span> <span class="n">Using</span> <span class="s1">&#39;http://localhost:8000/api/upload/hooks&#39;</span> <span class="k">as</span> <span class="n">the</span> <span class="n">endpoint</span> <span class="k">for</span> <span class="n">hooks</span>
+<span class="p">[</span><span class="n">tusd</span><span class="p">]</span> <span class="mi">2021</span><span class="o">/</span><span class="mi">10</span><span class="o">/</span><span class="mi">12</span> <span class="mi">13</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">14</span> <span class="n">Enabled</span> <span class="n">hook</span> <span class="n">events</span><span class="p">:</span> <span class="n">pre</span><span class="o">-</span><span class="n">create</span><span class="p">,</span> <span class="n">post</span><span class="o">-</span><span class="n">create</span><span class="p">,</span> <span class="n">post</span><span class="o">-</span><span class="n">receive</span><span class="p">,</span> <span class="n">post</span><span class="o">-</span><span class="n">terminate</span><span class="p">,</span> <span class="n">post</span><span class="o">-</span><span class="n">finish</span>
+<span class="p">[</span><span class="n">tusd</span><span class="p">]</span> <span class="mi">2021</span><span class="o">/</span><span class="mi">10</span><span class="o">/</span><span class="mi">12</span> <span class="mi">13</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">14</span> <span class="n">Using</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">1080</span> <span class="k">as</span> <span class="n">address</span> <span class="n">to</span> <span class="n">listen</span><span class="o">.</span>
+<span class="p">[</span><span class="n">tusd</span><span class="p">]</span> <span class="mi">2021</span><span class="o">/</span><span class="mi">10</span><span class="o">/</span><span class="mi">12</span> <span class="mi">13</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">14</span> <span class="n">Using</span> <span class="o">/</span><span class="n">files</span><span class="o">/</span> <span class="k">as</span> <span class="n">the</span> <span class="n">base</span> <span class="n">path</span><span class="o">.</span>
+<span class="p">[</span><span class="n">tusd</span><span class="p">]</span> <span class="mi">2021</span><span class="o">/</span><span class="mi">10</span><span class="o">/</span><span class="mi">12</span> <span class="mi">13</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">14</span> <span class="n">Using</span> <span class="o">/</span><span class="n">metrics</span> <span class="k">as</span> <span class="n">the</span> <span class="n">metrics</span> <span class="n">path</span><span class="o">.</span>
+<span class="p">[</span><span class="n">tusd</span><span class="p">]</span> <span class="mi">2021</span><span class="o">/</span><span class="mi">10</span><span class="o">/</span><span class="mi">12</span> <span class="mi">13</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">14</span> <span class="n">Supported</span> <span class="n">tus</span> <span class="n">extensions</span><span class="p">:</span> <span class="n">creation</span><span class="p">,</span><span class="n">creation</span><span class="o">-</span><span class="k">with</span><span class="o">-</span><span class="n">upload</span><span class="p">,</span><span class="n">termination</span><span class="p">,</span><span class="n">concatenation</span><span class="p">,</span><span class="n">creation</span><span class="o">-</span><span class="n">defer</span><span class="o">-</span><span class="n">length</span>
+<span class="p">[</span><span class="n">tusd</span><span class="p">]</span> <span class="mi">2021</span><span class="o">/</span><span class="mi">10</span><span class="o">/</span><span class="mi">12</span> <span class="mi">13</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">14</span> <span class="n">You</span> <span class="n">can</span> <span class="n">now</span> <span class="n">upload</span> <span class="n">files</span> <span class="n">to</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">1080</span><span class="o">/</span><span class="n">files</span><span class="o">/</span>
+<span class="p">[</span><span class="n">tusd</span><span class="p">]</span> <span class="mi">2021</span><span class="o">/</span><span class="mi">10</span><span class="o">/</span><span class="mi">12</span> <span class="mi">13</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">59</span> <span class="n">event</span><span class="o">=</span><span class="s2">&quot;RequestIncoming&quot;</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;POST&quot;</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="n">requestId</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="p">[</span><span class="n">tusd</span><span class="p">]</span> <span class="mi">2021</span><span class="o">/</span><span class="mi">10</span><span class="o">/</span><span class="mi">12</span> <span class="mi">13</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">59</span> <span class="n">event</span><span class="o">=</span><span class="s2">&quot;HookInvocationStart&quot;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;pre-create&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="p">[</span><span class="n">tusd</span><span class="p">]</span> <span class="mi">2021</span><span class="o">/</span><span class="mi">10</span><span class="o">/</span><span class="mi">12</span> <span class="mi">13</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">59</span> <span class="n">event</span><span class="o">=</span><span class="s2">&quot;HookInvocationFinish&quot;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;pre-create&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="p">[</span><span class="n">tusd</span><span class="p">]</span> <span class="mi">2021</span><span class="o">/</span><span class="mi">10</span><span class="o">/</span><span class="mi">12</span> <span class="mi">13</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">59</span> <span class="n">event</span><span class="o">=</span><span class="s2">&quot;UploadCreated&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;b1b16fdf8cd76eb0dc4f86d492424949&quot;</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;3670032&quot;</span> <span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://localhost:1080/files/b1b16fdf8cd76eb0dc4f86d492424949&quot;</span>
+<span class="p">[</span><span class="n">tusd</span><span class="p">]</span> <span class="mi">2021</span><span class="o">/</span><span class="mi">10</span><span class="o">/</span><span class="mi">12</span> <span class="mi">13</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">59</span> <span class="n">event</span><span class="o">=</span><span class="s2">&quot;ResponseOutgoing&quot;</span> <span class="n">status</span><span class="o">=</span><span class="s2">&quot;201&quot;</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;POST&quot;</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="n">requestId</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="p">[</span><span class="n">tusd</span><span class="p">]</span> <span class="mi">2021</span><span class="o">/</span><span class="mi">10</span><span class="o">/</span><span class="mi">12</span> <span class="mi">13</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">59</span> <span class="n">event</span><span class="o">=</span><span class="s2">&quot;HookInvocationStart&quot;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;post-create&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;b1b16fdf8cd76eb0dc4f86d492424949&quot;</span>
+<span class="p">[</span><span class="n">tusd</span><span class="p">]</span> <span class="mi">2021</span><span class="o">/</span><span class="mi">10</span><span class="o">/</span><span class="mi">12</span> <span class="mi">13</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">59</span> <span class="n">event</span><span class="o">=</span><span class="s2">&quot;HookInvocationFinish&quot;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;post-create&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;b1b16fdf8cd76eb0dc4f86d492424949&quot;</span>
+<span class="p">[</span><span class="n">tusd</span><span class="p">]</span> <span class="mi">2021</span><span class="o">/</span><span class="mi">10</span><span class="o">/</span><span class="mi">12</span> <span class="mi">13</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">59</span> <span class="n">event</span><span class="o">=</span><span class="s2">&quot;RequestIncoming&quot;</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;PATCH&quot;</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;b1b16fdf8cd76eb0dc4f86d492424949&quot;</span> <span class="n">requestId</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="p">[</span><span class="n">tusd</span><span class="p">]</span> <span class="mi">2021</span><span class="o">/</span><span class="mi">10</span><span class="o">/</span><span class="mi">12</span> <span class="mi">13</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">59</span> <span class="n">event</span><span class="o">=</span><span class="s2">&quot;ChunkWriteStart&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;b1b16fdf8cd76eb0dc4f86d492424949&quot;</span> <span class="n">maxSize</span><span class="o">=</span><span class="s2">&quot;3670032&quot;</span> <span class="n">offset</span><span class="o">=</span><span class="s2">&quot;0&quot;</span>
+<span class="p">[</span><span class="n">tusd</span><span class="p">]</span> <span class="mi">2021</span><span class="o">/</span><span class="mi">10</span><span class="o">/</span><span class="mi">12</span> <span class="mi">13</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">59</span> <span class="n">event</span><span class="o">=</span><span class="s2">&quot;ChunkWriteComplete&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;b1b16fdf8cd76eb0dc4f86d492424949&quot;</span> <span class="n">bytesWritten</span><span class="o">=</span><span class="s2">&quot;3670032&quot;</span>
+<span class="p">[</span><span class="n">tusd</span><span class="p">]</span> <span class="mi">2021</span><span class="o">/</span><span class="mi">10</span><span class="o">/</span><span class="mi">12</span> <span class="mi">13</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">59</span> <span class="n">event</span><span class="o">=</span><span class="s2">&quot;ResponseOutgoing&quot;</span> <span class="n">status</span><span class="o">=</span><span class="s2">&quot;204&quot;</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;PATCH&quot;</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;b1b16fdf8cd76eb0dc4f86d492424949&quot;</span> <span class="n">requestId</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="p">[</span><span class="n">tusd</span><span class="p">]</span> <span class="mi">2021</span><span class="o">/</span><span class="mi">10</span><span class="o">/</span><span class="mi">12</span> <span class="mi">13</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">59</span> <span class="n">event</span><span class="o">=</span><span class="s2">&quot;UploadFinished&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;b1b16fdf8cd76eb0dc4f86d492424949&quot;</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;3670032&quot;</span>
+<span class="p">[</span><span class="n">tusd</span><span class="p">]</span> <span class="mi">2021</span><span class="o">/</span><span class="mi">10</span><span class="o">/</span><span class="mi">12</span> <span class="mi">13</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">59</span> <span class="n">event</span><span class="o">=</span><span class="s2">&quot;HookInvocationStart&quot;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;post-finish&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;b1b16fdf8cd76eb0dc4f86d492424949&quot;</span>
+<span class="p">[</span><span class="n">tusd</span><span class="p">]</span> <span class="mi">2021</span><span class="o">/</span><span class="mi">10</span><span class="o">/</span><span class="mi">12</span> <span class="mi">13</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">59</span> <span class="n">event</span><span class="o">=</span><span class="s2">&quot;HookInvocationStart&quot;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;post-receive&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;b1b16fdf8cd76eb0dc4f86d492424949&quot;</span>
+<span class="p">[</span><span class="n">tusd</span><span class="p">]</span> <span class="mi">2021</span><span class="o">/</span><span class="mi">10</span><span class="o">/</span><span class="mi">12</span> <span class="mi">13</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">59</span> <span class="n">event</span><span class="o">=</span><span class="s2">&quot;HookInvocationFinish&quot;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;post-receive&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;b1b16fdf8cd76eb0dc4f86d492424949&quot;</span>
+<span class="p">[</span><span class="n">tusd</span><span class="p">]</span> <span class="mi">2021</span><span class="o">/</span><span class="mi">10</span><span class="o">/</span><span class="mi">12</span> <span class="mi">13</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">59</span> <span class="n">event</span><span class="o">=</span><span class="s2">&quot;HookInvocationFinish&quot;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;post-finish&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;b1b16fdf8cd76eb0dc4f86d492424949&quot;</span>
+</pre></div>
+</div>
+<p>Note that the tusd server does not need to run on the same host that serves Galaxy.
+See the <a class="reference external" href="https://github.com/tus/tusd#documentation">tusd documentation</a> for additional information.</p>
+</section>
+<section id="receiving-files-with-nginx-legacy">
+<h3>Receiving Files With Nginx (Legacy)<a class="headerlink" href="#receiving-files-with-nginx-legacy" title="Link to this heading">¶</a></h3>
+<p>As of Galaxy release 22.01 we recommend setting up tusd to upload files.
+The instructions below will continue to work for older, legacy client applications,
+but the Galaxy user interface will not use this method of uploading files.</p>
+<p>Galaxy receives files (e.g. dataset uploads) by streaming them in chunks through the proxy server and writing the files
+to disk. However, this again ties up the Galaxy process. nginx can assume this task instead and as an added benefit,
+speed up uploads. This is accomplished through the use of
+<a class="reference external" href="https://www.nginx.com/resources/wiki/modules/upload/">nginx_upload_module</a>, a 3rd-party nginx module.</p>
+<p>To enable it, you must first download, compile and install nginx with the upload module, since prior to NGINX 1.11.5,
+nginx did not support shared modules, and the upload module is not yet shared-compatible. Because this is a tedious
+and complicated process, the Galaxy Committers team maintains (for some platforms) versions of nginx modified from their
+upstream package sources (APT, EPEL, etc.) to include the upload module:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://launchpad.net/~galaxyproject/+archive/ubuntu/nginx">Ubuntu (PPA)</a> (Be sure to install <code class="docutils literal notranslate"><span class="pre">nginx-extras</span></code>, not <code class="docutils literal notranslate"><span class="pre">nginx</span></code>)</p></li>
+<li><p><a class="reference external" href="https://depot.galaxyproject.org/yum/">Enterprise Linux</a></p></li>
+</ul>
+<p>To contribute support for additional platforms, please see the <a class="reference external" href="https://github.com/galaxyproject/starforge">Galaxy
+Starforge</a> project, which is used to do the repackaging.</p>
+<p>Once nginx with the upload module is installed, create a directory in which to store uploads (ideally, for performance
+reasons, on the same filesystem as Galaxy’s datasets) and add the necessary directives to <code class="docutils literal notranslate"><span class="pre">nginx.conf</span></code>:</p>
+<div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="k">user</span><span class="w"> </span><span class="s">galaxy</span><span class="p">;</span>
+
+<span class="k">http</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">#...</span>
+
+<span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="c1">#...</span>
+
+<span class="w">        </span><span class="c1"># handle file uploads via the upload module</span>
+<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/_upload</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kn">upload_store</span><span class="w"> </span><span class="s">/srv/galaxy/upload_store</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">upload_store_access</span><span class="w"> </span><span class="s">user:rw</span><span class="w"> </span><span class="s">group:rw</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">upload_pass_form_field</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">upload_set_form_field</span><span class="w"> </span><span class="s">&quot;__</span><span class="nv">${upload_field_name}__is_composite&quot;</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">upload_set_form_field</span><span class="w"> </span><span class="s">&quot;__</span><span class="nv">${upload_field_name}__keys&quot;</span><span class="w"> </span><span class="s">&quot;name</span><span class="w"> </span><span class="s">path&quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">upload_set_form_field</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">${upload_field_name}_name&quot;</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$upload_file_name&quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">upload_set_form_field</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">${upload_field_name}_path&quot;</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$upload_tmp_path&quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">upload_pass_args</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">upload_pass</span><span class="w"> </span><span class="s">/_upload_done</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1"># once upload is complete, redirect to the proper galaxy path</span>
+<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/_upload_done</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kn">set</span><span class="w"> </span><span class="nv">$dst</span><span class="w"> </span><span class="s">/api/tools</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">if</span><span class="w"> </span><span class="s">(</span><span class="nv">$args</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">nginx_redir=([^&amp;]+))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="kn">set</span><span class="w"> </span><span class="nv">$dst</span><span class="w"> </span><span class="nv">$1</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="kn">rewrite</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="nv">$dst</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Note the <code class="docutils literal notranslate"><span class="pre">user</span></code> directive at the top, outside of the <code class="docutils literal notranslate"><span class="pre">http</span> <span class="pre">{}</span></code> block. To ensure that Galaxy has write permission on the
+uploaded files, nginx’s workers will need to run as the same user as Galaxy.</p>
+<p>When serving Galaxy at a URL prefix as described in the <a class="reference internal" href="#serving-galaxy-at-a-url-prefix">Serving Galaxy at a URL
+prefix</a> section, you will need to change <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">$dst</span> <span class="pre">/api/tools;</span></code> to <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">$dst</span> <span class="pre">/prefix/api/tools;</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">$dst</span> <span class="pre">/galaxy/api/tools;</span></code>).</p>
+<p>Finally, edit <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code> and make the following change before restarting Galaxy:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">galaxy</span><span class="p">:</span>
+<span class="w">    </span><span class="c1">#...</span>
+<span class="w">    </span><span class="nt">nginx_upload_store</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/srv/galaxy/upload_store</span>
+<span class="w">    </span><span class="nt">nginx_upload_path</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;/_upload&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="creating-archives-with-mod-zip">
+<h3>Creating archives with mod-zip<a class="headerlink" href="#creating-archives-with-mod-zip" title="Link to this heading">¶</a></h3>
+<p>Galaxy creates zip archives when downloading multiple datasets from a history or a dataset library.
+While this works fine for small datasets and few users, nginx can handle the creation of zip archives
+more efficiently using <a class="reference external" href="https://www.nginx.com/resources/wiki/modules/zip/">mod-zip</a>.
+To use this feature, install nginx with mod-zip enabled (requires <a class="reference external" href="https://github.com/evanmiller/mod_zip/commit/51cf45d3e9f51e02224af017b235d1d30fbf28fb">https://github.com/evanmiller/mod_zip/commit/51cf45d3e9f51e02224af017b235d1d30fbf28fb</a> or a newer), provide the file locations from which
+nginx should serve files and edit <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code> and make the following changes before restarting Galaxy:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">galaxy</span><span class="p">:</span>
+<span class="w">    </span><span class="c1">#...</span>
+<span class="w">    </span><span class="nt">upstream_mod_zip</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+<p>Instead of creating archives Galaxy will send a special header containing the list of files to be archived.
+nginx needs to be able to serve these files. To serve files from /galaxy_root/database/files
+create the following location:</p>
+<div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="k">http</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">#...</span>
+
+<span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="c1">#...</span>
+
+<span class="w">        </span><span class="c1"># handle archive create via mod-zip</span>
+<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/galaxy_root/database/files/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kn">internal</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">alias</span><span class="w"> </span><span class="s">/galaxy_root/database/files/</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">internal;</span></code> statement means that the location can only be used for internal nginx requests.
+For external requests, the client error 404 (Not Found) is returned, meaning users cannot
+access arbitrary datasets in <code class="docutils literal notranslate"><span class="pre">/galaxy_root/database/files/</span></code> .</p>
+<p>Note that if you allow linking datasets from filesystem locations in your data libraries,
+these paths need to exposed in the same way.</p>
+</section>
+<section id="protect-reports">
+<h3>Use Galaxy Authentication to Protect Custom Paths<a class="headerlink" href="#protect-reports" title="Link to this heading">¶</a></h3>
+<p>You may find it useful to require authentication for access to certain paths on your server.  For example, Galaxy can
+run a separate reports app which gives useful information about your Galaxy instance. See the <a class="reference internal" href="reports.html"><span class="doc std std-doc">Reports Configuration
+documentation</span></a> and <a class="reference external" href="https://galacticengineer.blogspot.com/2015/06/exposing-galaxy-reports-via-nginx-in.html">Peter Briggs’ blog post on the
+subject</a> for more.</p>
+<p>After successfully following the blog post, Galaxy reports should be available at e.g. <code class="docutils literal notranslate"><span class="pre">https://galaxy.example.org/reports</span></code>.
+To secure this page to only Galaxy administrators, adjust your nginx config accordingly:</p>
+<div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="w">        </span><span class="k">location</span><span class="w"> </span><span class="s">/reports</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">#...</span>
+<span class="w">            </span><span class="kn">satisfy</span><span class="w"> </span><span class="s">any</span><span class="p">;</span><span class="w">            </span><span class="c1"># only one auth method needs to succeed</span>
+<span class="w">            </span><span class="kn">deny</span><span class="w"> </span><span class="s">all</span><span class="p">;</span><span class="w">               </span><span class="c1"># host-based auth is not allowed</span>
+<span class="w">            </span><span class="kn">auth_request</span><span class="w"> </span><span class="s">/_auth</span><span class="p">;</span><span class="w">    </span><span class="c1"># forward authentication</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">location</span><span class="w"> </span><span class="s">/_auth</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">#internal; probably?</span>
+<span class="w">            </span><span class="c1"># The used galaxy api endpoint is only available to galaxy admins and thus limits the access</span>
+<span class="w">            </span><span class="c1"># to only logged in admins.</span>
+<span class="w">            </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://localhost/api/configuration/dynamic_tool_confs</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_pass_request_body</span><span class="w"> </span><span class="no">off</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Content-Length</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Original-URI</span><span class="w"> </span><span class="nv">$request_uri</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="external-user-authentication">
+<h3>External User Authentication<a class="headerlink" href="#external-user-authentication" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://galaxyproject.org/admin/config/nginx-external-user-auth/">Nginx for External Authentication</a></p></li>
+<li><p><a class="reference internal" href="authentication.html"><span class="std std-doc">Built-in Galaxy External Authentication</span></a></p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="security.html" class="btn btn-neutral float-left" title="Security considerations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="apache.html" class="btn btn-neutral float-right" title="Proxying Galaxy with Apache" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Galaxy Committers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

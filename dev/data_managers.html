@@ -1,0 +1,1222 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data managers &mdash; Galaxy Project 23.1.5.dev0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+
+  
+    <link rel="canonical" href="https://docs.galaxyproject.org/en/master/dev/data_managers.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=da3e81e8"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data Types" href="data_types.html" />
+    <link rel="prev" title="Finding and improving slow Galaxy code" href="finding_and_improving_slow_code.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Galaxy Project
+          </a>
+              <div class="version">
+                23.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../releases/index.html">Releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.1_announce_user.html">June 2023 Galaxy Release (v 23.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.0_announce_user.html">2023 Galaxy Release (v 23.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.05_announce_user.html">May 2022 Galaxy Release (v 22.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.01_announce_user.html">January 2022 Galaxy Release (v 22.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.09_announce_user.html">September 2021 Galaxy Release (v 21.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.05_announce_user.html">May 2021 Galaxy Release (v 21.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.01_announce_user.html">January 2021 Galaxy Release (v 21.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.09_announce_user.html">September 2020 Galaxy Release (v 20.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.05_announce_user.html">May 2020 Galaxy Release (v 20.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.01_announce_user.html">January 2020 Galaxy Release (v 20.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.09_announce_user.html">September 2019 Galaxy Release (v 19.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.05_announce_user.html">May 2019 Galaxy Release (v 19.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.01_announce_user.html">January 2019 Galaxy Release (v 19.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.09_announce.html">September 2018 Galaxy Release (v 18.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.05_announce.html">May 2018 Galaxy Release (v 18.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.01_announce.html">January 2018 Galaxy Release (v 18.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.09_announce.html">September 2017 Galaxy Release (v 17.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.05_announce.html">May 2017 Galaxy Release (v 17.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.01_announce.html">January 2017 Galaxy Release (v 17.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.10_announce.html">October 2016 Galaxy Release (v 16.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.07_announce.html">July 2016 Galaxy Release (v 16.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.04_announce.html">April 2016 Galaxy Release (v 16.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.01_announce.html">January 2016 Galaxy Release (v 16.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.10_announce.html">October 2015 Galaxy Release (v 15.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.07_announce.html">July 2015 Galaxy Release (v 15.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.05_announce.html">May 2015 Galaxy Release (v 15.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.03_announce.html">March 2015 Galaxy Release (v 15.03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.01_announce.html">January 2015 Galaxy Release (v 15.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.10_announce.html">October 2014 Galaxy Release (v 14.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.08_announce.html">August 2014 Galaxy Release (v 14.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.06_announce.html">June 2014 Galaxy Release (v 14.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.04_announce.html">April 2014 Galaxy Release (v 14.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.02_announce.html">February 2014 Galaxy Release (v 14.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.11_announce.html">November 2013 Galaxy Release (v 13.11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.08_announce.html">August 2013 Galaxy Release (v 13.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.06_announce.html">June 2013 Galaxy Release (v 13.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.04_announce.html">April 2013 Galaxy Release (v 13.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.02_announce.html">February 2013 Galaxy Release (v 13.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.01_announce.html">January 2013 Galaxy Release (v 13.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/older_releases.html">Galaxy Releases older than v 13.01</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Admin Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../admin/index.html">Administration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../admin/python.html">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/framework_dependencies.html">Framework Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/config.html">Galaxy Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/config_logging.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/production.html">Production Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/security.html">Security considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/nginx.html">Proxying Galaxy with NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/apache.html">Proxying Galaxy with Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/scaling.html">Scaling and Load Balancing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/cluster.html">Connecting to a Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/jobs.html">Galaxy Job Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/tool_panel.html">Tool Panel Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/mq.html">Message queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/dependency_resolvers.html">Dependency Resolvers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/container_resolvers.html">Containers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/container_resolvers.html#other-considerations">Other considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/conda_faq.html">Conda for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/db_migration.html">Galaxy Database Schema Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/reports.html">Galaxy Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/useful_scripts.html">Scripts &amp; Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/options.html">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/migrating_to_gunicorn.html">Migrating from uWSGI to Gunicorn and FastAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/special_topics/index.html">Special topics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/ftp.html">Galaxy FTP Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/interactivetools.html">Galaxy InteractiveTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/mulled_containers.html">Containers for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/grt.html">Galactic Radio Telescope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/gtn.html">Galaxy Training Materials Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/job_metrics.html">Job Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/webhooks.html">Galaxy Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/vault.html">Storing secrets in the vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/performance_tracking.html">Galaxy Performance Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/bug_reports.html">Bug Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/gdpr_compliance.html">GDPR Compliance</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="schema.html">Galaxy Tool XML File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_guidelines.html">API Design Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build_a_job_runner.html">Build a job runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="finding_and_improving_slow_code.html">Finding and improving slow Galaxy code</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Data managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_types.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html">How Do I…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="writing_tests.html">Writing Tests for Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging_tests.html">Debugging Galaxy Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging_tests.html#debugging-tests-that-run-out-of-memory">Debugging tests that run out of memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging_galaxy.html">Debugging Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging_galaxy_slurm.html">Debugging Galaxy: Slurm Compute Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translating.html">Translating the Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create_point_release.html">Creating Galaxy Point Releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api_doc.html">Galaxy API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/quickstart.html"> Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/api.html"> Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ts_api_doc.html">Tool Shed API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/ts_api.html"> API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../lib/modules.html">Application Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy.html">galaxy package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_ext.html">galaxy_ext package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_test.html">galaxy_test package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/tool_shed.html">tool_shed package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../project/organization.html">Project Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#procedure-documents">Procedure Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#committers">Committers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#release-branches">Release branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#handling-pull-requests">Handling Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#issue-reporting">Issue Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../project/issues.html">Issue Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#issue-reporting">Issue Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#milestones">Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#labeling-structure">Labeling Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#the-roadmap">The Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#voting">Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#automation">Automation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Galaxy Project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Development Documentation</a></li>
+      <li class="breadcrumb-item active">Data managers</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/dev/data_managers.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="data-managers">
+<h1>Data managers<a class="headerlink" href="#data-managers" title="Link to this heading">¶</a></h1>
+<section id="what-are-data-managers">
+<h2>What are Data Managers?<a class="headerlink" href="#what-are-data-managers" title="Link to this heading">¶</a></h2>
+<p>Data Managers are a special class of Galaxy tool which allows for the
+download and/or creation of data that is stored within
+<a class="reference external" href="https://galaxyproject.org/admin/tools/data-tables/">Tool Data Tables</a>
+and their underlying flat (e.g. <code class="docutils literal notranslate"><span class="pre">.loc</span></code>) files. These tools handle
+e.g. the creation of indexes and the addition of entries/lines to the
+data table / <code class="docutils literal notranslate"><span class="pre">.loc</span></code> file via the Galaxy admin interface.</p>
+<p>Data Managers can be defined locally or installed through the Tool Shed.</p>
+</section>
+<section id="a-video-introduction">
+<h2>A Video Introduction<a class="headerlink" href="#a-video-introduction" title="Link to this heading">¶</a></h2>
+<p>For a video overview on Data Managers, see this
+<a class="reference external" href="http://vimeo.com/74265510">presentation from GCC2013</a>.</p>
+</section>
+<section id="tutorial">
+<h2>Tutorial<a class="headerlink" href="#tutorial" title="Link to this heading">¶</a></h2>
+<p>The most up-to-date methods, including how to use Data Manager
+repositories in the <a class="reference external" href="https://galaxyproject.org/toolshed/">Tool Shed</a>:
+<a class="reference external" href="https://galaxyproject.org/events/gcc2014/training-day/#tool-development-from-bright-idea-to-toolshed-data-managers">GCC2014 TrainingDay</a></p>
+</section>
+<section id="what-kind-of-data-is-supported">
+<h2>What Kind of Data is Supported<a class="headerlink" href="#what-kind-of-data-is-supported" title="Link to this heading">¶</a></h2>
+<p>The Data Manager framework supports any kind of built-in (“pre-cached”)
+data that a tool developer would like to make available via a
+<a class="reference external" href="https://galaxyproject.org/admin/tools/data-tables/">Tool Data Table</a>.
+This includes reference genomes, indexes on a reference genome,
+BLAST databases, protein or pathway domain databases, and so-on.
+This built-in data does not need to be associated with any type of
+reference, build, or dbkey (genomic or otherwise), but, in many cases,
+Tool Data Table entries and their Data Manager will be tied to a
+specific genomic build.</p>
+</section>
+<section id="graphical-overview-of-interplay-between-built-in-data-and-galaxy-tools">
+<h2>Graphical Overview of Interplay between Built-in Data and Galaxy Tools<a class="headerlink" href="#graphical-overview-of-interplay-between-built-in-data-and-galaxy-tools" title="Link to this heading">¶</a></h2>
+<img alt="../_images/data_managers_schematic_overview.png" src="../_images/data_managers_schematic_overview.png" />
+<section id="galaxy-data-manager-xml-file">
+<h3>Galaxy Data Manager XML File<a class="headerlink" href="#galaxy-data-manager-xml-file" title="Link to this heading">¶</a></h3>
+<p>The XML File for a Galaxy Data Manager, generally referred to as the
+“data manager config file”, serves a number of purposes. It defines
+the availability of Data Managers to a Galaxy instance. It does this
+by specifying the id of the Data Manager and the Data Manager tool
+that is associated with it. It also contains a listing of the
+Tool Data Tables that can be added to by the Data Manager. It also
+specifies how to manipulate the raw column values provided by the
+Data Manager Tool and under what directory structure to place the
+finalized data values.</p>
+<p>Pay attention to the following when creating a new Data Manager:</p>
+<ol class="arabic simple">
+<li><p><strong>Make sure your XML is valid</strong> - Improper XML will most likely
+cause Galaxy to not load your Data Managers. The easiest way to
+validate your XML is just to open the XML file itself in e.g.
+<a class="reference external" href="http://www.mozilla.com/">Firefox</a>, which will either parse
+the file and display it, or show the error and its location in
+large letters.</p></li>
+<li><p><strong>Don’t forget to restart Galaxy</strong> - Galaxy loads and parses
+XML at run-time, which means you’ll have to restart it after
+updating any XML files. The same does not apply if you only
+update an executable.</p></li>
+<li><p><strong>Make sure you use an id that is unique within your Galaxy
+instance</strong> - Galaxy can only load one Data Manager having an
+the same ID at a single time.</p></li>
+<li><p><strong>When completed, make your Data Manager available in a
+ToolShed and install it from there</strong> - This will avoid any
+possible collisions due to non-unique IDs, as specialized
+name-spacing is utilized when Data Managers are installed
+from a ToolShed.</p></li>
+</ol>
+<p>A Galaxy Data Manager’s config file consists of a subset of
+the following XML tag sets - each of these is described in
+detail in the following sections.</p>
+</section>
+<section id="details-of-xml-tag-sets">
+<h3>Details of XML tag sets<a class="headerlink" href="#details-of-xml-tag-sets" title="Link to this heading">¶</a></h3>
+</section>
+</section>
+<section id="data-managers-tag-set">
+<h2><code class="docutils literal notranslate"><span class="pre">&lt;data_managers&gt;</span></code> tag set<a class="headerlink" href="#data-managers-tag-set" title="Link to this heading">¶</a></h2>
+<p>The outer-most tag set. It contains no attributes. Any number
+of <code class="docutils literal notranslate"><span class="pre">&lt;data_manager&gt;</span></code> tags can be included within it.</p>
+</section>
+<section id="data-manager-tag-set">
+<h2><code class="docutils literal notranslate"><span class="pre">&lt;data_manager&gt;</span></code> tag set<a class="headerlink" href="#data-manager-tag-set" title="Link to this heading">¶</a></h2>
+<p>This tag defines a particular Data Manager. Any number of
+<code class="docutils literal notranslate"><span class="pre">&lt;data_table&gt;</span></code> tags can be included within it.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>attribute</p></th>
+<th class="head"><p>values</p></th>
+<th class="head"><p>required</p></th>
+<th class="head"><p>example</p></th>
+<th class="head"><p>details</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tool_file</span></code></p></td>
+<td><p>A string*</p></td>
+<td><p>yes</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tool_file=&quot;data_manager/twobit_builder.xml&quot;</span></code></p></td>
+<td><p>This is the filename of the Data Manager Tool’s XML file, relative to the Galaxy Root. Multiple Data Managers can use the same Tool, but doing so would require “id” to be declared.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p>A string*</p></td>
+<td><p>no</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">id=&quot;twobit_builder&quot;</span></code></p></td>
+<td><p>Must be unique across all Data Managers; should be lowercase and contain only letters, numbers, and underscores. While technically optional, it is a best-practice to specify this value. When not specified, it will use the id of the underlying Data Manager Tool.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">version</span></code></p></td>
+<td><p>A string*</p></td>
+<td><p>no</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">version=&quot;0.0.1&quot;</span></code></p></td>
+<td><p>Deprecated with release 21.09. The version of the data manager defaults to the version of the data manager tool</p></td>
+</tr>
+</tbody>
+</table>
+<p>The following is an example that contains all of the attributes
+described above.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;data_manager</span><span class="w"> </span><span class="na">tool_file=</span><span class="s">&quot;data_manager/twobit_builder.xml&quot;</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;twobit_builder&quot;</span><span class="nt">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="data-table-tag-set">
+<h2><code class="docutils literal notranslate"><span class="pre">&lt;data_table&gt;</span></code> tag set<a class="headerlink" href="#data-table-tag-set" title="Link to this heading">¶</a></h2>
+<p>This tag defines a Tool Data Table to add entries to. Any number
+of <code class="docutils literal notranslate"><span class="pre">&lt;data_table&gt;</span></code> tags can be used. Each <code class="docutils literal notranslate"><span class="pre">&lt;data_table&gt;</span></code> tag
+will contain an <code class="docutils literal notranslate"><span class="pre">&lt;output&gt;</span></code> tagset.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>attribute</p></th>
+<th class="head"><p>values</p></th>
+<th class="head"><p>required</p></th>
+<th class="head"><p>example</p></th>
+<th class="head"><p>details</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">name</span></code></p></td>
+<td><p>A string*</p></td>
+<td><p>yes</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">name=&quot;twobit&quot;</span></code></p></td>
+<td><p>This is the name of the Tool Data Table.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The following is an example that contains all of the attributes
+described above.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;data_table</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;twobit&quot;</span><span class="nt">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="output-tag-set">
+<h2><code class="docutils literal notranslate"><span class="pre">&lt;output&gt;</span></code> tag set<a class="headerlink" href="#output-tag-set" title="Link to this heading">¶</a></h2>
+<p>This tag defines how to handle the output of the Data Manager Tool.
+It has no attributes, but contains one or more <code class="docutils literal notranslate"><span class="pre">&lt;column&gt;</span></code> tag sets.</p>
+<p>The following is an example that contains all of the attributes
+described above.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;output&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="column-tag-set">
+<h2><code class="docutils literal notranslate"><span class="pre">&lt;column&gt;</span></code> tag set<a class="headerlink" href="#column-tag-set" title="Link to this heading">¶</a></h2>
+<p>This tag defines a particular Tool Data Table column that will be
+set. Any number of <code class="docutils literal notranslate"><span class="pre">&lt;column&gt;</span></code> tags can be used. Each
+<code class="docutils literal notranslate"><span class="pre">&lt;column&gt;</span></code> tag may contain <code class="docutils literal notranslate"><span class="pre">&lt;move&gt;</span></code> and / or
+<code class="docutils literal notranslate"><span class="pre">&lt;value_translation&gt;</span></code> tagsets, which are optional.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>attribute</p></th>
+<th class="head"><p>values</p></th>
+<th class="head"><p>required</p></th>
+<th class="head"><p>example</p></th>
+<th class="head"><p>details</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">name</span></code></p></td>
+<td><p>A string*</p></td>
+<td><p>yes</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">name=&quot;value&quot;</span></code></p></td>
+<td><p>This is the name of Tool Data Table column.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">output_ref</span></code></p></td>
+<td><p>A string*</p></td>
+<td><p>no</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">output_ref=&quot;out_file&quot;</span></code></p></td>
+<td><p>Name of the Data Manager Tool’s output file to use for additional processing within e.g. a tag.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The following is an example that contains all of the attributes
+described above.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;column</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;path&quot;</span><span class="w"> </span><span class="na">output_ref=</span><span class="s">&quot;out_file&quot;</span><span class="w"> </span><span class="nt">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="move-tag-set">
+<h2><code class="docutils literal notranslate"><span class="pre">&lt;move&gt;</span></code> tag set<a class="headerlink" href="#move-tag-set" title="Link to this heading">¶</a></h2>
+<p>This tag defines how to handle moving files from within the
+Data Manager Tool output’s <code class="docutils literal notranslate"><span class="pre">extra_files_path</span></code> into the final
+storage location used for the Tool Data Table entry. Individual
+files or the entire directory contents can be moved. Move tag
+sets contain a <code class="docutils literal notranslate"><span class="pre">&lt;source&gt;</span></code> and a <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code> tag set.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>attribute</p></th>
+<th class="head"><p>values</p></th>
+<th class="head"><p>required</p></th>
+<th class="head"><p>example</p></th>
+<th class="head"><p>details</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
+<td><p>A string*</p></td>
+<td><p>no</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;move</span> <span class="pre">type=&quot;file&quot;&gt;</span></code></p></td>
+<td><p>This can be either ‘file’ or ‘directory’. Default is ‘directory’.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">relativize_symlinks</span></code></p></td>
+<td><p>True or False</p></td>
+<td><p>no</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">relativize_symlinks=&quot;True&quot;</span></code></p></td>
+<td><p>Whether or not to relativize created existing symlinks in moved target. Default is False.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The following is an example that contains all of the attributes
+described above.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;move</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;file&quot;</span><span class="w"> </span><span class="na">relativize_symlinks=</span><span class="s">&quot;False&quot;</span><span class="nt">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="source-tag-set">
+<h2><code class="docutils literal notranslate"><span class="pre">&lt;source&gt;</span></code> tag set<a class="headerlink" href="#source-tag-set" title="Link to this heading">¶</a></h2>
+<p>This tag defines the source location within a <code class="docutils literal notranslate"><span class="pre">&lt;move&gt;</span></code> tag set.
+When not specified, it defaults to the entire <code class="docutils literal notranslate"><span class="pre">extra_files_path</span></code>
+of the output reference dataset. Both the base attribute and the
+text of the <code class="docutils literal notranslate"><span class="pre">&lt;source&gt;</span></code> tag are treated as
+<a class="reference external" href="https://pythonhosted.org/Cheetah/">Cheetah</a> templates, with
+the columns names specified in the <code class="docutils literal notranslate"><span class="pre">&lt;column&gt;</span></code> tagsets available
+as variables (with values taken from the corresponding data table
+entries. The strings produced for the base attribute and the tag
+text should resolve to a single line.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>attribute</p></th>
+<th class="head"><p>values</p></th>
+<th class="head"><p>required</p></th>
+<th class="head"><p>example</p></th>
+<th class="head"><p>details</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">base</span></code></p></td>
+<td><p>A string Template</p></td>
+<td><p>no</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;source</span> <span class="pre">base=&quot;&quot;&gt;</span></code></p></td>
+<td><p>The base/root path to use for the source. When not provided, it defaults to the extra_files_path of the output dataset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p>A string Template</p></td>
+<td><p>no</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;source&gt;${path}&lt;/source&gt;</span></code></p></td>
+<td><p>This defines the value of the source, relative to the <em>base</em></p></td>
+</tr>
+</tbody>
+</table>
+<p>The following is an example that contains the most common usage,
+where the value provided by the Data Manager Tool, relative to
+the <code class="docutils literal notranslate"><span class="pre">extra_files_path</span></code>, is used as the source.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;source&gt;</span>${path}<span class="nt">&lt;/source&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="target-tag-set">
+<h2><code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code> tag set<a class="headerlink" href="#target-tag-set" title="Link to this heading">¶</a></h2>
+<p>This tag defines the target location within a <code class="docutils literal notranslate"><span class="pre">&lt;move&gt;</span></code> tag set.
+When not specified, it defaults to the <em>galaxy_data_manager_data_path</em>
+configuration value. The values of the base and the tag text are
+treated as templates as with the <code class="docutils literal notranslate"><span class="pre">&lt;source&gt;</span></code> tag. In addition
+the variables from the <code class="docutils literal notranslate"><span class="pre">&lt;column&gt;</span></code> tagset the value of
+<code class="docutils literal notranslate"><span class="pre">galaxy_data_manager_data_path</span></code> configuration value is available
+using the <code class="docutils literal notranslate"><span class="pre">${GALAXY_DATA_MANAGER_DATA_PATH}</span></code> variable.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>attribute</p></th>
+<th class="head"><p>values</p></th>
+<th class="head"><p>required</p></th>
+<th class="head"><p>example</p></th>
+<th class="head"><p>details</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">base</span></code></p></td>
+<td><p>A string Template</p></td>
+<td><p>no</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;source</span> <span class="pre">base=&quot;${GALAXY_DATA_MANAGER_DATA_PATH}&quot;&gt;</span></code></p></td>
+<td><p>The base/root path to use for the target. When not specified, it defaults to the <code class="docutils literal notranslate"><span class="pre">galaxy_data_manager_data_path</span></code> configuration value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p>A string Template</p></td>
+<td><p>no</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;target</span> <span class="pre">base=&quot;${GALAXY_DATA_MANAGER_DATA_PATH}&quot;&gt;${dbkey}/seq/${path}&lt;/target&gt;</span></code></p></td>
+<td><p>This defines the value of the target (destination), relative to the <em>base</em></p></td>
+</tr>
+</tbody>
+</table>
+<p>The following is an example that contains a common usage, where a
+target value is constructed using several of the values provided
+by the Data Manager Tool, relative to the
+<code class="docutils literal notranslate"><span class="pre">galaxy_data_manager_data_path</span></code>, is used as the source.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;target</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;${GALAXY_DATA_MANAGER_DATA_PATH}&quot;</span><span class="nt">&gt;</span>${dbkey}/seq/${path}<span class="nt">&lt;/target&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="value-translation-tag-set">
+<h2><code class="docutils literal notranslate"><span class="pre">&lt;value_translation&gt;</span></code> tag set<a class="headerlink" href="#value-translation-tag-set" title="Link to this heading">¶</a></h2>
+<p>This tag allows using templating to modify the value provided by the Data Manager Tool into the actual value that should be stored within the Tool Data Table. There can be any number of value translations provided for an output. The value translations are performed in the order presented in the XML. It is important to note that a move will occur before the value translations are performed.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>attribute</p></th>
+<th class="head"><p>values</p></th>
+<th class="head"><p>required</p></th>
+<th class="head"><p>example</p></th>
+<th class="head"><p>details</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
+<td><p>A string</p></td>
+<td><p>no</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">type=&quot;template&quot;</span></code></p></td>
+<td><p>The type of value translation to perform. Currently “template” and “function” are supported.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The following is an example that contains a common usage, where a
+value is constructed using several of the values provided by the
+Data Manager Tool and that value is then turned into an absolute
+path. If <code class="docutils literal notranslate"><span class="pre">&lt;value_translation&gt;</span></code> is a string (not a function) it
+is treated as a template, much like <code class="docutils literal notranslate"><span class="pre">&lt;source&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code>,
+and must return a single line string.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;value_translation&gt;</span>${GALAXY_DATA_MANAGER_DATA_PATH}/${value}/seq/${path}<span class="nt">&lt;/value_translation&gt;</span>
+<span class="nt">&lt;value_translation</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;function&quot;</span><span class="nt">&gt;</span>abspath<span class="nt">&lt;/value_translation&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="bringing-it-all-together-an-example">
+<h2>Bringing it all Together, an example<a class="headerlink" href="#bringing-it-all-together-an-example" title="Link to this heading">¶</a></h2>
+<p>Assume that we have a Data Manager Tool that provides the following
+named values:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">value</span></code></p></td>
+<td><p>sacCer2</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></td>
+<td><p>sacCer2.2bit</p></td>
+</tr>
+</tbody>
+</table>
+<p>and creates an output named “out_file”, with an <code class="docutils literal notranslate"><span class="pre">extra_files_path</span></code>
+containing a file ‘sacCer2.2bit’. (The primary dataset file contains
+JSON that provides the above values)</p>
+<p>and has a Data Manager configuration defined as:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;data_managers&gt;</span>
+<span class="w">    </span><span class="nt">&lt;data_manager</span><span class="w"> </span><span class="na">tool_file=</span><span class="s">&quot;data_manager/twobit_builder.xml&quot;</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;twobit_builder&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;data_table</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;twobit&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;output&gt;</span>
+<span class="w">                </span><span class="nt">&lt;column</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;value&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">                </span><span class="nt">&lt;column</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;path&quot;</span><span class="w"> </span><span class="na">output_ref=</span><span class="s">&quot;out_file&quot;</span><span class="w"> </span><span class="nt">&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;move</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;file&quot;</span><span class="nt">&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;source&gt;</span>${path}<span class="nt">&lt;/source&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;target</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;${GALAXY_DATA_MANAGER_DATA_PATH}&quot;</span><span class="nt">&gt;</span>${value}/seq/${path}<span class="nt">&lt;/target&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;/move&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;value_translation&gt;</span>${GALAXY_DATA_MANAGER_DATA_PATH}/${value}/seq/${path}<span class="nt">&lt;/value_translation&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;value_translation</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;function&quot;</span><span class="nt">&gt;</span>abspath<span class="nt">&lt;/value_translation&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/column&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/output&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/data_table&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/data_manager&gt;</span>
+<span class="nt">&lt;data_managers&gt;</span>
+</pre></div>
+</div>
+<p>The result is:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">value</span></code></p></td>
+<td><p>sacCer2</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">${ABSOLUTE_PATH_OF_CONFIGURED_GALAXY_DATA_MANAGER_DATA_PATH}/sacCer2/seq/sacCer2.2bit</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>and the “sacCer2.2bit” file has been moved into the location specified
+by path.</p>
+<section id="data-manager-json-syntax">
+<h3>Data Manager JSON Syntax<a class="headerlink" href="#data-manager-json-syntax" title="Link to this heading">¶</a></h3>
+<p>Data Manager Tools are required to use JSON to communicate the new
+Tool Data Table values back to the Data Manager. JSON can also
+optionally be used to provide the input parameter values to the
+Data Manager Tool, but this is not required.</p>
+</section>
+</section>
+<section id="returning-values-to-the-data-manager">
+<h2>Returning Values to the Data Manager<a class="headerlink" href="#returning-values-to-the-data-manager" title="Link to this heading">¶</a></h2>
+<p>A Data Manager Tool must provide the new values for the Tool Data
+Table Entries via a JSON dictionary.</p>
+<ol class="arabic simple">
+<li><p>A single dictionary, with the key <code class="docutils literal notranslate"><span class="pre">data_tables</span></code> is required
+to be present within the root JSON dictionary.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">data_tables</span></code> dictionary is keyed by the name of the
+Tool Data Table receiving new entries. Any number of named
+tables can be specified.</p></li>
+<li><p>The value for the named Tool Data Table is a list of dictionaries
+or has <code class="docutils literal notranslate"><span class="pre">add</span></code> and <code class="docutils literal notranslate"><span class="pre">remove</span></code> as keys each with a list of
+dictionaries.</p></li>
+<li><p>Each of these dictionaries contains the values that will
+be provided to the Data Manager and modified as per the
+configuration defined within the Data Manager XML Syntax.</p></li>
+</ol>
+</section>
+<section id="example-1-json-output-from-data-manager-tool-to-galaxy">
+<h2>Example 1 JSON Output from Data Manager Tool to Galaxy<a class="headerlink" href="#example-1-json-output-from-data-manager-tool-to-galaxy" title="Link to this heading">¶</a></h2>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;data_tables&quot;</span><span class="p">:{</span>
+<span class="w">    </span><span class="nt">&quot;all_fasta&quot;</span><span class="p">:[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;sacCer2.fa&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;dbkey&quot;</span><span class="p">:</span><span class="s2">&quot;sacCer2&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;S. cerevisiae June 2008 (SGD/sacCer2) (sacCer2)&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;sacCer2&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This creates a new entry in the Tool Data Table:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#&lt;unique_build_id&gt;    &lt;dbkey&gt;        &lt;display_name&gt;    &lt;file_path&gt;</span>
+<span class="n">sacCer2</span>    <span class="n">sacCer2</span>    <span class="n">S</span><span class="o">.</span> <span class="n">cerevisiae</span> <span class="n">June</span> <span class="mi">2008</span> <span class="p">(</span><span class="n">SGD</span><span class="o">/</span><span class="n">sacCer2</span><span class="p">)</span> <span class="p">(</span><span class="n">sacCer2</span><span class="p">)</span>    <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">dan</span><span class="o">/</span><span class="n">galaxy</span><span class="o">-</span><span class="n">central</span><span class="o">/</span><span class="n">tool</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">sacCer2</span><span class="o">/</span><span class="n">seq</span><span class="o">/</span><span class="n">sacCer2</span><span class="o">.</span><span class="n">fa</span>
+</pre></div>
+</div>
+</section>
+<section id="example-2-json-output-from-data-manager-tool-to-galaxy">
+<h2>Example 2 JSON Output from Data Manager Tool to Galaxy<a class="headerlink" href="#example-2-json-output-from-data-manager-tool-to-galaxy" title="Link to this heading">¶</a></h2>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;data_tables&quot;</span><span class="p">:{</span>
+<span class="w">    </span><span class="nt">&quot;all_fasta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;add&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;sacCer2.fa&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;dbkey&quot;</span><span class="p">:</span><span class="s2">&quot;sacCer2&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;S. cerevisiae June 2008 (SGD/sacCer2) (sacCer2)&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;sacCer2&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;remove&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h2>Returning Values to the Data Manager<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<p>Taking the input values of a Data Manager Tool and converting it
+into a usable set of command-line arguments and options can be quite
+complicated in many cases, especially when considering that the
+underlying Data Manager Tool Executable will likely take those
+options and convert them into a set of valued objects within the
+executable/script itself before performing its operations.</p>
+<p>To simplify this process, Data Manager Tools will automatically
+have their parameter values JSONified and provided as the content
+of the output dataset. This will allow the executable / script to
+simply read and parse the JSON data and have a complete collection
+of the Tool and Job parameters to use within the tool. Using this
+methodology is not required, however, and a Data Manager Tool
+developer is free to explicitly declare any number of the Tool
+parameters explicitly to the command-line.</p>
+</section>
+<section id="example-json-input-to-tool">
+<h2>Example JSON input to tool<a class="headerlink" href="#example-json-input-to-tool" title="Link to this heading">¶</a></h2>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;param_dict&quot;</span><span class="p">:{</span>
+<span class="w">    </span><span class="nt">&quot;__datatypes_config__&quot;</span><span class="p">:</span><span class="s2">&quot;/Users/dan/galaxy-central/database/tmp/tmphyQRH3&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;__get_data_table_entry__&quot;</span><span class="p">:</span><span class="s2">&quot;&lt;function get_data_table_entry at 0x10d435b90&gt;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;userId&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;userEmail&quot;</span><span class="p">:</span><span class="s2">&quot;dan@bx.psu.edu&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;dbkey&quot;</span><span class="p">:</span><span class="s2">&quot;sacCer2&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sequence_desc&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;GALAXY_DATA_INDEX_DIR&quot;</span><span class="p">:</span><span class="s2">&quot;/Users/dan/galaxy-central/tool-data&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;__admin_users__&quot;</span><span class="p">:</span><span class="s2">&quot;dan@bx.psu.edu&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;__app__&quot;</span><span class="p">:</span><span class="s2">&quot;galaxy.app:UniverseApplication&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;__user_email__&quot;</span><span class="p">:</span><span class="s2">&quot;dan@bx.psu.edu&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sequence_name&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;GALAXY_DATATYPES_CONF_FILE&quot;</span><span class="p">:</span><span class="s2">&quot;/Users/dan/galaxy-central/database/tmp/tmphyQRH3&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;__user_name__&quot;</span><span class="p">:</span><span class="s2">&quot;danb&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sequence_id&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;reference_source&quot;</span><span class="p">:{</span>
+<span class="w">      </span><span class="nt">&quot;reference_source_selector&quot;</span><span class="p">:</span><span class="s2">&quot;ncbi&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;requested_identifier&quot;</span><span class="p">:</span><span class="s2">&quot;sacCer2&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;__current_case__&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;__new_file_path__&quot;</span><span class="p">:</span><span class="s2">&quot;/Users/dan/galaxy-central/database/tmp&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;__user_id__&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;out_file&quot;</span><span class="p">:</span><span class="s2">&quot;/Users/dan/galaxy-central/database/files/000/dataset_200.dat&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;GALAXY_ROOT_DIR&quot;</span><span class="p">:</span><span class="s2">&quot;/Users/dan/galaxy-central&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;__tool_data_path__&quot;</span><span class="p">:</span><span class="s2">&quot;/Users/dan/galaxy-central/tool-data&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;__root_dir__&quot;</span><span class="p">:</span><span class="s2">&quot;/Users/dan/galaxy-central&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;chromInfo&quot;</span><span class="p">:</span><span class="s2">&quot;/Users/dan/galaxy-central/tool-data/shared/ucsc/chrom/sacCer2.len&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;output_data&quot;</span><span class="p">:[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;extra_files_path&quot;</span><span class="p">:</span><span class="s2">&quot;/Users/dan/galaxy-central/database/job_working_directory/000/202/dataset_200_files&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;file_name&quot;</span><span class="p">:</span><span class="s2">&quot;/Users/dan/galaxy-central/database/files/000/dataset_200.dat&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;ext&quot;</span><span class="p">:</span><span class="s2">&quot;data_manager_json&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;out_data_name&quot;</span><span class="p">:</span><span class="s2">&quot;out_file&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;hda_id&quot;</span><span class="p">:</span><span class="mi">201</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;dataset_id&quot;</span><span class="p">:</span><span class="mi">200</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;job_config&quot;</span><span class="p">:{</span>
+<span class="w">    </span><span class="nt">&quot;GALAXY_ROOT_DIR&quot;</span><span class="p">:</span><span class="s2">&quot;/Users/dan/galaxy-central&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;GALAXY_DATATYPES_CONF_FILE&quot;</span><span class="p">:</span><span class="s2">&quot;/Users/dan/galaxy-central/database/tmp/tmphyQRH3&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;TOOL_PROVIDED_JOB_METADATA_FILE&quot;</span><span class="p">:</span><span class="s2">&quot;galaxy.json&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="running-data-manager-tools-using-the-api">
+<h3>Running Data Manager Tools using the API<a class="headerlink" href="#running-data-manager-tools-using-the-api" title="Link to this heading">¶</a></h3>
+<p>See <a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/master/scripts/api/data_manager_example_execute.py">scripts/api/data_manager_example_execute.py</a> for an example script.</p>
+</section>
+<section id="writing-data-manager-tests">
+<h3>Writing Data Manager Tests<a class="headerlink" href="#writing-data-manager-tests" title="Link to this heading">¶</a></h3>
+<p>Writing a Data Manager test is similar to writing a test for any other
+<a class="reference external" href="https://galaxyproject.org/admin/tools/Writing%20Tests/">Galaxy Tool</a>. For an example, please see at <a class="reference external" href="http://testtoolshed.g2.bx.psu.edu/view/blankenberg/data_manager_example_blastdb_ncbi_update_blastdb">http://testtoolshed.g2.bx.psu.edu/view/blankenberg/data_manager_example_blastdb_ncbi_update_blastdb</a>.</p>
+</section>
+</section>
+<section id="running-data-manager-tests">
+<h2>Running Data Manager Tests<a class="headerlink" href="#running-data-manager-tests" title="Link to this heading">¶</a></h2>
+<p>Data Managers can be tested using the built-in <code class="docutils literal notranslate"><span class="pre">run_tests.sh</span></code> script.
+All installed Data Managers can be tested, or individual Data Managers
+can be tested.</p>
+<p>To test all: <code class="docutils literal notranslate"><span class="pre">sh</span> <span class="pre">run_tests.sh</span> <span class="pre">-data_managers</span></code></p>
+<p>To test a single Data Manager byid:
+<code class="docutils literal notranslate"><span class="pre">sh</span> <span class="pre">run_tests.sh</span> <span class="pre">-data_managers</span> <span class="pre">-id</span> <span class="pre">data_manager_id</span></code></p>
+</section>
+<section id="testing-in-the-toolshed">
+<h2>Testing in the ToolShed<a class="headerlink" href="#testing-in-the-toolshed" title="Link to this heading">¶</a></h2>
+<p>All Data Managers deposited within the ToolShed are tested using the
+nightly testing framework.</p>
+<section id="defining-data-managers">
+<h3>Defining Data Managers<a class="headerlink" href="#defining-data-managers" title="Link to this heading">¶</a></h3>
+</section>
+</section>
+<section id="data-manager-components">
+<h2>Data Manager Components<a class="headerlink" href="#data-manager-components" title="Link to this heading">¶</a></h2>
+<p>Data Managers are composed of two components:</p>
+<ul class="simple">
+<li><p>Data Manager configuration (e.g. <em>data_manager_conf.xml</em>)</p></li>
+<li><p>Data Manager Tool</p></li>
+<li><p>Data table configuration</p></li>
+</ul>
+</section>
+<section id="data-manager-configuration">
+<h2>Data Manager Configuration<a class="headerlink" href="#data-manager-configuration" title="Link to this heading">¶</a></h2>
+<p>The Data Manager Configuration (e.g. <em>data_manager_conf.xml</em>) defines
+the set of available Data Managers using an XML description. Each
+Data Manager can add entries to one or more Tool Data Tables. For
+each Tool Data Table under consideration, the expected output entry
+columns, and how to handle the Data Manager Tool results, are defined.</p>
+<p>Upon installation, Galaxy will recursivly search for data_manager_conf.xml in the repository.
+data_manager_conf.xml should be located in the root of the repository but can be located in a sub-directory.
+The first instance of data_manager_conf.xml found will be used.
+This file defines the paths to the data manager tools within the repository directory structure.</p>
+</section>
+<section id="data-manager-tool">
+<h2>Data Manager Tool<a class="headerlink" href="#data-manager-tool" title="Link to this heading">¶</a></h2>
+<p>A Data Manager Tool is a special class of Galaxy Tool. Data Manager
+Tools do not appear in the standard Tool Panel and can only be
+accessed by a Galaxy Administrator. Additionally, the initial
+content of a Data Manager’s output file contains a JSON dictionary
+with a listing of the Tool parameters and Job settings
+(i.e. they are a type of <code class="docutils literal notranslate"><span class="pre">OutputParameterJSONTool</span></code>, this is also
+available for <code class="docutils literal notranslate"><span class="pre">DataSourceTools</span></code>). There is no requirement for
+the underlying Data Manager tool to make use of these contents,
+but they are provided as a handy way to transfer all of the tool
+and job parameters without requiring a different command-line argument
+for each necessary piece of information.</p>
+<p>The primary difference between a standard Galaxy Tool and a
+Data Manager Tool is that the primary output dataset of a
+Data Manager Tool must be a file containing a JSON description of the
+new entries to add to a Tool Data Table. The on-disk content to be
+referenced by the Data Manager Tool, if any, is stored within the
+<code class="docutils literal notranslate"><span class="pre">extra_files_path</span></code> of the output dataset created by the tool.</p>
+<p>A data manager tool can use a <code class="docutils literal notranslate"><span class="pre">conda</span></code> environment if the target
+Galaxy is version 18.09 or above (specified in the tool’s XML file).</p>
+<p>Data manager tools are loaded by referring to them in the data_manager_conf.xml file for the repository.</p>
+</section>
+<section id="data-table-configuration">
+<h2>Data table configuration<a class="headerlink" href="#data-table-configuration" title="Link to this heading">¶</a></h2>
+<p>Data tables that data managers operate on are specified in <cite>tool_data_table_conf.xml.sample</cite> located at the repository root.</p>
+<p>Tables can be preloaded with content from files at <cite>tool-data/*.loc.sample</cite> relative to the repository root.
+tool-data can contain subdirectories but files in those subdirectories must be referred to including the subdirectory path by
+anything that resolves relative to the tool-data path within Galaxy (ie. path entries in the data table).</p>
+</section>
+<section id="data-manager-server-configuration-options">
+<h2>Data Manager Server Configuration Options<a class="headerlink" href="#data-manager-server-configuration-options" title="Link to this heading">¶</a></h2>
+<p>In your <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code> ensure these settings are set:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Data manager configuration options</span>
+<span class="nt">enable_data_manager_user_view</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">data_manager_config_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data_manager_conf.xml</span>
+<span class="nt">shed_data_manager_config_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shed_data_manager_conf.xml</span>
+<span class="nt">galaxy_data_manager_data_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tool-data</span>
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">enable_data_manager_user_view</span></code> allows non-admin users to
+view the available data that has been managed.</p>
+<p>Where <code class="docutils literal notranslate"><span class="pre">data_manager_config_file</span></code> defines the local XML file to
+use for loading the configurations of locally defined data managers.</p>
+<p>Where <code class="docutils literal notranslate"><span class="pre">shed_data_manager_config_file</span></code> defines the local XML file
+to use for saving and loading the configurations of locally defined
+data managers.</p>
+<p>Where <code class="docutils literal notranslate"><span class="pre">galaxy_data_manager_data_path</span></code> defines the location to use
+for storing the files created by Data Managers. When not configured
+it defaults to the value of <code class="docutils literal notranslate"><span class="pre">tool_data_path</span></code>.</p>
+</section>
+<section id="an-example-single-entry-data-manager-config-file">
+<h2>An example single entry <code class="docutils literal notranslate"><span class="pre">data_manager_config_file</span></code><a class="headerlink" href="#an-example-single-entry-data-manager-config-file" title="Link to this heading">¶</a></h2>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;data_managers&gt;</span><span class="w"> </span><span class="cm">&lt;!-- The root element --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;data_manager</span><span class="w"> </span><span class="na">tool_file=</span><span class="s">&quot;data_manager/fetch_genome_all_fasta.xml&quot;</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;fetch_genome_all_fasta&quot;</span><span class="nt">&gt;</span><span class="w"> </span><span class="cm">&lt;!-- Defines a single Data Manager Tool that can update one or more Data Tables --&gt;</span>
+<span class="w">        </span><span class="nt">&lt;data_table</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;all_fasta&quot;</span><span class="nt">&gt;</span><span class="w"> </span><span class="cm">&lt;!-- Defines a Data Table to be modified. --&gt;</span>
+<span class="w">            </span><span class="nt">&lt;output&gt;</span><span class="w"> </span><span class="cm">&lt;!-- Handle the output of the Data Manager Tool --&gt;</span>
+<span class="w">                </span><span class="nt">&lt;column</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;value&quot;</span><span class="w"> </span><span class="nt">/&gt;</span><span class="w"> </span><span class="cm">&lt;!-- columns that are going to be specified by the Data Manager Tool --&gt;</span>
+<span class="w">                </span><span class="nt">&lt;column</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;dbkey&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">                </span><span class="nt">&lt;column</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">                </span><span class="nt">&lt;column</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;path&quot;</span><span class="w"> </span><span class="na">output_ref=</span><span class="s">&quot;out_file&quot;</span><span class="w"> </span><span class="nt">&gt;</span><span class="w">  </span><span class="cm">&lt;!-- The value of this column will be modified based upon data in &quot;out_file&quot;. example value &quot;phiX.fa&quot; --&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;move</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;file&quot;</span><span class="nt">&gt;</span><span class="w"> </span><span class="cm">&lt;!-- Moving a file from the extra files path of &quot;out_file&quot; --&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;source&gt;</span>${path}<span class="nt">&lt;/source&gt;</span><span class="w"> </span><span class="cm">&lt;!-- File name within the extra files path --&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;target</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;${GALAXY_DATA_MANAGER_DATA_PATH}&quot;</span><span class="nt">&gt;</span>${dbkey}/seq/${path}<span class="nt">&lt;/target&gt;</span><span class="w"> </span><span class="cm">&lt;!-- Target Location to store the file, directories are created as needed --&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;/move&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;value_translation&gt;</span>${GALAXY_DATA_MANAGER_DATA_PATH}/${dbkey}/seq/${path}<span class="nt">&lt;/value_translation&gt;</span><span class="w"> </span><span class="cm">&lt;!-- Store this value in the final Data Table --&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/column&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/output&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/data_table&gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- additional data_tables can be configured from a single Data Manager --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/data_manager&gt;</span>
+<span class="nt">&lt;/data_managers&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="an-example-data-manager-fetch-genome-all-fasta-xml">
+<h2>An example <code class="docutils literal notranslate"><span class="pre">data_manager/fetch_genome_all_fasta.xml</span></code><a class="headerlink" href="#an-example-data-manager-fetch-genome-all-fasta-xml" title="Link to this heading">¶</a></h2>
+<p>This Tool Config calls a Python script
+<code class="docutils literal notranslate"><span class="pre">data_manager_fetch_genome_all_fasta.py</span></code> and provides a single file
+<code class="docutils literal notranslate"><span class="pre">out_file</span></code> and the description from the dbkey dropdown menu for input.</p>
+<p>The starting contents of <code class="docutils literal notranslate"><span class="pre">out_file</span></code> contain information from Galaxy
+about the tool, including input parameter values, in the JSON format.
+Data Manager tools are expected to be able to parse this file.
+The Data Manager tool will also put the return output values for its
+results in this file; additional files to be moved can be placed in
+the <code class="docutils literal notranslate"><span class="pre">extra_files_path</span></code> of <code class="docutils literal notranslate"><span class="pre">out_file</span></code>.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;tool</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;data_manager_fetch_genome_all_fasta&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Reference Genome&quot;</span><span class="w"> </span><span class="na">tool_type=</span><span class="s">&quot;manage_data&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;description&gt;</span>fetching<span class="nt">&lt;/description&gt;</span>
+<span class="w">    </span><span class="nt">&lt;command</span><span class="w"> </span><span class="na">interpreter=</span><span class="s">&quot;python&quot;</span><span class="nt">&gt;</span>data_manager_fetch_genome_all_fasta.py<span class="w"> </span>&quot;${out_file}&quot;<span class="w"> </span>--dbkey_description<span class="w"> </span>${<span class="w"> </span>dbkey.get_display_text()<span class="w"> </span>}<span class="nt">&lt;/command&gt;</span>
+<span class="w">    </span><span class="nt">&lt;inputs&gt;</span>
+<span class="w">        </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;dbkey&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;genomebuild&quot;</span><span class="w"> </span><span class="na">label=</span><span class="s">&quot;DBKEY to assign to data&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;text&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;sequence_name&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="na">label=</span><span class="s">&quot;Name of sequence&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;text&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;sequence_desc&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="na">label=</span><span class="s">&quot;Description of sequence&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;text&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;sequence_id&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="na">label=</span><span class="s">&quot;ID for sequence&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;conditional</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;reference_source&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;reference_source_selector&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;select&quot;</span><span class="w"> </span><span class="na">label=</span><span class="s">&quot;Choose the source for the reference genome&quot;</span><span class="nt">&gt;</span>
+<span class="w">                </span><span class="nt">&lt;option</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;ucsc&quot;</span><span class="nt">&gt;</span>UCSC<span class="nt">&lt;/option&gt;</span>
+<span class="w">                </span><span class="nt">&lt;option</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;ncbi&quot;</span><span class="nt">&gt;</span>NCBI<span class="nt">&lt;/option&gt;</span>
+<span class="w">                </span><span class="nt">&lt;option</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;url&quot;</span><span class="nt">&gt;</span>URL<span class="nt">&lt;/option&gt;</span>
+<span class="w">                </span><span class="nt">&lt;option</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;history&quot;</span><span class="nt">&gt;</span>History<span class="nt">&lt;/option&gt;</span>
+<span class="w">                </span><span class="nt">&lt;option</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;directory&quot;</span><span class="nt">&gt;</span>Directory<span class="w"> </span>on<span class="w"> </span>Server<span class="nt">&lt;/option&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/param&gt;</span>
+<span class="w">            </span><span class="nt">&lt;when</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;ucsc&quot;</span><span class="nt">&gt;</span>
+<span class="w">                </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;text&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;requested_dbkey&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="na">label=</span><span class="s">&quot;UCSC&#39;s DBKEY for source FASTA&quot;</span><span class="w"> </span><span class="na">optional=</span><span class="s">&quot;False&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/when&gt;</span>
+<span class="w">            </span><span class="nt">&lt;when</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;ncbi&quot;</span><span class="nt">&gt;</span>
+<span class="w">                </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;text&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;requested_identifier&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="na">label=</span><span class="s">&quot;NCBI identifier&quot;</span><span class="w"> </span><span class="na">optional=</span><span class="s">&quot;False&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/when&gt;</span>
+<span class="w">            </span><span class="nt">&lt;when</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;url&quot;</span><span class="nt">&gt;</span>
+<span class="w">                </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;text&quot;</span><span class="w"> </span><span class="na">area=</span><span class="s">&quot;True&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;user_url&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;http://&quot;</span><span class="w"> </span><span class="na">label=</span><span class="s">&quot;URLs&quot;</span><span class="w"> </span><span class="na">optional=</span><span class="s">&quot;False&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/when&gt;</span>
+<span class="w">            </span><span class="nt">&lt;when</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;history&quot;</span><span class="nt">&gt;</span>
+<span class="w">                </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;input_fasta&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;data&quot;</span><span class="w"> </span><span class="na">format=</span><span class="s">&quot;fasta&quot;</span><span class="w"> </span><span class="na">label=</span><span class="s">&quot;FASTA File&quot;</span><span class="w"> </span><span class="na">multiple=</span><span class="s">&quot;False&quot;</span><span class="w"> </span><span class="na">optional=</span><span class="s">&quot;False&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/when&gt;</span>
+<span class="w">            </span><span class="nt">&lt;when</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;directory&quot;</span><span class="nt">&gt;</span>
+<span class="w">                </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;text&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fasta_filename&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="na">label=</span><span class="s">&quot;Full path to FASTA File on disk&quot;</span><span class="w"> </span><span class="na">optional=</span><span class="s">&quot;False&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">                </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;boolean&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;create_symlink&quot;</span><span class="w"> </span><span class="na">truevalue=</span><span class="s">&quot;create_symlink&quot;</span><span class="w"> </span><span class="na">falsevalue=</span><span class="s">&quot;copy_file&quot;</span><span class="w"> </span><span class="na">label=</span><span class="s">&quot;Create symlink to orignal data instead of copying&quot;</span><span class="w"> </span><span class="na">checked=</span><span class="s">&quot;False&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/when&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/conditional&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/inputs&gt;</span>
+<span class="w">    </span><span class="nt">&lt;outputs&gt;</span>
+<span class="w">        </span><span class="nt">&lt;data</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;out_file&quot;</span><span class="w"> </span><span class="na">format=</span><span class="s">&quot;data_manager_json&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/outputs&gt;</span>
+<span class="w">    </span><span class="cm">&lt;!--</span>
+<span class="cm">    &lt;tests&gt;</span>
+<span class="cm">        &lt;test&gt;</span>
+<span class="cm">            DON&#39;T FORGET TO DEFINE SOME TOOL TESTS</span>
+<span class="cm">        &lt;/test&gt;</span>
+<span class="cm">    &lt;/tests&gt;</span>
+<span class="cm">    --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;help&gt;</span>
+**What<span class="w"> </span>it<span class="w"> </span>does**
+
+Fetches<span class="w"> </span>a<span class="w"> </span>reference<span class="w"> </span>genome<span class="w"> </span>from<span class="w"> </span>various<span class="w"> </span>sources<span class="w"> </span>(UCSC,<span class="w"> </span>NCBI,<span class="w"> </span>URL,<span class="w"> </span>Galaxy<span class="w"> </span>History,<span class="w"> </span>or<span class="w"> </span>a<span class="w"> </span>server<span class="w"> </span>directory)<span class="w"> </span>and<span class="w"> </span>populates<span class="w"> </span>the<span class="w"> </span>&quot;all_fasta&quot;<span class="w"> </span>data<span class="w"> </span>table.
+
+------
+
+
+
+..<span class="w"> </span>class::<span class="w"> </span>infomark
+
+**Notice:**<span class="w"> </span>If<span class="w"> </span>you<span class="w"> </span>leave<span class="w"> </span>name,<span class="w"> </span>description,<span class="w"> </span>or<span class="w"> </span>id<span class="w"> </span>blank,<span class="w"> </span>it<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>generated<span class="w"> </span>automatically.
+
+<span class="w">    </span><span class="nt">&lt;/help&gt;</span>
+<span class="nt">&lt;/tool&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="an-example-data-manager-fetch-genome-all-fasta-py">
+<h2>An example <code class="docutils literal notranslate"><span class="pre">data_manager_fetch_genome_all_fasta.py</span></code><a class="headerlink" href="#an-example-data-manager-fetch-genome-all-fasta-py" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#Dan Blankenberg</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">optparse</span>
+<span class="kn">import</span> <span class="nn">urllib2</span>
+<span class="kn">from</span> <span class="nn">ftplib</span> <span class="kn">import</span> <span class="n">FTP</span>
+<span class="kn">import</span> <span class="nn">tarfile</span>
+
+<span class="kn">from</span> <span class="nn">galaxy.util.json</span> <span class="kn">import</span> <span class="n">from_json_string</span><span class="p">,</span> <span class="n">to_json_string</span>
+
+
+<span class="n">CHUNK_SIZE</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="mi">20</span> <span class="c1">#1mb</span>
+
+<span class="k">def</span> <span class="nf">cleanup_before_exit</span><span class="p">(</span> <span class="n">tmp_dir</span> <span class="p">):</span>
+    <span class="k">if</span> <span class="n">tmp_dir</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span> <span class="n">tmp_dir</span> <span class="p">):</span>
+        <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span> <span class="n">tmp_dir</span> <span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">stop_err</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">get_dbkey_id_name</span><span class="p">(</span> <span class="n">params</span><span class="p">,</span> <span class="n">dbkey_description</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">dbkey</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;param_dict&#39;</span><span class="p">][</span><span class="s1">&#39;dbkey&#39;</span><span class="p">]</span>
+    <span class="c1">#TODO: ensure sequence_id is unique and does not already appear in location file</span>
+    <span class="n">sequence_id</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;param_dict&#39;</span><span class="p">][</span><span class="s1">&#39;sequence_id&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">sequence_id</span><span class="p">:</span>
+        <span class="n">sequence_id</span> <span class="o">=</span> <span class="n">dbkey</span> <span class="c1">#uuid.uuid4() generate and use an uuid instead?</span>
+
+    <span class="n">sequence_name</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;param_dict&#39;</span><span class="p">][</span><span class="s1">&#39;sequence_name&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">sequence_name</span><span class="p">:</span>
+        <span class="n">sequence_name</span> <span class="o">=</span> <span class="n">dbkey_description</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">sequence_name</span><span class="p">:</span>
+            <span class="n">sequence_name</span> <span class="o">=</span> <span class="n">dbkey</span>
+    <span class="k">return</span> <span class="n">dbkey</span><span class="p">,</span> <span class="n">sequence_id</span><span class="p">,</span> <span class="n">sequence_name</span>
+
+<span class="k">def</span> <span class="nf">download_from_ucsc</span><span class="p">(</span> <span class="n">data_manager_dict</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">target_directory</span><span class="p">,</span> <span class="n">dbkey</span><span class="p">,</span> <span class="n">sequence_id</span><span class="p">,</span> <span class="n">sequence_name</span> <span class="p">):</span>
+    <span class="n">UCSC_FTP_SERVER</span> <span class="o">=</span> <span class="s1">&#39;hgdownload.cse.ucsc.edu&#39;</span>
+    <span class="n">UCSC_CHROM_FA_FILENAME</span> <span class="o">=</span> <span class="s1">&#39;chromFa.tar.gz&#39;</span> <span class="c1">#FIXME: this file is actually variable...</span>
+    <span class="n">UCSC_DOWNLOAD_PATH</span> <span class="o">=</span> <span class="s1">&#39;/goldenPath/</span><span class="si">%s</span><span class="s1">/bigZips/&#39;</span> <span class="o">+</span> <span class="n">UCSC_CHROM_FA_FILENAME</span>
+    <span class="n">COMPRESSED_EXTENSIONS</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;.tar.gz&#39;</span><span class="p">,</span> <span class="s1">&#39;.tar.bz2&#39;</span><span class="p">,</span> <span class="s1">&#39;.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;.fa.gz&#39;</span><span class="p">,</span> <span class="s1">&#39;.fa.bz2&#39;</span> <span class="p">]</span>
+
+    <span class="n">email</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;param_dict&#39;</span><span class="p">][</span><span class="s1">&#39;__user_email__&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">email</span><span class="p">:</span>
+        <span class="n">email</span> <span class="o">=</span> <span class="s1">&#39;anonymous@example.com&#39;</span>
+
+    <span class="n">ucsc_dbkey</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;param_dict&#39;</span><span class="p">][</span><span class="s1">&#39;reference_source&#39;</span><span class="p">][</span><span class="s1">&#39;requested_dbkey&#39;</span><span class="p">]</span> <span class="ow">or</span> <span class="n">dbkey</span>
+    <span class="n">ftp</span> <span class="o">=</span> <span class="n">FTP</span><span class="p">(</span> <span class="n">UCSC_FTP_SERVER</span> <span class="p">)</span>
+    <span class="n">ftp</span><span class="o">.</span><span class="n">login</span><span class="p">(</span> <span class="s1">&#39;anonymous&#39;</span><span class="p">,</span> <span class="n">email</span> <span class="p">)</span>
+    <span class="n">ucsc_file_name</span> <span class="o">=</span> <span class="n">UCSC_DOWNLOAD_PATH</span> <span class="o">%</span> <span class="n">ucsc_dbkey</span>
+
+    <span class="n">tmp_dir</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">(</span> <span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;tmp-data-manager-ucsc-&#39;</span> <span class="p">)</span>
+    <span class="n">ucsc_fasta_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="n">tmp_dir</span><span class="p">,</span> <span class="n">UCSC_CHROM_FA_FILENAME</span> <span class="p">)</span>
+
+    <span class="n">fasta_base_filename</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.fa&quot;</span> <span class="o">%</span> <span class="n">sequence_id</span>
+    <span class="n">fasta_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="n">target_directory</span><span class="p">,</span> <span class="n">fasta_base_filename</span> <span class="p">)</span>
+    <span class="n">fasta_writer</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span> <span class="n">fasta_filename</span><span class="p">,</span> <span class="s1">&#39;wb+&#39;</span> <span class="p">)</span>
+
+    <span class="n">tmp_extract_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span> <span class="p">(</span> <span class="n">tmp_dir</span><span class="p">,</span> <span class="s1">&#39;extracted_fasta&#39;</span> <span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span> <span class="n">tmp_extract_dir</span> <span class="p">)</span>
+
+    <span class="n">tmp_fasta</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span> <span class="n">ucsc_fasta_filename</span><span class="p">,</span> <span class="s1">&#39;wb+&#39;</span> <span class="p">)</span>
+
+    <span class="n">ftp</span><span class="o">.</span><span class="n">retrbinary</span><span class="p">(</span> <span class="s1">&#39;RETR </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">ucsc_file_name</span><span class="p">,</span> <span class="n">tmp_fasta</span><span class="o">.</span><span class="n">write</span> <span class="p">)</span>
+
+    <span class="n">tmp_fasta</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span> <span class="mi">0</span> <span class="p">)</span>
+    <span class="n">fasta_tar</span> <span class="o">=</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span> <span class="n">fileobj</span><span class="o">=</span><span class="n">tmp_fasta</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r:*&#39;</span> <span class="p">)</span>
+
+    <span class="n">fasta_reader</span> <span class="o">=</span> <span class="p">[</span> <span class="n">fasta_tar</span><span class="o">.</span><span class="n">extractfile</span><span class="p">(</span> <span class="n">member</span> <span class="p">)</span> <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="n">fasta_tar</span><span class="o">.</span><span class="n">getmembers</span><span class="p">()</span> <span class="p">]</span>
+
+    <span class="n">data_table_entry</span> <span class="o">=</span> <span class="n">_stream_fasta_to_file</span><span class="p">(</span> <span class="n">fasta_reader</span><span class="p">,</span> <span class="n">target_directory</span><span class="p">,</span> <span class="n">dbkey</span><span class="p">,</span> <span class="n">sequence_id</span><span class="p">,</span> <span class="n">sequence_name</span> <span class="p">)</span>
+    <span class="n">_add_data_table_entry</span><span class="p">(</span> <span class="n">data_manager_dict</span><span class="p">,</span> <span class="n">data_table_entry</span> <span class="p">)</span>
+
+    <span class="n">fasta_tar</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">tmp_fasta</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">cleanup_before_exit</span><span class="p">(</span> <span class="n">tmp_dir</span> <span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">download_from_ncbi</span><span class="p">(</span> <span class="n">data_manager_dict</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">target_directory</span><span class="p">,</span> <span class="n">dbkey</span><span class="p">,</span> <span class="n">sequence_id</span><span class="p">,</span> <span class="n">sequence_name</span> <span class="p">):</span>
+    <span class="n">NCBI_DOWNLOAD_URL</span> <span class="o">=</span> <span class="s1">&#39;http://togows.dbcls.jp/entry/ncbi-nucleotide/</span><span class="si">%s</span><span class="s1">.fasta&#39;</span> <span class="c1">#FIXME: taken from dave&#39;s genome manager...why some japan site?</span>
+
+    <span class="n">requested_identifier</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;param_dict&#39;</span><span class="p">][</span><span class="s1">&#39;reference_source&#39;</span><span class="p">][</span><span class="s1">&#39;requested_identifier&#39;</span><span class="p">]</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">NCBI_DOWNLOAD_URL</span> <span class="o">%</span> <span class="n">requested_identifier</span>
+    <span class="n">fasta_reader</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span> <span class="n">url</span> <span class="p">)</span>
+
+    <span class="n">data_table_entry</span> <span class="o">=</span> <span class="n">_stream_fasta_to_file</span><span class="p">(</span> <span class="n">fasta_reader</span><span class="p">,</span> <span class="n">target_directory</span><span class="p">,</span> <span class="n">dbkey</span><span class="p">,</span> <span class="n">sequence_id</span><span class="p">,</span> <span class="n">sequence_name</span> <span class="p">)</span>
+    <span class="n">_add_data_table_entry</span><span class="p">(</span> <span class="n">data_manager_dict</span><span class="p">,</span> <span class="n">data_table_entry</span> <span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">download_from_url</span><span class="p">(</span> <span class="n">data_manager_dict</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">target_directory</span><span class="p">,</span> <span class="n">dbkey</span><span class="p">,</span> <span class="n">sequence_id</span><span class="p">,</span> <span class="n">sequence_name</span> <span class="p">):</span>
+    <span class="n">urls</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span> <span class="nb">bool</span><span class="p">,</span> <span class="nb">map</span><span class="p">(</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;param_dict&#39;</span><span class="p">][</span><span class="s1">&#39;reference_source&#39;</span><span class="p">][</span><span class="s1">&#39;user_url&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="p">)</span> <span class="p">)</span> <span class="p">)</span>
+    <span class="n">fasta_reader</span> <span class="o">=</span> <span class="p">[</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span> <span class="n">url</span> <span class="p">)</span> <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls</span> <span class="p">]</span>
+
+    <span class="n">data_table_entry</span> <span class="o">=</span> <span class="n">_stream_fasta_to_file</span><span class="p">(</span> <span class="n">fasta_reader</span><span class="p">,</span> <span class="n">target_directory</span><span class="p">,</span> <span class="n">dbkey</span><span class="p">,</span> <span class="n">sequence_id</span><span class="p">,</span> <span class="n">sequence_name</span> <span class="p">)</span>
+    <span class="n">_add_data_table_entry</span><span class="p">(</span> <span class="n">data_manager_dict</span><span class="p">,</span> <span class="n">data_table_entry</span> <span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">download_from_history</span><span class="p">(</span> <span class="n">data_manager_dict</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">target_directory</span><span class="p">,</span> <span class="n">dbkey</span><span class="p">,</span> <span class="n">sequence_id</span><span class="p">,</span> <span class="n">sequence_name</span> <span class="p">):</span>
+    <span class="c1">#TODO: allow multiple FASTA input files</span>
+    <span class="n">input_filename</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;param_dict&#39;</span><span class="p">][</span><span class="s1">&#39;reference_source&#39;</span><span class="p">][</span><span class="s1">&#39;input_fasta&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span> <span class="n">input_filename</span><span class="p">,</span> <span class="nb">list</span> <span class="p">):</span>
+        <span class="n">fasta_reader</span> <span class="o">=</span> <span class="p">[</span> <span class="nb">open</span><span class="p">(</span> <span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span> <span class="p">)</span> <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">input_filename</span> <span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">fasta_reader</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span> <span class="n">input_filename</span> <span class="p">)</span>
+
+    <span class="n">data_table_entry</span> <span class="o">=</span> <span class="n">_stream_fasta_to_file</span><span class="p">(</span> <span class="n">fasta_reader</span><span class="p">,</span> <span class="n">target_directory</span><span class="p">,</span> <span class="n">dbkey</span><span class="p">,</span> <span class="n">sequence_id</span><span class="p">,</span> <span class="n">sequence_name</span> <span class="p">)</span>
+    <span class="n">_add_data_table_entry</span><span class="p">(</span> <span class="n">data_manager_dict</span><span class="p">,</span> <span class="n">data_table_entry</span> <span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">copy_from_directory</span><span class="p">(</span> <span class="n">data_manager_dict</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">target_directory</span><span class="p">,</span> <span class="n">dbkey</span><span class="p">,</span> <span class="n">sequence_id</span><span class="p">,</span> <span class="n">sequence_name</span> <span class="p">):</span>
+    <span class="n">input_filename</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;param_dict&#39;</span><span class="p">][</span><span class="s1">&#39;reference_source&#39;</span><span class="p">][</span><span class="s1">&#39;fasta_filename&#39;</span><span class="p">]</span>
+    <span class="n">create_symlink</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;param_dict&#39;</span><span class="p">][</span><span class="s1">&#39;reference_source&#39;</span><span class="p">][</span><span class="s1">&#39;create_symlink&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;create_symlink&#39;</span>
+    <span class="k">if</span> <span class="n">create_symlink</span><span class="p">:</span>
+        <span class="n">data_table_entry</span> <span class="o">=</span> <span class="n">_create_symlink</span><span class="p">(</span> <span class="n">input_filename</span><span class="p">,</span> <span class="n">target_directory</span><span class="p">,</span> <span class="n">dbkey</span><span class="p">,</span> <span class="n">sequence_id</span><span class="p">,</span> <span class="n">sequence_name</span> <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span> <span class="n">input_filename</span><span class="p">,</span> <span class="nb">list</span> <span class="p">):</span>
+            <span class="n">fasta_reader</span> <span class="o">=</span> <span class="p">[</span> <span class="nb">open</span><span class="p">(</span> <span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span> <span class="p">)</span> <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">input_filename</span> <span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">fasta_reader</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span> <span class="n">input_filename</span> <span class="p">)</span>
+        <span class="n">data_table_entry</span> <span class="o">=</span> <span class="n">_stream_fasta_to_file</span><span class="p">(</span> <span class="n">fasta_reader</span><span class="p">,</span> <span class="n">target_directory</span><span class="p">,</span> <span class="n">dbkey</span><span class="p">,</span> <span class="n">sequence_id</span><span class="p">,</span> <span class="n">sequence_name</span> <span class="p">)</span>
+    <span class="n">_add_data_table_entry</span><span class="p">(</span> <span class="n">data_manager_dict</span><span class="p">,</span> <span class="n">data_table_entry</span> <span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">_add_data_table_entry</span><span class="p">(</span> <span class="n">data_manager_dict</span><span class="p">,</span> <span class="n">data_table_entry</span> <span class="p">):</span>
+    <span class="n">data_manager_dict</span><span class="p">[</span><span class="s1">&#39;data_tables&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_manager_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span> <span class="s1">&#39;data_tables&#39;</span><span class="p">,</span> <span class="p">{}</span> <span class="p">)</span>
+    <span class="n">data_manager_dict</span><span class="p">[</span><span class="s1">&#39;data_tables&#39;</span><span class="p">][</span><span class="s1">&#39;all_fasta&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_manager_dict</span><span class="p">[</span><span class="s1">&#39;data_tables&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span> <span class="s1">&#39;all_fasta&#39;</span><span class="p">,</span> <span class="p">[]</span> <span class="p">)</span>
+    <span class="n">data_manager_dict</span><span class="p">[</span><span class="s1">&#39;data_tables&#39;</span><span class="p">][</span><span class="s1">&#39;all_fasta&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">data_table_entry</span> <span class="p">)</span>
+    <span class="k">return</span> <span class="n">data_manager_dict</span>
+
+<span class="k">def</span> <span class="nf">_stream_fasta_to_file</span><span class="p">(</span> <span class="n">fasta_stream</span><span class="p">,</span> <span class="n">target_directory</span><span class="p">,</span> <span class="n">dbkey</span><span class="p">,</span> <span class="n">sequence_id</span><span class="p">,</span> <span class="n">sequence_name</span><span class="p">,</span> <span class="n">close_stream</span><span class="o">=</span><span class="kc">True</span> <span class="p">):</span>
+    <span class="n">fasta_base_filename</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.fa&quot;</span> <span class="o">%</span> <span class="n">sequence_id</span>
+    <span class="n">fasta_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="n">target_directory</span><span class="p">,</span> <span class="n">fasta_base_filename</span> <span class="p">)</span>
+    <span class="n">fasta_writer</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span> <span class="n">fasta_filename</span><span class="p">,</span> <span class="s1">&#39;wb+&#39;</span> <span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span> <span class="n">fasta_stream</span><span class="p">,</span> <span class="nb">list</span> <span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span> <span class="n">fasta_stream</span> <span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">fasta_stream</span> <span class="o">=</span> <span class="n">fasta_stream</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span> <span class="n">fasta_stream</span><span class="p">,</span> <span class="nb">list</span> <span class="p">):</span>
+        <span class="n">last_char</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">for</span> <span class="n">fh</span> <span class="ow">in</span> <span class="n">fasta_stream</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">last_char</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\r</span><span class="s1">&#39;</span> <span class="p">]:</span>
+                <span class="n">fasta_writer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="p">)</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">fh</span><span class="o">.</span><span class="n">read</span><span class="p">(</span> <span class="n">CHUNK_SIZE</span> <span class="p">)</span>
+                <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
+                    <span class="n">fasta_writer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span> <span class="n">data</span> <span class="p">)</span>
+                    <span class="n">last_char</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">break</span>
+            <span class="k">if</span> <span class="n">close_stream</span><span class="p">:</span>
+                <span class="n">fh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">fasta_stream</span><span class="o">.</span><span class="n">read</span><span class="p">(</span> <span class="n">CHUNK_SIZE</span> <span class="p">)</span>
+            <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
+                <span class="n">fasta_writer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span> <span class="n">data</span> <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">break</span>
+        <span class="k">if</span> <span class="n">close_stream</span><span class="p">:</span>
+            <span class="n">fasta_stream</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="n">fasta_writer</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span> <span class="n">value</span><span class="o">=</span><span class="n">sequence_id</span><span class="p">,</span> <span class="n">dbkey</span><span class="o">=</span><span class="n">dbkey</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">sequence_name</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">fasta_base_filename</span> <span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">_create_symlink</span><span class="p">(</span> <span class="n">input_filename</span><span class="p">,</span> <span class="n">target_directory</span><span class="p">,</span> <span class="n">dbkey</span><span class="p">,</span> <span class="n">sequence_id</span><span class="p">,</span> <span class="n">sequence_name</span> <span class="p">):</span>
+    <span class="n">fasta_base_filename</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.fa&quot;</span> <span class="o">%</span> <span class="n">sequence_id</span>
+    <span class="n">fasta_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="n">target_directory</span><span class="p">,</span> <span class="n">fasta_base_filename</span> <span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">symlink</span><span class="p">(</span> <span class="n">input_filename</span><span class="p">,</span> <span class="n">fasta_filename</span> <span class="p">)</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span> <span class="n">value</span><span class="o">=</span><span class="n">sequence_id</span><span class="p">,</span> <span class="n">dbkey</span><span class="o">=</span><span class="n">dbkey</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">sequence_name</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">fasta_base_filename</span> <span class="p">)</span>
+
+<span class="n">REFERENCE_SOURCE_TO_DOWNLOAD</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span> <span class="n">ucsc</span><span class="o">=</span><span class="n">download_from_ucsc</span><span class="p">,</span> <span class="n">ncbi</span><span class="o">=</span><span class="n">download_from_ncbi</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">download_from_url</span><span class="p">,</span> <span class="n">history</span><span class="o">=</span><span class="n">download_from_history</span><span class="p">,</span> <span class="n">directory</span><span class="o">=</span><span class="n">copy_from_directory</span> <span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1">#Parse Command Line</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">optparse</span><span class="o">.</span><span class="n">OptionParser</span><span class="p">()</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span> <span class="s1">&#39;-d&#39;</span><span class="p">,</span> <span class="s1">&#39;--dbkey_description&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;dbkey_description&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;dbkey_description&#39;</span> <span class="p">)</span>
+    <span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">params</span> <span class="o">=</span> <span class="n">from_json_string</span><span class="p">(</span> <span class="nb">open</span><span class="p">(</span> <span class="n">filename</span> <span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="p">)</span>
+    <span class="n">target_directory</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span> <span class="s1">&#39;output_data&#39;</span> <span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;extra_files_path&#39;</span><span class="p">]</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span> <span class="n">target_directory</span> <span class="p">)</span>
+    <span class="n">data_manager_dict</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="n">dbkey</span><span class="p">,</span> <span class="n">sequence_id</span><span class="p">,</span> <span class="n">sequence_name</span> <span class="o">=</span> <span class="n">get_dbkey_id_name</span><span class="p">(</span> <span class="n">params</span><span class="p">,</span> <span class="n">dbkey_description</span><span class="o">=</span><span class="n">options</span><span class="o">.</span><span class="n">dbkey_description</span> <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">dbkey</span> <span class="ow">in</span> <span class="p">[</span> <span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="s1">&#39;?&#39;</span> <span class="p">]:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span> <span class="s1">&#39;&quot;</span><span class="si">%s</span><span class="s1">&quot; is not a valid dbkey. You must specify a valid dbkey.&#39;</span> <span class="o">%</span> <span class="p">(</span> <span class="n">dbkey</span> <span class="p">)</span> <span class="p">)</span>
+
+    <span class="c1">#Fetch the FASTA</span>
+    <span class="n">REFERENCE_SOURCE_TO_DOWNLOAD</span><span class="p">[</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;param_dict&#39;</span><span class="p">][</span><span class="s1">&#39;reference_source&#39;</span><span class="p">][</span><span class="s1">&#39;reference_source_selector&#39;</span><span class="p">]</span> <span class="p">](</span> <span class="n">data_manager_dict</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">target_directory</span><span class="p">,</span> <span class="n">dbkey</span><span class="p">,</span> <span class="n">sequence_id</span><span class="p">,</span> <span class="n">sequence_name</span> <span class="p">)</span>
+
+    <span class="c1">#save info to json file</span>
+    <span class="nb">open</span><span class="p">(</span> <span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span> <span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span> <span class="n">to_json_string</span><span class="p">(</span> <span class="n">data_manager_dict</span> <span class="p">)</span> <span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span> <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="example-json-output-from-tool-to-galaxy-dbkey-is-saccer2">
+<h2>Example JSON Output from tool to galaxy, dbkey is sacCer2<a class="headerlink" href="#example-json-output-from-tool-to-galaxy-dbkey-is-saccer2" title="Link to this heading">¶</a></h2>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;data_tables&quot;</span><span class="p">:{</span>
+<span class="w">    </span><span class="nt">&quot;all_fasta&quot;</span><span class="p">:[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;sacCer2.fa&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;dbkey&quot;</span><span class="p">:</span><span class="s2">&quot;sacCer2&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;S. cerevisiae June 2008 (SGD/sacCer2) (sacCer2)&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;sacCer2&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This creates a new entry in the Tool Data Table:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#&lt;unique_build_id&gt;    &lt;dbkey&gt;        &lt;display_name&gt;    &lt;file_path&gt;</span>
+<span class="n">sacCer2</span>    <span class="n">sacCer2</span>    <span class="n">S</span><span class="o">.</span> <span class="n">cerevisiae</span> <span class="n">June</span> <span class="mi">2008</span> <span class="p">(</span><span class="n">SGD</span><span class="o">/</span><span class="n">sacCer2</span><span class="p">)</span> <span class="p">(</span><span class="n">sacCer2</span><span class="p">)</span>    <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">dan</span><span class="o">/</span><span class="n">galaxy</span><span class="o">-</span><span class="n">central</span><span class="o">/</span><span class="n">tool</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">sacCer2</span><span class="o">/</span><span class="n">seq</span><span class="o">/</span><span class="n">sacCer2</span><span class="o">.</span><span class="n">fa</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="finding_and_improving_slow_code.html" class="btn btn-neutral float-left" title="Finding and improving slow Galaxy code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="data_types.html" class="btn btn-neutral float-right" title="Data Types" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Galaxy Committers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

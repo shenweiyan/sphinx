@@ -1,0 +1,934 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>April 2016 Galaxy Release (v 16.04) &mdash; Galaxy Project 23.1.5.dev0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+
+  
+    <link rel="canonical" href="https://docs.galaxyproject.org/en/master/releases/16.04_announce.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=da3e81e8"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="January 2016 Galaxy Release (v 16.01)" href="16.01_announce.html" />
+    <link rel="prev" title="July 2016 Galaxy Release (v 16.07)" href="16.07_announce.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Galaxy Project
+          </a>
+              <div class="version">
+                23.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Releases</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="23.1_announce_user.html">June 2023 Galaxy Release (v 23.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="23.0_announce_user.html">2023 Galaxy Release (v 23.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22.05_announce_user.html">May 2022 Galaxy Release (v 22.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22.01_announce_user.html">January 2022 Galaxy Release (v 22.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="21.09_announce_user.html">September 2021 Galaxy Release (v 21.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="21.05_announce_user.html">May 2021 Galaxy Release (v 21.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="21.01_announce_user.html">January 2021 Galaxy Release (v 21.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="20.09_announce_user.html">September 2020 Galaxy Release (v 20.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="20.05_announce_user.html">May 2020 Galaxy Release (v 20.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="20.01_announce_user.html">January 2020 Galaxy Release (v 20.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="19.09_announce_user.html">September 2019 Galaxy Release (v 19.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="19.05_announce_user.html">May 2019 Galaxy Release (v 19.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="19.01_announce_user.html">January 2019 Galaxy Release (v 19.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="18.09_announce.html">September 2018 Galaxy Release (v 18.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="18.05_announce.html">May 2018 Galaxy Release (v 18.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="18.01_announce.html">January 2018 Galaxy Release (v 18.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17.09_announce.html">September 2017 Galaxy Release (v 17.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17.05_announce.html">May 2017 Galaxy Release (v 17.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17.01_announce.html">January 2017 Galaxy Release (v 17.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="16.10_announce.html">October 2016 Galaxy Release (v 16.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="16.07_announce.html">July 2016 Galaxy Release (v 16.07)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">April 2016 Galaxy Release (v 16.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="16.01_announce.html">January 2016 Galaxy Release (v 16.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="15.10_announce.html">October 2015 Galaxy Release (v 15.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="15.07_announce.html">July 2015 Galaxy Release (v 15.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="15.05_announce.html">May 2015 Galaxy Release (v 15.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="15.03_announce.html">March 2015 Galaxy Release (v 15.03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="15.01_announce.html">January 2015 Galaxy Release (v 15.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14.10_announce.html">October 2014 Galaxy Release (v 14.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14.08_announce.html">August 2014 Galaxy Release (v 14.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14.06_announce.html">June 2014 Galaxy Release (v 14.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14.04_announce.html">April 2014 Galaxy Release (v 14.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14.02_announce.html">February 2014 Galaxy Release (v 14.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13.11_announce.html">November 2013 Galaxy Release (v 13.11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13.08_announce.html">August 2013 Galaxy Release (v 13.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13.06_announce.html">June 2013 Galaxy Release (v 13.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13.04_announce.html">April 2013 Galaxy Release (v 13.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13.02_announce.html">February 2013 Galaxy Release (v 13.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13.01_announce.html">January 2013 Galaxy Release (v 13.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="older_releases.html">Galaxy Releases older than v 13.01</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Admin Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../admin/index.html">Administration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../admin/python.html">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/framework_dependencies.html">Framework Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/config.html">Galaxy Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/config_logging.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/production.html">Production Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/security.html">Security considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/nginx.html">Proxying Galaxy with NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/apache.html">Proxying Galaxy with Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/scaling.html">Scaling and Load Balancing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/cluster.html">Connecting to a Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/jobs.html">Galaxy Job Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/tool_panel.html">Tool Panel Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/mq.html">Message queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/dependency_resolvers.html">Dependency Resolvers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/container_resolvers.html">Containers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/container_resolvers.html#other-considerations">Other considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/conda_faq.html">Conda for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/db_migration.html">Galaxy Database Schema Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/reports.html">Galaxy Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/useful_scripts.html">Scripts &amp; Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/options.html">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/migrating_to_gunicorn.html">Migrating from uWSGI to Gunicorn and FastAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/special_topics/index.html">Special topics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/ftp.html">Galaxy FTP Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/interactivetools.html">Galaxy InteractiveTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/mulled_containers.html">Containers for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/grt.html">Galactic Radio Telescope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/gtn.html">Galaxy Training Materials Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/job_metrics.html">Job Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/webhooks.html">Galaxy Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/vault.html">Storing secrets in the vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/performance_tracking.html">Galaxy Performance Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/bug_reports.html">Bug Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/gdpr_compliance.html">GDPR Compliance</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/index.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dev/schema.html">Galaxy Tool XML File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/api_guidelines.html">API Design Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/build_a_job_runner.html">Build a job runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/finding_and_improving_slow_code.html">Finding and improving slow Galaxy code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_managers.html">Data managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_types.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/faq.html">How Do I…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/writing_tests.html">Writing Tests for Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html">Debugging Galaxy Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html#debugging-tests-that-run-out-of-memory">Debugging tests that run out of memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy.html">Debugging Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy_slurm.html">Debugging Galaxy: Slurm Compute Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/translating.html">Translating the Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/create_point_release.html">Creating Galaxy Point Releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api_doc.html">Galaxy API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/quickstart.html"> Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/api.html"> Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ts_api_doc.html">Tool Shed API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/ts_api.html"> API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../lib/modules.html">Application Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy.html">galaxy package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_ext.html">galaxy_ext package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_test.html">galaxy_test package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/tool_shed.html">tool_shed package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../project/organization.html">Project Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#procedure-documents">Procedure Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#committers">Committers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#release-branches">Release branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#handling-pull-requests">Handling Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#issue-reporting">Issue Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../project/issues.html">Issue Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#issue-reporting">Issue Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#milestones">Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#labeling-structure">Labeling Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#the-roadmap">The Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#voting">Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#automation">Automation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Galaxy Project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Releases</a></li>
+      <li class="breadcrumb-item active">April 2016 Galaxy Release (v 16.04)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/releases/16.04_announce.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="april-2016-galaxy-release-v-16-04">
+<h1>April 2016 Galaxy Release (v 16.04)<a class="headerlink" href="#april-2016-galaxy-release-v-16-04" title="Link to this heading">¶</a></h1>
+<a class="reference external image-reference" href="http://getgalaxy.org"><img alt="Get Galaxy" src="https://galaxyproject.org/images/galaxy-logos/galaxy_logo_25percent_transparent.png" /></a>
+<section id="highlights">
+<h2>Highlights<a class="headerlink" href="#highlights" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt><strong>Tool Profile Versions</strong></dt><dd><p>Tools may now <a class="reference external" href="https://planemo.readthedocs.io/en/latest/galaxy_changelog.html#tool-profile-version-pr-1688">declare which version</a>
+of Galaxy they require. Tools requiring 16.04 or newer will
+have new default behaviors (such as using exit code for error detection) that should simplify tool development.
+See <a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1688">PR #1688</a>.</p>
+</dd>
+<dt><strong>Embedded Pulsar Job Runner</strong></dt><dd><p>Galaxy can now start a Pulsar application embedded within
+the Galaxy process itself. This allows using Pulsar’s
+job staging and isolation without requiring a RESTful
+web service or a message queue. This is enabling
+<a class="reference external" href="https://usegalaxy.org/">usegalaxy.org</a> to run jobs to
+on the new <a class="reference external" href="http://jetstream-cloud.org/">JetStream cloud</a>.
+See <a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2057">PR #2057</a>.</p>
+</dd>
+<dt><strong>New chemical datatypes</strong></dt><dd><p>Galaxy now detects and supports many molecular datatypes. See <a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1941">Pull Request 1941</a>.
+Thanks to <a class="reference external" href="https://github.com/bgruening">Björn Grüning (&#64;bgruening)</a>.</p>
+</dd>
+</dl>
+</section>
+<section id="github">
+<h2><a class="reference external" href="https://github.com/galaxyproject/galaxy">Github</a><a class="headerlink" href="#github" title="Link to this heading">¶</a></h2>
+<dl>
+<dt>New</dt><dd><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>%<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </span>master<span class="w"> </span>https://github.com/galaxyproject/galaxy.git
+</pre></div>
+</div>
+</dd>
+<dt>Update to latest stable release</dt><dd><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>%<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>master<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>pull<span class="w"> </span>--ff-only<span class="w"> </span>origin<span class="w"> </span>master
+</pre></div>
+</div>
+</dd>
+<dt>Update to exact version</dt><dd><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>%<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>v16.04
+</pre></div>
+</div>
+</dd>
+</dl>
+</section>
+<section id="bitbucket">
+<h2><a class="reference external" href="https://bitbucket.org/galaxy/galaxy-dist">BitBucket</a><a class="headerlink" href="#bitbucket" title="Link to this heading">¶</a></h2>
+<p><strong>Note</strong>: Version 16.04 will be the <em>final</em> release to be pushed to Bitbucket. More details can be found in the <a class="reference internal" href="#deprecation-notices">Deprecation Notices</a> below.</p>
+<dl>
+<dt>Upgrade</dt><dd><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>%<span class="w"> </span>hg<span class="w"> </span>pull
+%<span class="w"> </span>hg<span class="w"> </span>update<span class="w"> </span>latest_16.04
+</pre></div>
+</div>
+</dd>
+</dl>
+<p>See <a class="reference external" href="https://galaxyproject.org/develop/source-code/">our wiki</a> for additional details regarding the source code locations.</p>
+</section>
+<section id="security">
+<h2>Security<a class="headerlink" href="#security" title="Link to this heading">¶</a></h2>
+<p>TL;DR
+<strong>Only Tool Sheds newer than 16.01 should be deployed from now on.</strong>
+(with commit 449098d8b14b45269be106f6410c0b9145c51d50 from Mar 30 present)</p>
+<p>Due to the security fixes on the <a class="reference external" href="https://www.mercurial-scm.org/wiki/WhatsNew#Mercurial_3.7.3_.282016-3-29.29">Mercurial</a> side we had to update the hg version that
+both Galaxy and TS depend on because the fixes have not been backported to older versions.
+However this has broken the TS’s <code class="docutils literal notranslate"><span class="pre">hg</span> <span class="pre">push</span></code> functionality as Mercurial changed their bundle
+format in a non-compatible manner. Given that we deprecated the <code class="docutils literal notranslate"><span class="pre">hg</span> <span class="pre">push</span></code> API
+functionality back in the 15.10 we decided to disable it fully from 16.01 (retroactively).</p>
+</section>
+<section id="deprecation-notices">
+<h2>Deprecation Notices<a class="headerlink" href="#deprecation-notices" title="Link to this heading">¶</a></h2>
+<section id="api-deprecations">
+<h3>API deprecations<a class="headerlink" href="#api-deprecations" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>API for history contents, index:</dt><dd><ul class="simple">
+<li><p><strong>types</strong>: is no longer a valid parameter but accessible using <code class="docutils literal notranslate"><span class="pre">?q=history_content_type&amp;qv=[dataset</span> <span class="pre">|</span> <span class="pre">dataset_collection]</span></code></p></li>
+<li><p><strong>ids</strong>: is no longer a valid url parameter but is accessible using <code class="docutils literal notranslate"><span class="pre">?q=type_id-in&amp;qv=&lt;e.g.</span> <span class="pre">dataset-abcdef123,dataset_collection-987fedcba,</span> <span class="pre">...&gt;</span></code></p></li>
+<li><p><strong>deleted</strong> and <strong>visible</strong>: are no longer parameters but are still accessible using <code class="docutils literal notranslate"><span class="pre">q=deleted&amp;qv=[True</span> <span class="pre">|</span> <span class="pre">False]&amp;q=visible&amp;qv=[True</span> <span class="pre">|</span> <span class="pre">False]</span></code></p></li>
+</ul>
+</dd>
+<dt>API for history contents, show:</dt><dd><ul class="simple">
+<li><p><strong>api_type</strong>: removed and unavailable (was <code class="code docutils literal notranslate"><span class="pre">file</span></code> and constant across HDAs)</p></li>
+<li><p><strong>display_apps</strong>, <strong>display_types</strong>, <strong>visualization</strong>: removed from the default <code class="code docutils literal notranslate"><span class="pre">detailed</span></code> view but still available by calling url with <code class="docutils literal notranslate"><span class="pre">?keys=display_apps,display_types,visualization</span></code></p></li>
+</ul>
+</dd>
+<dt>API histories (removed from the available serialized data on all calls):</dt><dd><ul class="simple">
+<li><p><strong>state, state_details, state_ids</strong> - can be replaced by specifically requesting a single array of contents, each containing <code class="code docutils literal notranslate"><span class="pre">{</span> <span class="pre">id,</span> <span class="pre">state,</span> <span class="pre">deleted,</span> <span class="pre">visible</span> <span class="pre">}</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="galaxy-no-longer-on-bitbucket">
+<h3>Galaxy no longer on Bitbucket<a class="headerlink" href="#galaxy-no-longer-on-bitbucket" title="Link to this heading">¶</a></h3>
+<p>Galaxy moved its code and development activities from Bitbucket to GitHub in early 2015. Since this time, releases have been mirrored back to Bitbucket. However, after this release, no new changes will be pushed to Bitbucket. Anyone still receiving updates to a Galaxy server via Bitbucket and Mercurial should switch to GitHub and Git. This can be done using the following process:</p>
+<ol class="arabic simple">
+<li><p>Backup everything.</p></li>
+<li><p>Find what branch and commit your Mercurial Galaxy is at using <code class="code docutils literal notranslate"><span class="pre">hg</span> <span class="pre">log</span> <span class="pre">-b</span> <span class="pre">$(hg</span> <span class="pre">branch)</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/galaxyproject/galaxy</span></code> in a temporary directory.</p></li>
+<li><p>Find the corresponding commit in the cloned Git repository on the corresponding branch (Bitbucket default-&gt;GitHub dev; Bitbucket stable-&gt;GitHub master).</p></li>
+<li><p>Checkout the GitHub repository at the commit you found in the previous step.</p></li>
+<li><p>Backup your .hg/ folder.</p></li>
+<li><p>Replace your .hg/ folder with the .git/ folder from the new checkout.</p></li>
+<li><p>Your Galaxy should be switched to Git. Unless you have local changes, git status should show none.</p></li>
+<li><p>You can now update to the latest Git revision using <code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code></p></li>
+</ol>
+</section>
+</section>
+<section id="release-notes">
+<h2>Release Notes<a class="headerlink" href="#release-notes" title="Link to this heading">¶</a></h2>
+<section id="enhancements">
+<h3>Enhancements<a class="headerlink" href="#enhancements" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Overhaul of Tools and Jobs
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1688">Pull Request 1688</a></p></li>
+<li><p>Implement an Embedded Pulsar Job Runner
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2057">Pull Request 2057</a></p></li>
+<li><p>Use the API to install repositories instead of loading the
+Tool Shed in an iframe. (Beta)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1392">Pull Request 1392</a></p></li>
+</ul>
+<ul class="simple">
+<li><p>Phinch interactive environment
+(thanks to <a class="reference external" href="https://github.com/shiltemann">&#64;shiltemann</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1647">Pull Request 1647</a></p></li>
+<li><p>Add iobio external display applications for BAM and VCF.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1926">Pull Request 1926</a></p></li>
+<li><p>add chemical datatypes
+(thanks to <a class="reference external" href="https://github.com/bgruening">&#64;bgruening</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1941">Pull Request 1941</a></p></li>
+<li><p>Scratchbook tour
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1463">Pull Request 1463</a></p></li>
+<li><p>Work toward automating release management.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1613">Pull Request 1613</a></p></li>
+<li><p>Basic tool error Sentry reporting.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1900">Pull Request 1900</a></p></li>
+<li><p>disable ‘hg push’ to TS repositories
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2033">Pull Request 2033</a></p></li>
+<li><p>Generic GIE Launcher, GIE Image Chooser, multiple datasets
+(thanks to <a class="reference external" href="https://github.com/hexylena">&#64;hexylena</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1403">Pull Request 1403</a></p></li>
+<li><p>The entire Python source code is now continuously checked with flake8 for
+PEP-8 style consistency and common errors. The last 3500 errors were fixed in
+this release
+(thanks to <a class="reference external" href="https://github.com/nsoranzo">&#64;nsoranzo</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1489">Pull Request 1489</a>, <a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1713">Pull Request 1713</a>, <a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1755">Pull Request 1755</a></p></li>
+</ul>
+<ul class="simple">
+<li><p>Implement new GIE proxy
+(thanks to <a class="reference external" href="https://github.com/hexylena">&#64;hexylena</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1807">Pull Request 1807</a></p></li>
+<li><p>Workflow editor overview click navigation
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1843">Pull Request 1843</a></p></li>
+<li><p>API, history contents: allow filters, limit/offset, and ordering
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1602">Pull Request 1602</a></p></li>
+<li><p>datalibs: introduce folder management; fix various glitches; refactor
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1562">Pull Request 1562</a></p></li>
+<li><p>Add makefile target for release process
+(thanks to <a class="reference external" href="https://github.com/hexylena">&#64;hexylena</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1433">Pull Request 1433</a></p></li>
+<li><p>libraries: provide select all/none options when importing
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1970">Pull Request 1970</a></p></li>
+<li><p>libraries: add ‘create history &amp;import to it’ feature
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2017">Pull Request 2017</a></p></li>
+<li><p>Bcf.gz to bcf (and reverse) converters + bcf_bgzip data type
+(thanks to <a class="reference external" href="https://github.com/markiskander">&#64;markiskander</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1148">Pull Request 1148</a></p></li>
+<li><p>Update SnpEffDb and SnpSiftDbNSFP for SnpEff v4.1
+(thanks to <a class="reference external" href="https://github.com/jj-umn">&#64;jj-umn</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1280">Pull Request 1280</a></p></li>
+<li><p>Docker Testing - Newer versions of phantomjs and casperjs, in container
+wheels.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1449">Pull Request 1449</a></p></li>
+<li><p>Add run_toolshed_tests.html to .gitignore .
+(thanks to <a class="reference external" href="https://github.com/nsoranzo">&#64;nsoranzo</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1456">Pull Request 1456</a></p></li>
+<li><p>Allow sorting of discover_datasets elements.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1512">Pull Request 1512</a></p></li>
+<li><p>Cleanup common ui elements, add test cases
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1519">Pull Request 1519</a></p></li>
+<li><p>add minor styling to tour popover
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1539">Pull Request 1539</a></p></li>
+<li><p>Code design and legacy cleanup of datatypes and metadata.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1556">Pull Request 1556</a></p></li>
+<li><p>show_params input walking
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1561">Pull Request 1561</a></p></li>
+<li><p>Add API endpoint for fetching all metadata for a repository.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1565">Pull Request 1565</a></p></li>
+<li><p>Fix parameter validation
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1572">Pull Request 1572</a></p></li>
+<li><p>Remove recovery hack for REALLY old jobs.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1574">Pull Request 1574</a></p></li>
+<li><p>Clarify area github tags.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1579">Pull Request 1579</a></p></li>
+<li><p>update pinned-requirements.txt
+(thanks to <a class="reference external" href="https://github.com/matthdsm">&#64;matthdsm</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1605">Pull Request 1605</a></p></li>
+<li><p>Improve dbkey handling for discovered datasets.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1610">Pull Request 1610</a></p></li>
+<li><p>Various improvements to the heartbeat
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1614">Pull Request 1614</a></p></li>
+<li><p>Visualization plugins: add routes that more closely match potential static assets.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1615">Pull Request 1615</a></p></li>
+<li><p>Disable individual file metadata changes in upload
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1625">Pull Request 1625</a></p></li>
+<li><p>added resolver dependency display to the tool view page
+(thanks to <a class="reference external" href="https://github.com/zipho">&#64;zipho</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1632">Pull Request 1632</a></p></li>
+<li><p>Cherry-picked changes from pull request <a class="reference external" href="https://github.com/galaxyproject/galaxy/issues/1392">#1392</a>.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1821">Pull Request 1821</a></p></li>
+<li><p>Export toolshed repository information for workflow portability
+(thanks to <a class="reference external" href="https://github.com/mvdbeek">&#64;mvdbeek</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1636">Pull Request 1636</a></p></li>
+<li><p>Lint optional handling on conditional test parameters.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1639">Pull Request 1639</a></p></li>
+<li><p>Updated hashes for bioblend v0.7.0
+(thanks to <a class="reference external" href="https://github.com/matthdsm">&#64;matthdsm</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1646">Pull Request 1646</a></p></li>
+<li><p>Add tox startup (run.sh) test and test on OS X and linux
+(thanks to <a class="reference external" href="https://github.com/mvdbeek">&#64;mvdbeek</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1649">Pull Request 1649</a></p></li>
+<li><p>Optionally pass dataset lists as a single file within tool wrappers
+(thanks to <a class="reference external" href="https://github.com/einon">&#64;einon</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1658">Pull Request 1658</a></p></li>
+<li><p>add a zip datatype which won’t be extracted
+(thanks to <a class="reference external" href="https://github.com/lecorguille">&#64;lecorguille</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1665">Pull Request 1665</a></p></li>
+<li><p>Tour improvements and bugfixes
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1671">Pull Request 1671</a></p></li>
+<li><p>Add Marius van den Beek to Galaxy committer group.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1699">Pull Request 1699</a></p></li>
+<li><p>Revise tool parameter handling, remove redundancies
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1711">Pull Request 1711</a></p></li>
+<li><p>Python 2/3 string handling
+(thanks to <a class="reference external" href="https://github.com/mvdbeek">&#64;mvdbeek</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1731">Pull Request 1731</a></p></li>
+<li><p>workaround for error message on tool lookup in case original toolshed had
+been disabled
+(thanks to <a class="reference external" href="https://github.com/mvdbeek">&#64;mvdbeek</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1738">Pull Request 1738</a></p></li>
+<li><p>Make api/tools return tool_shed_repository information.
+(thanks to <a class="reference external" href="https://github.com/mvdbeek">&#64;mvdbeek</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1752">Pull Request 1752</a></p></li>
+<li><p>Use visit inputs for check_and_update_param_values
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1764">Pull Request 1764</a></p></li>
+<li><p>Update makefile and add the script I used to apply security patches for
+16.01
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1793">Pull Request 1793</a></p></li>
+<li><p>Implement dataset empty input validator.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1808">Pull Request 1808</a></p></li>
+<li><p>Makefile help target + formatting
+(thanks to <a class="reference external" href="https://github.com/hexylena">&#64;hexylena</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1824">Pull Request 1824</a></p></li>
+<li><p>Add license and repository information to package.json.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1829">Pull Request 1829</a></p></li>
+<li><p>Improved logging during tool executions.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1832">Pull Request 1832</a></p></li>
+<li><p>Do not access the history when loading the workflow editor
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1861">Pull Request 1861</a></p></li>
+<li><p>Tones down the warning message about tool changes
+(thanks to <a class="reference external" href="https://github.com/bwlang">&#64;bwlang</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1893">Pull Request 1893</a></p></li>
+<li><p>Use shared value serialization for tool model
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1901">Pull Request 1901</a></p></li>
+<li><p>adding contrib init for reports and modifying status check to have output by process in case multiprocess
+(thanks to <a class="reference external" href="https://github.com/miloaec">&#64;miloaec</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1911">Pull Request 1911</a></p></li>
+<li><p>Retrieve authentification also for long urls
+(thanks to <a class="reference external" href="https://github.com/mvdbeek">&#64;mvdbeek</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1912">Pull Request 1912</a></p></li>
+<li><p>Modify run.sh to add –restart option, for a more consistent use of parameters.
+(thanks to <a class="reference external" href="https://github.com/remimarenco">&#64;remimarenco</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1914">Pull Request 1914</a></p></li>
+<li><p>Rename tool_shed_get to url_get.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1918">Pull Request 1918</a></p></li>
+<li><p>Allow testing element counts in tool output collections.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1942">Pull Request 1942</a></p></li>
+<li><p>Use database query rather than dataset iteration to compute dataset counts in saved histories grid.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1948">Pull Request 1948</a></p></li>
+<li><p>Add “new” state to list of dataset states in saved history list.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1949">Pull Request 1949</a></p></li>
+<li><p>Add IUC as a new default bioconda channel
+(thanks to <a class="reference external" href="https://github.com/bgruening">&#64;bgruening</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1950">Pull Request 1950</a></p></li>
+<li><p>More job related timing logging.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1956">Pull Request 1956</a></p></li>
+<li><p>Improvements to workflow scaling performance testing scripts.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1958">Pull Request 1958</a></p></li>
+<li><p>Optimization for discovering datasets for dynamic output collection.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1959">Pull Request 1959</a></p></li>
+<li><p>Improve tabular datatypes.
+(thanks to <a class="reference external" href="https://github.com/brenninc">&#64;brenninc</a> and <a class="reference external" href="https://github.com/nsoranzo">&#64;nsoranzo</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1968">Pull Request 1968</a>, <a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2317">Pull Request 2317</a></p></li>
+<li><p>Optimize adding datasets to large histories.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1983">Pull Request 1983</a></p></li>
+<li><p>Much more friendly route mapping.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2002">Pull Request 2002</a></p></li>
+<li><p>Revise content selection, add test cases
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2011">Pull Request 2011</a></p></li>
+<li><p>Don’t setup a default tool_data_table_config_path in the shed.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2025">Pull Request 2025</a></p></li>
+<li><p>data_column to json config file
+(thanks to <a class="reference external" href="https://github.com/bgruening">&#64;bgruening</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2026">Pull Request 2026</a></p></li>
+<li><p>Revise input wrapper, add test cases
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2027">Pull Request 2027</a></p></li>
+<li><p>enable obfs datatype during upload
+(thanks to <a class="reference external" href="https://github.com/bgruening">&#64;bgruening</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2028">Pull Request 2028</a></p></li>
+<li><p>Better element_identifier handling in repeat sections
+(thanks to <a class="reference external" href="https://github.com/mvdbeek">&#64;mvdbeek</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2029">Pull Request 2029</a></p></li>
+<li><p>Pulsar-As-A-Dependency
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2052">Pull Request 2052</a></p></li>
+<li><p>Simplify Workflow sharing menu
+(thanks to <a class="reference external" href="https://github.com/nturaga">&#64;nturaga</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2060">Pull Request 2060</a></p></li>
+<li><p>Add Phinch as an external display application.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2069">Pull Request 2069</a></p></li>
+<li><p>For non-shed tool data - read loc from sample if available.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2070">Pull Request 2070</a></p></li>
+<li><p>tool lineage for versionless toolshed tool_ids
+(thanks to <a class="reference external" href="https://github.com/mvdbeek">&#64;mvdbeek</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2082">Pull Request 2082</a></p></li>
+<li><p>make new beta TS tools installation via API configurable
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2088">Pull Request 2088</a></p></li>
+<li><p>Patch in visual separation of section parameters
+(thanks to <a class="reference external" href="https://github.com/hexylena">&#64;hexylena</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2091">Pull Request 2091</a></p></li>
+<li><p>Add sample supervisor config
+(thanks to <a class="reference external" href="https://github.com/mvdbeek">&#64;mvdbeek</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2096">Pull Request 2096</a></p></li>
+<li><p>Fix cli runner: use embed_metadata_in_job parameter
+(thanks to <a class="reference external" href="https://github.com/ThomasWollmann">&#64;ThomasWollmann</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2107">Pull Request 2107</a></p></li>
+<li><p>Switch Dockerized commands to use sh instead of bash.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2282">Pull Request 2282</a></p></li>
+</ul>
+<ul class="simple">
+<li><p>Remove IPython IE, which was replaced by Jupyter IE.
+(thanks to <a class="reference external" href="https://github.com/bgruening">&#64;bgruening</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1402">Pull Request 1402</a></p></li>
+<li><p>Added py34-lint tox target but forgot to update .travis.yml.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1457">Pull Request 1457</a></p></li>
+<li><p>fix old jobparam hack for importing files to library
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1488">Pull Request 1488</a></p></li>
+<li><p>An attempt to add limit/offset to history contents
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1490">Pull Request 1490</a></p></li>
+<li><p>Revise label handling in form
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1496">Pull Request 1496</a></p></li>
+<li><p>History UI: clean up.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1522">Pull Request 1522</a></p></li>
+<li><p>Client-build, Webpack: add tasks to grunt for the common webpack tasks,
+update readme
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1523">Pull Request 1523</a></p></li>
+<li><p>Remove handlebars and rely solely on underscore templates
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1537">Pull Request 1537</a></p></li>
+<li><p>disable email notifications from travis
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1592">Pull Request 1592</a></p></li>
+<li><p>Remove unnecessary variable and assignment of job command
+(thanks to <a class="reference external" href="https://github.com/einon">&#64;einon</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1616">Pull Request 1616</a></p></li>
+<li><p>Implement the ratable mixin
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1618">Pull Request 1618</a></p></li>
+<li><p>Tour cleanup, remove a few globals.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1621">Pull Request 1621</a></p></li>
+<li><p>Refactor workflow loading.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1735">Pull Request 1735</a></p></li>
+<li><p>Swapping from svgfig to svgwrite
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1747">Pull Request 1747</a></p></li>
+<li><p>various libraries refactoring and bugfixes
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1751">Pull Request 1751</a></p></li>
+<li><p>Refactor the Html Datatype Class into text.py instead of images.py
+(thanks to <a class="reference external" href="https://github.com/remimarenco">&#64;remimarenco</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1760">Pull Request 1760</a></p></li>
+<li><p>Drop python2.6 (deprecated, will not be supported in 16.04) from testing.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1785">Pull Request 1785</a></p></li>
+<li><p>Rework history updating
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1788">Pull Request 1788</a></p></li>
+<li><p>Tests for some of the 16.01 security vulnerabilities
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1794">Pull Request 1794</a></p></li>
+<li><p>Reduce the use of mutable types in toolshed test framework’s method
+definitions.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1813">Pull Request 1813</a></p></li>
+<li><p>Remove decryption/encryption of tool states
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1838">Pull Request 1838</a></p></li>
+<li><p>Do not import dumps and loads from galaxy.util.json .
+(thanks to <a class="reference external" href="https://github.com/nsoranzo">&#64;nsoranzo</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1840">Pull Request 1840</a></p></li>
+<li><p>Replace get_tool_shed_repository_by_tool_shed_name_owner_changeset_revision with get_repository_for_dependency_relationship.
+(thanks to <a class="reference external" href="https://github.com/mvdbeek">&#64;mvdbeek</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1868">Pull Request 1868</a></p></li>
+<li><p>Cosmetic comma fixes :)
+(thanks to <a class="reference external" href="https://github.com/remimarenco">&#64;remimarenco</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1874">Pull Request 1874</a></p></li>
+<li><p>More debugging for transiently failing tool shed test.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1939">Pull Request 1939</a></p></li>
+<li><p>Improve logging and retry  for another TS test…
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1961">Pull Request 1961</a></p></li>
+<li><p>Add page layout test cases
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1991">Pull Request 1991</a></p></li>
+<li><p>Fix inconsistency in update state handling for tool modules
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1993">Pull Request 1993</a></p></li>
+<li><p>Functional Test Drivers Overhaul
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2016">Pull Request 2016</a></p></li>
+<li><p>Remove install and test code.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2018">Pull Request 2018</a></p></li>
+<li><p>Remove twill functional tests we don’t actively run.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2019">Pull Request 2019</a></p></li>
+<li><p>Fix transiently failing tool shed tests.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2030">Pull Request 2030</a></p></li>
+<li><p>Libraries: faster, refactored, cleaned
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2031">Pull Request 2031</a></p></li>
+<li><p>Adjust testing directories so no python root is ever “tool_shed”.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2067">Pull Request 2067</a></p></li>
+<li><p>Fix pbs runner file touch.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2074">Pull Request 2074</a></p></li>
+<li><p>Move scripts out of lib/tool_shed.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2093">Pull Request 2093</a></p></li>
+<li><p>Consolidate duplicated method in tool_shed/model.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2099">Pull Request 2099</a></p></li>
+<li><p>Remove redundant ui divs, move masthead into #everything
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2182">Pull Request 2182</a></p></li>
+<li><p>Remove SLURM memory limit warning from stderr if the job was successful
+(thanks to <a class="reference external" href="https://github.com/nsoranzo">&#64;nsoranzo</a>).
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2309">Pull Request 2309</a></p></li>
+</ul>
+</section>
+<section id="fixes">
+<h3>Fixes<a class="headerlink" href="#fixes" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>upgrade mercurial wheel to latest (fixing CVE issues)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2045">Pull Request 2045</a></p></li>
+<li><p>Add changeset_revision to tool attributes, avoid self.tool_shed_repository.
+(thanks to <a class="reference external" href="https://github.com/mvdbeek">&#64;mvdbeek</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1802">Pull Request 1802</a></p></li>
+<li><p>Do not convert spaces to tabs when importing datasets into a library
+(thanks to <a class="reference external" href="https://github.com/nsoranzo">&#64;nsoranzo</a>).
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1985">Pull Request 1985</a></p></li>
+</ul>
+<ul class="simple">
+<li><p>Fix that typo in relation_builder.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1453">Pull Request 1453</a></p></li>
+<li><p>URL generation tweaks for utils.js
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1478">Pull Request 1478</a></p></li>
+<li><p>Fix project linting for new pep8
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1483">Pull Request 1483</a></p></li>
+<li><p>Fix Python 3 problem causing Travis failure of dev.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1505">Pull Request 1505</a></p></li>
+<li><p>catch Exception and properly log errors
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1510">Pull Request 1510</a></p></li>
+<li><p>Change python print() format to be backward compatible with older versions.
+(thanks to <a class="reference external" href="https://github.com/einon">&#64;einon</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1520">Pull Request 1520</a></p></li>
+<li><p>Add js for mako based masthead
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1533">Pull Request 1533</a></p></li>
+<li><p>restrict blue popover to tours
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1577">Pull Request 1577</a></p></li>
+<li><p>small spelling error
+(thanks to <a class="reference external" href="https://github.com/matthdsm">&#64;matthdsm</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1582">Pull Request 1582</a></p></li>
+<li><p>Fix installation of repository suites outside of tool panel section
+(thanks to <a class="reference external" href="https://github.com/mvdbeek">&#64;mvdbeek</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1601">Pull Request 1601</a></p></li>
+<li><p>Fixes <cite>&lt;param argument=”–set” /&gt;</cite> not working when <cite>help=””</cite> is not set
+(thanks to <a class="reference external" href="https://github.com/yhoogstrate">&#64;yhoogstrate</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1650">Pull Request 1650</a></p></li>
+<li><p>Fix validation for data source tools
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1654">Pull Request 1654</a></p></li>
+<li><p>Better fix for missing element identifier
+(thanks to <a class="reference external" href="https://github.com/mvdbeek">&#64;mvdbeek</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1693">Pull Request 1693</a></p></li>
+<li><p>Update david identifier types
+(thanks to <a class="reference external" href="https://github.com/pavanvidem">&#64;pavanvidem</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1696">Pull Request 1696</a></p></li>
+<li><p>Drop Ross from the committers group.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1698">Pull Request 1698</a></p></li>
+<li><p>Wrap conditional test parameters
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1714">Pull Request 1714</a></p></li>
+<li><p>Remove len(stderr), breaks on recent docker versions
+(thanks to <a class="reference external" href="https://github.com/mvdbeek">&#64;mvdbeek</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1769">Pull Request 1769</a></p></li>
+<li><p>Strip URL of download_file and download_by_url install actions.
+(thanks to <a class="reference external" href="https://github.com/nsoranzo">&#64;nsoranzo</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1775">Pull Request 1775</a></p></li>
+<li><p>Fix tool form rendering of sections
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1783">Pull Request 1783</a></p></li>
+<li><p>Fix unused import.
+(thanks to <a class="reference external" href="https://github.com/nsoranzo">&#64;nsoranzo</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1796">Pull Request 1796</a></p></li>
+<li><p>Fix tool shed tests for commit e4a1d5727805168a9fd15aca1cdd21630ada2bbc
+(thanks to <a class="reference external" href="https://github.com/nsoranzo">&#64;nsoranzo</a>).
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1798">Pull Request 1798</a></p></li>
+<li><p>Checks for api_key before checking for header from SSO.
+(thanks to <a class="reference external" href="https://github.com/MatthewRalston">&#64;MatthewRalston</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1801">Pull Request 1801</a></p></li>
+<li><p>Ensure tool.changeset_revision is set…
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1806">Pull Request 1806</a></p></li>
+<li><p>Change many job mapped properties to lazy loads
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1809">Pull Request 1809</a></p></li>
+<li><p>Whitelist logging tweaks
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1819">Pull Request 1819</a></p></li>
+<li><p>Fix upload tool routing
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1827">Pull Request 1827</a></p></li>
+<li><p>Using node 5.7, ‘grunt style’ fails with the error:
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1841">Pull Request 1841</a></p></li>
+<li><p>Do not create text values for failed inputs
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1844">Pull Request 1844</a></p></li>
+<li><p>Prevent tours from kicking off within iframes
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1846">Pull Request 1846</a></p></li>
+<li><p>Fix repeat prefix
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1848">Pull Request 1848</a></p></li>
+<li><p>also update rrda when repairing or updating a repository
+(thanks to <a class="reference external" href="https://github.com/mvdbeek">&#64;mvdbeek</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1850">Pull Request 1850</a></p></li>
+<li><p>Fix regex validator
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1862">Pull Request 1862</a></p></li>
+<li><p>Tour routing overhaul
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1870">Pull Request 1870</a></p></li>
+<li><p>Add dedicated client endpoint to the root controller.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1879">Pull Request 1879</a></p></li>
+<li><p>Update check_python.py now dropping Python 2.6
+(thanks to <a class="reference external" href="https://github.com/peterjc">&#64;peterjc</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1883">Pull Request 1883</a></p></li>
+<li><p>Fix citation-model to fail silently/gracefully
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1884">Pull Request 1884</a></p></li>
+<li><p>Change to sentry middleware to work with modern raven clients.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1895">Pull Request 1895</a></p></li>
+<li><p>svgfig-&gt;svgwrite in unpinned requirements
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1896">Pull Request 1896</a></p></li>
+<li><p>Fix icon sizes
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1934">Pull Request 1934</a></p></li>
+<li><p>Fix tool downloads in tool form
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1935">Pull Request 1935</a></p></li>
+<li><p>Fixing error in run.sh script
+(thanks to <a class="reference external" href="https://github.com/kellrott">&#64;kellrott</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1954">Pull Request 1954</a></p></li>
+<li><p>Fix typo: send–&gt;sent
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1965">Pull Request 1965</a></p></li>
+<li><p>Fix farbtastic’s use of deprecated jquery fns by loading jq-migrate in galaxy.panels.mako .
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1972">Pull Request 1972</a></p></li>
+<li><p>Remove duplicate help target
+(thanks to <a class="reference external" href="https://github.com/hexylena">&#64;hexylena</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1980">Pull Request 1980</a></p></li>
+<li><p>Fix booleans in workflow editor
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/1990">Pull Request 1990</a></p></li>
+<li><p>libraries: change default size of fa in iconspans
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2000">Pull Request 2000</a></p></li>
+<li><p>libraries: move text out of icon spans for library dataset view
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2008">Pull Request 2008</a></p></li>
+<li><p>Fix unbound error that is possible if using tool bursting.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2009">Pull Request 2009</a></p></li>
+<li><p>Fix multiple flag for workflow dataset inputs
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2021">Pull Request 2021</a></p></li>
+<li><p>fix duplication of select2 entries
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2022">Pull Request 2022</a></p></li>
+<li><p>Fix fluent query log serialization when datetime types are in use.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2039">Pull Request 2039</a></p></li>
+<li><p>Workflow import fix when tools are missing.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2048">Pull Request 2048</a></p></li>
+<li><p>Managers: remove UTC zone when parsing dates
+(thanks also to <a class="reference external" href="https://github.com/nsoranzo">&#64;nsoranzo</a>).
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2042">Pull Request 2042</a>, <a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2062">Pull Request 2062</a>, <a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2065">Pull Request 2065</a></p></li>
+<li><p>Change user disk usage pgcalc function up a bit to make a slightly safer dry-run.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2063">Pull Request 2063</a></p></li>
+<li><p>Allow tool confs with a tool_path to not be interpreted as shed confs.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2066">Pull Request 2066</a></p></li>
+<li><p>Fix deps.command.download_command on Mac OS X.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2075">Pull Request 2075</a></p></li>
+<li><p>Show sections in workflow run
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2087">Pull Request 2087</a></p></li>
+<li><p>Workflow section fix backport
+(thanks to <a class="reference external" href="https://github.com/hexylena">&#64;hexylena</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2092">Pull Request 2092</a></p></li>
+<li><p>Run external local set_metadata jobs in the job’s working directory
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2094">Pull Request 2094</a></p></li>
+<li><p>make dependencies browsable again
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2101">Pull Request 2101</a></p></li>
+<li><p>Convert the DRMAA runner to use Pulsar’s DRMAA session wrapper
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2102">Pull Request 2102</a></p></li>
+<li><p>Updated to Dependency change in b167a741a444c3988447b0d63a1ba3dc5e4e62f5
+(thanks to <a class="reference external" href="https://github.com/Christian-B">&#64;Christian-B</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2104">Pull Request 2104</a></p></li>
+<li><p>Fix datatype list in workflow editor
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2105">Pull Request 2105</a></p></li>
+<li><p>Workaround for the toolshed’s hgweb.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2106">Pull Request 2106</a></p></li>
+<li><p>Update debian init script
+(thanks to <a class="reference external" href="https://github.com/mvdbeek">&#64;mvdbeek</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2109">Pull Request 2109</a></p></li>
+<li><p>Rev Pulsar to 0.7.0.dev3.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2122">Pull Request 2122</a></p></li>
+<li><p>change run_tool_shed.py to see the file in the correct lcoation
+(thanks to <a class="reference external" href="https://github.com/nturaga">&#64;nturaga</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2131">Pull Request 2131</a></p></li>
+<li><p>Fixes due to <a class="reference external" href="https://github.com/galaxyproject/galaxy/issues/2093">#2093</a>
+and <a class="reference external" href="https://github.com/galaxyproject/galaxy/issues/2018">#2018</a>
+(thanks to <a class="reference external" href="https://github.com/nsoranzo">&#64;nsoranzo</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2133">Pull Request 2133</a></p></li>
+<li><p>markupsafe.escape() in Python2 does not work on str containing non-ASCII
+characters
+(thanks to <a class="reference external" href="https://github.com/nsoranzo">&#64;nsoranzo</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2138">Pull Request 2138</a></p></li>
+<li><p>load options from config, not from options
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2139">Pull Request 2139</a></p></li>
+<li><p>fix/replace biomart data source
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2149">Pull Request 2149</a></p></li>
+<li><p>Add tool parameters back to parameters and expose for certain tools
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2156">Pull Request 2156</a></p></li>
+<li><p>Fix wrapper issue, overload __ne__
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2161">Pull Request 2161</a></p></li>
+<li><p>Fix grouping tool and enhance performance when removing lines.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2166">Pull Request 2166</a></p></li>
+<li><p>libraries: always fetch new permissions as we are reusing the view
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2176">Pull Request 2176</a></p></li>
+<li><p>Fix for redirecting a non-user when a tool has require_login=True.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2180">Pull Request 2180</a></p></li>
+<li><p>Fix.published history long titles have to be truncated
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2189">Pull Request 2189</a></p></li>
+<li><p>fix a bug with missing history_id in libraries dataset import
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2190">Pull Request 2190</a></p></li>
+<li><p>Fix message in legacy panel mako
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2191">Pull Request 2191</a></p></li>
+<li><p>Prepass on remote user header based on maildomain and normalize config.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2195">Pull Request 2195</a></p></li>
+<li><p>Extend to_json for dataset tool parameters
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2196">Pull Request 2196</a></p></li>
+<li><p>Pages parser fix
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2197">Pull Request 2197</a></p></li>
+<li><p>Translate data source tool parameters on parameter expansion
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2201">Pull Request 2201</a></p></li>
+<li><p>Sync job_script module with Pulsar to fix doctest.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2203">Pull Request 2203</a></p></li>
+<li><p>Improve error message for data source tools, executed through the
+tool_runner controller
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2204">Pull Request 2204</a></p></li>
+<li><p>Add fixed validation check for data_source tools URL parameter
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2208">Pull Request 2208</a></p></li>
+<li><p>Fix tool action redirect url for non-default tools
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2211">Pull Request 2211</a></p></li>
+<li><p>Browse library date handling for non-ascii month abbreviations
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2214">Pull Request 2214</a></p></li>
+<li><p>Avoid reset of cursor position for input fields during manual entry
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2218">Pull Request 2218</a></p></li>
+<li><p>Add conditional statsd requirement
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2227">Pull Request 2227</a></p></li>
+<li><p>Fix js value validator
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2234">Pull Request 2234</a></p></li>
+<li><p>Encode collection reduce in serializable fashion
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2238">Pull Request 2238</a></p></li>
+<li><p>Update <cite>_condarc</cite> automatically
+(thanks to <a class="reference external" href="https://github.com/bgruening">&#64;bgruening</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2255">Pull Request 2255</a></p></li>
+<li><p>Truncate job name in DRMAA runner by default for PBSPro.
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2265">Pull Request 2265</a></p></li>
+<li><p>Cherrypick of encoding fix
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2266">Pull Request 2266</a></p></li>
+<li><p>If a Slurm post-mortem determines that a job is in a non-terminal state,
+return the job to the monitor queue
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2311">Pull Request 2311</a></p></li>
+<li><p>Unicodify pretty datetimes which can contain non-ASCII chars
+(thanks to <a class="reference external" href="https://github.com/nsoranzo">&#64;nsoranzo</a>).
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2312">Pull Request 2312</a></p></li>
+<li><p>Relax default value acceptance condition
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2316">Pull Request 2316</a></p></li>
+<li><p>Fixes the proxy naming
+(thanks to <a class="reference external" href="https://github.com/bgruening">&#64;bgruening</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2333">Pull Request 2333</a></p></li>
+<li><p>Re-fix the bug with multiple preceding ‘/’ characters in the GIE proxy
+prefix
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2339">Pull Request 2339</a></p></li>
+<li><p>Do not pollute param_dict with a non JSONifiable dict
+(thanks to <a class="reference external" href="https://github.com/nsoranzo">&#64;nsoranzo</a>.)
+<a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/2345">Pull Request 2345</a></p></li>
+</ul>
+<p>To stay up to date with Galaxy’s progress, watch our <a class="reference external" href="https://www.youtube.com/&#64;GalaxyProject">screencasts</a>,
+visit our community <a class="reference external" href="https://galaxyproject.org/">Hub</a>, and follow
+<a class="reference external" href="https://mstdn.science/&#64;galaxyproject">&#64;galaxyproject&#64;mstdn.science</a> on Mastodon or
+<a class="reference external" href="https://twitter.com/galaxyproject">&#64;galaxyproject</a> on Twitter.</p>
+<p>You can always chat with us on <a class="reference external" href="https://matrix.to/#/#galaxyproject_Lobby:gitter.im">Matrix</a>.</p>
+<p><em>Thanks for using Galaxy!</em></p>
+<p><a class="reference external" href="https://galaxyproject.org/galaxy-team/">The Galaxy Team</a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="16.07_announce.html" class="btn btn-neutral float-left" title="July 2016 Galaxy Release (v 16.07)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="16.01_announce.html" class="btn btn-neutral float-right" title="January 2016 Galaxy Release (v 16.01)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Galaxy Committers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

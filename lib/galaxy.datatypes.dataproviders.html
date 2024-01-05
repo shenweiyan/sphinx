@@ -1,0 +1,991 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>galaxy.datatypes.dataproviders package &mdash; Galaxy Project 23.1.5.dev0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+
+  
+    <link rel="canonical" href="https://docs.galaxyproject.org/en/master/lib/galaxy.datatypes.dataproviders.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=da3e81e8"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="galaxy.datatypes.display_applications package" href="galaxy.datatypes.display_applications.html" />
+    <link rel="prev" title="galaxy.datatypes.converters package" href="galaxy.datatypes.converters.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Galaxy Project
+          </a>
+              <div class="version">
+                23.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../releases/index.html">Releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.1_announce_user.html">June 2023 Galaxy Release (v 23.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.0_announce_user.html">2023 Galaxy Release (v 23.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.05_announce_user.html">May 2022 Galaxy Release (v 22.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.01_announce_user.html">January 2022 Galaxy Release (v 22.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.09_announce_user.html">September 2021 Galaxy Release (v 21.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.05_announce_user.html">May 2021 Galaxy Release (v 21.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.01_announce_user.html">January 2021 Galaxy Release (v 21.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.09_announce_user.html">September 2020 Galaxy Release (v 20.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.05_announce_user.html">May 2020 Galaxy Release (v 20.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.01_announce_user.html">January 2020 Galaxy Release (v 20.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.09_announce_user.html">September 2019 Galaxy Release (v 19.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.05_announce_user.html">May 2019 Galaxy Release (v 19.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.01_announce_user.html">January 2019 Galaxy Release (v 19.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.09_announce.html">September 2018 Galaxy Release (v 18.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.05_announce.html">May 2018 Galaxy Release (v 18.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.01_announce.html">January 2018 Galaxy Release (v 18.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.09_announce.html">September 2017 Galaxy Release (v 17.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.05_announce.html">May 2017 Galaxy Release (v 17.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.01_announce.html">January 2017 Galaxy Release (v 17.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.10_announce.html">October 2016 Galaxy Release (v 16.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.07_announce.html">July 2016 Galaxy Release (v 16.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.04_announce.html">April 2016 Galaxy Release (v 16.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.01_announce.html">January 2016 Galaxy Release (v 16.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.10_announce.html">October 2015 Galaxy Release (v 15.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.07_announce.html">July 2015 Galaxy Release (v 15.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.05_announce.html">May 2015 Galaxy Release (v 15.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.03_announce.html">March 2015 Galaxy Release (v 15.03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.01_announce.html">January 2015 Galaxy Release (v 15.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.10_announce.html">October 2014 Galaxy Release (v 14.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.08_announce.html">August 2014 Galaxy Release (v 14.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.06_announce.html">June 2014 Galaxy Release (v 14.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.04_announce.html">April 2014 Galaxy Release (v 14.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.02_announce.html">February 2014 Galaxy Release (v 14.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.11_announce.html">November 2013 Galaxy Release (v 13.11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.08_announce.html">August 2013 Galaxy Release (v 13.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.06_announce.html">June 2013 Galaxy Release (v 13.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.04_announce.html">April 2013 Galaxy Release (v 13.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.02_announce.html">February 2013 Galaxy Release (v 13.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.01_announce.html">January 2013 Galaxy Release (v 13.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/older_releases.html">Galaxy Releases older than v 13.01</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Admin Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../admin/index.html">Administration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../admin/python.html">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/framework_dependencies.html">Framework Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/config.html">Galaxy Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/config_logging.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/production.html">Production Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/security.html">Security considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/nginx.html">Proxying Galaxy with NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/apache.html">Proxying Galaxy with Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/scaling.html">Scaling and Load Balancing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/cluster.html">Connecting to a Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/jobs.html">Galaxy Job Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/tool_panel.html">Tool Panel Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/mq.html">Message queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/dependency_resolvers.html">Dependency Resolvers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/container_resolvers.html">Containers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/container_resolvers.html#other-considerations">Other considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/conda_faq.html">Conda for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/db_migration.html">Galaxy Database Schema Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/reports.html">Galaxy Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/useful_scripts.html">Scripts &amp; Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/options.html">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/migrating_to_gunicorn.html">Migrating from uWSGI to Gunicorn and FastAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/special_topics/index.html">Special topics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/ftp.html">Galaxy FTP Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/interactivetools.html">Galaxy InteractiveTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/mulled_containers.html">Containers for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/grt.html">Galactic Radio Telescope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/gtn.html">Galaxy Training Materials Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/job_metrics.html">Job Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/webhooks.html">Galaxy Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/vault.html">Storing secrets in the vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/performance_tracking.html">Galaxy Performance Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/bug_reports.html">Bug Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/gdpr_compliance.html">GDPR Compliance</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../dev/index.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dev/schema.html">Galaxy Tool XML File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/api_guidelines.html">API Design Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/build_a_job_runner.html">Build a job runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/finding_and_improving_slow_code.html">Finding and improving slow Galaxy code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_managers.html">Data managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_types.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/faq.html">How Do I…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/writing_tests.html">Writing Tests for Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html">Debugging Galaxy Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html#debugging-tests-that-run-out-of-memory">Debugging tests that run out of memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy.html">Debugging Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy_slurm.html">Debugging Galaxy: Slurm Compute Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/translating.html">Translating the Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/create_point_release.html">Creating Galaxy Point Releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api_doc.html">Galaxy API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/quickstart.html"> Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/api.html"> Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ts_api_doc.html">Tool Shed API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/ts_api.html"> API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Application Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="galaxy.html">galaxy package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy_ext.html">galaxy_ext package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy_test.html">galaxy_test package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tool_shed.html">tool_shed package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../project/organization.html">Project Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#procedure-documents">Procedure Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#committers">Committers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#release-branches">Release branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#handling-pull-requests">Handling Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#issue-reporting">Issue Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../project/issues.html">Issue Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#issue-reporting">Issue Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#milestones">Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#labeling-structure">Labeling Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#the-roadmap">The Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#voting">Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#automation">Automation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Galaxy Project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">lib</a></li>
+          <li class="breadcrumb-item"><a href="galaxy.html">galaxy package</a></li>
+          <li class="breadcrumb-item"><a href="galaxy.datatypes.html">galaxy.datatypes package</a></li>
+      <li class="breadcrumb-item active">galaxy.datatypes.dataproviders package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/lib/galaxy.datatypes.dataproviders.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="galaxy-datatypes-dataproviders-package">
+<h1>galaxy.datatypes.dataproviders package<a class="headerlink" href="#galaxy-datatypes-dataproviders-package" title="Link to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+</section>
+<section id="module-galaxy.datatypes.dataproviders.base">
+<span id="galaxy-datatypes-dataproviders-base-module"></span><h2>galaxy.datatypes.dataproviders.base module<a class="headerlink" href="#module-galaxy.datatypes.dataproviders.base" title="Link to this heading">¶</a></h2>
+<p>Base class(es) for all DataProviders.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.base.HasSettings">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">galaxy.datatypes.dataproviders.base.</span></span><span class="sig-name descname"><span class="pre">HasSettings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attributes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/base.html#HasSettings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.base.HasSettings" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">type</span></code></a></p>
+<p>Metaclass for data providers that allows defining and inheriting
+a dictionary named ‘settings’.</p>
+<p>Useful for allowing class level access to expected variable types
+passed to class <cite>__init__</cite> functions so they can be parsed from a query string.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.base.DataProvider">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">galaxy.datatypes.dataproviders.base.</span></span><span class="sig-name descname"><span class="pre">DataProvider</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/base.html#DataProvider"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.base.DataProvider" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Base class for all data providers. Data providers:</p>
+<ul class="simple">
+<li><p>have a source (which must be another file-like object)</p></li>
+<li><p>implement both the iterator and context manager interfaces</p></li>
+<li><p>do not allow write methods (but otherwise implement the other file object interface methods)</p></li>
+</ul>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.base.DataProvider.settings">
+<span class="sig-name descname"><span class="pre">settings</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.12)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#galaxy.datatypes.dataproviders.base.DataProvider.settings" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.base.DataProvider.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/base.html#DataProvider.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.base.DataProvider.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Sets up a data provider, validates supplied source.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>source</strong> – the source that this iterator will loop over.
+(Should implement the iterable interface and ideally have the
+context manager interface as well)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.base.DataProvider.validate_source">
+<span class="sig-name descname"><span class="pre">validate_source</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/base.html#DataProvider.validate_source"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.base.DataProvider.validate_source" title="Link to this definition">¶</a></dt>
+<dd><p>Is this a valid source for this provider?</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#galaxy.datatypes.dataproviders.exceptions.InvalidDataProviderSource" title="galaxy.datatypes.dataproviders.exceptions.InvalidDataProviderSource"><strong>InvalidDataProviderSource</strong></a> – if the source is considered invalid.</p>
+</dd>
+</dl>
+<p>Meant to be overridden in subclasses.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.base.DataProvider.truncate">
+<span class="sig-name descname"><span class="pre">truncate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/base.html#DataProvider.truncate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.base.DataProvider.truncate" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.base.DataProvider.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/base.html#DataProvider.write"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.base.DataProvider.write" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.base.DataProvider.writelines">
+<span class="sig-name descname"><span class="pre">writelines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequence</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/base.html#DataProvider.writelines"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.base.DataProvider.writelines" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.base.DataProvider.readlines">
+<span class="sig-name descname"><span class="pre">readlines</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/base.html#DataProvider.readlines"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.base.DataProvider.readlines" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.base.FilteredDataProvider">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">galaxy.datatypes.dataproviders.base.</span></span><span class="sig-name descname"><span class="pre">FilteredDataProvider</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/base.html#FilteredDataProvider"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.base.FilteredDataProvider" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#galaxy.datatypes.dataproviders.base.DataProvider" title="galaxy.datatypes.dataproviders.base.DataProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataProvider</span></code></a></p>
+<p>Passes each datum through a filter function and yields it if that function
+returns a non-<cite>None</cite> value.</p>
+<dl class="simple">
+<dt>Also maintains counters:</dt><dd><ul class="simple">
+<li><p><cite>num_data_read</cite>: how many data have been consumed from the source.</p></li>
+<li><p><cite>num_valid_data_read</cite>: how many data have been returned from <cite>filter</cite>.</p></li>
+<li><p><cite>num_data_returned</cite>: how many data has this provider yielded.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.base.FilteredDataProvider.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/base.html#FilteredDataProvider.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.base.FilteredDataProvider.__init__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filter_fn</strong> – a lambda or function that will be passed a datum and
+return either the (optionally modified) datum or None.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.base.FilteredDataProvider.filter">
+<span class="sig-name descname"><span class="pre">filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datum</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/base.html#FilteredDataProvider.filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.base.FilteredDataProvider.filter" title="Link to this definition">¶</a></dt>
+<dd><p>When given a datum from the provider’s source, return None if the datum
+‘does not pass’ the filter or is invalid. Return the datum if it’s valid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>datum</strong> – the datum to check for validity.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the datum, a modified datum, or None</p>
+</dd>
+</dl>
+<p>Meant to be overridden.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.base.FilteredDataProvider.settings">
+<span class="sig-name descname"><span class="pre">settings</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.12)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#galaxy.datatypes.dataproviders.base.FilteredDataProvider.settings" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.base.LimitedOffsetDataProvider">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">galaxy.datatypes.dataproviders.base.</span></span><span class="sig-name descname"><span class="pre">LimitedOffsetDataProvider</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/base.html#LimitedOffsetDataProvider"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.base.LimitedOffsetDataProvider" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#galaxy.datatypes.dataproviders.base.FilteredDataProvider" title="galaxy.datatypes.dataproviders.base.FilteredDataProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">FilteredDataProvider</span></code></a></p>
+<p>A provider that uses the counters from FilteredDataProvider to limit the
+number of data and/or skip <cite>offset</cite> number of data before providing.</p>
+<p>Useful for grabbing sections from a source (e.g. pagination).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.base.LimitedOffsetDataProvider.settings">
+<span class="sig-name descname"><span class="pre">settings</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.12)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'limit':</span> <span class="pre">'int',</span> <span class="pre">'offset':</span> <span class="pre">'int'}</span></em><a class="headerlink" href="#galaxy.datatypes.dataproviders.base.LimitedOffsetDataProvider.settings" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.base.LimitedOffsetDataProvider.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/base.html#LimitedOffsetDataProvider.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.base.LimitedOffsetDataProvider.__init__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>offset</strong> – the number of data to skip before providing.</p></li>
+<li><p><strong>limit</strong> – the final number of data to provide.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.base.MultiSourceDataProvider">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">galaxy.datatypes.dataproviders.base.</span></span><span class="sig-name descname"><span class="pre">MultiSourceDataProvider</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_list</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/base.html#MultiSourceDataProvider"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.base.MultiSourceDataProvider" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#galaxy.datatypes.dataproviders.base.DataProvider" title="galaxy.datatypes.dataproviders.base.DataProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataProvider</span></code></a></p>
+<p>A provider that iterates over a list of given sources and provides data
+from one after another.</p>
+<p>An iterator over iterators.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.base.MultiSourceDataProvider.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_list</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/base.html#MultiSourceDataProvider.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.base.MultiSourceDataProvider.__init__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>source_list</strong> – an iterator of iterables</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.base.MultiSourceDataProvider.settings">
+<span class="sig-name descname"><span class="pre">settings</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.12)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#galaxy.datatypes.dataproviders.base.MultiSourceDataProvider.settings" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-galaxy.datatypes.dataproviders.chunk">
+<span id="galaxy-datatypes-dataproviders-chunk-module"></span><h2>galaxy.datatypes.dataproviders.chunk module<a class="headerlink" href="#module-galaxy.datatypes.dataproviders.chunk" title="Link to this heading">¶</a></h2>
+<p>Chunk (N number of bytes at M offset to a source’s beginning) provider.</p>
+<p>Primarily for file sources but usable by any iterator that has both
+seek and read( N ).</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.chunk.ChunkDataProvider">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">galaxy.datatypes.dataproviders.chunk.</span></span><span class="sig-name descname"><span class="pre">ChunkDataProvider</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">65536</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/chunk.html#ChunkDataProvider"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.chunk.ChunkDataProvider" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#galaxy.datatypes.dataproviders.base.DataProvider" title="galaxy.datatypes.dataproviders.base.DataProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataProvider</span></code></a></p>
+<p>Data provider that yields chunks of data from its file.</p>
+<p>Note: this version does not account for lines and works with Binary datatypes.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.chunk.ChunkDataProvider.MAX_CHUNK_SIZE">
+<span class="sig-name descname"><span class="pre">MAX_CHUNK_SIZE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">65536</span></em><a class="headerlink" href="#galaxy.datatypes.dataproviders.chunk.ChunkDataProvider.MAX_CHUNK_SIZE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.chunk.ChunkDataProvider.DEFAULT_CHUNK_SIZE">
+<span class="sig-name descname"><span class="pre">DEFAULT_CHUNK_SIZE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">65536</span></em><a class="headerlink" href="#galaxy.datatypes.dataproviders.chunk.ChunkDataProvider.DEFAULT_CHUNK_SIZE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.chunk.ChunkDataProvider.settings">
+<span class="sig-name descname"><span class="pre">settings</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.12)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'chunk_index':</span> <span class="pre">'int',</span> <span class="pre">'chunk_size':</span> <span class="pre">'int'}</span></em><a class="headerlink" href="#galaxy.datatypes.dataproviders.chunk.ChunkDataProvider.settings" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.chunk.ChunkDataProvider.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">65536</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/chunk.html#ChunkDataProvider.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.chunk.ChunkDataProvider.__init__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>chunk_index</strong> – if a source can be divided into N number of
+<cite>chunk_size</cite> sections, this is the index of which section to
+return.</p></li>
+<li><p><strong>chunk_size</strong> – how large are the desired chunks to return
+(gen. in bytes).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.chunk.ChunkDataProvider.validate_source">
+<span class="sig-name descname"><span class="pre">validate_source</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/chunk.html#ChunkDataProvider.validate_source"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.chunk.ChunkDataProvider.validate_source" title="Link to this definition">¶</a></dt>
+<dd><p>Does the given source have both the methods <cite>seek</cite> and <cite>read</cite>?
+:raises InvalidDataProviderSource: if not.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.chunk.ChunkDataProvider.encode">
+<span class="sig-name descname"><span class="pre">encode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chunk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/chunk.html#ChunkDataProvider.encode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.chunk.ChunkDataProvider.encode" title="Link to this definition">¶</a></dt>
+<dd><p>Called on the chunk before returning.</p>
+<p>Overrride to modify, encode, or decode chunks.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.chunk.Base64ChunkDataProvider">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">galaxy.datatypes.dataproviders.chunk.</span></span><span class="sig-name descname"><span class="pre">Base64ChunkDataProvider</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">65536</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/chunk.html#Base64ChunkDataProvider"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.chunk.Base64ChunkDataProvider" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#galaxy.datatypes.dataproviders.chunk.ChunkDataProvider" title="galaxy.datatypes.dataproviders.chunk.ChunkDataProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">ChunkDataProvider</span></code></a></p>
+<p>Data provider that yields chunks of base64 encoded data from its file.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.chunk.Base64ChunkDataProvider.encode">
+<span class="sig-name descname"><span class="pre">encode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chunk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/chunk.html#Base64ChunkDataProvider.encode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.chunk.Base64ChunkDataProvider.encode" title="Link to this definition">¶</a></dt>
+<dd><p>Return chunks encoded in base 64.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.chunk.Base64ChunkDataProvider.settings">
+<span class="sig-name descname"><span class="pre">settings</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.12)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'chunk_index':</span> <span class="pre">'int',</span> <span class="pre">'chunk_size':</span> <span class="pre">'int'}</span></em><a class="headerlink" href="#galaxy.datatypes.dataproviders.chunk.Base64ChunkDataProvider.settings" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-galaxy.datatypes.dataproviders.column">
+<span id="galaxy-datatypes-dataproviders-column-module"></span><h2>galaxy.datatypes.dataproviders.column module<a class="headerlink" href="#module-galaxy.datatypes.dataproviders.column" title="Link to this heading">¶</a></h2>
+<p>Providers that provide lists of lists generally where each line of a source
+is further subdivided into multiple data (e.g. columns from a line).</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.column.ColumnarDataProvider">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">galaxy.datatypes.dataproviders.column.</span></span><span class="sig-name descname"><span class="pre">ColumnarDataProvider</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indeces</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parsers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parse_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deliminator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\t'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/column.html#ColumnarDataProvider"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.column.ColumnarDataProvider" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#galaxy.datatypes.dataproviders.line.RegexLineDataProvider" title="galaxy.datatypes.dataproviders.line.RegexLineDataProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">RegexLineDataProvider</span></code></a></p>
+<p>Data provider that provide a list of columns from the lines of its source.</p>
+<p>Columns are returned in the order given in indeces, so this provider can
+re-arrange columns.</p>
+<p>If any desired index is outside the actual number of columns
+in the source, this provider will None-pad the output and you are guaranteed
+the same number of columns as the number of indeces asked for (even if they
+are filled with None).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.column.ColumnarDataProvider.settings">
+<span class="sig-name descname"><span class="pre">settings</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.12)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'column_count':</span> <span class="pre">'int',</span> <span class="pre">'column_types':</span> <span class="pre">'list:str',</span> <span class="pre">'comment_char':</span> <span class="pre">'str',</span> <span class="pre">'deliminator':</span> <span class="pre">'str',</span> <span class="pre">'filters':</span> <span class="pre">'list:str',</span> <span class="pre">'indeces':</span> <span class="pre">'list:int',</span> <span class="pre">'invert':</span> <span class="pre">'bool',</span> <span class="pre">'limit':</span> <span class="pre">'int',</span> <span class="pre">'offset':</span> <span class="pre">'int',</span> <span class="pre">'parse_columns':</span> <span class="pre">'bool',</span> <span class="pre">'provide_blank':</span> <span class="pre">'bool',</span> <span class="pre">'regex_list':</span> <span class="pre">'list:escaped',</span> <span class="pre">'strip_lines':</span> <span class="pre">'bool',</span> <span class="pre">'strip_newlines':</span> <span class="pre">'bool'}</span></em><a class="headerlink" href="#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.settings" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.column.ColumnarDataProvider.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indeces</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parsers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parse_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deliminator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\t'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/column.html#ColumnarDataProvider.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.__init__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>indeces</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em> or </em><em>None</em>) – a list of indeces of columns to gather from each row
+Optional: will default to <cite>None</cite>.
+If <cite>None</cite>, this provider will return all rows (even when a
+particular row contains more/less than others).
+If a row/line does not contain an element at a given index, the
+provider will-return/fill-with a <cite>None</cite> value as the element.</p></li>
+<li><p><strong>column_count</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – an alternate means of defining indeces, use an int
+here to effectively provide the first N columns.
+Optional: will default to <cite>None</cite>.</p></li>
+<li><p><strong>column_types</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em> of </em><em>strings</em>) – a list of string names of types that the
+provider will use to look up an appropriate parser for the column.
+(e.g. ‘int’, ‘float’, ‘str’, ‘bool’)
+Optional: will default to parsing all columns as strings.</p></li>
+<li><p><strong>parsers</strong> (<em>dictionary</em>) – a dictionary keyed with column type strings
+and with values that are functions to use when parsing those
+types.
+Optional: will default to using the function <cite>_get_default_parsers</cite>.</p></li>
+<li><p><strong>parse_columns</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – attempt to parse columns? Optional: defaults to <cite>True</cite>.</p></li>
+<li><p><strong>deliminator</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – character(s) used to split each row/line of the source. Optional: defaults to the tab character.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>that the subclass constructors are passed kwargs - so they’re
+params (limit, offset, etc.) are also applicable here.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.column.ColumnarDataProvider.parse_filter">
+<span class="sig-name descname"><span class="pre">parse_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter_param_str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/column.html#ColumnarDataProvider.parse_filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.parse_filter" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.column.ColumnarDataProvider.create_numeric_filter">
+<span class="sig-name descname"><span class="pre">create_numeric_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">op</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/column.html#ColumnarDataProvider.create_numeric_filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.create_numeric_filter" title="Link to this definition">¶</a></dt>
+<dd><p>Return an anonymous filter function that will be passed the array
+of parsed columns. Return None if no filter function can be
+created for the given params.</p>
+<p>The function will compare the column at index <cite>column</cite> against <cite>val</cite>
+using the given op where op is one of:</p>
+<ul class="simple">
+<li><p>lt: less than</p></li>
+<li><p>le: less than or equal to</p></li>
+<li><p>eq: equal to</p></li>
+<li><p>ne: not equal to</p></li>
+<li><p>ge: greather than or equal to</p></li>
+<li><p>gt: greater than</p></li>
+</ul>
+<p><cite>val</cite> is cast as float here and will return None if there’s a parsing error.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.column.ColumnarDataProvider.create_string_filter">
+<span class="sig-name descname"><span class="pre">create_string_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">op</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/column.html#ColumnarDataProvider.create_string_filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.create_string_filter" title="Link to this definition">¶</a></dt>
+<dd><p>Return an anonymous filter function that will be passed the array
+of parsed columns. Return None if no filter function can be
+created for the given params.</p>
+<p>The function will compare the column at index <cite>column</cite> against <cite>val</cite>
+using the given op where op is one of:</p>
+<ul class="simple">
+<li><p>eq: exactly matches</p></li>
+<li><p>has: the column contains the substring <cite>val</cite></p></li>
+<li><p>re: the column matches the regular expression in <cite>val</cite></p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.column.ColumnarDataProvider.create_list_filter">
+<span class="sig-name descname"><span class="pre">create_list_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">op</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/column.html#ColumnarDataProvider.create_list_filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.create_list_filter" title="Link to this definition">¶</a></dt>
+<dd><p>Return an anonymous filter function that will be passed the array
+of parsed columns. Return None if no filter function can be
+created for the given params.</p>
+<p>The function will compare the column at index <cite>column</cite> against <cite>val</cite>
+using the given op where op is one of:</p>
+<ul class="simple">
+<li><p>eq: the list <cite>val</cite> exactly matches the list in the column</p></li>
+<li><p>has: the list in the column contains the sublist <cite>val</cite></p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.column.ColumnarDataProvider.get_default_parsers">
+<span class="sig-name descname"><span class="pre">get_default_parsers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/column.html#ColumnarDataProvider.get_default_parsers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.get_default_parsers" title="Link to this definition">¶</a></dt>
+<dd><p>Return parser dictionary keyed for each columnar type
+(as defined in datatypes).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>primitives only by default (str, int, float, boolean, None).
+Other (more complex) types are retrieved as strings.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>a dictionary of the form:
+<cite>{ &lt;parser type name&gt; : &lt;function used to parse type&gt; }</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.column.ColumnarDataProvider.filter">
+<span class="sig-name descname"><span class="pre">filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/column.html#ColumnarDataProvider.filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.filter" title="Link to this definition">¶</a></dt>
+<dd><p>Determines whether to provide line or not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>line</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – the incoming line from the source</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a line or <cite>None</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.column.ColumnarDataProvider.parse_columns_from_line">
+<span class="sig-name descname"><span class="pre">parse_columns_from_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/column.html#ColumnarDataProvider.parse_columns_from_line"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.parse_columns_from_line" title="Link to this definition">¶</a></dt>
+<dd><p>Returns a list of the desired, parsed columns.
+:param line: the line to parse
+:type line: str</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.column.ColumnarDataProvider.parse_column_at_index">
+<span class="sig-name descname"><span class="pre">parse_column_at_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">columns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parser_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/column.html#ColumnarDataProvider.parse_column_at_index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.parse_column_at_index" title="Link to this definition">¶</a></dt>
+<dd><p>Get the column type for the parser from <cite>self.column_types</cite> or <cite>None</cite>
+if the type is unavailable.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.column.ColumnarDataProvider.parse_value">
+<span class="sig-name descname"><span class="pre">parse_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/column.html#ColumnarDataProvider.parse_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.parse_value" title="Link to this definition">¶</a></dt>
+<dd><p>Attempt to parse and return the given value based on the given type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>val</strong> – the column value to parse (often a string)</p></li>
+<li><p><strong>type</strong> – the string type ‘name’ used to find the appropriate parser</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the parsed value
+or <cite>value</cite> if no <cite>type</cite> found in <cite>parsers</cite>
+or <cite>None</cite> if there was a parser error (ValueError)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.column.ColumnarDataProvider.get_column_type">
+<span class="sig-name descname"><span class="pre">get_column_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/column.html#ColumnarDataProvider.get_column_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.get_column_type" title="Link to this definition">¶</a></dt>
+<dd><p>Get the column type for the parser from <cite>self.column_types</cite> or <cite>None</cite>
+if the type is unavailable.
+:param index: the column index
+:returns: string name of type (e.g. ‘float’, ‘int’, etc.)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.column.ColumnarDataProvider.filter_by_columns">
+<span class="sig-name descname"><span class="pre">filter_by_columns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">columns</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/column.html#ColumnarDataProvider.filter_by_columns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.filter_by_columns" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.column.DictDataProvider">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">galaxy.datatypes.dataproviders.column.</span></span><span class="sig-name descname"><span class="pre">DictDataProvider</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/column.html#DictDataProvider"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.column.DictDataProvider" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#galaxy.datatypes.dataproviders.column.ColumnarDataProvider" title="galaxy.datatypes.dataproviders.column.ColumnarDataProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">ColumnarDataProvider</span></code></a></p>
+<p>Data provider that zips column_names and columns from the source’s contents
+into a dictionary.</p>
+<p>A combination use of both <cite>column_names</cite> and <cite>indeces</cite> allows ‘picking’
+key/value pairs from the source.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The subclass constructors are passed kwargs - so their
+params (limit, offset, etc.) are also applicable here.</p>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.column.DictDataProvider.settings">
+<span class="sig-name descname"><span class="pre">settings</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.12)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'column_count':</span> <span class="pre">'int',</span> <span class="pre">'column_names':</span> <span class="pre">'list:str',</span> <span class="pre">'column_types':</span> <span class="pre">'list:str',</span> <span class="pre">'comment_char':</span> <span class="pre">'str',</span> <span class="pre">'deliminator':</span> <span class="pre">'str',</span> <span class="pre">'filters':</span> <span class="pre">'list:str',</span> <span class="pre">'indeces':</span> <span class="pre">'list:int',</span> <span class="pre">'invert':</span> <span class="pre">'bool',</span> <span class="pre">'limit':</span> <span class="pre">'int',</span> <span class="pre">'offset':</span> <span class="pre">'int',</span> <span class="pre">'parse_columns':</span> <span class="pre">'bool',</span> <span class="pre">'provide_blank':</span> <span class="pre">'bool',</span> <span class="pre">'regex_list':</span> <span class="pre">'list:escaped',</span> <span class="pre">'strip_lines':</span> <span class="pre">'bool',</span> <span class="pre">'strip_newlines':</span> <span class="pre">'bool'}</span></em><a class="headerlink" href="#galaxy.datatypes.dataproviders.column.DictDataProvider.settings" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.column.DictDataProvider.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/column.html#DictDataProvider.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.column.DictDataProvider.__init__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>column_names</strong> – an ordered list of strings that will be used as the keys
+for each column in the returned dictionaries.
+The number of key, value pairs each returned dictionary has will
+be as short as the number of column names provided.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="galaxy-datatypes-dataproviders-dataset-module">
+<h2>galaxy.datatypes.dataproviders.dataset module<a class="headerlink" href="#galaxy-datatypes-dataproviders-dataset-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-dataproviders-decorators-module">
+<h2>galaxy.datatypes.dataproviders.decorators module<a class="headerlink" href="#galaxy-datatypes-dataproviders-decorators-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="module-galaxy.datatypes.dataproviders.exceptions">
+<span id="galaxy-datatypes-dataproviders-exceptions-module"></span><h2>galaxy.datatypes.dataproviders.exceptions module<a class="headerlink" href="#module-galaxy.datatypes.dataproviders.exceptions" title="Link to this heading">¶</a></h2>
+<p>DataProvider related exceptions.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.exceptions.InvalidDataProviderSource">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">galaxy.datatypes.dataproviders.exceptions.</span></span><span class="sig-name descname"><span class="pre">InvalidDataProviderSource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/exceptions.html#InvalidDataProviderSource"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.exceptions.InvalidDataProviderSource" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">TypeError</span></code></a></p>
+<p>Raised when a unusable source is passed to a provider.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.exceptions.InvalidDataProviderSource.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/exceptions.html#InvalidDataProviderSource.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.exceptions.InvalidDataProviderSource.__init__" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.exceptions.NoProviderAvailable">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">galaxy.datatypes.dataproviders.exceptions.</span></span><span class="sig-name descname"><span class="pre">NoProviderAvailable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">factory_source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format_requested</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/exceptions.html#NoProviderAvailable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.exceptions.NoProviderAvailable" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">TypeError</span></code></a></p>
+<p>Raised when no provider is found for the given <cite>format_requested</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>factory_source</strong> – the item that the provider was requested from</p></li>
+<li><p><strong>format_requested</strong> – the format_requested (a hashable key to access
+<cite>factory_source.datatypes</cite> with)</p></li>
+</ul>
+</dd>
+</dl>
+<p>Both params are attached to this class and accessible to the try-catch
+receiver.</p>
+<p>Meant to be used within a class that builds dataproviders (e.g. a Datatype)</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.exceptions.NoProviderAvailable.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">factory_source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format_requested</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/exceptions.html#NoProviderAvailable.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.exceptions.NoProviderAvailable.__init__" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="galaxy-datatypes-dataproviders-external-module">
+<h2>galaxy.datatypes.dataproviders.external module<a class="headerlink" href="#galaxy-datatypes-dataproviders-external-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-dataproviders-hierarchy-module">
+<h2>galaxy.datatypes.dataproviders.hierarchy module<a class="headerlink" href="#galaxy-datatypes-dataproviders-hierarchy-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="module-galaxy.datatypes.dataproviders.line">
+<span id="galaxy-datatypes-dataproviders-line-module"></span><h2>galaxy.datatypes.dataproviders.line module<a class="headerlink" href="#module-galaxy.datatypes.dataproviders.line" title="Link to this heading">¶</a></h2>
+<p>Dataproviders that iterate over lines from their sources.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.line.FilteredLineDataProvider">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">galaxy.datatypes.dataproviders.line.</span></span><span class="sig-name descname"><span class="pre">FilteredLineDataProvider</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strip_lines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strip_newlines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">provide_blank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment_char</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'#'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/line.html#FilteredLineDataProvider"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.line.FilteredLineDataProvider" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#galaxy.datatypes.dataproviders.base.LimitedOffsetDataProvider" title="galaxy.datatypes.dataproviders.base.LimitedOffsetDataProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">LimitedOffsetDataProvider</span></code></a></p>
+<p>Data provider that yields lines of data from its source allowing
+optional control over which line to start on and how many lines
+to return.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.line.FilteredLineDataProvider.DEFAULT_COMMENT_CHAR">
+<span class="sig-name descname"><span class="pre">DEFAULT_COMMENT_CHAR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'#'</span></em><a class="headerlink" href="#galaxy.datatypes.dataproviders.line.FilteredLineDataProvider.DEFAULT_COMMENT_CHAR" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.line.FilteredLineDataProvider.settings">
+<span class="sig-name descname"><span class="pre">settings</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.12)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'comment_char':</span> <span class="pre">'str',</span> <span class="pre">'limit':</span> <span class="pre">'int',</span> <span class="pre">'offset':</span> <span class="pre">'int',</span> <span class="pre">'provide_blank':</span> <span class="pre">'bool',</span> <span class="pre">'strip_lines':</span> <span class="pre">'bool',</span> <span class="pre">'strip_newlines':</span> <span class="pre">'bool'}</span></em><a class="headerlink" href="#galaxy.datatypes.dataproviders.line.FilteredLineDataProvider.settings" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.line.FilteredLineDataProvider.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strip_lines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strip_newlines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">provide_blank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment_char</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'#'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/line.html#FilteredLineDataProvider.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.line.FilteredLineDataProvider.__init__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>strip_lines</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – remove whitespace from the beginning an ending
+of each line (or not).
+Optional: defaults to True</p></li>
+<li><p><strong>strip_newlines</strong> – remove newlines only
+(only functions when <code class="docutils literal notranslate"><span class="pre">strip_lines</span></code> is false)
+Optional: defaults to False</p></li>
+<li><p><strong>provide_blank</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – are empty lines considered valid and provided?
+Optional: defaults to False</p></li>
+<li><p><strong>comment_char</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – character(s) that indicate a line isn’t data (a comment)
+and should not be provided.
+Optional: defaults to ‘#’</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.line.FilteredLineDataProvider.filter">
+<span class="sig-name descname"><span class="pre">filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/line.html#FilteredLineDataProvider.filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.line.FilteredLineDataProvider.filter" title="Link to this definition">¶</a></dt>
+<dd><p>Determines whether to provide line or not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>line</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – the incoming line from the source</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a line or <cite>None</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.line.RegexLineDataProvider">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">galaxy.datatypes.dataproviders.line.</span></span><span class="sig-name descname"><span class="pre">RegexLineDataProvider</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regex_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">invert</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/line.html#RegexLineDataProvider"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.line.RegexLineDataProvider" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#galaxy.datatypes.dataproviders.line.FilteredLineDataProvider" title="galaxy.datatypes.dataproviders.line.FilteredLineDataProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">FilteredLineDataProvider</span></code></a></p>
+<p>Data provider that yields only those lines of data from its source
+that do (or do not when <cite>invert</cite> is True) match one or more of the given list
+of regexs.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>the regex matches are effectively OR’d (if <strong>any</strong> regex matches
+the line it is considered valid and will be provided).</p>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.line.RegexLineDataProvider.settings">
+<span class="sig-name descname"><span class="pre">settings</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.12)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'comment_char':</span> <span class="pre">'str',</span> <span class="pre">'invert':</span> <span class="pre">'bool',</span> <span class="pre">'limit':</span> <span class="pre">'int',</span> <span class="pre">'offset':</span> <span class="pre">'int',</span> <span class="pre">'provide_blank':</span> <span class="pre">'bool',</span> <span class="pre">'regex_list':</span> <span class="pre">'list:escaped',</span> <span class="pre">'strip_lines':</span> <span class="pre">'bool',</span> <span class="pre">'strip_newlines':</span> <span class="pre">'bool'}</span></em><a class="headerlink" href="#galaxy.datatypes.dataproviders.line.RegexLineDataProvider.settings" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.line.RegexLineDataProvider.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regex_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">invert</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/line.html#RegexLineDataProvider.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.line.RegexLineDataProvider.__init__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>regex_list</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em> (of </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>)</em>) – list of strings or regular expression strings that will
+be <cite>match`ed to each line
+Optional: defaults to `None</cite> (no matching)</p></li>
+<li><p><strong>invert</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – if <cite>True</cite> will provide only lines that <strong>do not match</strong>.
+Optional: defaults to False</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.line.RegexLineDataProvider.filter">
+<span class="sig-name descname"><span class="pre">filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/line.html#RegexLineDataProvider.filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.line.RegexLineDataProvider.filter" title="Link to this definition">¶</a></dt>
+<dd><p>Determines whether to provide line or not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>line</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – the incoming line from the source</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a line or <cite>None</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.line.RegexLineDataProvider.filter_by_regex">
+<span class="sig-name descname"><span class="pre">filter_by_regex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/line.html#RegexLineDataProvider.filter_by_regex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.line.RegexLineDataProvider.filter_by_regex" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.line.BlockDataProvider">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">galaxy.datatypes.dataproviders.line.</span></span><span class="sig-name descname"><span class="pre">BlockDataProvider</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_block_delim_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_filter_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/line.html#BlockDataProvider"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.line.BlockDataProvider" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#galaxy.datatypes.dataproviders.base.LimitedOffsetDataProvider" title="galaxy.datatypes.dataproviders.base.LimitedOffsetDataProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">LimitedOffsetDataProvider</span></code></a></p>
+<p>Class that uses formats where multiple lines combine to describe a single
+datum. The data output will be a list of either map/dicts or sub-arrays.</p>
+<p>Uses FilteredLineDataProvider as its source (kwargs <strong>not</strong> passed).</p>
+<p>e.g. Fasta, GenBank, MAF, hg log
+Note: mem intensive (gathers list of lines before output)</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.line.BlockDataProvider.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_block_delim_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_filter_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/line.html#BlockDataProvider.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.line.BlockDataProvider.__init__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>new_block_delim_fn</strong> (<em>function</em>) – T/F function to determine whether a given line
+is the start of a new block.</p></li>
+<li><p><strong>block_filter_fn</strong> (<em>function</em>) – function that determines if a block is valid and
+will be provided.
+Optional: defaults to <cite>None</cite> (no filtering)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.line.BlockDataProvider.init_new_block">
+<span class="sig-name descname"><span class="pre">init_new_block</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/line.html#BlockDataProvider.init_new_block"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.line.BlockDataProvider.init_new_block" title="Link to this definition">¶</a></dt>
+<dd><p>Set up internal data for next block.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.line.BlockDataProvider.filter">
+<span class="sig-name descname"><span class="pre">filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/line.html#BlockDataProvider.filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.line.BlockDataProvider.filter" title="Link to this definition">¶</a></dt>
+<dd><p>Line filter here being used to aggregate/assemble lines into a block
+and determine whether the line indicates a new block.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>line</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – the incoming line from the source</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a block or <cite>None</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.line.BlockDataProvider.is_new_block">
+<span class="sig-name descname"><span class="pre">is_new_block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/line.html#BlockDataProvider.is_new_block"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.line.BlockDataProvider.is_new_block" title="Link to this definition">¶</a></dt>
+<dd><p>Returns True if the given line indicates the start of a new block
+(and the current block should be provided) or False if not.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.line.BlockDataProvider.add_line_to_block">
+<span class="sig-name descname"><span class="pre">add_line_to_block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/line.html#BlockDataProvider.add_line_to_block"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.line.BlockDataProvider.add_line_to_block" title="Link to this definition">¶</a></dt>
+<dd><p>Integrate the given line into the current block.</p>
+<p>Called per line.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.line.BlockDataProvider.assemble_current_block">
+<span class="sig-name descname"><span class="pre">assemble_current_block</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/line.html#BlockDataProvider.assemble_current_block"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.line.BlockDataProvider.assemble_current_block" title="Link to this definition">¶</a></dt>
+<dd><p>Build the current data into a block.</p>
+<p>Called per block (just before providing).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.line.BlockDataProvider.filter_block">
+<span class="sig-name descname"><span class="pre">filter_block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/line.html#BlockDataProvider.filter_block"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.line.BlockDataProvider.filter_block" title="Link to this definition">¶</a></dt>
+<dd><p>Is the current block a valid/desired datum.</p>
+<p>Called per block (just before providing).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.line.BlockDataProvider.handle_last_block">
+<span class="sig-name descname"><span class="pre">handle_last_block</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/galaxy/datatypes/dataproviders/line.html#BlockDataProvider.handle_last_block"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#galaxy.datatypes.dataproviders.line.BlockDataProvider.handle_last_block" title="Link to this definition">¶</a></dt>
+<dd><p>Handle any blocks remaining after the main loop.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="galaxy.datatypes.dataproviders.line.BlockDataProvider.settings">
+<span class="sig-name descname"><span class="pre">settings</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.12)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'limit':</span> <span class="pre">'int',</span> <span class="pre">'offset':</span> <span class="pre">'int'}</span></em><a class="headerlink" href="#galaxy.datatypes.dataproviders.line.BlockDataProvider.settings" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="galaxy.datatypes.converters.html" class="btn btn-neutral float-left" title="galaxy.datatypes.converters package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="galaxy.datatypes.display_applications.html" class="btn btn-neutral float-right" title="galaxy.datatypes.display_applications package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Galaxy Committers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

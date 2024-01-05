@@ -1,0 +1,622 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galaxy Job Configuration &mdash; Galaxy Project 23.1.5.dev0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+
+  
+    <link rel="canonical" href="https://docs.galaxyproject.org/en/master/admin/jobs.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=da3e81e8"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Authentication" href="authentication.html" />
+    <link rel="prev" title="Connecting to a Cluster" href="cluster.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Galaxy Project
+          </a>
+              <div class="version">
+                23.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../releases/index.html">Releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.1_announce_user.html">June 2023 Galaxy Release (v 23.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.0_announce_user.html">2023 Galaxy Release (v 23.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.05_announce_user.html">May 2022 Galaxy Release (v 22.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.01_announce_user.html">January 2022 Galaxy Release (v 22.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.09_announce_user.html">September 2021 Galaxy Release (v 21.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.05_announce_user.html">May 2021 Galaxy Release (v 21.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.01_announce_user.html">January 2021 Galaxy Release (v 21.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.09_announce_user.html">September 2020 Galaxy Release (v 20.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.05_announce_user.html">May 2020 Galaxy Release (v 20.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.01_announce_user.html">January 2020 Galaxy Release (v 20.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.09_announce_user.html">September 2019 Galaxy Release (v 19.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.05_announce_user.html">May 2019 Galaxy Release (v 19.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.01_announce_user.html">January 2019 Galaxy Release (v 19.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.09_announce.html">September 2018 Galaxy Release (v 18.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.05_announce.html">May 2018 Galaxy Release (v 18.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.01_announce.html">January 2018 Galaxy Release (v 18.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.09_announce.html">September 2017 Galaxy Release (v 17.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.05_announce.html">May 2017 Galaxy Release (v 17.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.01_announce.html">January 2017 Galaxy Release (v 17.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.10_announce.html">October 2016 Galaxy Release (v 16.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.07_announce.html">July 2016 Galaxy Release (v 16.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.04_announce.html">April 2016 Galaxy Release (v 16.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.01_announce.html">January 2016 Galaxy Release (v 16.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.10_announce.html">October 2015 Galaxy Release (v 15.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.07_announce.html">July 2015 Galaxy Release (v 15.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.05_announce.html">May 2015 Galaxy Release (v 15.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.03_announce.html">March 2015 Galaxy Release (v 15.03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.01_announce.html">January 2015 Galaxy Release (v 15.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.10_announce.html">October 2014 Galaxy Release (v 14.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.08_announce.html">August 2014 Galaxy Release (v 14.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.06_announce.html">June 2014 Galaxy Release (v 14.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.04_announce.html">April 2014 Galaxy Release (v 14.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.02_announce.html">February 2014 Galaxy Release (v 14.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.11_announce.html">November 2013 Galaxy Release (v 13.11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.08_announce.html">August 2013 Galaxy Release (v 13.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.06_announce.html">June 2013 Galaxy Release (v 13.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.04_announce.html">April 2013 Galaxy Release (v 13.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.02_announce.html">February 2013 Galaxy Release (v 13.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.01_announce.html">January 2013 Galaxy Release (v 13.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/older_releases.html">Galaxy Releases older than v 13.01</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Admin Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Administration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="python.html">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="framework_dependencies.html">Framework Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">Galaxy Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_logging.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="production.html">Production Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nginx.html">Proxying Galaxy with NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apache.html">Proxying Galaxy with Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scaling.html">Scaling and Load Balancing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cluster.html">Connecting to a Cluster</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Galaxy Job Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tool_panel.html">Tool Panel Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mq.html">Message queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependency_resolvers.html">Dependency Resolvers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="container_resolvers.html">Containers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="container_resolvers.html#other-considerations">Other considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conda_faq.html">Conda for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="db_migration.html">Galaxy Database Schema Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reports.html">Galaxy Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="useful_scripts.html">Scripts &amp; Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrating_to_gunicorn.html">Migrating from uWSGI to Gunicorn and FastAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="special_topics/index.html">Special topics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/ftp.html">Galaxy FTP Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/interactivetools.html">Galaxy InteractiveTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/mulled_containers.html">Containers for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/grt.html">Galactic Radio Telescope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/gtn.html">Galaxy Training Materials Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/job_metrics.html">Job Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/webhooks.html">Galaxy Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/vault.html">Storing secrets in the vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/performance_tracking.html">Galaxy Performance Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/bug_reports.html">Bug Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="special_topics/gdpr_compliance.html">GDPR Compliance</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/index.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dev/schema.html">Galaxy Tool XML File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/api_guidelines.html">API Design Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/build_a_job_runner.html">Build a job runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/finding_and_improving_slow_code.html">Finding and improving slow Galaxy code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_managers.html">Data managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_types.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/faq.html">How Do I…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/writing_tests.html">Writing Tests for Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html">Debugging Galaxy Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html#debugging-tests-that-run-out-of-memory">Debugging tests that run out of memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy.html">Debugging Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy_slurm.html">Debugging Galaxy: Slurm Compute Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/translating.html">Translating the Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/create_point_release.html">Creating Galaxy Point Releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api_doc.html">Galaxy API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/quickstart.html"> Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/api.html"> Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ts_api_doc.html">Tool Shed API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/ts_api.html"> API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../lib/modules.html">Application Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy.html">galaxy package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_ext.html">galaxy_ext package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/galaxy_test.html">galaxy_test package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lib/tool_shed.html">tool_shed package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../project/organization.html">Project Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#procedure-documents">Procedure Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#committers">Committers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#release-branches">Release branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#handling-pull-requests">Handling Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#issue-reporting">Issue Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../project/issues.html">Issue Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#issue-reporting">Issue Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#milestones">Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#labeling-structure">Labeling Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#the-roadmap">The Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#voting">Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#automation">Automation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Galaxy Project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Galaxy Deployment &amp; Administration</a></li>
+      <li class="breadcrumb-item active">Galaxy Job Configuration</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/admin/jobs.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="galaxy-job-configuration">
+<h1>Galaxy Job Configuration<a class="headerlink" href="#galaxy-job-configuration" title="Link to this heading">¶</a></h1>
+<p>By default, jobs in Galaxy are run locally on the server on which the Galaxy application was started.  Many options are available for running Galaxy jobs on other systems, including clusters and other remote resources.</p>
+<p>This document is a reference for the job configuration file. <a class="reference internal" href="cluster.html"><span class="std std-doc">Detailed documentation</span></a> is provided for configuring Galaxy to work with a variety of Distributed Resource Managers (DRMs) such as TORQUE, Grid Engine, LSF, and HTCondor.  Additionally, a wide range of infrastructure decisions and configuration changes should be made when running Galaxy as a production service, as one is likely doing if using a cluster.  It is highly recommended that the <a class="reference internal" href="production.html"><span class="std std-doc">production server documentation</span></a> and <a class="reference internal" href="cluster.html"><span class="std std-doc">cluster configuration documentation</span></a> be read before making changes to the job configuration.</p>
+<p><strong>The most up-to-date details of job configuration features can be found in the <a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy/config/sample/job_conf.sample.yml">job_conf.sample.yml</a> found in the Galaxy distribution.</strong></p>
+<p>Configuration of where to run jobs is performed in the <code class="docutils literal notranslate"><span class="pre">job_conf.yml</span></code> file in <code class="docutils literal notranslate"><span class="pre">$GALAXY_ROOT/config/</span></code>.  The path to the config file can be overridden by setting the value of <code class="docutils literal notranslate"><span class="pre">job_config_file</span></code> in <code class="docutils literal notranslate"><span class="pre">config/galaxy.yml</span></code>.  Sample configurations can be found at <code class="docutils literal notranslate"><span class="pre">config/job_conf.sample.yml</span></code>.  The job configuration file is not required - if it does not exist, a default configuration that runs jobs on the local system (with a maximum of 4 concurrent jobs) will be used. Examples of XML job configuration files are also available in <a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy/config/sample/job_conf.xml.sample_basic">basic</a> and <a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy/config/sample/job_conf.xml.sample_advanced">advanced</a> forms.</p>
+<section id="job-conf-xml-syntax">
+<h2>job_conf.xml Syntax<a class="headerlink" href="#job-conf-xml-syntax" title="Link to this heading">¶</a></h2>
+<p>The root element is <code class="docutils literal notranslate"><span class="pre">&lt;job_conf&gt;</span></code>.</p>
+<section id="job-runner-plugins">
+<h3>Job Runner Plugins<a class="headerlink" href="#job-runner-plugins" title="Link to this heading">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">&lt;plugins&gt;</span></code> collection defines job runner plugins that should be loaded when Galaxy starts.</p>
+<p>This configuration element may define a <code class="docutils literal notranslate"><span class="pre">workers</span></code> parameters which is the default number of worker threads to spawn for doing runner plugin “work”, e.g. doing job preparation, post-processing, and cleanup. The default number of such workers is <code class="docutils literal notranslate"><span class="pre">4</span></code>.</p>
+<p>The collection contains <code class="docutils literal notranslate"><span class="pre">&lt;plugin&gt;</span></code> elements. Each <code class="docutils literal notranslate"><span class="pre">plugin</span></code> element may define the following parameters.</p>
+<dl class="simple myst">
+<dt>id</dt><dd><p><code class="docutils literal notranslate"><span class="pre">id</span></code> of the runner plugin referenced in <code class="docutils literal notranslate"><span class="pre">destination</span></code> configuration elements.</p>
+</dd>
+<dt>type</dt><dd><p>This must be <code class="docutils literal notranslate"><span class="pre">runner</span></code> currently.</p>
+</dd>
+<dt>load</dt><dd><p>Python module containing the plugin, and the class to instantiate.  If no class name is provided, the module must list class names to load in a module-level <code class="docutils literal notranslate"><span class="pre">__all__</span></code> list.
+For example <code class="docutils literal notranslate"><span class="pre">galaxy.jobs.runners.local:LocalJobRunner</span></code>.</p>
+</dd>
+<dt>workers</dt><dd><p>Number of worker threads to start for this plugin only (defaults to the value specified
+on <code class="docutils literal notranslate"><span class="pre">plugins</span></code> configuration).</p>
+</dd>
+</dl>
+</section>
+<section id="job-handlers">
+<h3>Job Handlers<a class="headerlink" href="#job-handlers" title="Link to this heading">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">&lt;handlers&gt;</span></code> configuration elements defines which Galaxy server processes (when <a class="reference internal" href="scaling.html"><span class="std std-doc">running multiple server processes</span></a>) should be used for running jobs, and how to group those processes.</p>
+<p>The handlers configuration may define a <code class="docutils literal notranslate"><span class="pre">default</span></code> attribute. This is the the handler(s) that should be used if no explicit handler is defined for a job. If unset, any untagged handlers will be used by default.</p>
+<p>The collection contains <code class="docutils literal notranslate"><span class="pre">&lt;handler&gt;</span></code> elements.</p>
+<dl class="simple myst">
+<dt>id</dt><dd><p>A server name that should be used to run jobs. Server names are dependent on your application server deployment scenario and are explained in the <a class="reference internal" href="scaling.html#scaling-configuration"><span class="std std-ref">configuration section of the scaling documentation</span></a>.</p>
+</dd>
+<dt>tags</dt><dd><p>A comma-separated set of strings that optional define tags to which this handler belongs.</p>
+</dd>
+</dl>
+</section>
+<section id="job-destinations">
+<h3>Job Destinations<a class="headerlink" href="#job-destinations" title="Link to this heading">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">&lt;destinations&gt;</span></code> collection defines the parameters that should be used to run a job that is sent to the specified destination. This configuration element should define a <code class="docutils literal notranslate"><span class="pre">default</span></code>
+attribute that should be the <code class="docutils literal notranslate"><span class="pre">id</span></code> of the <code class="docutils literal notranslate"><span class="pre">destination</span></code> to used if no explicit destination is defined for a job.</p>
+<p>The collection contains <code class="docutils literal notranslate"><span class="pre">&lt;destination&gt;</span></code>s, which are can be collections or single elements.</p>
+<dl class="simple myst">
+<dt>id</dt><dd><p>Identifier to be referenced in <code class="docutils literal notranslate"><span class="pre">&lt;tool&gt;</span></code> configuration elements in the <code class="docutils literal notranslate"><span class="pre">tools</span></code> section.</p>
+</dd>
+<dt>runner</dt><dd><p>Job runner <code class="docutils literal notranslate"><span class="pre">plugin</span></code> to be used to run jobs sent to this destination.</p>
+</dd>
+<dt>tags</dt><dd><p>Tags to which this destination belongs (for example <code class="docutils literal notranslate"><span class="pre">tags=&quot;longwalltime,bigcluster&quot;</span></code>).</p>
+</dd>
+</dl>
+<p><code class="docutils literal notranslate"><span class="pre">destination</span></code> elements may contain zero or more <code class="docutils literal notranslate"><span class="pre">&lt;param&gt;</span></code>s, which are passed to the destination’s defined runner plugin and interpreted in a way native to that plugin. For details on the parameter specification, see the documentation on <a class="reference internal" href="cluster.html"><span class="std std-doc">Cluster configuration</span></a>.</p>
+</section>
+<section id="environment-modifications">
+<h3>Environment Modifications<a class="headerlink" href="#environment-modifications" title="Link to this heading">¶</a></h3>
+<p>As of the June 2014 release, destinations may contain additional <code class="docutils literal notranslate"><span class="pre">env</span></code> elements to configure the environment for jobs on that resource. These each map to shell commands that will be injected to Galaxy’s job script and executed on the destination resource.</p>
+<dl class="simple myst">
+<dt>id</dt><dd><p>Environment variable to set (in this case text of element is value this is set to
+(e.g. <code class="docutils literal notranslate"><span class="pre">id=&quot;_JAVA_OPTIONS&quot;</span></code>).</p>
+</dd>
+<dt>file</dt><dd><p>Optional path to script File will be sourced to configure environment
+(e.g. <code class="docutils literal notranslate"><span class="pre">file=&quot;/mnt/java_cluster/environment_setup.sh&quot;</span></code>).</p>
+</dd>
+<dt>exec</dt><dd><p>Optional shell command to execute to configure environment
+(e.g. <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">javastuff/2.10</span></code>)</p>
+</dd>
+<dt>raw</dt><dd><p>Disable auto-quoting of values when setting up environment variables.</p>
+</dd>
+</dl>
+<p>Destinations may also specify other destinations (which may be dynamic destinations) that jobs should be resubmitted to if they fail to complete at the first destination for certain reasons. This is done with the <code class="docutils literal notranslate"><span class="pre">&lt;resubmit&gt;</span></code> tag contained within a <code class="docutils literal notranslate"><span class="pre">&lt;destination&gt;</span></code>.</p>
+<dl class="simple myst">
+<dt>condition</dt><dd><p>Failure expression on which to resubmit jobs - this Python expression may contain
+the boolean variables <code class="docutils literal notranslate"><span class="pre">memory_limit_reached</span></code>, <code class="docutils literal notranslate"><span class="pre">walltime_reached</span></code>,
+<code class="docutils literal notranslate"><span class="pre">unknown_error</span></code>, or <code class="docutils literal notranslate"><span class="pre">any_failure</span></code> and the numeric variables <code class="docutils literal notranslate"><span class="pre">seconds_running</span></code>
+and <code class="docutils literal notranslate"><span class="pre">attempt</span></code>. See the <a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/dev/test/integration/resubmission_job_conf.yml">test case configuration</a> for examples of various expressions.</p>
+</dd>
+<dt>handler</dt><dd><p>Job handler(s) that should be used to run jobs for this tool after resubmission.</p>
+</dd>
+<dt>destination</dt><dd><p>Job destination(s) that should be used to run jobs for this tool after resubmission.</p>
+</dd>
+</dl>
+<p><strong>Note:</strong> Currently, failure conditions for memory limits and walltime are only implemented for the <a class="reference internal" href="cluster.html"><span class="std std-doc">Slurm</span></a> job runner plugin. Contributions for other implementations would be greatly appreciated! An example job configuration and an always-fail job runner plugin for development <a class="reference external" href="https://gist.github.com/natefoo/361414fbca3c0ea63aa5">can be found in this gist</a>.</p>
+</section>
+<section id="running-jobs-in-containers">
+<h3>Running jobs in containers<a class="headerlink" href="#running-jobs-in-containers" title="Link to this heading">¶</a></h3>
+<p>Galaxy can be configured to run jobs in container runtimes. Currently the supported runtimes are <a class="reference external" href="https://www.docker.com">Docker</a>, <a class="reference external" href="https://sylabs.io/">Singularity</a> and <a class="reference external" href="https://apptainer.org/">Apptainer</a>. Each <code class="docutils literal notranslate"><span class="pre">&lt;destination&gt;</span></code> can enable container support
+with <code class="docutils literal notranslate"><span class="pre">&lt;param</span> <span class="pre">id=&quot;docker_enabled&quot;&gt;true&lt;/param&gt;</span></code> and/or <code class="docutils literal notranslate"><span class="pre">&lt;param</span> <span class="pre">id=&quot;singularity_enabled&quot;&gt;true&lt;/param&gt;</span></code>, as documented
+in the <a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy/config/sample/job_conf.xml.sample_advanced">advanced sample job_conf.xml</a>.
+In the case of Docker, containers are run using <strong>sudo</strong> unless <code class="docutils literal notranslate"><span class="pre">&lt;param</span> <span class="pre">id=&quot;docker_sudo&quot;&gt;false&lt;/param&gt;</span></code> is specified, thus
+the user that Galaxy runs as should be able to run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">docker</span></code> without a password prompt for Docker containers to
+work.</p>
+<p>The images used for containers can either be specified explicitly in the <code class="docutils literal notranslate"><span class="pre">&lt;destination&gt;</span></code> using the <code class="docutils literal notranslate"><span class="pre">docker_default_container_id</span></code>, <code class="docutils literal notranslate"><span class="pre">docker_container_id_override</span></code>, <code class="docutils literal notranslate"><span class="pre">singularity_default_container_id</span></code> and
+<code class="docutils literal notranslate"><span class="pre">singularity_container_id_override</span></code> parameters, but (perhaps more commonly) the image to use can be derived from the
+<code class="docutils literal notranslate"><span class="pre">&lt;requirements&gt;</span></code> of the Galaxy tool being executed. In the latter case the image is specified either explicitly
+using a <code class="docutils literal notranslate"><span class="pre">&lt;container&gt;</span></code> tag or a mulled (multi package) container is implied for the set
+of packages specified by the tool’s <code class="docutils literal notranslate"><span class="pre">&lt;requirement&gt;</span></code> tags.
+In either case the container to be used is determined using container resolvers that can be specified
+globally for an instance and/or per execution environment, see <a class="reference internal" href="container_resolvers.html#container-resolvers"><span class="std std-ref">Container resolvers</span></a>.</p>
+</section>
+<section id="running-jobs-on-a-kubernetes-cluster-via-pulsar">
+<h3>Running jobs on a Kubernetes cluster via Pulsar<a class="headerlink" href="#running-jobs-on-a-kubernetes-cluster-via-pulsar" title="Link to this heading">¶</a></h3>
+<p>In order to dispatch jobs to a Kubernetes (K8s) cluster via Pulsar,
+Pulsar implements a “two-container” architecture per pod, where
+one container stages job execution environment (<code class="docutils literal notranslate"><span class="pre">pulsar-container</span></code>)
+and another container encompasses tool’s executables (<code class="docutils literal notranslate"><span class="pre">tool-container</span></code>).</p>
+<p>Note that this architecture is experimental and under active development,
+it is increasingly improved and it will soon be production-grade ready.</p>
+<p>In order to setup Galaxy to use the “two-container” architecture, you may
+take the following steps:</p>
+<ol class="arabic simple">
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">galaxy.yml</span></code> set the following attributes:</p></li>
+</ol>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">job_config_file:</span> <span class="pre">job_conf.yml</span></code></p></li>
+<li><p>Appropriately configure <code class="docutils literal notranslate"><span class="pre">galaxy_infrastructure_url</span></code>; for example,
+set it as the following on macOS:
+<code class="docutils literal notranslate"><span class="pre">galaxy_infrastructure_url:</span> <span class="pre">'http://host.docker.internal:$GALAXY_WEB_PORT'</span></code></p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">job_conf.yml</span></code> set the following runners and execution attributes appropriately:</p></li>
+</ol>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">runners</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">local</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">load</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">galaxy.jobs.runners.local:LocalJobRunner</span>
+<span class="w">    </span><span class="nt">workers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">pulsar_k8s</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">load</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">galaxy.jobs.runners.pulsar:PulsarKubernetesJobRunner</span>
+<span class="w">    </span><span class="nt">amqp_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amqp://guest:guest@localhost:5672//</span>
+
+<span class="nt">execution</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pulsar_k8s_environment</span>
+<span class="w">  </span><span class="nt">environments</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">pulsar_k8s_environment</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">k8s_config_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/.kube/config</span>
+<span class="w">      </span><span class="nt">k8s_galaxy_instance_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">any-dns-friendly-random-str</span>
+<span class="w">      </span><span class="nt">k8s_namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<span class="w">      </span><span class="nt">runner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pulsar_k8s</span>
+<span class="w">      </span><span class="nt">docker_enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">docker_default_container_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">busybox:ubuntu-14.04</span>
+<span class="w">      </span><span class="nt">pulsar_app_config</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">message_queue_url</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;amqp://guest:guest@host.docker.internal:5672//&#39;</span>
+<span class="w">    </span><span class="nt">local_environment</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">runner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span>
+</pre></div>
+</div>
+</section>
+<section id="macros">
+<h3>Macros<a class="headerlink" href="#macros" title="Link to this heading">¶</a></h3>
+<p>The job configuration XML file may contain any number of macro definitions using the same
+XML macro syntax used by <a class="reference external" href="https://planemo.readthedocs.io/en/latest/writing_advanced.html#macros-reusable-elements">Galaxy tools</a>.</p>
+<p>See <a class="reference external" href="https://github.com/galaxyproject/galaxy/pull/362">Pull Request #362</a> for implementation details and the <a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy/config/sample/job_conf.xml.sample_advanced">advanced sample job_conf.xml</a> for examples.</p>
+</section>
+</section>
+<section id="mapping-tools-to-destinations">
+<h2>Mapping Tools To Destinations<a class="headerlink" href="#mapping-tools-to-destinations" title="Link to this heading">¶</a></h2>
+<section id="static-destination-mapping">
+<h3>Static Destination Mapping<a class="headerlink" href="#static-destination-mapping" title="Link to this heading">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">&lt;tools&gt;</span></code> collection provides a mapping from tools to a destination (or collection of destinations identified by tag) and handler (or collection of handlers).  Any tools not matching an entry in the collection will use the default handler and default destination as explained above.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">&lt;tools&gt;</span></code> collection has no attributes.</p>
+<p>The collection contains <code class="docutils literal notranslate"><span class="pre">&lt;tool&gt;</span></code>s, which are can be collections or single elements.</p>
+<dl class="simple myst">
+<dt>id</dt><dd><p><code class="docutils literal notranslate"><span class="pre">id</span></code> attribute of a Galaxy tool. Valid forms include the short <code class="docutils literal notranslate"><span class="pre">id</span></code> as found in the Tool’s XML configuration, a full Tool Shed GUID, or a Tool Shed GUID without the version component (for example <code class="docutils literal notranslate"><span class="pre">id=&quot;toolshed.example.org/repos/nate/filter_tool_repo/filter_tool/1.0.0&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">id=&quot;toolshed.example.org/repos/nate/filter_tool_repo/filter_tool&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">id=&quot;filter_tool&quot;</span></code>).</p>
+</dd>
+<dt>handler</dt><dd><p>Job handler(s) that should be used to run jobs for this tool.
+(e.g. <code class="docutils literal notranslate"><span class="pre">handler=&quot;handler0&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">handler=&quot;ngs&quot;</span></code>). This is optional and if unspecified
+will default to the handler specified as the default handler in the job configuration or
+the only job handler if only one is specified.</p>
+</dd>
+<dt>destination</dt><dd><p>Job destination(s) that should be used to run jobs for this tool (e.g. <code class="docutils literal notranslate"><span class="pre">destination=&quot;galaxy_cluster&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">destination=&quot;long_walltime&quot;</span></code>). The is optional
+and defaults the default destination.</p>
+</dd>
+</dl>
+<p>Tool collections contain zero or more <code class="docutils literal notranslate"><span class="pre">&lt;param&gt;</span></code>s, which map to parameters set at job-creation, to allow for assignment of handlers and destinations based on the manner in which the job was created.  Currently, only one parameter is defined - namely <code class="docutils literal notranslate"><span class="pre">source</span></code>.</p>
+<p>The <em>content</em> of the <code class="docutils literal notranslate"><span class="pre">&lt;param</span> <span class="pre">id=&quot;source&quot;&gt;</span></code> tag is the component that created the job.  Currently, only Galaxy’s visualization component sets this job parameter, and its value is <code class="docutils literal notranslate"><span class="pre">trackster</span></code>.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;source&quot;</span><span class="nt">&gt;</span>trackster<span class="nt">&lt;/param&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="dynamic-destination-mapping">
+<h3>Dynamic Destination Mapping<a class="headerlink" href="#dynamic-destination-mapping" title="Link to this heading">¶</a></h3>
+<p>Galaxy has very sophisticated job configuration options that allow different tools to be submitted to queuing systems with various parameters and in most cases this is sufficient. However, sometimes it is necessary to have job execution parameters be determined at runtime based on factors such as the job inputs, user submitting the job, cluster status, etc…  In these cases the dynamic job destination mechanism allows the deployer to describe how the job should be executed using python functions. There are various flavors of dynamic destinations to handle these scenarios.</p>
+<p>The two most generic and useful dynamic destination types are <code class="docutils literal notranslate"><span class="pre">python</span></code> and <code class="docutils literal notranslate"><span class="pre">dtd</span></code>. The <code class="docutils literal notranslate"><span class="pre">python</span></code> type allows arbitrary Python functions to define destinations for jobs, while the DTD method (introduced in Galaxy 16.07) defines rules for routing in a YAML file.</p>
+<section id="dynamic-destination-mapping-dtd-method">
+<h4>Dynamic Destination Mapping (DTD method)<a class="headerlink" href="#dynamic-destination-mapping-dtd-method" title="Link to this heading">¶</a></h4>
+<p>DTD is a special dynamic job destination type that builds up rules given a YAML-based DSL - see <code class="docutils literal notranslate"><span class="pre">config/tool_destinations.yml.sample</span></code> (on <a class="reference external" href="https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy/config/sample/tool_destinations.yml.sample">Github</a>) for a syntax description, examples, and a description of how to validate and debug this file.</p>
+<p>To define and use rules, copy this sample file to <code class="docutils literal notranslate"><span class="pre">config/tool_destinations.yml</span></code> and add your rules. Anything routed with a <code class="docutils literal notranslate"><span class="pre">dynamic</span></code> runner of type <code class="docutils literal notranslate"><span class="pre">dtd</span></code> will then use this file (such as the destination defined with the following XML block in <code class="docutils literal notranslate"><span class="pre">job_conf.xml</span></code>).</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="nt">&lt;destination</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;dtd_destination&quot;</span><span class="w"> </span><span class="na">runner=</span><span class="s">&quot;dynamic&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;type&quot;</span><span class="nt">&gt;</span>dtd<span class="nt">&lt;/param&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/destination&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="dynamic-destination-mapping-python-method">
+<h4>Dynamic Destination Mapping (Python method)<a class="headerlink" href="#dynamic-destination-mapping-python-method" title="Link to this heading">¶</a></h4>
+<p>The simplest way to get started with dynamic job destinations is to first create a dynamic job destination in <code class="docutils literal notranslate"><span class="pre">job_conf.xml</span></code>’s <code class="docutils literal notranslate"><span class="pre">&lt;destinations&gt;</span></code> section:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="nt">&lt;destination</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;blast&quot;</span><span class="w"> </span><span class="na">runner=</span><span class="s">&quot;dynamic&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;type&quot;</span><span class="nt">&gt;</span>python<span class="nt">&lt;/param&gt;</span>
+<span class="w">      </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;function&quot;</span><span class="nt">&gt;</span>ncbi_blastn_wrapper<span class="nt">&lt;/param&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/destination&gt;</span>
+</pre></div>
+</div>
+<p>Note that any parameters defined on dynamic destinations are only available to the function. If your function dispatches to a static destination, parameters are not propagated automatically.</p>
+<p>Next for any tool one wants to dynamically assign job destinations for, this <code class="docutils literal notranslate"><span class="pre">blast</span></code> dynamic destination must be specified in the <code class="docutils literal notranslate"><span class="pre">job_conf.xml</span></code>’s <code class="docutils literal notranslate"><span class="pre">&lt;tools&gt;</span></code> section:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="nt">&lt;tool</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;ncbi_blastn_wrapper&quot;</span><span class="w"> </span><span class="na">destination=</span><span class="s">&quot;blast&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>Finally, you will need to define a function that describes how <code class="docutils literal notranslate"><span class="pre">ncbi_blastn_wrapper</span></code> should be executed. To do this, one must create a python source file in <code class="docutils literal notranslate"><span class="pre">lib/galaxy/jobs/rules</span></code>, for instance <code class="docutils literal notranslate"><span class="pre">destinations.py</span></code> (though the name of this file is largely unimportant, one can distribute any number of functions across any number of files and they will be automatically detected by Galaxy).</p>
+<p>So open <code class="docutils literal notranslate"><span class="pre">lib/galaxy/jobs/rules/destinations.py</span></code> and define a <code class="docutils literal notranslate"><span class="pre">ncbi_blastn_wrapper</span></code> function. A couple possible examples may be:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">galaxy.jobs</span> <span class="kn">import</span> <span class="n">JobDestination</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">def</span> <span class="nf">ncbi_blastn_wrapper</span><span class="p">(</span><span class="n">job</span><span class="p">):</span>
+    <span class="c1"># Allocate extra time</span>
+    <span class="n">inp_data</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span> <span class="p">[</span> <span class="p">(</span> <span class="n">da</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">da</span><span class="o">.</span><span class="n">dataset</span> <span class="p">)</span> <span class="k">for</span> <span class="n">da</span> <span class="ow">in</span> <span class="n">job</span><span class="o">.</span><span class="n">input_datasets</span> <span class="p">]</span> <span class="p">)</span>
+    <span class="n">inp_data</span><span class="o">.</span><span class="n">update</span><span class="p">(</span> <span class="p">[</span> <span class="p">(</span> <span class="n">da</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">da</span><span class="o">.</span><span class="n">dataset</span> <span class="p">)</span> <span class="k">for</span> <span class="n">da</span> <span class="ow">in</span> <span class="n">job</span><span class="o">.</span><span class="n">input_library_datasets</span> <span class="p">]</span> <span class="p">)</span>
+    <span class="n">query_file</span> <span class="o">=</span> <span class="n">inp_data</span><span class="p">[</span> <span class="s2">&quot;query&quot;</span> <span class="p">]</span><span class="o">.</span><span class="n">file_name</span>
+    <span class="n">query_size</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span> <span class="n">query_file</span> <span class="p">)</span>
+    <span class="k">if</span> <span class="n">query_size</span> <span class="o">&gt;</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">:</span>
+        <span class="n">walltime_str</span> <span class="o">=</span> <span class="s2">&quot;walltime=24:00:00/&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">walltime_str</span> <span class="o">=</span> <span class="s2">&quot;walltime=12:00:00/&quot;</span>
+    <span class="k">return</span> <span class="n">JobDestination</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;ncbi_blastn_wrapper&quot;</span><span class="p">,</span> <span class="n">runner</span><span class="o">=</span><span class="s2">&quot;pbs&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Resource_List&quot;</span><span class="p">:</span> <span class="n">walltime_str</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">galaxy.jobs</span> <span class="kn">import</span> <span class="n">JobDestination</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">def</span> <span class="nf">ncbi_blastn_wrapper</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">user_email</span><span class="p">):</span>
+     <span class="c1"># Assign admin users&#39; jobs to special admin_project.</span>
+     <span class="n">admin_users</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span> <span class="s2">&quot;admin_users&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span> <span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span> <span class="s2">&quot;,&quot;</span> <span class="p">)</span>
+     <span class="n">params</span> <span class="o">=</span> <span class="p">{}</span>
+     <span class="k">if</span> <span class="n">user_email</span> <span class="ow">in</span> <span class="n">admin_users</span><span class="p">:</span>
+         <span class="n">params</span><span class="p">[</span><span class="s2">&quot;nativeSpecification&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;-P bigNodes&quot;</span>
+    <span class="k">return</span> <span class="n">JobDestination</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;ncbi_blastn_wrapper&quot;</span><span class="p">,</span> <span class="n">runner</span><span class="o">=</span><span class="s2">&quot;drmaa&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The first example above delegates to the PBS job runner and allocates extra walltime for larger input files (based on tool input parameter named <code class="docutils literal notranslate"><span class="pre">query</span></code>). The second example delegates to the DRMAA job runner and assigns users in the in the admin list to a special project (perhaps configured to have a higher priority or extended walltime).</p>
+<p>The above examples demonstrate that the dynamic job destination framework will pass in the arguments to your function that are needed based on the argument names. The valid argument names at this time are:</p>
+<dl class="simple myst">
+<dt><code class="docutils literal notranslate"><span class="pre">app</span></code></dt><dd><p>Global Galaxy application object, has attributes such as config (the configuration parameters loaded from <code class="docutils literal notranslate"><span class="pre">config/galaxy.yml</span></code>) and <code class="docutils literal notranslate"><span class="pre">job_config</span></code> (Galaxy representation of the data loaded in from <code class="docutils literal notranslate"><span class="pre">job_conf.xml</span></code>).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">user_email</span></code></dt><dd><p>E-mail of user submitting this job.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">user</span></code></dt><dd><p>Galaxy model object for user submitting this job.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">job</span></code></dt><dd><p>Galaxy model object for submitted job, see the above example for how input information can be derived from this.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">job_wrapper</span></code></dt><dd><p>An object meant a higher level utility for reasoning about jobs than <code class="docutils literal notranslate"><span class="pre">job</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">tool</span></code></dt><dd><p>Tool object corresponding to this job.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">tool_id</span></code></dt><dd><p>ID of the tool corresponding to this job</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">rule_helper</span></code></dt><dd><p>Utility object with methods designed to allow job rules to interface cleanly with the rest of Galaxy and shield them from low-level details of models, metrics, etc….</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">resource_params</span></code></dt><dd><p>A dictionary of parameters specified by the user using <code class="docutils literal notranslate"><span class="pre">job_resource_params_conf.xml</span></code> (if configured).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">workflow_invocation_uuid</span></code></dt><dd><p>A randomly generated UUID for the workflow invocation generating this job - this can be
+useful for instance in routing all the jobs in the same workflow to one resource.</p>
+</dd>
+</dl>
+<p>Also available though less likely useful are <code class="docutils literal notranslate"><span class="pre">job_id</span></code>.</p>
+<p>The above examples demonstrated mapping one tool to one function. Multiple tools may be mapped to the same function, by specifying a function the the dynamic destination:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="nt">&lt;destination</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;blast_dynamic&quot;</span><span class="w"> </span><span class="na">runner=</span><span class="s">&quot;dynamic&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;type&quot;</span><span class="nt">&gt;</span>python<span class="nt">&lt;/param&gt;</span>
+<span class="w">      </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;function&quot;</span><span class="nt">&gt;</span>blast_dest<span class="nt">&lt;/param&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/destination&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="nt">&lt;tool</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;ncbi_blastn_wrapper&quot;</span><span class="w"> </span><span class="na">destination=</span><span class="s">&quot;blast_dynamic&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;tool</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;ncbi_blastp_wrapper&quot;</span><span class="w"> </span><span class="na">destination=</span><span class="s">&quot;blast_dynamic&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;tool</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;ncbi_tblastn_wrapper&quot;</span><span class="w"> </span><span class="na">destination=</span><span class="s">&quot;blast_dynamic&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>In this case, you would need to define a function named <code class="docutils literal notranslate"><span class="pre">blast_dest</span></code> in your python rules file and it would be called for all three tools. In cases like this, it may make sense to take in <code class="docutils literal notranslate"><span class="pre">tool_id</span></code> or <code class="docutils literal notranslate"><span class="pre">tool</span></code> as argument to factor the actual tool being used into your decision.</p>
+<p>As a natural extension to this, a dynamic job runner can be used as the default destination. The below examples demonstrate this and other features such as returning mapping failure messages to your users and defaulting back to existing static destinations defined in <code class="docutils literal notranslate"><span class="pre">job_conf.xml</span></code>.</p>
+<section id="additional-dynamic-job-destination-examples">
+<h5>Additional Dynamic Job Destination Examples<a class="headerlink" href="#additional-dynamic-job-destination-examples" title="Link to this heading">¶</a></h5>
+<p>The following example assumes the existence of a job destination with ids <code class="docutils literal notranslate"><span class="pre">short_pbs</span></code> and <code class="docutils literal notranslate"><span class="pre">long_pbs</span></code> and that a default dynamic job runner has been defined as follows in <code class="docutils literal notranslate"><span class="pre">job_conf.xml</span></code>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="nt">&lt;destinations</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;dynamic&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;destination</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;dynamic&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;type&quot;</span><span class="nt">&gt;</span>python<span class="nt">&lt;/param&gt;</span>
+<span class="w">      </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;function&quot;</span><span class="nt">&gt;</span>default_runner<span class="nt">&lt;/param&gt;</span>
+<span class="w">    </span><span class="nt">&lt;destination&gt;</span>
+<span class="w">    </span>...
+</pre></div>
+</div>
+<p>With these if place, the following <code class="docutils literal notranslate"><span class="pre">default_runner</span></code> rule function will route all tools with id containing <code class="docutils literal notranslate"><span class="pre">mothur</span></code> to the <code class="docutils literal notranslate"><span class="pre">long_pbs</span></code> destination defined <code class="docutils literal notranslate"><span class="pre">jobs_conf.xml</span></code> and all other tools to the <code class="docutils literal notranslate"><span class="pre">short_pbs</span></code> destination:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">default_runner</span><span class="p">(</span><span class="n">tool_id</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s1">&#39;mothur&#39;</span> <span class="ow">in</span> <span class="n">tool_id</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;long_pbs&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;short_pbs&#39;</span>
+</pre></div>
+</div>
+<p>As another example, assume that a few tools should be only accessible to developers and all other users should receive a message indicating they are not authorized to use this tool. This can be accomplished with the following <code class="docutils literal notranslate"><span class="pre">job_conf.xml</span></code> fragment</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="nt">&lt;destinations</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;dynamic&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;destination</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;dev_dynamic&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;type&quot;</span><span class="nt">&gt;</span>python<span class="nt">&lt;/param&gt;</span>
+<span class="w">      </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;function&quot;</span><span class="nt">&gt;</span>dev_only<span class="nt">&lt;/param&gt;</span>
+<span class="w">    </span><span class="nt">&lt;destination&gt;</span>
+<span class="w">    </span>...
+<span class="w">  </span><span class="nt">&lt;tools&gt;</span>
+<span class="w">    </span><span class="nt">&lt;tool</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;test1&quot;</span><span class="w"> </span><span class="na">destination=</span><span class="s">&quot;dev_dynamic&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;tool</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;test2&quot;</span><span class="w"> </span><span class="na">destination=</span><span class="s">&quot;dev_dynamic&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span>...
+</pre></div>
+</div>
+<p>Coupled with placing the following function in a rules file.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">galaxy.jobs.mapper</span> <span class="kn">import</span> <span class="n">JobMappingException</span>
+<span class="kn">from</span> <span class="nn">galaxy.jobs</span> <span class="kn">import</span> <span class="n">JobDestination</span>
+<span class="n">DEV_EMAILS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;mary@example.com&quot;</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">dev_only</span><span class="p">(</span><span class="n">user_email</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">user_email</span> <span class="ow">in</span> <span class="n">DEV_EMAILS</span>
+       <span class="k">return</span> <span class="n">JobDestination</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;dev_only&quot;</span><span class="p">,</span> <span class="n">runner</span><span class="o">=</span><span class="s2">&quot;drmaa&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+       <span class="k">raise</span> <span class="n">JobMappingException</span><span class="p">(</span><span class="s2">&quot;This tool is under development and you are not authorized to it.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>There is an additional page on <a class="reference external" href="https://galaxyproject.org/admin/config/access-control/">Access Control</a> for those interested.</p>
+</section>
+<section id="additional-tricks">
+<h5>Additional Tricks<a class="headerlink" href="#additional-tricks" title="Link to this heading">¶</a></h5>
+<p>If one would like to tweak existing static job destinations in just one or two parameters, the following idiom can be used to fetch static JobDestination objects from Galaxy in these rule methods - <code class="docutils literal notranslate"><span class="pre">dest</span> <span class="pre">=</span> <span class="pre">app.job_config.get_destination(</span> <span class="pre">id_or_tag</span> <span class="pre">)</span></code>.</p>
+</section>
+</section>
+</section>
+</section>
+<section id="limiting-job-resource-usage">
+<h2>Limiting Job Resource Usage<a class="headerlink" href="#limiting-job-resource-usage" title="Link to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">&lt;limits&gt;</span></code> collection defines the number of concurrent jobs users can run, output size limits, and a Galaxy-specific limit on the maximum amount of time a job can run (rather than relying on a DRM’s time-limiting feature).  This replaces the former <code class="docutils literal notranslate"><span class="pre">job_walltime</span></code>, <code class="docutils literal notranslate"><span class="pre">output_size_limit</span></code>, <code class="docutils literal notranslate"><span class="pre">registered_user_job_limit</span></code>, <code class="docutils literal notranslate"><span class="pre">anonymous_user_job_limit</span></code> configuration parameters, as well as the (mostly broken) <code class="docutils literal notranslate"><span class="pre">[galaxy:job_limits]</span></code> section.</p>
+<p><em>NB: The <code class="docutils literal notranslate"><span class="pre">job_walltime</span></code> and <code class="docutils literal notranslate"><span class="pre">output_size</span></code> limits are only implemented in the <code class="docutils literal notranslate"><span class="pre">local</span></code> and <code class="docutils literal notranslate"><span class="pre">pbs</span></code> job runner plugins.  Implementation in other runners is likely to be fairly easy and would simply require a bit of testing - we would gladly accept a pull request implementing these features in the other provided runner plugins.</em></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">&lt;limits&gt;</span></code> collection has no attributes.</p>
+<p>The collection contains <code class="docutils literal notranslate"><span class="pre">&lt;limit&gt;</span></code>s, which have different meanings based on their required <code class="docutils literal notranslate"><span class="pre">type</span></code> attribute:</p>
+<dl class="simple myst">
+<dt><code class="docutils literal notranslate"><span class="pre">type</span></code></dt><dd><p>Type of limit to define - one of <code class="docutils literal notranslate"><span class="pre">registered_user_concurrent_jobs</span></code>, <code class="docutils literal notranslate"><span class="pre">anonymous_user_concurrent_jobs</span></code>, <code class="docutils literal notranslate"><span class="pre">destination_user_concurrent_jobs</span></code>, <code class="docutils literal notranslate"><span class="pre">destination_total_concurrent_jobs</span></code>, <code class="docutils literal notranslate"><span class="pre">walltime</span></code>, and <code class="docutils literal notranslate"><span class="pre">output_size</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">id</span></code></dt><dd><p>Optional destination on which to apply limit (for <code class="docutils literal notranslate"><span class="pre">destination_user_concurrent_jobs</span></code> and <code class="docutils literal notranslate"><span class="pre">destination_total_concurrent_jobs</span></code> types only) (e.g. <code class="docutils literal notranslate"><span class="pre">id=&quot;galaxy_cluster&quot;</span></code>).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">tag</span></code></dt><dd><p>Optional destinations on which to apply limit (for <code class="docutils literal notranslate"><span class="pre">destination_user_concurrent_jobs</span></code> and <code class="docutils literal notranslate"><span class="pre">destination_total_concurrent_jobs</span></code> types only).</p>
+</dd>
+</dl>
+<p>If a limit tag is defined, its value must be set.  If the limit tag is not defined, the default for each type is unlimited.  The syntax for the available <code class="docutils literal notranslate"><span class="pre">type</span></code>s are:</p>
+<dl class="simple myst">
+<dt><code class="docutils literal notranslate"><span class="pre">registered_user_concurrent_jobs</span></code></dt><dd><p>Limit on the number of jobs a user with a registered Galaxy account can have active across all destinations.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">anonymous_user_concurrent_jobs</span></code></dt><dd><p>Limit on the number of jobs an unregistered/anonymous user can have active across all destinations.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">destination_user_concurrent_jobs</span></code></dt><dd><p>The number of jobs a user can have active in the specified destination, or across all destinations identified by the specified tag.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">destination_total_concurrent_jobs</span></code></dt><dd><p>The number of jobs that can be active in the specified destination (or across all destinations identified by the specified tag) by any/all users.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">walltime</span></code></dt><dd><p>Amount of time a job can run (in any destination) before it will be terminated by Galaxy.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">total_walltime</span></code></dt><dd><p>Total walltime that jobs may not exceed during a set period. If total walltime of finished
+jobs exceeds this value, any new jobs are paused. This limit should include a <code class="docutils literal notranslate"><span class="pre">window</span></code>
+attribute that is the number in days representing the period.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">output_size</span></code></dt><dd><p>Size that any defined tool output can grow to before the job will be terminated. This does not include temporary files created by the job (e.g. <code class="docutils literal notranslate"><span class="pre">53687091200</span></code> for 50 GB).</p>
+</dd>
+</dl>
+<p>The concept of “across all destinations” is used because Galaxy allows users to run jobs across any number of local or remote (cluster) resources.  A user may always queue an unlimited number of jobs in Galaxy’s internal job queue.  The concurrency limits apply to jobs that have been dispatched and are in the <code class="docutils literal notranslate"><span class="pre">queued</span></code> or <code class="docutils literal notranslate"><span class="pre">running</span></code> states.  These limits prevent users from monopolizing the resources Galaxy runs on by, for example, preventing a single user from submitting more long-running jobs than Galaxy has cluster slots to run and subsequently blocking all Galaxy jobs from running for any other user.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cluster.html" class="btn btn-neutral float-left" title="Connecting to a Cluster" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="authentication.html" class="btn btn-neutral float-right" title="Authentication" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Galaxy Committers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

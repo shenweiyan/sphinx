@@ -1,0 +1,604 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>galaxy.datatypes package &mdash; Galaxy Project 23.1.5.dev0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+
+  
+    <link rel="canonical" href="https://docs.galaxyproject.org/en/master/lib/galaxy.datatypes.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=da3e81e8"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="galaxy.datatypes.converters package" href="galaxy.datatypes.converters.html" />
+    <link rel="prev" title="galaxy.config package" href="galaxy.config.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Galaxy Project
+          </a>
+              <div class="version">
+                23.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../releases/index.html">Releases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.1_announce_user.html">June 2023 Galaxy Release (v 23.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/23.0_announce_user.html">2023 Galaxy Release (v 23.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.05_announce_user.html">May 2022 Galaxy Release (v 22.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/22.01_announce_user.html">January 2022 Galaxy Release (v 22.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.09_announce_user.html">September 2021 Galaxy Release (v 21.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.05_announce_user.html">May 2021 Galaxy Release (v 21.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/21.01_announce_user.html">January 2021 Galaxy Release (v 21.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.09_announce_user.html">September 2020 Galaxy Release (v 20.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.05_announce_user.html">May 2020 Galaxy Release (v 20.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/20.01_announce_user.html">January 2020 Galaxy Release (v 20.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.09_announce_user.html">September 2019 Galaxy Release (v 19.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.05_announce_user.html">May 2019 Galaxy Release (v 19.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/19.01_announce_user.html">January 2019 Galaxy Release (v 19.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.09_announce.html">September 2018 Galaxy Release (v 18.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.05_announce.html">May 2018 Galaxy Release (v 18.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/18.01_announce.html">January 2018 Galaxy Release (v 18.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.09_announce.html">September 2017 Galaxy Release (v 17.09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.05_announce.html">May 2017 Galaxy Release (v 17.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/17.01_announce.html">January 2017 Galaxy Release (v 17.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.10_announce.html">October 2016 Galaxy Release (v 16.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.07_announce.html">July 2016 Galaxy Release (v 16.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.04_announce.html">April 2016 Galaxy Release (v 16.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/16.01_announce.html">January 2016 Galaxy Release (v 16.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.10_announce.html">October 2015 Galaxy Release (v 15.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.07_announce.html">July 2015 Galaxy Release (v 15.07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.05_announce.html">May 2015 Galaxy Release (v 15.05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.03_announce.html">March 2015 Galaxy Release (v 15.03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/15.01_announce.html">January 2015 Galaxy Release (v 15.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.10_announce.html">October 2014 Galaxy Release (v 14.10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.08_announce.html">August 2014 Galaxy Release (v 14.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.06_announce.html">June 2014 Galaxy Release (v 14.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.04_announce.html">April 2014 Galaxy Release (v 14.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/14.02_announce.html">February 2014 Galaxy Release (v 14.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.11_announce.html">November 2013 Galaxy Release (v 13.11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.08_announce.html">August 2013 Galaxy Release (v 13.08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.06_announce.html">June 2013 Galaxy Release (v 13.06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.04_announce.html">April 2013 Galaxy Release (v 13.04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.02_announce.html">February 2013 Galaxy Release (v 13.02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/13.01_announce.html">January 2013 Galaxy Release (v 13.01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../releases/older_releases.html">Galaxy Releases older than v 13.01</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Admin Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../admin/index.html">Administration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../admin/python.html">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/framework_dependencies.html">Framework Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/config.html">Galaxy Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/config_logging.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/production.html">Production Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/security.html">Security considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/nginx.html">Proxying Galaxy with NGINX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/apache.html">Proxying Galaxy with Apache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/scaling.html">Scaling and Load Balancing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/cluster.html">Connecting to a Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/jobs.html">Galaxy Job Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/tool_panel.html">Tool Panel Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/mq.html">Message queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/dependency_resolvers.html">Dependency Resolvers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/container_resolvers.html">Containers in Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/container_resolvers.html#other-considerations">Other considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/conda_faq.html">Conda for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/db_migration.html">Galaxy Database Schema Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/reports.html">Galaxy Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/useful_scripts.html">Scripts &amp; Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/options.html">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/migrating_to_gunicorn.html">Migrating from uWSGI to Gunicorn and FastAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/special_topics/index.html">Special topics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/ftp.html">Galaxy FTP Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/interactivetools.html">Galaxy InteractiveTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/mulled_containers.html">Containers for Tool Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/grt.html">Galactic Radio Telescope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/gtn.html">Galaxy Training Materials Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/job_metrics.html">Job Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/webhooks.html">Galaxy Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/vault.html">Storing secrets in the vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/performance_tracking.html">Galaxy Performance Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/bug_reports.html">Bug Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../admin/special_topics/gdpr_compliance.html">GDPR Compliance</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../dev/index.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dev/schema.html">Galaxy Tool XML File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/api_guidelines.html">API Design Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/build_a_job_runner.html">Build a job runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/finding_and_improving_slow_code.html">Finding and improving slow Galaxy code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_managers.html">Data managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/data_types.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/faq.html">How Do I…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/writing_tests.html">Writing Tests for Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html">Debugging Galaxy Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_tests.html#debugging-tests-that-run-out-of-memory">Debugging tests that run out of memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy.html">Debugging Galaxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/debugging_galaxy_slurm.html">Debugging Galaxy: Slurm Compute Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/translating.html">Translating the Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/create_point_release.html">Creating Galaxy Point Releases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api_doc.html">Galaxy API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/quickstart.html"> Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/api.html"> Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ts_api_doc.html">Tool Shed API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/ts_api.html"> API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Application Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="galaxy.html">galaxy package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy_ext.html">galaxy_ext package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy_test.html">galaxy_test package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tool_shed.html">tool_shed package</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../project/organization.html">Project Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#procedure-documents">Procedure Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#committers">Committers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#release-branches">Release branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#handling-pull-requests">Handling Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/organization.html#issue-reporting">Issue Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../project/issues.html">Issue Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#issue-reporting">Issue Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#milestones">Milestones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#labeling-structure">Labeling Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#the-roadmap">The Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#voting">Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/issues.html#automation">Automation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Galaxy Project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">lib</a></li>
+          <li class="breadcrumb-item"><a href="galaxy.html">galaxy package</a></li>
+      <li class="breadcrumb-item active">galaxy.datatypes package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/lib/galaxy.datatypes.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-galaxy.datatypes">
+<span id="galaxy-datatypes-package"></span><h1>galaxy.datatypes package<a class="headerlink" href="#module-galaxy.datatypes" title="Link to this heading">¶</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="galaxy.datatypes.converters.html">galaxy.datatypes.converters package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.converters.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.converters.html#module-galaxy.datatypes.converters.bed_to_gff_converter">galaxy.datatypes.converters.bed_to_gff_converter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy-datatypes-converters-bgzip-module">galaxy.datatypes.converters.bgzip module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy-datatypes-converters-cram-to-bam-module">galaxy.datatypes.converters.cram_to_bam module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.converters.html#module-galaxy.datatypes.converters.fasta_to_len">galaxy.datatypes.converters.fasta_to_len module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy.datatypes.converters.fasta_to_len.compute_fasta_length"><code class="docutils literal notranslate"><span class="pre">compute_fasta_length()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.converters.html#module-galaxy.datatypes.converters.fasta_to_tabular_converter">galaxy.datatypes.converters.fasta_to_tabular_converter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy-datatypes-converters-fastq-to-fqtoc-module">galaxy.datatypes.converters.fastq_to_fqtoc module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.converters.html#module-galaxy.datatypes.converters.fastqsolexa_to_fasta_converter">galaxy.datatypes.converters.fastqsolexa_to_fasta_converter module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy.datatypes.converters.fastqsolexa_to_fasta_converter.stop_err"><code class="docutils literal notranslate"><span class="pre">stop_err()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.converters.html#module-galaxy.datatypes.converters.fastqsolexa_to_qual_converter">galaxy.datatypes.converters.fastqsolexa_to_qual_converter module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy.datatypes.converters.fastqsolexa_to_qual_converter.stop_err"><code class="docutils literal notranslate"><span class="pre">stop_err()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.converters.html#module-galaxy.datatypes.converters.gff_to_bed_converter">galaxy.datatypes.converters.gff_to_bed_converter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy-datatypes-converters-gff-to-interval-index-converter-module">galaxy.datatypes.converters.gff_to_interval_index_converter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy-datatypes-converters-interval-to-bed-converter-module">galaxy.datatypes.converters.interval_to_bed_converter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy-datatypes-converters-interval-to-bedstrict-converter-module">galaxy.datatypes.converters.interval_to_bedstrict_converter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy-datatypes-converters-interval-to-fli-module">galaxy.datatypes.converters.interval_to_fli module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy-datatypes-converters-interval-to-interval-index-converter-module">galaxy.datatypes.converters.interval_to_interval_index_converter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy-datatypes-converters-interval-to-tabix-converter-module">galaxy.datatypes.converters.interval_to_tabix_converter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.converters.html#module-galaxy.datatypes.converters.lped_to_fped_converter">galaxy.datatypes.converters.lped_to_fped_converter module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy.datatypes.converters.lped_to_fped_converter.timenow"><code class="docutils literal notranslate"><span class="pre">timenow()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy.datatypes.converters.lped_to_fped_converter.rgConv"><code class="docutils literal notranslate"><span class="pre">rgConv()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy.datatypes.converters.lped_to_fped_converter.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.converters.html#module-galaxy.datatypes.converters.lped_to_pbed_converter">galaxy.datatypes.converters.lped_to_pbed_converter module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy.datatypes.converters.lped_to_pbed_converter.timenow"><code class="docutils literal notranslate"><span class="pre">timenow()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy.datatypes.converters.lped_to_pbed_converter.getMissval"><code class="docutils literal notranslate"><span class="pre">getMissval()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy.datatypes.converters.lped_to_pbed_converter.rgConv"><code class="docutils literal notranslate"><span class="pre">rgConv()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy.datatypes.converters.lped_to_pbed_converter.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy-datatypes-converters-maf-to-fasta-converter-module">galaxy.datatypes.converters.maf_to_fasta_converter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy-datatypes-converters-maf-to-interval-converter-module">galaxy.datatypes.converters.maf_to_interval_converter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.converters.html#module-galaxy.datatypes.converters.parquet_to_csv_converter">galaxy.datatypes.converters.parquet_to_csv_converter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.converters.html#module-galaxy.datatypes.converters.pbed_ldreduced_converter">galaxy.datatypes.converters.pbed_ldreduced_converter module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy.datatypes.converters.pbed_ldreduced_converter.timenow"><code class="docutils literal notranslate"><span class="pre">timenow()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy.datatypes.converters.pbed_ldreduced_converter.pruneLD"><code class="docutils literal notranslate"><span class="pre">pruneLD()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy.datatypes.converters.pbed_ldreduced_converter.makeLDreduced"><code class="docutils literal notranslate"><span class="pre">makeLDreduced()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy.datatypes.converters.pbed_ldreduced_converter.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.converters.html#module-galaxy.datatypes.converters.pbed_to_lped_converter">galaxy.datatypes.converters.pbed_to_lped_converter module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy.datatypes.converters.pbed_to_lped_converter.timenow"><code class="docutils literal notranslate"><span class="pre">timenow()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy.datatypes.converters.pbed_to_lped_converter.rgConv"><code class="docutils literal notranslate"><span class="pre">rgConv()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy.datatypes.converters.pbed_to_lped_converter.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.converters.html#module-galaxy.datatypes.converters.picard_interval_list_to_bed6_converter">galaxy.datatypes.converters.picard_interval_list_to_bed6_converter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy-datatypes-converters-pileup-to-interval-index-converter-module">galaxy.datatypes.converters.pileup_to_interval_index_converter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.converters.html#module-galaxy.datatypes.converters.ref_to_seq_taxonomy_converter">galaxy.datatypes.converters.ref_to_seq_taxonomy_converter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.converters.html#module-galaxy.datatypes.converters.tabular_csv">galaxy.datatypes.converters.tabular_csv module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy.datatypes.converters.tabular_csv.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy.datatypes.converters.tabular_csv.convert_to_tsv"><code class="docutils literal notranslate"><span class="pre">convert_to_tsv()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy.datatypes.converters.tabular_csv.convert_to_csv"><code class="docutils literal notranslate"><span class="pre">convert_to_csv()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy-datatypes-converters-tabular-to-dbnsfp-module">galaxy.datatypes.converters.tabular_to_dbnsfp module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy-datatypes-converters-vcf-to-interval-index-converter-module">galaxy.datatypes.converters.vcf_to_interval_index_converter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy-datatypes-converters-vcf-to-vcf-bgzip-module">galaxy.datatypes.converters.vcf_to_vcf_bgzip module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.converters.html#galaxy-datatypes-converters-wiggle-to-simple-converter-module">galaxy.datatypes.converters.wiggle_to_simple_converter module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="galaxy.datatypes.dataproviders.html">galaxy.datatypes.dataproviders package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#module-galaxy.datatypes.dataproviders.base">galaxy.datatypes.dataproviders.base module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.base.HasSettings"><code class="docutils literal notranslate"><span class="pre">HasSettings</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.base.DataProvider"><code class="docutils literal notranslate"><span class="pre">DataProvider</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.base.DataProvider.settings"><code class="docutils literal notranslate"><span class="pre">DataProvider.settings</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.base.DataProvider.__init__"><code class="docutils literal notranslate"><span class="pre">DataProvider.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.base.DataProvider.validate_source"><code class="docutils literal notranslate"><span class="pre">DataProvider.validate_source()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.base.DataProvider.truncate"><code class="docutils literal notranslate"><span class="pre">DataProvider.truncate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.base.DataProvider.write"><code class="docutils literal notranslate"><span class="pre">DataProvider.write()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.base.DataProvider.writelines"><code class="docutils literal notranslate"><span class="pre">DataProvider.writelines()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.base.DataProvider.readlines"><code class="docutils literal notranslate"><span class="pre">DataProvider.readlines()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.base.FilteredDataProvider"><code class="docutils literal notranslate"><span class="pre">FilteredDataProvider</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.base.FilteredDataProvider.__init__"><code class="docutils literal notranslate"><span class="pre">FilteredDataProvider.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.base.FilteredDataProvider.filter"><code class="docutils literal notranslate"><span class="pre">FilteredDataProvider.filter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.base.FilteredDataProvider.settings"><code class="docutils literal notranslate"><span class="pre">FilteredDataProvider.settings</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.base.LimitedOffsetDataProvider"><code class="docutils literal notranslate"><span class="pre">LimitedOffsetDataProvider</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.base.LimitedOffsetDataProvider.settings"><code class="docutils literal notranslate"><span class="pre">LimitedOffsetDataProvider.settings</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.base.LimitedOffsetDataProvider.__init__"><code class="docutils literal notranslate"><span class="pre">LimitedOffsetDataProvider.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.base.MultiSourceDataProvider"><code class="docutils literal notranslate"><span class="pre">MultiSourceDataProvider</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.base.MultiSourceDataProvider.__init__"><code class="docutils literal notranslate"><span class="pre">MultiSourceDataProvider.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.base.MultiSourceDataProvider.settings"><code class="docutils literal notranslate"><span class="pre">MultiSourceDataProvider.settings</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#module-galaxy.datatypes.dataproviders.chunk">galaxy.datatypes.dataproviders.chunk module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.chunk.ChunkDataProvider"><code class="docutils literal notranslate"><span class="pre">ChunkDataProvider</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.chunk.ChunkDataProvider.MAX_CHUNK_SIZE"><code class="docutils literal notranslate"><span class="pre">ChunkDataProvider.MAX_CHUNK_SIZE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.chunk.ChunkDataProvider.DEFAULT_CHUNK_SIZE"><code class="docutils literal notranslate"><span class="pre">ChunkDataProvider.DEFAULT_CHUNK_SIZE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.chunk.ChunkDataProvider.settings"><code class="docutils literal notranslate"><span class="pre">ChunkDataProvider.settings</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.chunk.ChunkDataProvider.__init__"><code class="docutils literal notranslate"><span class="pre">ChunkDataProvider.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.chunk.ChunkDataProvider.validate_source"><code class="docutils literal notranslate"><span class="pre">ChunkDataProvider.validate_source()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.chunk.ChunkDataProvider.encode"><code class="docutils literal notranslate"><span class="pre">ChunkDataProvider.encode()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.chunk.Base64ChunkDataProvider"><code class="docutils literal notranslate"><span class="pre">Base64ChunkDataProvider</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.chunk.Base64ChunkDataProvider.encode"><code class="docutils literal notranslate"><span class="pre">Base64ChunkDataProvider.encode()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.chunk.Base64ChunkDataProvider.settings"><code class="docutils literal notranslate"><span class="pre">Base64ChunkDataProvider.settings</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#module-galaxy.datatypes.dataproviders.column">galaxy.datatypes.dataproviders.column module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.column.ColumnarDataProvider"><code class="docutils literal notranslate"><span class="pre">ColumnarDataProvider</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.settings"><code class="docutils literal notranslate"><span class="pre">ColumnarDataProvider.settings</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.__init__"><code class="docutils literal notranslate"><span class="pre">ColumnarDataProvider.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.parse_filter"><code class="docutils literal notranslate"><span class="pre">ColumnarDataProvider.parse_filter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.create_numeric_filter"><code class="docutils literal notranslate"><span class="pre">ColumnarDataProvider.create_numeric_filter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.create_string_filter"><code class="docutils literal notranslate"><span class="pre">ColumnarDataProvider.create_string_filter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.create_list_filter"><code class="docutils literal notranslate"><span class="pre">ColumnarDataProvider.create_list_filter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.get_default_parsers"><code class="docutils literal notranslate"><span class="pre">ColumnarDataProvider.get_default_parsers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.filter"><code class="docutils literal notranslate"><span class="pre">ColumnarDataProvider.filter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.parse_columns_from_line"><code class="docutils literal notranslate"><span class="pre">ColumnarDataProvider.parse_columns_from_line()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.parse_column_at_index"><code class="docutils literal notranslate"><span class="pre">ColumnarDataProvider.parse_column_at_index()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.parse_value"><code class="docutils literal notranslate"><span class="pre">ColumnarDataProvider.parse_value()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.get_column_type"><code class="docutils literal notranslate"><span class="pre">ColumnarDataProvider.get_column_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.column.ColumnarDataProvider.filter_by_columns"><code class="docutils literal notranslate"><span class="pre">ColumnarDataProvider.filter_by_columns()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.column.DictDataProvider"><code class="docutils literal notranslate"><span class="pre">DictDataProvider</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.column.DictDataProvider.settings"><code class="docutils literal notranslate"><span class="pre">DictDataProvider.settings</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.column.DictDataProvider.__init__"><code class="docutils literal notranslate"><span class="pre">DictDataProvider.__init__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy-datatypes-dataproviders-dataset-module">galaxy.datatypes.dataproviders.dataset module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy-datatypes-dataproviders-decorators-module">galaxy.datatypes.dataproviders.decorators module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#module-galaxy.datatypes.dataproviders.exceptions">galaxy.datatypes.dataproviders.exceptions module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.exceptions.InvalidDataProviderSource"><code class="docutils literal notranslate"><span class="pre">InvalidDataProviderSource</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.exceptions.InvalidDataProviderSource.__init__"><code class="docutils literal notranslate"><span class="pre">InvalidDataProviderSource.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.exceptions.NoProviderAvailable"><code class="docutils literal notranslate"><span class="pre">NoProviderAvailable</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.exceptions.NoProviderAvailable.__init__"><code class="docutils literal notranslate"><span class="pre">NoProviderAvailable.__init__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy-datatypes-dataproviders-external-module">galaxy.datatypes.dataproviders.external module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy-datatypes-dataproviders-hierarchy-module">galaxy.datatypes.dataproviders.hierarchy module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#module-galaxy.datatypes.dataproviders.line">galaxy.datatypes.dataproviders.line module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.FilteredLineDataProvider"><code class="docutils literal notranslate"><span class="pre">FilteredLineDataProvider</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.FilteredLineDataProvider.DEFAULT_COMMENT_CHAR"><code class="docutils literal notranslate"><span class="pre">FilteredLineDataProvider.DEFAULT_COMMENT_CHAR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.FilteredLineDataProvider.settings"><code class="docutils literal notranslate"><span class="pre">FilteredLineDataProvider.settings</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.FilteredLineDataProvider.__init__"><code class="docutils literal notranslate"><span class="pre">FilteredLineDataProvider.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.FilteredLineDataProvider.filter"><code class="docutils literal notranslate"><span class="pre">FilteredLineDataProvider.filter()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.RegexLineDataProvider"><code class="docutils literal notranslate"><span class="pre">RegexLineDataProvider</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.RegexLineDataProvider.settings"><code class="docutils literal notranslate"><span class="pre">RegexLineDataProvider.settings</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.RegexLineDataProvider.__init__"><code class="docutils literal notranslate"><span class="pre">RegexLineDataProvider.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.RegexLineDataProvider.filter"><code class="docutils literal notranslate"><span class="pre">RegexLineDataProvider.filter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.RegexLineDataProvider.filter_by_regex"><code class="docutils literal notranslate"><span class="pre">RegexLineDataProvider.filter_by_regex()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.BlockDataProvider"><code class="docutils literal notranslate"><span class="pre">BlockDataProvider</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.BlockDataProvider.__init__"><code class="docutils literal notranslate"><span class="pre">BlockDataProvider.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.BlockDataProvider.init_new_block"><code class="docutils literal notranslate"><span class="pre">BlockDataProvider.init_new_block()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.BlockDataProvider.filter"><code class="docutils literal notranslate"><span class="pre">BlockDataProvider.filter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.BlockDataProvider.is_new_block"><code class="docutils literal notranslate"><span class="pre">BlockDataProvider.is_new_block()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.BlockDataProvider.add_line_to_block"><code class="docutils literal notranslate"><span class="pre">BlockDataProvider.add_line_to_block()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.BlockDataProvider.assemble_current_block"><code class="docutils literal notranslate"><span class="pre">BlockDataProvider.assemble_current_block()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.BlockDataProvider.filter_block"><code class="docutils literal notranslate"><span class="pre">BlockDataProvider.filter_block()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.BlockDataProvider.handle_last_block"><code class="docutils literal notranslate"><span class="pre">BlockDataProvider.handle_last_block()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="galaxy.datatypes.dataproviders.html#galaxy.datatypes.dataproviders.line.BlockDataProvider.settings"><code class="docutils literal notranslate"><span class="pre">BlockDataProvider.settings</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="galaxy.datatypes.display_applications.html">galaxy.datatypes.display_applications package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.display_applications.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.display_applications.html#galaxy-datatypes-display-applications-application-module">galaxy.datatypes.display_applications.application module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.display_applications.html#galaxy-datatypes-display-applications-parameters-module">galaxy.datatypes.display_applications.parameters module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.display_applications.html#galaxy-datatypes-display-applications-util-module">galaxy.datatypes.display_applications.util module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="galaxy.datatypes.util.html">galaxy.datatypes.util package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.util.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.util.html#galaxy-datatypes-util-generic-util-module">galaxy.datatypes.util.generic_util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.util.html#galaxy-datatypes-util-gff-util-module">galaxy.datatypes.util.gff_util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="galaxy.datatypes.util.html#galaxy-datatypes-util-maf-utilities-module">galaxy.datatypes.util.maf_utilities module</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-annotation-module">
+<h2>galaxy.datatypes.annotation module<a class="headerlink" href="#galaxy-datatypes-annotation-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-anvio-module">
+<h2>galaxy.datatypes.anvio module<a class="headerlink" href="#galaxy-datatypes-anvio-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-assembly-module">
+<h2>galaxy.datatypes.assembly module<a class="headerlink" href="#galaxy-datatypes-assembly-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-binary-module">
+<h2>galaxy.datatypes.binary module<a class="headerlink" href="#galaxy-datatypes-binary-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-blast-module">
+<h2>galaxy.datatypes.blast module<a class="headerlink" href="#galaxy-datatypes-blast-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-checkers-module">
+<h2>galaxy.datatypes.checkers module<a class="headerlink" href="#galaxy-datatypes-checkers-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-chrominfo-module">
+<h2>galaxy.datatypes.chrominfo module<a class="headerlink" href="#galaxy-datatypes-chrominfo-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-constructive-solid-geometry-module">
+<h2>galaxy.datatypes.constructive_solid_geometry module<a class="headerlink" href="#galaxy-datatypes-constructive-solid-geometry-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-coverage-module">
+<h2>galaxy.datatypes.coverage module<a class="headerlink" href="#galaxy-datatypes-coverage-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-data-module">
+<h2>galaxy.datatypes.data module<a class="headerlink" href="#galaxy-datatypes-data-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-flow-module">
+<h2>galaxy.datatypes.flow module<a class="headerlink" href="#galaxy-datatypes-flow-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-genetics-module">
+<h2>galaxy.datatypes.genetics module<a class="headerlink" href="#galaxy-datatypes-genetics-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-gis-module">
+<h2>galaxy.datatypes.gis module<a class="headerlink" href="#galaxy-datatypes-gis-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-goldenpath-module">
+<h2>galaxy.datatypes.goldenpath module<a class="headerlink" href="#galaxy-datatypes-goldenpath-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-graph-module">
+<h2>galaxy.datatypes.graph module<a class="headerlink" href="#galaxy-datatypes-graph-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-hdf5-module">
+<h2>galaxy.datatypes.hdf5 module<a class="headerlink" href="#galaxy-datatypes-hdf5-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-images-module">
+<h2>galaxy.datatypes.images module<a class="headerlink" href="#galaxy-datatypes-images-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-interval-module">
+<h2>galaxy.datatypes.interval module<a class="headerlink" href="#galaxy-datatypes-interval-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-isa-module">
+<h2>galaxy.datatypes.isa module<a class="headerlink" href="#galaxy-datatypes-isa-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-media-module">
+<h2>galaxy.datatypes.media module<a class="headerlink" href="#galaxy-datatypes-media-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-metacyto-module">
+<h2>galaxy.datatypes.metacyto module<a class="headerlink" href="#galaxy-datatypes-metacyto-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-metadata-module">
+<h2>galaxy.datatypes.metadata module<a class="headerlink" href="#galaxy-datatypes-metadata-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-microarrays-module">
+<h2>galaxy.datatypes.microarrays module<a class="headerlink" href="#galaxy-datatypes-microarrays-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-molecules-module">
+<h2>galaxy.datatypes.molecules module<a class="headerlink" href="#galaxy-datatypes-molecules-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-mothur-module">
+<h2>galaxy.datatypes.mothur module<a class="headerlink" href="#galaxy-datatypes-mothur-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-msa-module">
+<h2>galaxy.datatypes.msa module<a class="headerlink" href="#galaxy-datatypes-msa-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-neo4j-module">
+<h2>galaxy.datatypes.neo4j module<a class="headerlink" href="#galaxy-datatypes-neo4j-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-ngsindex-module">
+<h2>galaxy.datatypes.ngsindex module<a class="headerlink" href="#galaxy-datatypes-ngsindex-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-phylip-module">
+<h2>galaxy.datatypes.phylip module<a class="headerlink" href="#galaxy-datatypes-phylip-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-plant-tribes-module">
+<h2>galaxy.datatypes.plant_tribes module<a class="headerlink" href="#galaxy-datatypes-plant-tribes-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-proteomics-module">
+<h2>galaxy.datatypes.proteomics module<a class="headerlink" href="#galaxy-datatypes-proteomics-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-qiime2-module">
+<h2>galaxy.datatypes.qiime2 module<a class="headerlink" href="#galaxy-datatypes-qiime2-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-qualityscore-module">
+<h2>galaxy.datatypes.qualityscore module<a class="headerlink" href="#galaxy-datatypes-qualityscore-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-registry-module">
+<h2>galaxy.datatypes.registry module<a class="headerlink" href="#galaxy-datatypes-registry-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-sequence-module">
+<h2>galaxy.datatypes.sequence module<a class="headerlink" href="#galaxy-datatypes-sequence-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-sniff-module">
+<h2>galaxy.datatypes.sniff module<a class="headerlink" href="#galaxy-datatypes-sniff-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-spaln-module">
+<h2>galaxy.datatypes.spaln module<a class="headerlink" href="#galaxy-datatypes-spaln-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-speech-module">
+<h2>galaxy.datatypes.speech module<a class="headerlink" href="#galaxy-datatypes-speech-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-tabular-module">
+<h2>galaxy.datatypes.tabular module<a class="headerlink" href="#galaxy-datatypes-tabular-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-text-module">
+<h2>galaxy.datatypes.text module<a class="headerlink" href="#galaxy-datatypes-text-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-tracks-module">
+<h2>galaxy.datatypes.tracks module<a class="headerlink" href="#galaxy-datatypes-tracks-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-triples-module">
+<h2>galaxy.datatypes.triples module<a class="headerlink" href="#galaxy-datatypes-triples-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-upload-util-module">
+<h2>galaxy.datatypes.upload_util module<a class="headerlink" href="#galaxy-datatypes-upload-util-module" title="Link to this heading">¶</a></h2>
+</section>
+<section id="galaxy-datatypes-xml-module">
+<h2>galaxy.datatypes.xml module<a class="headerlink" href="#galaxy-datatypes-xml-module" title="Link to this heading">¶</a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="galaxy.config.html" class="btn btn-neutral float-left" title="galaxy.config package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="galaxy.datatypes.converters.html" class="btn btn-neutral float-right" title="galaxy.datatypes.converters package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Galaxy Committers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
